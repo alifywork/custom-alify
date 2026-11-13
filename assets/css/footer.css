@@ -22,7 +22,26 @@
   isolation: isolate;
 }
 .footer-cta__container { position: relative; z-index: 1; }
-.footer-cta__eyebrow { margin-bottom: 18px; color: var(--color-amber-light); }
+.footer-cta__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  color: var(--color-amber-light);
+}
+.footer-cta__eyebrow-icon {
+  display: inline-block;
+  color: var(--color-amber-light);
+  font-size: 1.1em;
+  transform-origin: 50% 50%;
+  animation: eyebrow-sparkle-spin 5s linear infinite;
+}
+@keyframes eyebrow-sparkle-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-cta__eyebrow-icon { animation: none; }
+}
 .footer-cta h2 {
   margin: 0;
   color: var(--color-white);
