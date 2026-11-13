@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F6F4F1">
-  <meta name="description" content="Talk to Alify about a question, idea or project.">
+  <meta name="description" content="Contact Alify with a question, idea or project enquiry.">
   <title>Contact Us | Alify</title>
 
   <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/inner-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages.css">
   <link rel="stylesheet" href="assets/css/forms.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/video-backgrounds.css">
@@ -105,47 +106,19 @@
 
   <main id="mainContent">
     <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle">
-      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
-        <source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4">
-      </video>
+      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video>
       <div class="container"><div class="inner-hero__content">
         <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Contact Alify</p>
         <h1 id="pageHeroTitle">Let’s start<br><span>a conversation.</span></h1>
-        <p class="inner-hero__description">Have a question, idea or challenge? Tell us a little about it, and we’ll help you find the right next step.</p>
+        <p class="inner-hero__description">Have a question, idea or challenge? Tell us a little about it and we’ll help you find the next step.</p>
         <div class="inner-hero__actions">
-          <a class="btn-pill btn-pill--arrow" href="#contact-form"><span>Get in touch</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-down"></i></span></a>
+          <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
           <a class="btn-pill btn-pill--outline" href="index.html">Back to Home</a>
         </div>
       </div></div>
     </section>
-    <section class="contact-page" id="contact-form" aria-labelledby="contactFormTitle">
-      <div class="container"><div class="row g-4 g-lg-5 align-items-stretch">
-        <div class="col-lg-5">
-          <div class="contact-info-card">
-            <p class="contact-info-card__eyebrow">Start a conversation</p>
-            <h2>Tell us what you’re thinking.</h2>
-            <p>Share a little about your question, idea or challenge. We’ll help you work out the best next step.</p>
-            <p>Already have a project in mind? Give us a few details and we can make the first conversation more useful.</p>
-            <a class="contact-info-card__link" href="lets-get-started.html">Start a project brief <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="contact-form-card">
-            <h2 class="contact-form-card__heading" id="contactFormTitle">How can we help?</h2>
-            <form class="contact-form needs-validation" data-demo-form novalidate>
-              <div class="row g-3">
-                <div class="col-sm-6"><label class="form-label" for="contactName">Your name <span class="contact-form__required">*</span></label><input class="form-control" type="text" id="contactName" name="name" autocomplete="name" placeholder="Name" required><div class="invalid-feedback">Please enter your name.</div></div>
-                <div class="col-sm-6"><label class="form-label" for="contactEmail">Email address <span class="contact-form__required">*</span></label><input class="form-control" type="email" id="contactEmail" name="email" autocomplete="email" placeholder="you@company.com" required><div class="invalid-feedback">Please enter a valid email address.</div></div>
-                <div class="col-12"><label class="form-label" for="contactCompany">Company <span class="text-muted">(optional)</span></label><input class="form-control" type="text" id="contactCompany" name="company" autocomplete="organization" placeholder="Your organization"></div>
-                <div class="col-12"><label class="form-label" for="contactTopic">What would you like to talk about? <span class="contact-form__required">*</span></label><select class="form-select" id="contactTopic" name="topic" required><option value="" selected disabled>Choose a topic</option><option>Brand and strategy</option><option>Website or digital experience</option><option>Digital product</option><option>Something else</option></select><div class="invalid-feedback">Please choose a topic.</div></div>
-                <div class="col-12"><label class="form-label" for="contactMessage">A few details <span class="contact-form__required">*</span></label><textarea class="form-control" id="contactMessage" name="message" placeholder="Tell us a little about what you need..." required></textarea><div class="invalid-feedback">Please add a few details.</div></div>
-                <div class="col-12"><button class="btn-pill btn-pill--arrow contact-form__submit" type="submit"><span>Send your message</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></button><p class="contact-form__note">The form layout is ready; connect an email or CRM endpoint to receive submissions.</p><div class="contact-form__status" data-form-status role="status" aria-live="polite"></div></div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div></div>
-    </section>
+    <section class="contact-page" id="contact-form" aria-labelledby="contactFormTitle"><div class="container"><div class="row g-4 g-lg-5 align-items-stretch"><div class="col-lg-5"><div class="contact-info-card"><p class="contact-info-card__eyebrow">Start a conversation</p><h2>Tell us what you’re thinking.</h2><p>Share a little about your question, idea or challenge. We’ll help you find the best next step.</p><p>Already have a project in mind? Start with a short project brief.</p><a class="contact-info-card__link" href="lets-get-started.html">Start a project brief <i class="ph ph-arrow-up-right"></i></a></div></div><div class="col-lg-7"><div class="contact-form-card"><h2 class="contact-form-card__heading" id="contactFormTitle">How can we help?</h2><form class="contact-form needs-validation" data-demo-form novalidate><div class="row g-3"><div class="col-sm-6"><label class="form-label" for="contactName">Your name <span class="contact-form__required">*</span></label><input class="form-control" id="contactName" name="name" required autocomplete="name"><div class="invalid-feedback">Please enter your name.</div></div><div class="col-sm-6"><label class="form-label" for="contactEmail">Email address <span class="contact-form__required">*</span></label><input class="form-control" type="email" id="contactEmail" name="email" required autocomplete="email"><div class="invalid-feedback">Enter a valid email address.</div></div><div class="col-12"><label class="form-label" for="contactSubject">What can we help with?</label><select class="form-select" id="contactSubject" name="subject"><option>General enquiry</option><option>Project discussion</option><option>Partnership</option><option>Other</option></select></div><div class="col-12"><label class="form-label" for="contactMessage">Your message <span class="contact-form__required">*</span></label><textarea class="form-control" id="contactMessage" name="message" required></textarea><div class="invalid-feedback">Please add a short message.</div></div><div class="col-12"><button class="btn-pill btn-pill--arrow" type="submit"><span>Send message</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right"></i></span></button><p class="contact-form__note">Demo form — connect an email or CRM endpoint before collecting messages.</p><div class="contact-form__status" data-form-status role="status" aria-live="polite"></div></div></div></form></div></div></div></div></section>
+    <section class="page-content"><div class="container"><div class="page-content__intro"><p class="eyebrow page-content__eyebrow">Before you write</p><h2 class="page-content__title">A few quick answers</h2></div><div class="faq-item"><details><summary class="faq-question">What should I include in my message?<i class="ph ph-plus"></i></summary><div class="faq-answer">A short outline of what you’re trying to achieve is plenty. We can work through the details together.</div></details></div><div class="faq-item"><details><summary class="faq-question">Can I request a quote directly?<i class="ph ph-plus"></i></summary><div class="faq-answer">Yes. Visit the Get a Quote page for a guided project brief.</div></details></div><div class="faq-item"><details><summary class="faq-question">Is the form connected to email yet?<i class="ph ph-plus"></i></summary><div class="faq-answer">Not yet. This is a frontend demo form and needs an email or CRM endpoint before launch.</div></details></div></div></section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
@@ -197,6 +170,10 @@
           <nav class="site-footer__links" aria-label="Discover links">
             <a href="services.html">Services</a>
             <a href="industries.html">Industries</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="process.html">Our Process</a>
+            <a href="faq.html">FAQs</a>
+            <a href="testimonials.html">Testimonials</a>
             <a href="contact-us.html">Get in touch</a>
           </nav>
         </div>
@@ -214,8 +191,8 @@
       <div class="site-footer__bottom">
         <span>© <span id="currentYear"></span> Alify. All rights reserved.</span>
         <div class="site-footer__legal">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="legal.html#privacy">Privacy Policy</a>
+          <a href="legal.html#terms">Terms of Use</a>
         </div>
         <a class="site-footer__back-top" href="#top" aria-label="Back to top">Back to top <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
       </div>

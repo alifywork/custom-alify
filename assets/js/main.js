@@ -32,6 +32,11 @@
     initHeader();
     initCurrentPage();
     initDrawers();
+    initPricingTabs();
+    initFaqFilters();
+    initReviewFilters();
+    initQuoteWizard();
+    initNotFoundSearch();
     initSmoothScroll();
     initBackToTop();
     initActiveNav();
@@ -97,6 +102,183 @@
       } else {
         link.removeAttribute('aria-current');
       }
+    });
+  }
+
+  /* ---------- Pricing service tabs ---------- */
+  function initPricingTabs() {
+    var tabs = document.querySelectorAll('[data-pricing-tab]');
+    if (!tabs.length) return;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var selected = tab.getAttribute('data-pricing-tab');
+        tabs.forEach(function (item) { item.setAttribute('aria-selected', item === tab ? 'true' : 'false'); });
+        document.querySelectorAll('[data-pricing-panel]').forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-pricing-panel') !== selected;
+        });
+      });
+    });
+  }
+
+  /* ---------- Searchable/category-filtered FAQ ---------- */
+  function initFaqFilters() {
+    var faqRoot = document.querySelector('[data-faq-root]');
+    if (!faqRoot) return;
+    var activeCategory = 'all';
+    var search = faqRoot.querySelector('[data-faq-search]');
+    var items = faqRoot.querySelectorAll('[data-faq-item]');
+    var tabs = faqRoot.querySelectorAll('[data-faq-filter]');
+    var empty = faqRoot.querySelector('[data-faq-empty]');
+
+    function update() {
+      var query = search ? search.value.trim().toLowerCase() : '';
+      var visibleCount = 0;
+      items.forEach(function (item) {
+        var matchesCategory = activeCategory === 'all' || item.getAttribute('data-category') === activeCategory;
+        var matchesText = !query || item.textContent.toLowerCase().indexOf(query) !== -1;
+        item.hidden = !(matchesCategory && matchesText);
+        if (!item.hidden) visibleCount += 1;
+      });
+      if (empty) empty.hidden = visibleCount !== 0;
+    }
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activeCategory = tab.getAttribute('data-faq-filter');
+        tabs.forEach(function (item) { item.setAttribute('aria-pressed', item === tab ? 'true' : 'false'); });
+        update();
+      });
+    });
+    if (search) search.addEventListener('input', update);
+    update();
+  }
+
+  /* ---------- Testimonial service filters ---------- */
+  function initReviewFilters() {
+    var root = document.querySelector('[data-reviews-root]');
+    if (!root) return;
+    var filters = root.querySelectorAll('[data-review-filter]');
+    var cards = root.querySelectorAll('[data-review-card]');
+    filters.forEach(function (filter) {
+      filter.addEventListener('click', function () {
+        var category = filter.getAttribute('data-review-filter');
+        filters.forEach(function (item) { item.setAttribute('aria-pressed', item === filter ? 'true' : 'false'); });
+        cards.forEach(function (card) {
+          card.hidden = category !== 'all' && card.getAttribute('data-service') !== category;
+        });
+      });
+    });
+  }
+
+  /* ---------- Seven-step project quote wizard ---------- */
+  function initQuoteWizard() {
+    var form = document.querySelector('[data-quote-wizard]');
+    if (!form) return;
+    var steps = Array.prototype.slice.call(form.querySelectorAll('[data-quote-step]'));
+    var progress = Array.prototype.slice.call(form.querySelectorAll('[data-quote-progress]'));
+    var currentIndex = 0;
+    var serviceOptions = {
+      'WordPress': ['Custom WordPress website', 'WooCommerce store', 'WordPress redesign', 'WordPress migration', 'Maintenance & care'],
+      'Shopify': ['New Shopify store', 'Theme customization', 'Shopify migration', 'Conversion improvements', 'Store maintenance'],
+      'UI/UX': ['UX research', 'Website UI/UX design', 'Product design', 'Usability audit', 'Design system'],
+      'SEO': ['Technical SEO', 'On-page SEO', 'SEO audit', 'Migration SEO', 'Content strategy']
+    };
+    var subserviceField = form.querySelector('[name="subservice"]');
+    form.querySelectorAll('input[name="service"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        if (!subserviceField) return;
+        subserviceField.innerHTML = '<option value="" selected disabled>Select a sub-service</option>';
+        (serviceOptions[radio.value] || []).forEach(function (label) {
+          var option = document.createElement('option');
+          option.value = label;
+          option.textContent = label;
+          subserviceField.appendChild(option);
+        });
+      });
+    });
+
+    function showStep(index) {
+      currentIndex = Math.max(0, Math.min(index, steps.length - 1));
+      steps.forEach(function (step, i) {
+        step.hidden = i !== currentIndex;
+        step.setAttribute('aria-hidden', i === currentIndex ? 'false' : 'true');
+      });
+      progress.forEach(function (item, i) {
+        item.classList.toggle('is-current', i === currentIndex);
+        item.classList.toggle('is-done', i < currentIndex);
+      });
+      var heading = steps[currentIndex].querySelector('h2');
+      if (heading) heading.setAttribute('tabindex', '-1'), heading.focus();
+      if (currentIndex === steps.length - 1) updateQuoteSummary(form);
+    }
+
+    function validateStep(step) {
+      var fields = step.querySelectorAll('input[required], select[required], textarea[required]');
+      var valid = true;
+      var missingChoice = false;
+      var radiosChecked = {};
+      fields.forEach(function (field) {
+        if (field.type === 'radio') {
+          if (!radiosChecked[field.name]) {
+            radiosChecked[field.name] = true;
+            var group = step.querySelectorAll('input[type="radio"][name="' + field.name + '"]');
+            var checked = Array.prototype.some.call(group, function (radio) { return radio.checked; });
+            if (!checked) {
+              valid = false;
+              missingChoice = true;
+              var label = field.closest('label');
+              if (label) label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        } else if (!field.checkValidity()) {
+          field.classList.add('is-invalid');
+          field.reportValidity();
+          valid = false;
+        } else {
+          field.classList.remove('is-invalid');
+        }
+      });
+      var stepError = step.querySelector('[data-step-error]');
+      if (stepError) {
+        stepError.textContent = missingChoice ? 'Please select an option to continue.' : 'Please complete the required fields to continue.';
+        stepError.hidden = valid;
+      }
+      return valid;
+    }
+
+    function updateQuoteSummary(currentForm) {
+      currentForm.querySelectorAll('[data-summary-for]').forEach(function (node) {
+        var field = currentForm.elements[node.getAttribute('data-summary-for')];
+        if (!field) return;
+        var value = '';
+        if (field.length && field[0] && field[0].type === 'radio') {
+          var selected = currentForm.querySelector('input[name="' + field[0].name + '"]:checked');
+          value = selected ? selected.value : '';
+        } else {
+          value = field.value || '';
+        }
+        node.textContent = value || 'Not provided';
+      });
+    }
+
+    form.querySelectorAll('[data-quote-next]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        if (validateStep(steps[currentIndex])) showStep(currentIndex + 1);
+      });
+    });
+    form.querySelectorAll('[data-quote-prev]').forEach(function (button) {
+      button.addEventListener('click', function () { showStep(currentIndex - 1); });
+    });
+    showStep(0);
+  }
+
+  /* ---------- Lightweight 404 quick-link search ---------- */
+  function initNotFoundSearch() {
+    var search = document.querySelector('[data-404-search]');
+    if (!search) return;
+    var links = document.querySelectorAll('[data-404-link]');
+    search.addEventListener('input', function () {
+      var term = search.value.trim().toLowerCase();
+      links.forEach(function (link) { link.hidden = !!term && link.textContent.toLowerCase().indexOf(term) === -1; });
     });
   }
 
