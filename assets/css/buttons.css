@@ -2,25 +2,23 @@
    buttons.css — Reusable global button components
    ============================================================ */
 
+/* Rounded pill button; plain by default. Add --arrow for the split CTA. */
 .btn-pill {
-  --button-bg: var(--color-teal);
-  --button-color: var(--color-white);
-  --button-border: var(--button-bg);
-
   display: inline-flex;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  min-height: 48px;
-  padding: 0.3rem 0.35rem 0.3rem 1.35rem;
-  border: 1px solid var(--button-border);
+  gap: 10px;
+  padding: 0 24px;
+  border: 1px solid transparent;
   border-radius: var(--radius-pill);
-  background: var(--button-bg);
-  color: var(--button-color);
-  font-family: var(--font-accent);
+  background: var(--color-teal-deep);
+  color: var(--color-white);
+  font-family: var(--font-primary);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: 1.2;
+  text-align: center;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -28,12 +26,11 @@
 }
 
 .btn-pill:hover {
-  color: var(--button-color);
-  background: var(--color-charcoal);
-  border-color: var(--color-charcoal);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
   text-decoration: none;
 }
-
 .btn-pill:active { transform: translateY(1px); }
 .btn-pill:focus-visible,
 .btn-icon:focus-visible {
@@ -41,47 +38,64 @@
   outline-offset: 3px;
 }
 
+/* Screenshot-style CTA with attached circular arrow end-cap. */
+.btn-pill--arrow {
+  gap: 9px;
+  min-height: 48px;
+  padding: 1px 2px 1px 23px;
+}
 .btn-pill__icon {
+  position: relative;
   display: inline-grid;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   place-items: center;
   border-radius: 50%;
-  background: var(--color-charcoal);
+  background: var(--color-teal-deep);
   color: var(--color-amber-light);
-  font-size: 1.3rem;
-  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  font-size: 1.4rem;
+  transition: color 180ms ease, transform 180ms ease, background-color 180ms ease;
 }
-.btn-pill:hover .btn-pill__icon {
-  background: var(--color-amber-light);
-  color: var(--color-charcoal);
+.btn-pill--arrow .btn-pill__icon::before {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -5px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.75);
+  content: "";
+}
+.btn-pill--arrow:hover .btn-pill__icon {
+  background: var(--color-primary);
+  color: var(--color-amber-light);
   transform: translate(2px, -2px);
 }
 
+/* Outlined pill, e.g. Schedule a Call. */
 .btn-pill--outline {
-  --button-bg: transparent;
-  --button-color: var(--color-charcoal);
-  --button-border: #D8D7D4;
-  padding: 0.75rem 1.55rem;
+  min-height: 50px;
+  padding: 0 24px;
+  border-color: #E3E1DE;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+  font-weight: var(--font-weight-regular);
 }
 .btn-pill--outline:hover {
-  color: var(--color-white);
-  background: var(--color-teal);
-  border-color: var(--color-teal);
+  border-color: var(--color-teal-deep);
+  background: var(--color-white);
+  color: var(--color-teal-deep);
 }
 
 .btn-pill--compact {
   min-height: 44px;
-  padding-left: 1.1rem;
+  padding-inline: 20px;
   font-size: var(--font-size-xs);
 }
-.btn-pill--compact .btn-pill__icon {
-  width: 36px;
-  height: 36px;
-  flex-basis: 36px;
-}
+.btn-pill--compact.btn-pill--arrow { padding: 1px 2px 1px 18px; }
+.btn-pill--compact .btn-pill__icon { width: 40px; height: 40px; flex-basis: 40px; }
 
+/* Small icon-only control, shared by header, drawers and other UI. */
 .btn-icon {
   display: inline-grid;
   width: 44px;
@@ -97,13 +111,17 @@
   transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 .btn-icon:hover {
-  color: var(--color-primary);
+  border-color: rgba(15, 52, 115, 0.08);
   background: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 @media (max-width: 575.98px) {
-  .btn-pill { min-height: 42px; padding-left: 1rem; font-size: 0.76rem; }
-  .btn-pill__icon { width: 34px; height: 34px; flex-basis: 34px; font-size: 1.1rem; }
-  .btn-pill--compact { min-height: 40px; padding-left: 0.9rem; }
-  .btn-pill--compact .btn-pill__icon { width: 32px; height: 32px; flex-basis: 32px; }
+  .btn-pill { min-height: 44px; padding-inline: 20px; font-size: 0.78rem; }
+  .btn-pill--arrow { gap: 6px; min-height: 44px; padding: 1px 2px 1px 12px; font-size: 0.7rem; }
+  .btn-pill__icon { width: 40px; height: 40px; flex-basis: 40px; font-size: 1.2rem; }
+  .btn-pill--outline { min-height: 48px; padding-inline: 22px; font-size: var(--font-size-sm); }
+  .btn-pill--compact { min-height: 40px; padding-inline: 16px; }
+  .btn-pill--compact.btn-pill--arrow { padding: 1px 2px 1px 12px; }
+  .btn-pill--compact .btn-pill__icon { width: 36px; height: 36px; flex-basis: 36px; }
 }
