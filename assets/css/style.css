@@ -29,19 +29,19 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-heading);
   color: var(--color-dark);
   margin-top: 0;
   margin-bottom: var(--spacing-sm);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
 
 p {
   margin-top: 0;
@@ -171,7 +171,7 @@ button {
 }
 .site-header .navbar-brand {
   font-family: var(--font-heading);
-  font-weight: var(--font-weight-extrabold);
+  font-weight: var(--font-weight-regular);
   font-size: 1.5rem;
   color: var(--color-dark);
   text-decoration: none;
@@ -199,8 +199,8 @@ button {
   overflow: hidden;
 }
 .hero-section h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(2.25rem, 5vw + 0.5rem, 4.5rem);
+  font-weight: var(--font-weight-regular);
 }
 .hero-section .lead {
   font-size: var(--font-size-lg);
@@ -224,8 +224,8 @@ button {
 }
 .card-custom .card-title-custom {
   font-family: var(--font-heading);
-  font-weight: var(--font-weight-bold);
-  font-size: 1.25rem;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-h5);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -274,14 +274,27 @@ button {
 
 /* ---------- Section Titles ---------- */
 .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: var(--font-weight-extrabold);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-regular);
   margin-bottom: var(--spacing-sm);
 }
 .section-subtitle {
+  font-family: var(--font-primary);
   font-size: var(--font-size-lg);
   color: var(--color-muted);
   margin-bottom: var(--spacing-xl);
+}
+
+/* Eyebrow / accent labels */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-accent);
+  font-size: clamp(0.75rem, 0.35vw + 0.68rem, 0.95rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ---------- Badges / Tags ---------- */
@@ -321,7 +334,7 @@ button {
 }
 .table-custom thead th {
   font-family: var(--font-heading);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-regular);
   border-bottom: 2px solid var(--color-border);
 }
 
@@ -340,16 +353,12 @@ button {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 991.98px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
   .hero-section {
     padding-top: var(--spacing-section);
     padding-bottom: var(--spacing-section);
   }
 }
 @media (max-width: 767.98px) {
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.5rem; }
   .section-padding {
     padding-top: var(--spacing-xxl);
     padding-bottom: var(--spacing-xxl);
@@ -359,8 +368,6 @@ button {
   }
 }
 @media (max-width: 575.98px) {
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.25rem; }
   .btn-lg-custom {
     padding: 0.625rem 1.5rem;
     font-size: var(--font-size-base);

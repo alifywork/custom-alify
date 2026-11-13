@@ -1,5 +1,7 @@
 /* ============================================================
-   utility.css — Utility Classes
+   utility.css — Project-specific utility classes
+   Layout is handled by Bootstrap 5: .container, .container-fluid,
+   .row and .col-* are intentionally not redefined here.
    ============================================================ */
 
 /* ---------- Display ---------- */
@@ -285,30 +287,6 @@
   border-radius: var(--radius-md);
   max-width: 100%;
   height: auto;
-}
-
-/* ---------- Container ---------- */
-.container-custom {
-  width: 100%;
-  padding-right: calc(var(--spacing-md) * 0.75);
-  padding-left: calc(var(--spacing-md) * 0.75);
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 576px) {
-  .container-custom { max-width: 540px; }
-}
-@media (min-width: 768px) {
-  .container-custom { max-width: 720px; }
-}
-@media (min-width: 992px) {
-  .container-custom { max-width: 960px; }
-}
-@media (min-width: 1200px) {
-  .container-custom { max-width: 1140px; }
-}
-@media (min-width: 1400px) {
-  .container-custom { max-width: 1320px; }
 }
 
 /* ---------- Section ---------- */

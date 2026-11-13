@@ -3,36 +3,50 @@
    ============================================================ */
 
 :root {
-  /* ---------- Brand Colors ---------- */
-  --color-primary: #0d6efd;
-  --color-primary-dark: #0a58ca;
-  --color-primary-light: #3d8bfd;
-  --color-secondary: #6c757d;
-  --color-success: #198754;
-  --color-warning: #ffc107;
-  --color-danger: #dc3545;
-  --color-info: #0dcaf0;
-  --color-light: #f8f9fa;
-  --color-dark: #212529;
+  /* ---------- Brand Palette ---------- */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-primary: #0F3473;
+  --color-secondary: #F6F4F1;
+  --color-accent: #E05A3A;
+  --color-amber: #D98A2B;
+  --color-amber-light: #F4C778;
+  --color-teal: #0F8A73;
+  --color-charcoal: #12151C;
+
+  /* ---------- Semantic / Compatibility Tokens ---------- */
+  --color-primary-dark: #0A285B;
+  --color-primary-light: #315895;
+  --color-success: var(--color-teal);
+  --color-warning: var(--color-amber);
+  --color-danger: var(--color-accent);
+  --color-info: var(--color-teal);
+  --color-light: var(--color-secondary);
+  --color-dark: var(--color-charcoal);
 
   /* ---------- Base / Neutral ---------- */
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-body: #212529;
-  --color-body-bg: #ffffff;
-  --color-muted: #6c757d;
-  --color-border: #dee2e6;
-  --color-border-light: #e9ecef;
+  --color-body: var(--color-charcoal);
+  --color-body-bg: var(--color-white);
+  --color-muted: #656A73;
+  --color-border: #D8D7D4;
+  --color-border-light: #E8E6E2;
 
   /* ---------- Typography ---------- */
-  --font-primary: 'Manrope', 'Poppins', sans-serif;
-  --font-heading: 'Montserrat', 'Poppins', sans-serif;
-  --font-accent: 'Poppins', 'Manrope', sans-serif;
+  --font-primary: 'Poppins', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-accent: 'Manrope', sans-serif;
 
-  --font-size-base: 1rem;
-  --font-size-sm: 0.875rem;
-  --font-size-lg: 1.25rem;
-  --font-size-xs: 0.75rem;
+  /* Fluid type scales smoothly with viewport width. */
+  --font-size-base: clamp(0.9375rem, 0.25vw + 0.875rem, 1.0625rem);
+  --font-size-sm: clamp(0.8125rem, 0.15vw + 0.775rem, 0.9rem);
+  --font-size-lg: clamp(1.0625rem, 0.45vw + 0.95rem, 1.35rem);
+  --font-size-xs: clamp(0.7rem, 0.1vw + 0.675rem, 0.78rem);
+  --font-size-h1: clamp(2rem, 4vw + 0.75rem, 3.75rem);
+  --font-size-h2: clamp(1.75rem, 3vw + 0.75rem, 3rem);
+  --font-size-h3: clamp(1.5rem, 2vw + 0.75rem, 2.25rem);
+  --font-size-h4: clamp(1.3rem, 1.3vw + 0.75rem, 1.9rem);
+  --font-size-h5: clamp(1.15rem, 0.8vw + 0.75rem, 1.5rem);
+  --font-size-h6: clamp(1rem, 0.5vw + 0.75rem, 1.25rem);
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
