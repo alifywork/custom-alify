@@ -28,6 +28,7 @@
 
   /* ---------- DOM Ready ---------- */
   document.addEventListener('DOMContentLoaded', function () {
+    initBackgroundVideos();
     initHeader();
     initDrawers();
     initSmoothScroll();
@@ -39,6 +40,38 @@
     initTooltips();
     initYear();
   });
+
+  /* ---------- Local Hero Background Videos ---------- */
+  function initBackgroundVideos() {
+    var videoSections = [
+      { selector: '.home-hero', source: 'assets/images/background-videos/home-hero.mp4', type: 'video/mp4' },
+      { selector: '.inner-hero', source: 'assets/images/background-videos/inner-hero.mp4', type: 'video/mp4' }
+    ];
+
+    videoSections.forEach(function (item) {
+      document.querySelectorAll(item.selector).forEach(function (section) {
+        if (section.querySelector(':scope > .background-video')) return;
+
+        section.classList.add('has-video-background');
+        var video = document.createElement('video');
+        video.className = 'background-video';
+        video.autoplay = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.setAttribute('aria-hidden', 'true');
+        video.setAttribute('tabindex', '-1');
+        video.setAttribute('disablepictureinpicture', '');
+
+        var source = document.createElement('source');
+        source.src = item.source;
+        source.type = item.type;
+        video.appendChild(source);
+        section.prepend(video);
+      });
+    });
+  }
 
   /* ---------- Compact Sticky Header ---------- */
   function initHeader() {
