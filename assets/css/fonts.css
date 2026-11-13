@@ -1,0 +1,355 @@
+/* ============================================================
+   fonts.css — @font-face declarations
+   Fonts: Montserrat, Manrope, Poppins (woff + woff2)
+   Source: Fontsource (npm @fontsource/* v5.3.0)
+   ============================================================ */
+
+/* ---------- Montserrat ---------- */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-100-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-100-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-100-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-100-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-200-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-200-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-200-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-200-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-300-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-300-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-300-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-300-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-400-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-400-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-400-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-400-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-500-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-500-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-500-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-500-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-600-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-600-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-600-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-600-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-700-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-700-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-700-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-700-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-800-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-800-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-800-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-800-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-900-normal.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-900-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/montserrat-latin-900-italic.woff2') format('woff2'),
+       url('../fonts/montserrat-latin-900-italic.woff') format('woff');
+}
+
+/* ---------- Manrope ---------- */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-200-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-200-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-300-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-300-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-400-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-400-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-500-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-500-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-600-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-600-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-700-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-700-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/manrope-latin-800-normal.woff2') format('woff2'),
+       url('../fonts/manrope-latin-800-normal.woff') format('woff');
+}
+
+/* ---------- Poppins ---------- */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-100-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-100-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-100-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-100-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-200-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-200-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-200-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-200-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-300-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-300-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-300-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-300-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-400-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-400-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-400-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-400-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-500-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-500-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-500-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-500-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-600-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-600-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-600-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-600-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-700-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-700-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-700-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-700-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-800-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-800-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-800-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-800-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-900-normal.woff2') format('woff2'),
+       url('../fonts/poppins-latin-900-normal.woff') format('woff');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/poppins-latin-900-italic.woff2') format('woff2'),
+       url('../fonts/poppins-latin-900-italic.woff') format('woff');
+}
