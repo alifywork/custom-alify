@@ -14,9 +14,10 @@
   <link rel="stylesheet" href="assets/css/utility.css">
   <link rel="stylesheet" href="assets/css/buttons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/icons/phosphor.css">
 </head>
-<body>
+<body id="top">
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner container-fluid">
       <a class="site-header__logo" href="index.html" aria-label="Alify home">
@@ -103,7 +104,71 @@
   </main>
 
   <footer class="site-footer" id="siteFooter">
-    <!-- Footer will be built here. -->
+    <section class="footer-cta" aria-labelledby="footerCtaTitle">
+      <div class="container footer-cta__container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-8">
+            <p class="eyebrow footer-cta__eyebrow">Have a good one in mind?</p>
+            <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
+          </div>
+          <div class="col-lg-4 footer-cta__action">
+            <a class="btn-pill btn-pill--arrow" href="#contact">
+              <span>Start a project</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+            </a>
+            <a class="footer-cta__secondary" href="#contact">Or schedule a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <span class="footer-cta__decoration" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <div class="container site-footer__main">
+      <div class="row gy-5">
+        <div class="col-lg-4 col-md-6">
+          <a class="site-footer__brand" href="index.html" aria-label="Alify home">
+            <img src="assets/images/logo/light-logo.png" alt="Alify">
+          </a>
+          <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
+          <div class="site-footer__socials" aria-label="Social media">
+            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2 col-md-3">
+          <h3 class="site-footer__heading">Explore</h3>
+          <nav class="site-footer__links" aria-label="Explore links">
+            <a href="index.html">Home</a>
+            <a href="about-us.html">About Us</a>
+            <a href="work.html">Work</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+          </nav>
+        </div>
+        <div class="col-6 col-lg-2 col-md-3">
+          <h3 class="site-footer__heading">Discover</h3>
+          <nav class="site-footer__links" aria-label="Discover links">
+            <a href="services.html">Services</a>
+            <a href="industries.html">Industries</a>
+            <a href="#contact">Get in touch</a>
+          </nav>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 class="site-footer__heading">Let’s talk</h3>
+          <p class="site-footer__contact-copy">Have a question, an idea, or a challenge to solve? We’d love to hear from you.</p>
+          <a class="site-footer__contact-link" href="#contact">Tell us about it <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span>© <span id="currentYear"></span> Alify. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+        </div>
+        <a class="site-footer__back-top" href="#top" aria-label="Back to top">Back to top <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+      </div>
+    </div>
   </footer>
 
   <script defer src="assets/gsap/gsap.min.js"></script>
