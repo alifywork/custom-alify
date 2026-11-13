@@ -30,6 +30,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     initBackgroundVideos();
     initHeader();
+    initCurrentPage();
     initDrawers();
     initSmoothScroll();
     initBackToTop();
@@ -83,6 +84,20 @@
     }
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
+  }
+
+  /* ---------- Highlight the current page in both navigation menus ---------- */
+  function initCurrentPage() {
+    var currentFile = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.site-nav a[href], .site-drawer__nav a[href]').forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#' || href.indexOf('://') !== -1) return;
+      if (href.split('/').pop() === currentFile) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
   }
 
   /* ---------- Right-side About and Navigation Drawers ---------- */

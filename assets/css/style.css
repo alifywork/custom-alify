@@ -137,7 +137,10 @@ button {
   white-space: nowrap;
   transition: color 160ms ease;
 }
-.site-nav__link:hover { color: var(--color-teal); text-decoration: none; }
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] { color: var(--color-teal); text-decoration: none; }
+.site-header:not(.is-scrolled) .site-nav__link[aria-current="page"] { color: var(--color-amber-light); }
+.site-drawer__nav a[aria-current="page"] { color: var(--color-amber-light); }
 .site-header__actions { display: flex; align-items: center; gap: 7px; }
 .site-header__about-toggle { display: inline-grid; order: 1; }
 .site-header__cta { order: 2; }
