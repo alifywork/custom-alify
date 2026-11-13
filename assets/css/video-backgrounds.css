@@ -1,0 +1,39 @@
+/* ============================================================
+   video-backgrounds.css — Local video section backgrounds
+   Add .has-video-background and a .background-video child to a section.
+   ============================================================ */
+
+.has-video-background {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --video-overlay: linear-gradient(100deg, rgba(15, 52, 115, .88), rgba(18, 21, 28, .5));
+}
+.has-video-background::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--video-overlay);
+  content: "";
+  pointer-events: none;
+}
+.has-video-background > .background-video {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+.has-video-background > :not(.background-video) { position: relative; z-index: 1; }
+
+/* A little extra contrast behind text on image-rich footage. */
+.footer-cta.has-video-background { --video-overlay: linear-gradient(100deg, rgba(15, 52, 115, .84), rgba(18, 21, 28, .48)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .has-video-background > .background-video { display: none; }
+}
