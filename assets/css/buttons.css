@@ -8,7 +8,7 @@
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 20px !important;
   padding: 0 24px;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
@@ -69,7 +69,6 @@
 .btn-pill--arrow:hover .btn-pill__icon {
   background: var(--color-primary);
   color: var(--color-amber-light);
-  transform: translate(2px, -2px);
 }
 
 /* Outlined pill, e.g. Schedule a Call. */

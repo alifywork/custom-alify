@@ -80,12 +80,13 @@ button {
   top: 0;
   z-index: var(--z-index-sticky);
   width: 100%;
-  height: 68px;
+  height: 58px;
   background: var(--color-secondary);
   border-bottom: 1px solid rgba(18, 21, 28, 0.06);
   transition: box-shadow 180ms ease, background-color 180ms ease;
 }
 .site-header.is-scrolled {
+  height: 58px;
   background: rgba(246, 244, 241, 0.96);
   box-shadow: 0 8px 24px rgba(18, 21, 28, 0.08);
   backdrop-filter: blur(12px);
@@ -410,7 +411,7 @@ body.drawer-open { overflow: hidden; }
   }
 }
 @media (max-width: 575.98px) {
-  .site-header { height: 60px; }
+  .site-header { height: 58px; }
   .site-header__inner { padding-inline: 12px; gap: 5px; }
   .site-header__logo { width: 80px; flex-basis: 80px; }
   .site-header__actions { gap: 1px; }
