@@ -81,16 +81,22 @@ button {
   z-index: var(--z-index-sticky);
   width: 100%;
   height: 58px;
-  background: var(--color-secondary);
-  border-bottom: 1px solid rgba(18, 21, 28, 0.06);
-  transition: box-shadow 180ms ease, background-color 180ms ease;
+  margin-bottom: -58px;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 .site-header.is-scrolled {
   height: 58px;
   background: rgba(246, 244, 241, 0.96);
+  border-bottom-color: rgba(18, 21, 28, 0.06);
   box-shadow: 0 8px 24px rgba(18, 21, 28, 0.08);
   backdrop-filter: blur(12px);
 }
+.site-header:not(.is-scrolled) .site-nav__link { color: var(--color-white); }
+.site-header:not(.is-scrolled) .site-nav__link:hover { color: var(--color-amber-light); }
+.site-header:not(.is-scrolled) .site-header__actions .btn-icon { color: var(--color-white); }
+.site-header:not(.is-scrolled) .site-header__actions .btn-icon:hover { background: rgba(255,255,255,.14); color: var(--color-white); }
 .site-header__inner {
   height: 100%;
   max-width: 1440px;

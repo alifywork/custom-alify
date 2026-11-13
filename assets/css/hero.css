@@ -14,7 +14,7 @@
   padding-block: clamp(80px, 10vw, 150px);
   --video-overlay: linear-gradient(90deg, rgba(18, 21, 28, .78) 0%, rgba(15, 52, 115, .54) 55%, rgba(18, 21, 28, .24) 100%);
 }
-.home-hero__content { max-width: 880px; }
+.home-hero__content { max-width: 880px; margin-inline: auto; text-align: center; }
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -42,12 +42,12 @@
 .home-hero h1 span { color: var(--color-amber-light); }
 .home-hero__description {
   max-width: 530px;
-  margin: 25px 0 30px;
+  margin: 25px auto 30px;
   color: rgba(255,255,255,.8);
   font-size: var(--font-size-lg);
   line-height: 1.65;
 }
-.home-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.home-hero__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; }
 .home-hero__actions .btn-pill--arrow {
   background: var(--color-amber-light);
   border-color: var(--color-amber-light);
@@ -80,7 +80,7 @@
   padding-block: clamp(72px, 9vw, 120px);
   --video-overlay: linear-gradient(90deg, rgba(18, 21, 28, .78) 0%, rgba(15, 52, 115, .55) 65%, rgba(18, 21, 28, .32) 100%);
 }
-.inner-hero__content { max-width: 800px; }
+.inner-hero__content { max-width: 800px; margin-inline: auto; text-align: center; }
 .inner-hero .hero-eyebrow { margin-bottom: 18px; }
 .inner-hero h1 {
   margin: 0;
@@ -94,12 +94,12 @@
 .inner-hero h1 span { color: var(--color-amber-light); }
 .inner-hero__description {
   max-width: 590px;
-  margin: 22px 0 0;
+  margin: 22px auto 0;
   color: rgba(255,255,255,.8);
   font-size: var(--font-size-lg);
   line-height: 1.65;
 }
-.inner-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.inner-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
 .inner-hero__actions .btn-pill--arrow { background: var(--color-amber-light); border-color: var(--color-amber-light); color: var(--color-charcoal); }
 .inner-hero__actions .btn-pill--arrow .btn-pill__icon { background: var(--color-amber-light); color: var(--color-charcoal); }
 .inner-hero__actions .btn-pill--arrow:hover { background: var(--color-white); border-color: var(--color-white); }
