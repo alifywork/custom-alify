@@ -131,17 +131,6 @@ button {
   transition: color 160ms ease;
 }
 .site-nav__link:hover { color: var(--color-teal); text-decoration: none; }
-.site-nav__careers { gap: 8px; }
-.site-nav__career-icon {
-  display: inline-grid;
-  width: 20px;
-  height: 20px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--color-amber-light);
-  color: var(--color-charcoal);
-  font-size: 0.8rem;
-}
 .site-header__actions { display: flex; align-items: center; gap: 7px; }
 .site-header__about-toggle { display: inline-grid; order: 1; }
 .site-header__cta { order: 2; }
