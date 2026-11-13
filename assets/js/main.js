@@ -379,6 +379,13 @@
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
+        } else if (form.hasAttribute('data-demo-form')) {
+          event.preventDefault();
+          var status = form.querySelector('[data-form-status]');
+          if (status) {
+            status.textContent = 'This form is ready for the site’s email or CRM connection; no message is sent yet.';
+            status.classList.add('is-visible');
+          }
         }
         form.classList.add('was-validated');
       }, false);
