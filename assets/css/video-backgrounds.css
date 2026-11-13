@@ -34,7 +34,8 @@
 /* Tuned contrast for the different section footage. */
 .home-hero.has-video-background { --video-overlay: linear-gradient(90deg, rgba(18, 21, 28, .78) 0%, rgba(15, 52, 115, .54) 55%, rgba(18, 21, 28, .24) 100%); }
 .inner-hero.has-video-background { --video-overlay: linear-gradient(90deg, rgba(18, 21, 28, .78) 0%, rgba(15, 52, 115, .55) 65%, rgba(18, 21, 28, .32) 100%); }
-.footer-cta.has-video-background { --video-overlay: linear-gradient(100deg, rgba(15, 52, 115, .84), rgba(18, 21, 28, .48)); }
+.footer-cta.has-video-background { --video-overlay: none; background-color: var(--color-primary); }
+.footer-cta.has-video-background::before { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .has-video-background > .background-video { display: none; }

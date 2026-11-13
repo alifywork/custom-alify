@@ -14,7 +14,7 @@
   padding-block: clamp(80px, 10vw, 150px);
   --video-overlay: linear-gradient(90deg, rgba(18, 21, 28, .78) 0%, rgba(15, 52, 115, .54) 55%, rgba(18, 21, 28, .24) 100%);
 }
-.home-hero__content { max-width: 880px; margin-inline: auto; text-align: center; }
+.home-hero__content { width: 100%; margin-inline: auto; text-align: center; }
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -30,8 +30,8 @@
 }
 @keyframes hero-triangle-spin { to { transform: rotate(360deg); } }
 .home-hero h1 {
-  max-width: 900px;
-  margin: 0;
+  max-width: none;
+  margin: 0 auto;
   color: var(--color-white);
   font-family: var(--font-heading);
   font-size: clamp(3rem, 7.4vw, 6.6rem);
@@ -80,7 +80,7 @@
   padding-block: clamp(72px, 9vw, 120px);
   --video-overlay: linear-gradient(90deg, rgba(18, 21, 28, .78) 0%, rgba(15, 52, 115, .55) 65%, rgba(18, 21, 28, .32) 100%);
 }
-.inner-hero__content { max-width: 800px; margin-inline: auto; text-align: center; }
+.inner-hero__content { width: 100%; margin-inline: auto; text-align: center; }
 .inner-hero .hero-eyebrow { margin-bottom: 18px; }
 .inner-hero h1 {
   margin: 0;

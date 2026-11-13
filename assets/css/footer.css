@@ -16,9 +16,7 @@
   overflow: hidden;
   padding-block: clamp(54px, 8vw, 104px);
   border-bottom: 1px solid rgba(255,255,255,.12);
-  background:
-    radial-gradient(ellipse at 88% 0%, rgba(15,138,115,.42), transparent 38%),
-    linear-gradient(120deg, #0F3473 0%, #102A56 58%, #12151C 115%);
+  background-color: var(--color-primary);
   isolation: isolate;
 }
 .footer-cta__container { position: relative; z-index: 1; }
@@ -53,9 +51,11 @@
 .footer-cta h2 span { color: var(--color-amber-light); }
 .footer-cta__action {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 17px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-top: 30px;
 }
 .footer-cta__action .btn-pill { background: var(--color-amber-light); border-color: var(--color-amber-light); color: var(--color-charcoal); }
 .footer-cta__action .btn-pill:hover { background: var(--color-white); border-color: var(--color-white); }
@@ -64,27 +64,31 @@
 .footer-cta__action .btn-pill--arrow .btn-pill__icon::before { background: rgba(18, 21, 28, 0.3); }
 .footer-cta__secondary {
   display: inline-flex;
+  min-height: 48px;
   align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,.78);
+  justify-content: center;
+  gap: 10px;
+  padding: 0 22px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: var(--radius-pill);
+  background: rgba(18,21,28,.12);
+  color: var(--color-white);
   font-family: var(--font-primary);
   font-size: var(--font-size-sm);
   text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
 }
-.footer-cta__secondary i { color: var(--color-amber-light); transition: transform 180ms ease; }
-.footer-cta__secondary:hover { color: var(--color-white); text-decoration: none; }
-.footer-cta__secondary:hover i { transform: translateX(4px); }
-.footer-cta__decoration {
-  position: absolute;
-  z-index: -1;
-  top: -38%;
-  right: -8%;
-  width: clamp(230px, 36vw, 520px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 50%;
-  box-shadow: 0 0 0 34px rgba(255,255,255,.025), 0 0 0 70px rgba(255,255,255,.02);
-  pointer-events: none;
+.footer-cta__action .footer-cta__secondary {
+  border-color: rgba(255,255,255,.72);
+  background: rgba(18,21,28,.12);
+  color: var(--color-white);
+}
+.footer-cta__secondary i { color: var(--color-amber-light); }
+.footer-cta__action .footer-cta__secondary:hover {
+  border-color: var(--color-white);
+  background: rgba(255,255,255,.14);
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 /* Footer information */
