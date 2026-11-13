@@ -1,0 +1,109 @@
+/* ============================================================
+   buttons.css — Reusable global button components
+   ============================================================ */
+
+.btn-pill {
+  --button-bg: var(--color-teal);
+  --button-color: var(--color-white);
+  --button-border: var(--button-bg);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.3rem 0.35rem 0.3rem 1.35rem;
+  border: 1px solid var(--button-border);
+  border-radius: var(--radius-pill);
+  background: var(--button-bg);
+  color: var(--button-color);
+  font-family: var(--font-accent);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.btn-pill:hover {
+  color: var(--button-color);
+  background: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+  text-decoration: none;
+}
+
+.btn-pill:active { transform: translateY(1px); }
+.btn-pill:focus-visible,
+.btn-icon:focus-visible {
+  outline: 3px solid var(--color-amber-light);
+  outline-offset: 3px;
+}
+
+.btn-pill__icon {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-charcoal);
+  color: var(--color-amber-light);
+  font-size: 1.3rem;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.btn-pill:hover .btn-pill__icon {
+  background: var(--color-amber-light);
+  color: var(--color-charcoal);
+  transform: translate(2px, -2px);
+}
+
+.btn-pill--outline {
+  --button-bg: transparent;
+  --button-color: var(--color-charcoal);
+  --button-border: #D8D7D4;
+  padding: 0.75rem 1.55rem;
+}
+.btn-pill--outline:hover {
+  color: var(--color-white);
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+}
+
+.btn-pill--compact {
+  min-height: 44px;
+  padding-left: 1.1rem;
+  font-size: var(--font-size-xs);
+}
+.btn-pill--compact .btn-pill__icon {
+  width: 36px;
+  height: 36px;
+  flex-basis: 36px;
+}
+
+.btn-icon {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-charcoal);
+  font-size: 1.45rem;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+.btn-icon:hover {
+  color: var(--color-primary);
+  background: var(--color-secondary);
+}
+
+@media (max-width: 575.98px) {
+  .btn-pill { min-height: 42px; padding-left: 1rem; font-size: 0.76rem; }
+  .btn-pill__icon { width: 34px; height: 34px; flex-basis: 34px; font-size: 1.1rem; }
+  .btn-pill--compact { min-height: 40px; padding-left: 0.9rem; }
+  .btn-pill--compact .btn-pill__icon { width: 32px; height: 32px; flex-basis: 32px; }
+}

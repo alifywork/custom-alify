@@ -29,6 +29,7 @@
   /* ---------- DOM Ready ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     initHeader();
+    initDrawers();
     initSmoothScroll();
     initBackToTop();
     initActiveNav();
@@ -39,18 +40,79 @@
     initYear();
   });
 
-  /* ---------- Sticky Header Shadow on Scroll ---------- */
+  /* ---------- Compact Sticky Header ---------- */
   function initHeader() {
     var header = document.querySelector('.site-header');
     if (!header) return;
 
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 10) {
-        header.classList.add('shadow-sm');
-      } else {
-        header.classList.remove('shadow-sm');
-      }
-    }, { passive: true });
+    function updateHeader() {
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+    }
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+  }
+
+  /* ---------- Right-side About and Navigation Drawers ---------- */
+  function initDrawers() {
+    var backdrop = document.querySelector('.drawer-backdrop');
+    var triggers = document.querySelectorAll('[aria-controls="aboutDrawer"], [aria-controls="menuDrawer"]');
+    var drawers = document.querySelectorAll('.site-drawer');
+    if (!backdrop || !drawers.length) return;
+
+    var activeDrawer = null;
+    var hideTimer = null;
+
+    function closeDrawer() {
+      if (!activeDrawer) return;
+      activeDrawer.classList.remove('is-open');
+      activeDrawer.setAttribute('aria-hidden', 'true');
+      activeDrawer.inert = true;
+      document.querySelectorAll('[aria-controls="' + activeDrawer.id + '"]').forEach(function (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+      activeDrawer = null;
+      document.body.classList.remove('drawer-open');
+      backdrop.classList.remove('is-visible');
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(function () { backdrop.hidden = true; }, 370);
+    }
+
+    function openDrawer(drawer, trigger) {
+      if (activeDrawer && activeDrawer !== drawer) closeDrawer();
+      window.clearTimeout(hideTimer);
+      backdrop.hidden = false;
+      requestAnimationFrame(function () { backdrop.classList.add('is-visible'); });
+      drawer.inert = false;
+      drawer.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(function () { drawer.classList.add('is-open'); });
+      activeDrawer = drawer;
+      document.body.classList.add('drawer-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      var closeButton = drawer.querySelector('.site-drawer__close');
+      if (closeButton) window.setTimeout(function () { closeButton.focus(); }, 80);
+    }
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var drawer = document.getElementById(trigger.getAttribute('aria-controls'));
+        if (!drawer) return;
+        if (activeDrawer === drawer) closeDrawer();
+        else openDrawer(drawer, trigger);
+      });
+    });
+
+    drawers.forEach(function (drawer) {
+      var closeButton = drawer.querySelector('.site-drawer__close');
+      if (closeButton) closeButton.addEventListener('click', closeDrawer);
+      drawer.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeDrawer);
+      });
+    });
+
+    backdrop.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeDrawer();
+    });
   }
 
   /* ---------- Smooth Scroll (GSAP ScrollTo or native) ---------- */
