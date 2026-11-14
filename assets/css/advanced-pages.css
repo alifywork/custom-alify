@@ -149,3 +149,13 @@
 @media (max-width: 991.98px) { .quote-layout { grid-template-columns: 1fr; } .quote-next { position: static; } }
 @media (max-width: 767.98px) { .legal-layout { grid-template-columns: 1fr; } .legal-toc { position: static; } }
 @media (max-width: 575.98px) { .process-step { grid-template-columns: 46px 1fr; gap: 14px; padding: 18px; } .process-step__number { width: 42px; height: 42px; } .quote-summary div { grid-template-columns: 1fr; gap: 3px; } }
+
+/* Content types: service categories, portfolio cards and long-form editorial pages. */
+.article-layout { width: min(100%, 820px); margin-inline: auto; }
+.article-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid var(--color-border-light); color: var(--color-muted); font-size: var(--font-size-sm); }
+.article-section { padding-block: clamp(22px, 4vw, 42px); border-bottom: 1px solid var(--color-border-light); }
+.article-section h2 { margin-bottom: 14px; color: var(--color-charcoal); font-size: var(--font-size-h3); font-weight: 400; }
+.article-section p { color: var(--color-muted); line-height: 1.8; }
+.case-metrics strong { color: var(--color-teal); font-family: var(--font-heading); font-size: var(--font-size-h3); font-weight: 400; }
+.case-metrics p { margin: 6px 0 0; color: var(--color-muted); font-size: var(--font-size-sm); }
+.page-card__title { margin: 0 0 12px; color: var(--color-charcoal); font-family: var(--font-heading); font-size: var(--font-size-h4); font-weight: 400; }
