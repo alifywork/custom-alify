@@ -37,6 +37,7 @@
     initReviewFilters();
     initQuoteWizard();
     initNotFoundSearch();
+    initPortfolioFilters();
     initSmoothScroll();
     initBackToTop();
     initActiveNav();
@@ -269,6 +270,25 @@
       button.addEventListener('click', function () { showStep(currentIndex - 1); });
     });
     showStep(0);
+  }
+
+  /* ---------- Portfolio category filters ---------- */
+  function initPortfolioFilters() {
+    var grid = document.querySelector('[data-portfolio-grid]');
+    if (!grid) return;
+    var filters = document.querySelectorAll('[data-portfolio-filter]');
+    var cards = grid.querySelectorAll('[data-portfolio-item]');
+    filters.forEach(function (filter) {
+      filter.addEventListener('click', function () {
+        var category = filter.getAttribute('data-portfolio-filter');
+        filters.forEach(function (item) {
+          item.setAttribute('aria-pressed', item === filter ? 'true' : 'false');
+        });
+        cards.forEach(function (card) {
+          card.hidden = category !== 'all' && card.getAttribute('data-portfolio-item') !== category;
+        });
+      });
+    });
   }
 
   /* ---------- Lightweight 404 quick-link search ---------- */
