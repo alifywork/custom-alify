@@ -248,7 +248,8 @@
 .service-slide__excerpt { max-height: 0; max-width: 430px; margin: 0; overflow: hidden; color: rgba(255,255,255,.9); font-size: var(--font-size-sm); line-height: 1.65; opacity: 0; transform: translateY(12px); transition: max-height .38s ease, margin .3s ease, opacity .28s ease, transform .38s cubic-bezier(.2,.7,.2,1); }
 .service-slide:hover .service-slide__excerpt,.service-slide:focus-within .service-slide__excerpt { max-height: 150px; margin-top: 12px; opacity: 1; transform: translateY(0); }
 .service-slide__arrow { position: absolute; right: 24px; bottom: 25px; display: grid; width: 50px; height: 50px; place-items: center; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; background: rgba(255,255,255,.95); color: var(--color-primary); font-size: 1.25rem; text-decoration: none; transition: transform .25s ease, background .25s ease, color .25s ease; }
-.service-slide__arrow:hover,.service-slide__arrow:focus-visible { transform: rotate(45deg); background: var(--color-amber-light); color: var(--color-charcoal); }
+.service-slide__arrow:hover,.service-slide__arrow:focus-visible { transform: rotate(45deg); background: var(--color-amber-light); color: var(--color-charcoal); text-decoration: none !important; }
+.service-slide__arrow,.service-slide__arrow i { text-decoration: none !important; }
 .service-slider__controls { display: flex; justify-content: flex-end; gap: 10px; margin: 18px 4px 0; }
 .service-slider__controls button { display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid rgba(18,21,28,.16); border-radius: 50%; background: transparent; color: var(--color-charcoal); font-size: 1.1rem; transition: background .2s ease, color .2s ease, border-color .2s ease; }
 .service-slider__controls button:hover,.service-slider__controls button:focus-visible { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }

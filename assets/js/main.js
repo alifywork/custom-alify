@@ -304,6 +304,15 @@
       var first = cards[0];
       var styles = window.getComputedStyle(track);
       var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      var maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      if (direction > 0 && track.scrollLeft >= maxScroll - 2) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
+      }
+      if (direction < 0 && track.scrollLeft <= 2) {
+        track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        return;
+      }
       track.scrollBy({ left: direction * (first.getBoundingClientRect().width + gap), behavior: 'smooth' });
     }
     var prev = slider.querySelector('[data-service-prev]');
