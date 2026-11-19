@@ -103,7 +103,199 @@
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> The Alify journal</p><h1 id="pageHeroTitle">A few things<br><span>we think about.</span></h1><p class="inner-hero__description">Perspectives and practical ideas for building useful, meaningful digital experiences. Articles shown are sample content.</p><div class="inner-hero__actions"><a class="btn-pill btn-pill--arrow" href="get-a-quote.html"><span>Get a quote</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right"></i></span></a><a class="btn-pill btn-pill--outline" href="services.html">All services</a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle">
+      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video>
+      <div class="container"><div class="inner-hero__content">
+        <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> The Alify journal</p>
+        <h1 id="pageHeroTitle">A few things<br><span>we think about.</span></h1>
+        <p class="inner-hero__description">Perspectives and practical ideas for building useful, meaningful digital experiences. Articles shown are sample content.</p>
+        <div class="inner-hero__actions">
+          <a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-outline-light" href="services.html"><span class="arrow__btn-text">All services</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        </div>
+        <div class="blog-hero__meta">
+          <span><strong>24</strong> articles</span><span class="blog-hero__dot" aria-hidden="true"></span>
+          <span><strong>6</strong> topics</span><span class="blog-hero__dot" aria-hidden="true"></span>
+          <span>New essay <strong>every fortnight</strong></span>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="blog-featured" aria-labelledby="blogFeaturedTitle">
+      <div class="container">
+        <div class="blog-featured__card">
+          <a class="blog-featured__cover" href="single-blog-post.html">
+            <span class="blog-featured__index" aria-hidden="true">01</span>
+            <span class="blog-featured__chip">Editor’s pick</span>
+            <span class="blog-featured__icon" aria-hidden="true"><i class="ph ph-compass"></i></span>
+            <span class="blog-featured__cover-foot">Strategy · 8 Nov 2026</span>
+          </a>
+          <div class="blog-featured__copy">
+            <p class="blog-featured__meta"><span>Strategy</span> · 8 Nov 2026 · 6 min read</p>
+            <h2 id="blogFeaturedTitle"><a href="single-blog-post.html">Why a clear product story beats a longer feature list</a></h2>
+            <p class="blog-featured__excerpt">Feature lists answer questions nobody asked yet. A tight narrative gives people a reason to stay, a reason to return, and something to repeat when they recommend you.</p>
+            <div class="blog-featured__footer">
+              <span class="blog-featured__author">
+                <span class="blog-featured__avatar" aria-hidden="true">AK</span>
+                <span class="blog-featured__author-copy"><strong>Alify editorial</strong><span>Senior team, strategy</span></span>
+              </span>
+              <a class="blog-featured__link" href="single-blog-post.html">Read the essay <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-index" aria-labelledby="blogIndexTitle" data-blog-root>
+      <div class="container">
+        <div class="blog-index__head">
+          <div>
+            <p class="eyebrow blog-index__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> All articles</p>
+            <h2 id="blogIndexTitle">Fresh from the studio</h2>
+          </div>
+          <p class="blog-index__count" aria-live="polite" data-blog-count>9 articles</p>
+        </div>
+
+        <div class="blog-filters" role="group" aria-label="Filter articles by topic">
+            <button type="button" class="blog-filter" data-blog-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="blog-filter" data-blog-filter="strategy" aria-pressed="false">Strategy</button>
+            <button type="button" class="blog-filter" data-blog-filter="design" aria-pressed="false">Design</button>
+            <button type="button" class="blog-filter" data-blog-filter="development" aria-pressed="false">Development</button>
+            <button type="button" class="blog-filter" data-blog-filter="growth" aria-pressed="false">Growth</button>
+            <button type="button" class="blog-filter" data-blog-filter="culture" aria-pressed="false">Culture</button>
+        </div>
+
+        <div class="blog-grid" data-blog-grid>
+          <article class="blog-card" data-blog-item="design">
+            <a class="blog-card__cover blog-card__cover--teal" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">02</span>
+              <i class="ph ph-cursor-click"></i>
+              <span class="blog-card__tag">Design</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">29 Oct 2026 · 5 min read</p>
+              <h3><a href="single-blog-post.html">The small interface decisions that build brand trust</a></h3>
+              <p class="blog-card__excerpt">Details like focus states, empty states and loading copy are where trust is quietly earned.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: The small interface decisions that build brand trust">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="development">
+            <a class="blog-card__cover blog-card__cover--sand" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">03</span>
+              <i class="ph ph-lightning"></i>
+              <span class="blog-card__tag">Development</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">17 Oct 2026 · 4 min read</p>
+              <h3><a href="single-blog-post.html">Faster pages, calmer teams: a lighter approach to speed</a></h3>
+              <p class="blog-card__excerpt">How we cut page weight without redesigning everything — and what it changed for the team behind it.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: Faster pages, calmer teams: a lighter approach to speed">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="design">
+            <a class="blog-card__cover blog-card__cover--slate" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">04</span>
+              <i class="ph ph-stack"></i>
+              <span class="blog-card__tag">Design</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">9 Oct 2026 · 7 min read</p>
+              <h3><a href="single-blog-post.html">Design tokens that survive a rebrand</a></h3>
+              <p class="blog-card__excerpt">A naming system that keeps a design language coherent when the palette, type and tone all shift.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: Design tokens that survive a rebrand">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="strategy">
+            <a class="blog-card__cover blog-card__cover--deep" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">05</span>
+              <i class="ph ph-magnifying-glass"></i>
+              <span class="blog-card__tag">Strategy</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">28 Sep 2026 · 6 min read</p>
+              <h3><a href="single-blog-post.html">What good discovery actually looks like</a></h3>
+              <p class="blog-card__excerpt">Two weeks, a handful of interviews and a decision you can defend — not a 60-page document.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: What good discovery actually looks like">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="development">
+            <a class="blog-card__cover blog-card__cover--clay" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">06</span>
+              <i class="ph ph-storefront"></i>
+              <span class="blog-card__tag">Development</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">15 Sep 2026 · 8 min read</p>
+              <h3><a href="single-blog-post.html">Shopify vs custom: an honest decision guide</a></h3>
+              <p class="blog-card__excerpt">A practical comparison of cost, speed and long-term ownership, without the platform politics.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: Shopify vs custom: an honest decision guide">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="growth">
+            <a class="blog-card__cover blog-card__cover--teal" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">07</span>
+              <i class="ph ph-article"></i>
+              <span class="blog-card__tag">Growth</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">2 Sep 2026 · 6 min read</p>
+              <h3><a href="single-blog-post.html">Content that earns search traffic without sounding like SEO</a></h3>
+              <p class="blog-card__excerpt">Write for the question someone typed, not for the keyword tool’s suggestion list.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: Content that earns search traffic without sounding like SEO">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="culture">
+            <a class="blog-card__cover blog-card__cover--sand" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">08</span>
+              <i class="ph ph-calendar-check"></i>
+              <span class="blog-card__tag">Culture</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">21 Aug 2026 · 5 min read</p>
+              <h3><a href="single-blog-post.html">How we run a two-week sprint</a></h3>
+              <p class="blog-card__excerpt">Our rhythm of Monday intent, Wednesday review and Friday demo — and why it rarely slips.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: How we run a two-week sprint">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+          <article class="blog-card" data-blog-item="growth">
+            <a class="blog-card__cover blog-card__cover--slate" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
+              <span class="blog-card__index">09</span>
+              <i class="ph ph-chart-line"></i>
+              <span class="blog-card__tag">Growth</span>
+            </a>
+            <div class="blog-card__body">
+              <p class="blog-card__meta">8 Aug 2026 · 5 min read</p>
+              <h3><a href="single-blog-post.html">Measuring design impact when nobody asks for numbers</a></h3>
+              <p class="blog-card__excerpt">Three lightweight signals that show whether an experience change actually helped anyone.</p>
+              <a class="blog-card__link" href="single-blog-post.html" aria-label="Read article: Measuring design impact when nobody asks for numbers">Read article <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
+        <p class="blog-index__empty" data-blog-empty hidden>No articles in this topic yet — try another filter.</p>
+      </div>
+    </section>
+
+    <section class="blog-newsletter" aria-labelledby="blogNewsletterTitle">
+      <div class="container">
+        <div class="blog-newsletter__inner">
+          <div class="blog-newsletter__copy">
+            <p class="eyebrow blog-newsletter__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> The monthly note</p>
+            <h2 id="blogNewsletterTitle">One good idea, <span>once a month.</span></h2>
+            <p class="blog-newsletter__lead">A short email with what we learned on a project — no pitches, no round-ups of things you already know.</p>
+          </div>
+          <form class="blog-newsletter__form" action="thank-you.html" method="get">
+            <label class="blog-newsletter__label" for="blogNewsletterEmail">Email address</label>
+            <div class="blog-newsletter__field">
+              <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+              <input id="blogNewsletterEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+              <button class="blog-newsletter__submit" type="submit">Subscribe <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+            </div>
+            <p class="blog-newsletter__note">One email a month. Unsubscribe whenever you like.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" id="siteFooter">

@@ -38,6 +38,7 @@
     initQuoteWizard();
     initNotFoundSearch();
     initPortfolioFilters();
+    initBlogFilters();
     initServiceSlider();
     initFeaturedProjectEffects();
     initCaseHighlightSlider();
@@ -294,6 +295,39 @@
         });
       });
     });
+  }
+
+  /* ---------- Blog topic filters ---------- */
+  function initBlogFilters() {
+    var root = document.querySelector('[data-blog-root]');
+    if (!root) return;
+    var filters = root.querySelectorAll('[data-blog-filter]');
+    var grid = root.querySelector('[data-blog-grid]');
+    var cards = grid ? grid.querySelectorAll('[data-blog-item]') : [];
+    var count = root.querySelector('[data-blog-count]');
+    var empty = root.querySelector('[data-blog-empty]');
+    if (!cards.length) return;
+
+    function apply(category) {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var show = category === 'all' || card.getAttribute('data-blog-item') === category;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = visible + (visible === 1 ? ' article' : ' articles');
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    filters.forEach(function (filter) {
+      filter.addEventListener('click', function () {
+        filters.forEach(function (item) {
+          item.setAttribute('aria-pressed', item === filter ? 'true' : 'false');
+        });
+        apply(filter.getAttribute('data-blog-filter'));
+      });
+    });
+    apply('all');
   }
 
   /* ---------- Homepage service carousel controls ---------- */
