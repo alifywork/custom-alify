@@ -1176,3 +1176,10 @@
   .about-pillars__intro,
   .about-work__intro { max-width: 440px; }
 }
+
+/* Section heads follow the homepage head spacing exactly. */
+.about-pillars__head,
+.about-team__head,
+.about-work__head,
+.about-reach__head,
+.about-tools__head { gap: 20px 24px; margin-bottom: clamp(30px,4vw,52px); }
