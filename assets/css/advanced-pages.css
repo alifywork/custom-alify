@@ -614,3 +614,7 @@
 @media (max-width: 991.98px) { .home-faq__intro { position: static; } .home-faq__panel { max-width: none; } }
 @media (max-width: 575.98px) { .home-faq__row summary { grid-template-columns: 26px minmax(0,1fr) 36px; gap: 10px; } .home-faq__icon { width: 36px; height: 36px; font-size: .85rem; } .home-faq__answer p { padding: 0 0 20px 36px; } }
 @media (prefers-reduced-motion: reduce) { .home-faq__eyebrow i { animation: none; } .home-faq__answer,.home-faq__icon,.home-faq__label { transition: none; } }
+
+/* Arrow button spacing inside the appeal and case sections. */
+.why-alify .arrow__btn-link { margin-top: 27px; }
+.home-about .arrow__btn-link { margin-top: 26px; }
