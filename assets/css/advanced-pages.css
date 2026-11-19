@@ -873,7 +873,7 @@
    ============================================================ */
 
 /* Client marquee under the hero */
-.about-clients { padding-block: 22px; border-bottom: 1px solid rgba(18,21,28,.08); background: #FBFAF7; }
+.about-clients { padding-block: clamp(28px,3.4vw,44px); border-bottom: 1px solid rgba(18,21,28,.08); background: #fff; }
 .about-clients__inner { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 34px; }
 .about-clients__label { flex: 0 0 auto; margin: 0; color: var(--color-muted); font: 600 .62rem var(--font-accent); letter-spacing: .18em; text-transform: uppercase; }
 .about-clients__viewport { position: relative; flex: 1 1 320px; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); -webkit-mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
@@ -1097,7 +1097,7 @@
 .about-team,
 .about-work,
 .about-reach,
-.about-tools { padding-block: clamp(80px,9vw,132px); }
+.about-tools { padding-block: clamp(78px,10vw,138px); }
 
 /* Headings: same tracking and balanced wrapping everywhere. */
 .about-story__title,
@@ -1105,10 +1105,10 @@
 .about-team__head h2,
 .about-work__head h2,
 .about-reach__head h2,
-.about-tools__head h2 { letter-spacing: -.038em; text-wrap: balance; }
+.about-tools__head h2 { letter-spacing: -.035em; text-wrap: balance; }
 .about-pillars__head { max-width: 760px; }
 .about-team__head,
-.about-reach__head { margin-bottom: clamp(32px,3.4vw,46px); }
+.about-reach__head { margin-bottom: clamp(30px,4vw,48px); }
 .about-pillar h3 { text-wrap: balance; }
 .about-story__lead { text-wrap: pretty; }
 .about-story__body,
@@ -1122,17 +1122,16 @@
 .about-team__eyebrow,
 .about-work__eyebrow,
 .about-reach__eyebrow,
-.about-tools__eyebrow { margin-bottom: 18px; letter-spacing: .14em; text-transform: uppercase; }
+.about-tools__eyebrow { margin-bottom: 20px; letter-spacing: .12em; text-transform: uppercase; }
 
 /* Card system: two radii only, one border tone, calm hover lift. */
 .about-pillar,
 .about-team__card,
-.about-tools__group { border-radius: 22px; }
+.about-tools__group { border-radius: 20px; }
 .about-work__panel,
 .about-reach__map,
-.about-reach__aside,
-.about-story__visual img { border-radius: 24px; }
-.about-story__visual img { border: 1px solid rgba(18,21,28,.08); }
+.about-reach__aside { border-radius: 24px; }
+.about-story__visual img { border-radius: 20px; }
 
 .about-tools__group,
 .about-work__panel,
