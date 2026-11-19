@@ -1327,3 +1327,74 @@
   .blog-archive__eyebrow i,
   .blog-news__eyebrow i { animation: none; }
 }
+
+/* ============================================================
+   Blog archive — premium details
+   ============================================================ */
+
+/* Filter bar stays with the reader while the grid scrolls. */
+.blog-filters { position: sticky; top: 66px; z-index: 12; background: #FBFAF7; }
+.blog-filters::before { position: absolute; inset: 0; border-radius: inherit; box-shadow: 0 1px 0 rgba(18,21,28,.05); content: ""; pointer-events: none; }
+
+/* Chip counts */
+.blog-filters__chip { display: inline-flex; align-items: center; gap: 8px; }
+.blog-filters__chip-count { display: inline-grid; min-width: 20px; height: 20px; padding: 0 6px; place-items: center; border-radius: 99px; background: rgba(18,21,28,.07); color: var(--color-muted); font: 600 .62rem var(--font-accent); letter-spacing: 0; transition: background-color .25s ease, color .25s ease; }
+.blog-filters__chip.is-active .blog-filters__chip-count,
+.blog-filters__chip[aria-pressed="true"] .blog-filters__chip-count { background: rgba(255,255,255,.18); color: #fff; }
+
+/* Result count reads as a status line, not a paragraph. */
+.blog-filters__count { display: inline-flex; align-items: center; gap: 9px; }
+.blog-filters__count::before { display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--color-amber); content: ""; }
+
+/* Cards: hovers reveal a read affordance, covers get depth. */
+.blog-card__cover::before { position: absolute; z-index: 1; pointer-events: none; inset: auto 0 0; height: 55%; background: linear-gradient(180deg,transparent,rgba(6,12,18,.55)); content: ""; opacity: 0; transition: opacity .35s ease; }
+.blog-card__cover--teal::before,
+.blog-card__cover--sand::before { display: none; }
+.blog-card:hover .blog-card__cover::before { opacity: 1; }
+.blog-card__cover i { position: relative; z-index: 2; }
+.blog-card__index { z-index: 2; }
+.blog-card__meta { align-items: center; justify-content: space-between; gap: 12px; }
+.blog-card__date { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; }
+.blog-card__arrow { display: grid; flex: none; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(18,21,28,.14); border-radius: 50%; color: var(--color-primary); font-size: .82rem; transition: transform .3s ease, background-color .3s ease, border-color .3s ease, color .3s ease; }
+.blog-card:hover .blog-card__arrow,
+.blog-card:focus-within .blog-card__arrow { transform: rotate(45deg); border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+
+/* Featured story: keep the arrow and add a quiet read cue. */
+.blog-featured__card .journal-card__cover { box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+.blog-featured__card .journal-card__cover h2 { text-wrap: balance; }
+.blog-featured__card .journal-card__cover .journal-card__excerpt { text-wrap: pretty; }
+
+/* Newsletter trust points */
+.blog-news__points { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; padding: 0; list-style: none; }
+.blog-news__points li { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; border: 1px solid rgba(255,255,255,.16); border-radius: 99px; background: rgba(255,255,255,.05); color: rgba(255,255,255,.74); font: 500 var(--font-size-xs) var(--font-accent); letter-spacing: .01em; }
+.blog-news__points i { color: var(--color-amber-light); font-size: .8rem; }
+
+@media (max-width: 991.98px) {
+  .blog-filters { position: static; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-card__cover::before,
+  .blog-card__arrow,
+  .blog-filters__chip-count { transition: none; }
+  .blog-card:hover .blog-card__arrow { transform: none; }
+}
+
+/* Card covers use the same circled-icon language as the homepage journal. */
+.blog-card__cover i { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; background: rgba(255,255,255,.06); font-size: 1.35rem; transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .35s ease, background-color .35s ease; }
+.blog-card__cover--teal i,
+.blog-card__cover--sand i { border-color: rgba(18,21,28,.12); background: rgba(255,255,255,.55); }
+.blog-card:hover .blog-card__cover i { transform: rotate(-8deg); border-color: rgba(244,199,120,.6); background: rgba(244,199,120,.16); }
+.blog-card:hover .blog-card__cover--teal i,
+.blog-card:hover .blog-card__cover--sand i { border-color: rgba(18,21,28,.2); background: rgba(255,255,255,.9); }
+
+/* Category chip gets a dot marker. */
+.blog-card__chip { display: inline-flex; align-items: center; gap: 7px; }
+.blog-card__chip::before { display: block; width: 5px; height: 5px; border-radius: 50%; background: currentColor; content: ""; }
+
+/* Pagination reads as a control bar, not floating buttons. */
+.blog-pagination { padding-top: clamp(6px,1vw,10px); }
+
+/* Newsletter panel echoes the featured cover's grid texture. */
+.blog-news__panel::before { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size: 66px 66px; opacity: .55; content: ""; pointer-events: none; -webkit-mask-image: radial-gradient(120% 100% at 92% 0%,#000,transparent 62%); mask-image: radial-gradient(120% 100% at 92% 0%,#000,transparent 62%); }
+.blog-news__panel > * { position: relative; z-index: 1; }

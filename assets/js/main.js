@@ -326,6 +326,19 @@
 
     if (searchInput) searchInput.value = state.query;
 
+    // Topic counts on the filter chips, derived from the posts themselves.
+    chips.forEach(function (chip) {
+      var cat = chip.getAttribute('data-blog-category');
+      var total = cat === 'all' ? posts.length : posts.filter(function (post) {
+        return post.getAttribute('data-category') === cat;
+      }).length;
+      if (!total) return;
+      var badge = document.createElement('span');
+      badge.className = 'blog-filters__chip-count';
+      badge.textContent = String(total);
+      chip.appendChild(badge);
+    });
+
     function matches(post) {
       if (state.category !== 'all' && post.getAttribute('data-category') !== state.category) return false;
       if (!state.query) return true;
