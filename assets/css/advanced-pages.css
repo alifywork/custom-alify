@@ -1045,3 +1045,49 @@
 /* Vision card: size to its content so the right side is never an empty void. */
 .about-pillar--vision { min-height: 0; justify-content: flex-end; }
 .about-pillar--vision .about-pillar__orbit { top: -140px; right: -80px; }
+
+/* ============================================================
+   Tools & client countries — refined components
+   ============================================================ */
+
+/* --- Tools & tech --- */
+.about-tools__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px clamp(24px,4vw,64px); max-width: none; margin-bottom: clamp(30px,3.6vw,46px); }
+.about-tools__head-copy { max-width: 620px; }
+.about-tools__lead { max-width: 300px; margin: 0; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.7; }
+
+.about-tools__grid { align-items: stretch; }
+.about-tools__group { display: flex; flex-direction: column; padding: clamp(20px,2.2vw,26px); border: 1px solid rgba(18,21,28,.09); border-radius: 20px; background: #fff; }
+.about-tools__label { display: flex; align-items: center; gap: 11px; margin: 0 0 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(18,21,28,.08); color: var(--color-charcoal); font: 600 .66rem var(--font-accent); letter-spacing: .16em; text-transform: uppercase; }
+.about-tools__icon { display: grid; flex: none; width: 34px; height: 34px; place-items: center; border-radius: 11px; background: rgba(15,138,115,.1); color: var(--color-teal); font-size: 1.05rem; letter-spacing: 0; }
+.about-tools__chips { display: grid; flex: 1; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; align-content: start; margin: 0; padding: 0; list-style: none; }
+.about-tools__chips li { display: flex; align-items: center; justify-content: center; padding: 11px 8px; border: 1px solid rgba(18,21,28,.1); border-radius: 12px; background: #FBFAF7; color: #2B303B; font: 600 .74rem var(--font-accent); letter-spacing: .005em; text-align: center; transition: transform .25s ease, border-color .25s ease, color .25s ease, background .25s ease; }
+.about-tools__chips li:hover { transform: translateY(-2px); border-color: rgba(15,52,115,.35); background: #fff; color: var(--color-primary); }
+
+/* --- Client countries --- */
+.about-reach__aside { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0 clamp(20px,2.6vw,34px); padding: clamp(24px,2.6vw,30px); }
+.about-reach__aside-label { display: flex; grid-column: 1 / -1; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 18px; padding-bottom: 14px; border-bottom: 1px solid rgba(18,21,28,.1); color: var(--color-charcoal); font: 600 .68rem var(--font-accent); letter-spacing: .16em; text-transform: uppercase; }
+.about-reach__aside-label span { color: var(--color-amber); font: 500 .66rem var(--font-accent); letter-spacing: .1em; }
+.about-reach__region { margin: 0; padding: 0; }
+.about-reach__region + .about-reach__region { margin: 0; padding: 0; border: 0; }
+.about-reach__region-name { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0 0 12px; color: var(--color-charcoal); font: 600 .62rem var(--font-accent); letter-spacing: .16em; text-transform: uppercase; }
+.about-reach__region-name span { color: var(--color-muted); font-weight: 500; letter-spacing: .06em; }
+.about-reach__countries { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.about-reach__countries li { display: flex; align-items: center; gap: 9px; padding: 9px 0; border: 0; border-bottom: 1px solid rgba(18,21,28,.07); border-radius: 0; background: none; color: #2B303B; font-size: .8rem; line-height: 1.45; }
+.about-reach__countries li::before { position: static; display: block; flex: none; width: 5px; height: 5px; border-radius: 50%; background: rgba(217,138,43,.7); content: ""; }
+.about-reach__countries li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+@media (min-width: 992px) {
+  .about-reach__region + .about-reach__region { padding-left: clamp(16px,2vw,26px); border-left: 1px solid rgba(18,21,28,.09); }
+}
+
+@media (max-width: 991.98px) {
+  .about-tools__head { align-items: flex-start; }
+  .about-tools__lead { max-width: 420px; }
+  .about-reach__aside { row-gap: 26px; }
+  .about-reach__region + .about-reach__region { padding-top: 20px; border-top: 1px solid rgba(18,21,28,.07); }
+}
+
+@media (max-width: 575.98px) {
+  .about-reach__aside { grid-template-columns: minmax(0,1fr); row-gap: 22px; }
+  .about-tools__chips { gap: 8px; }
+}
