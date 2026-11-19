@@ -23,6 +23,17 @@
     font-family: var(--font-accent);
 }
 
+/* Global link hover underlines are suppressed on every button state. */
+.arrow__btn-link,
+.arrow__btn-link:hover,
+.arrow__btn-link:focus,
+.arrow__btn-link:focus-visible,
+.arrow__btn-link:active,
+.arrow__btn-text,
+.arrow__btn-icon {
+    text-decoration: none;
+}
+
 .arrow__btn-text {
     display: inline-flex;
     align-items: center;
