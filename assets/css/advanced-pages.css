@@ -871,3 +871,77 @@
 @media (max-width: 767.98px) { .about-hero__facts { gap: 14px 22px; margin-top: 26px; padding-top: 20px; } .about-hero__facts dd { font-size: .96rem; } .about-team__join .arrow__btn-link { width: fit-content; } }
 @media (max-width: 575.98px) { .about-work__list li { grid-template-columns: 24px minmax(0,1fr); } .about-work__icon { display: none; } .about-reach__legend { font-size: .56rem; } }
 @media (prefers-reduced-motion: reduce) { .about-stat::after,.about-team__card::after,.about-pillar--value,.about-reach__pin { transition: none; } }
+
+/* ============================================================
+   About page — second premium pass
+   ============================================================ */
+
+/* Client marquee under the hero */
+.about-clients { padding-block: 22px; border-bottom: 1px solid rgba(18,21,28,.08); background: #FBFAF7; }
+.about-clients__inner { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 34px; }
+.about-clients__label { flex: 0 0 auto; margin: 0; color: var(--color-muted); font: 600 .62rem var(--font-accent); letter-spacing: .18em; text-transform: uppercase; }
+.about-clients__viewport { position: relative; flex: 1 1 320px; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); -webkit-mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+.about-clients__track { display: flex; align-items: center; gap: clamp(26px,4vw,54px); width: max-content; animation: about-marquee 34s linear infinite; }
+.about-clients__track span { color: rgba(18,21,28,.42); font: 500 clamp(.95rem,1.3vw,1.1rem)/1 var(--font-heading); letter-spacing: -.01em; white-space: nowrap; transition: color .25s ease; }
+.about-clients__track span:hover { color: var(--color-primary); }
+.about-clients:hover .about-clients__track { animation-play-state: paused; }
+@keyframes about-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Story collage */
+.about-story__visual { position: relative; padding-bottom: 26px; }
+.about-story__img { display: block; width: 100%; height: clamp(360px,44vw,540px); object-fit: cover; border-radius: 26px; }
+.about-story__img--sm { position: absolute; left: -14px; bottom: 0; width: 34%; height: clamp(120px,15vw,180px); object-fit: cover; border: 6px solid #fff; border-radius: 20px; }
+.about-story__badge { right: 22px; left: auto; bottom: 34px; }
+
+/* Vision orbit decoration */
+.about-pillar--vision { overflow: hidden; }
+.about-pillar__orbit { position: absolute; top: -120px; right: -90px; width: 380px; height: 380px; border: 1px solid rgba(244,199,120,.22); border-radius: 50%; pointer-events: none; }
+.about-pillar__orbit::before,.about-pillar__orbit::after { position: absolute; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; content: ""; }
+.about-pillar__orbit::before { inset: 54px; }
+.about-pillar__orbit::after { inset: 108px; border-color: rgba(244,199,120,.18); }
+
+/* Team meta */
+.about-team__meta { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0; color: var(--color-muted); font: 600 .6rem var(--font-accent); letter-spacing: .1em; text-transform: uppercase; }
+.about-team__meta i { color: var(--color-amber); font-size: .85rem; }
+.about-team__card .about-team__bio { margin-top: 10px; }
+.about-team__social { margin-top: auto; padding-top: 20px; }
+.about-team__card { min-height: 100%; }
+
+/* Working style: stacked panels with a horizontal stepper */
+.about-work__grid { grid-template-columns: minmax(0,1fr); gap: clamp(16px,2vw,22px); }
+.about-work__panel--dark .about-work__list { grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(18px,2.4vw,30px); }
+.about-work__panel--dark .about-work__list::before { display: none; }
+.about-work__panel--dark .about-work__list li { grid-template-columns: auto auto; grid-template-areas: "step icon" "text text"; align-items: center; gap: 10px 12px; position: relative; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.14); }
+.about-work__panel--dark .about-work__list li > .about-work__step { grid-area: step; }
+.about-work__panel--dark .about-work__list li > .about-work__icon { grid-area: icon; }
+.about-work__panel--dark .about-work__list li > div { grid-area: text; }
+.about-work__panel--dark .about-work__list li::after { position: absolute; top: -3px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--color-amber-light); content: ""; }
+.about-work__step { margin-top: 0; background: rgba(255,255,255,.08); }
+.about-work__icon { width: 38px; height: 38px; }
+.about-work__list--checks { grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(16px,2.2vw,26px); }
+.about-work__list--checks li { grid-template-columns: 22px minmax(0,1fr); }
+
+/* Reach quick facts */
+.about-reach__facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.about-reach__facts span { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border: 1px solid rgba(18,21,28,.1); border-radius: 99px; background: #fff; color: var(--color-charcoal); font: 600 .62rem var(--font-accent); letter-spacing: .06em; }
+.about-reach__facts i { color: var(--color-teal); font-size: .85rem; }
+
+@media (max-width: 991.98px) {
+  .about-work__panel--dark .about-work__list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .about-story__img--sm { display: none; }
+  .about-story__visual { padding-bottom: 0; }
+  .about-story__badge { right: 16px; bottom: 16px; }
+}
+@media (max-width: 767.98px) {
+  .about-clients__inner { gap: 12px; }
+  .about-work__list--checks { grid-template-columns: minmax(0,1fr); }
+}
+@media (max-width: 575.98px) {
+  .about-work__panel--dark .about-work__list { grid-template-columns: minmax(0,1fr); }
+  .about-work__panel--dark .about-work__list li { padding-top: 14px; }
+  .about-pillar__orbit { width: 260px; height: 260px; top: -80px; right: -70px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-clients__track { animation: none; }
+  .about-clients__viewport { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
+}
