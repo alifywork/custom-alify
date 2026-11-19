@@ -40,6 +40,7 @@
     initPortfolioFilters();
     initServiceSlider();
     initFeaturedProjectEffects();
+    initCaseHighlightSlider();
     initSingleServiceDetail();
     initSmoothScroll();
     initBackToTop();
@@ -345,6 +346,76 @@
       if (image.complete) gsap.set(image, { y: 0 });
       else image.addEventListener('load', function () { gsap.set(image, { y: 0 }); }, { once: true });
     });
+  }
+
+  /* ---------- Case study highlight carousel ---------- */
+  function initCaseHighlightSlider() {
+    var root = document.querySelector('[data-case-highlight]');
+    if (!root) return;
+    var items = [
+      {
+        slug: 'northstar', client: 'Northstar', category: 'Technology & Apps',
+        image: 'assets/images/projects/Technology%20%26%20Apps/featured-northstar.svg',
+        alt: 'Illustrative Northstar digital platform concept',
+        title: 'Northstar: making complexity feel clear.',
+        lead: 'A sample project story about helping a growing team bring its digital product and brand experience into focus.',
+        challenge: 'A fragmented product story made it harder for customers to understand what to do next.',
+        approach: 'Align the product narrative, simplify key journeys and create a flexible interface system.',
+        outcome: 'A clearer digital direction and a stronger foundation for future product growth.'
+      },
+      {
+        slug: 'fieldnotes', client: 'Fieldnotes', category: 'Shopping & eCommerce',
+        image: 'assets/images/projects/Shopping%20%26%20eCommerce/featured-fieldnotes.svg',
+        alt: 'Illustrative Fieldnotes e-commerce concept',
+        title: 'Fieldnotes: a simpler way to shop.',
+        lead: 'An illustrative commerce story about making product discovery feel clear, considered and easy to navigate.',
+        challenge: 'A growing catalogue and competing priorities made the shopping journey feel harder than it needed to be.',
+        approach: 'Bring product categories, editorial storytelling and store interactions into one coherent experience.',
+        outcome: 'A clearer storefront direction designed to support confident browsing and checkout.'
+      },
+      {
+        slug: 'wellspace', client: 'Wellspace', category: 'Health & Medical',
+        image: 'assets/images/projects/Health%20%26%20Medical/featured-wellspace.svg',
+        alt: 'Illustrative Wellspace health and wellbeing concept',
+        title: 'Wellspace: making support easier to find.',
+        lead: 'An illustrative wellbeing story focused on a calmer, more accessible way to discover support.',
+        challenge: 'Important guidance and next steps were difficult to find across a busy digital experience.',
+        approach: 'Organize key information into a reassuring visual system with simple, accessible pathways.',
+        outcome: 'A calmer experience concept that puts clarity and people first.'
+      }
+    ];
+    var image = root.querySelector('[data-case-image]');
+    var content = root.querySelector('[data-case-content]');
+    var counter = root.querySelector('[data-case-counter]');
+    var current = 0;
+    if (!image || !content) return;
+    items.forEach(function (item) { var preload = new Image(); preload.src = item.image; });
+
+    function render(index) {
+      current = (index + items.length) % items.length;
+      var item = items[current];
+      image.src = item.image;
+      image.alt = item.alt;
+      root.querySelector('[data-case-client]').textContent = item.client;
+      root.querySelector('[data-case-count]').textContent = 'Case study / ' + String(current + 1).padStart(2, '0');
+      root.querySelector('[data-case-category]').textContent = item.category;
+      root.querySelector('[data-case-title]').textContent = item.title;
+      root.querySelector('[data-case-lead]').textContent = item.lead;
+      root.querySelector('[data-case-point-copy="challenge"]').textContent = item.challenge;
+      root.querySelector('[data-case-point-copy="approach"]').textContent = item.approach;
+      root.querySelector('[data-case-point-copy="outcome"]').textContent = item.outcome;
+      root.querySelector('[data-case-link]').href = 'single-case-study.html?case=' + item.slug;
+      if (counter) counter.innerHTML = String(current + 1).padStart(2, '0') + ' <span>/ ' + String(items.length).padStart(2, '0') + '</span>';
+      if (typeof gsap !== 'undefined') {
+        gsap.killTweensOf([image, content]);
+        gsap.fromTo(image, { x: -54, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .55, ease: 'power2.out', overwrite: 'auto' });
+        gsap.fromTo(content, { x: 54, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .55, delay: .06, ease: 'power2.out', overwrite: 'auto' });
+      }
+    }
+    var prev = root.querySelector('[data-case-prev]');
+    var next = root.querySelector('[data-case-next]');
+    if (prev) prev.addEventListener('click', function () { render(current - 1); });
+    if (next) next.addEventListener('click', function () { render(current + 1); });
   }
 
   /* ---------- Service detail personalization from carousel links ---------- */
