@@ -352,8 +352,6 @@
 .industry-bento__image { position: absolute; z-index: -1; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; opacity: .9; transition: transform .65s cubic-bezier(.2,.7,.2,1), opacity .3s ease; }
 .industry-bento__card:hover .industry-bento__image { transform: scale(1.045); opacity: 1; }
 .industry-bento__card::before { position: absolute; z-index: 0; inset: 0; background: linear-gradient(100deg,rgba(8,15,25,.72) 0%,rgba(8,15,25,.46) 55%,rgba(8,15,25,.22) 100%); content: ''; }
-.industry-bento__card::after { position: absolute; z-index: 0; top: -48px; right: -45px; width: clamp(150px,17vw,240px); aspect-ratio: 1; border: 1px solid color-mix(in srgb,var(--industry-accent) 35%,transparent); border-radius: 50%; content: ''; opacity: .7; transition: transform .4s ease; }
-.industry-bento__card:hover::after { transform: scale(.9); }
 .industry-bento__meta { position: relative; z-index: 1; display: flex; align-items: center; gap: 11px; color: var(--industry-accent); font: 600 var(--font-size-xs) var(--font-accent); letter-spacing: .1em; text-transform: uppercase; }
 .industry-bento__meta span { color: var(--industry-text); opacity: .68; letter-spacing: .03em; }
 
