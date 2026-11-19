@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F6F4F1">
+  <meta name="description" content="Alify — digital solutions for your business.">
+  <title>Alify</title>
+
+  <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/utility.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/inner-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/video-backgrounds.css">
+  <link rel="stylesheet" href="assets/icons/phosphor.css">
+</head>
+<body id="top">
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner container-fluid">
+      <a class="site-header__logo" href="index.html" aria-label="Alify home">
+        <img class="site-header__logo-default" src="assets/images/logo/light-logo.png" alt="Alify">
+        <img class="site-header__logo-sticky" src="assets/images/logo/sticky-logo.png" alt="" aria-hidden="true">
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="site-nav__link" href="index.html">Home</a>
+        <a class="site-nav__link" href="about-us.html">About Us</a>
+        <a class="site-nav__link" href="services.html">Services</a>
+        <a class="site-nav__link" href="portfolio.html">Portfolio</a>
+        <a class="site-nav__link" href="industries.html">Industries</a>
+        <a class="site-nav__link" href="case-studies.html">Case Studies</a>
+        <a class="site-nav__link" href="blog.html">Blog</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="btn-pill btn-pill--arrow site-header__cta" href="lets-get-started.html">
+          <span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+        </a>
+        <button class="btn-icon site-header__about-toggle" type="button" aria-label="Open Alify information" aria-controls="aboutDrawer" aria-expanded="false">
+          <i class="ph ph-dots-nine" aria-hidden="true"></i>
+        </button>
+        <button class="btn-icon site-header__menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="menuDrawer" aria-expanded="false">
+          <i class="ph ph-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <button class="drawer-backdrop" type="button" aria-label="Close drawer" hidden></button>
+
+  <aside class="site-drawer site-drawer--about" id="aboutDrawer" aria-label="About Alify" aria-hidden="true" inert>
+    <div class="site-drawer__top">
+      <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
+      <button class="btn-icon site-drawer__close" type="button" aria-label="Close about drawer"><i class="ph ph-x" aria-hidden="true"></i></button>
+    </div>
+    <div class="site-drawer__content">
+      <p class="eyebrow site-drawer__eyebrow">A little about us</p>
+      <h2>We are <span>ALIFY</span></h2>
+      <p class="site-drawer__description">We turn ambitious ideas into thoughtful digital experiences. Strategy, creativity and technology—working together to move your business forward.</p>
+      <div class="site-drawer__ctas">
+        <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+        <a class="btn-pill btn-pill--outline" href="contact-us.html">Schedule a Call</a>
+      </div>
+    </div>
+    <div class="site-drawer__bottom">
+      <span class="site-drawer__social-label">Follow along</span>
+      <div class="site-drawer__socials" aria-label="Social media">
+        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <aside class="site-drawer site-drawer--menu" id="menuDrawer" aria-label="Navigation menu" aria-hidden="true" inert>
+    <div class="site-drawer__top">
+      <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
+      <button class="btn-icon site-drawer__close" type="button" aria-label="Close navigation menu"><i class="ph ph-x" aria-hidden="true"></i></button>
+    </div>
+    <nav class="site-drawer__nav" aria-label="Mobile navigation">
+      <a href="index.html"><span>01</span> Home <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a href="about-us.html"><span>02</span> About Us <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a href="services.html"><span>03</span> Services <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a href="portfolio.html"><span>04</span> Portfolio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a href="industries.html"><span>05</span> Industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a href="case-studies.html"><span>06</span> Case Studies <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <a href="blog.html"><span>07</span> Blog <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+    </nav>
+    <div class="site-drawer__bottom site-drawer__bottom--menu">
+      <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+      <div class="site-drawer__socials" aria-label="Social media">
+        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <main id="mainContent">
+    <section class="home-hero has-video-background" id="homeHero" aria-labelledby="homeHeroTitle">
+      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+        <source src="assets/images/background-videos/home-hero.mp4" type="video/mp4">
+      </video>
+      <div class="container">
+        <div class="home-hero__content">
+          <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Independent thinking. Real impact.</p>
+          <h1 id="homeHeroTitle">Ideas that move<br><span>you forward.</span></h1>
+          <p class="home-hero__description">We partner with ambitious teams to build purposeful brands, digital products and experiences that move business forward.</p>
+          <div class="home-hero__actions">
+            <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+            <a class="btn-pill btn-pill--outline" href="work.html">Explore our work</a>
+          </div>
+        </div>
+      </div>
+      <div class="home-hero__scroll" aria-hidden="true">Scroll to explore</div>
+    </section>
+    <section class="trusted-clients" aria-label="Client names">
+      <div class="trusted-ticker" aria-label="Client names">
+        <div class="trusted-ticker__track">
+          <div class="trusted-ticker__group">
+            <span class="client-wordmark client-wordmark--serif">Northstar</span>
+            <span class="client-wordmark client-wordmark--spaced">FORMA</span>
+            <span class="client-wordmark client-wordmark--bold">fieldnotes<span class="client-wordmark__dot">.</span></span>
+            <span class="client-wordmark client-wordmark--italic">Morrow</span>
+            <span class="client-wordmark client-wordmark--mono">KIN STUDIO</span>
+            <span class="client-wordmark client-wordmark--serif">Everwell</span>
+            <span class="client-wordmark client-wordmark--bold">COMMON GROUND</span>
+            <span class="client-wordmark client-wordmark--spaced">ATELIER 08</span>
+          </div>
+          <div class="trusted-ticker__group" aria-hidden="true">
+            <span class="client-wordmark client-wordmark--serif">Northstar</span>
+            <span class="client-wordmark client-wordmark--spaced">FORMA</span>
+            <span class="client-wordmark client-wordmark--bold">fieldnotes<span class="client-wordmark__dot">.</span></span>
+            <span class="client-wordmark client-wordmark--italic">Morrow</span>
+            <span class="client-wordmark client-wordmark--mono">KIN STUDIO</span>
+            <span class="client-wordmark client-wordmark--serif">Everwell</span>
+            <span class="client-wordmark client-wordmark--bold">COMMON GROUND</span>
+            <span class="client-wordmark client-wordmark--spaced">ATELIER 08</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-services" aria-labelledby="homeServicesTitle">
+      <div class="container home-services__intro-wrap">
+        <div class="row align-items-end gy-4">
+          <div class="col-lg-8">
+            <p class="eyebrow home-services__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> What we do</p>
+            <h2 id="homeServicesTitle" class="home-services__title">Thoughtful services.<br><span>Built around your next move.</span></h2>
+            <p class="home-services__lead">From the first idea to what comes next, we bring the right mix of strategy, design and technology to help your business move forward.</p>
+          </div>
+          <div class="col-lg-4 home-services__all-link"><a class="btn-pill btn-pill--arrow" href="services.html"><span>Explore all services</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a></div>
+        </div>
+      </div>
+      <div class="container-fluid home-services__slider-wrap">
+        <div class="row"><div class="col-12">
+          <div class="service-slider" data-service-slider>
+            <div class="service-slider__viewport"><div class="service-slider__track" data-service-track role="region" aria-label="Our services" tabindex="0">
+              <article class="service-slide" style="--service-image:url('assets/images/services/web-development.svg')"><img src="assets/images/services/web-development.svg" alt="Abstract web development interface" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Web Development</h3><p class="service-slide__excerpt">Fast, accessible websites designed to turn your goals into intuitive online experiences.</p></div><a class="service-slide__arrow" href="single-service.html?service=web-development" aria-label="Explore Web Development"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/wordpress.svg')"><img src="assets/images/services/wordpress.svg" alt="Abstract WordPress website interface" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">WordPress Web Development</h3><p class="service-slide__excerpt">Flexible WordPress websites and custom experiences your team can confidently manage.</p></div><a class="service-slide__arrow" href="single-service.html?service=wordpress" aria-label="Explore WordPress Web Development"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/shopify.svg')"><img src="assets/images/services/shopify.svg" alt="Abstract online shop interface" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Shopify Web Development</h3><p class="service-slide__excerpt">Conversion-minded Shopify stores, built to make product discovery and checkout feel simple.</p></div><a class="service-slide__arrow" href="single-service.html?service=shopify" aria-label="Explore Shopify Web Development"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/ui-ux.svg')"><img src="assets/images/services/ui-ux.svg" alt="Abstract digital product design interface" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">UI / UX</h3><p class="service-slide__excerpt">Research-led user journeys and interfaces that help people get where they need to go.</p></div><a class="service-slide__arrow" href="single-service.html?service=ui-ux" aria-label="Explore UI and UX"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/seo.svg')"><img src="assets/images/services/seo.svg" alt="Abstract search analytics dashboard" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Search Engine Optimization</h3><p class="service-slide__excerpt">Technical and on-page SEO to improve discoverability and earn the right organic traffic.</p></div><a class="service-slide__arrow" href="single-service.html?service=seo" aria-label="Explore Search Engine Optimization"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/digital-marketing.svg')"><img src="assets/images/services/digital-marketing.svg" alt="Abstract digital marketing campaign dashboard" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Digital Marketing</h3><p class="service-slide__excerpt">Connected digital campaigns that build awareness, engagement and measurable momentum.</p></div><a class="service-slide__arrow" href="single-service.html?service=digital-marketing" aria-label="Explore Digital Marketing"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/content-writing.svg')"><img src="assets/images/services/content-writing.svg" alt="Abstract editorial writing layout" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Content Writing</h3><p class="service-slide__excerpt">Clear, useful content shaped around your voice, audience and business objectives.</p></div><a class="service-slide__arrow" href="single-service.html?service=content-writing" aria-label="Explore Content Writing"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/logo-designing.svg')"><img src="assets/images/services/logo-designing.svg" alt="Abstract logo and identity design" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Logo Designing</h3><p class="service-slide__excerpt">Distinctive logo concepts and visual foundations that make your brand memorable.</p></div><a class="service-slide__arrow" href="single-service.html?service=logo-designing" aria-label="Explore Logo Designing"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+              <article class="service-slide" style="--service-image:url('assets/images/services/ai-automation.svg')"><img src="assets/images/services/ai-automation.svg" alt="Abstract AI automation dashboard" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">AI Automation</h3><p class="service-slide__excerpt">Practical AI-powered workflows to reduce repetitive work and create more room for impact.</p></div><a class="service-slide__arrow" href="single-service.html?service=ai-automation" aria-label="Explore AI Automation"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+            </div></div>
+            <div class="service-slider__controls" aria-label="Service slider controls"><button type="button" data-service-prev aria-label="Previous services"><i class="ph ph-arrow-left"></i></button><button type="button" data-service-next aria-label="Next services"><i class="ph ph-arrow-right"></i></button></div>
+          </div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="home-about" aria-labelledby="homeAboutTitle">
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-lg-5">
+          <div class="col-lg-6">
+            <div class="home-about__copy">
+              <p class="eyebrow home-about__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> A little about Alify</p>
+              <h2 id="homeAboutTitle" class="home-about__title">Good work begins<br><span>with good questions.</span></h2>
+              <p class="home-about__lead">We’re an independent digital team that brings strategy, creativity and technology together. We get close to the challenge, work alongside your people, and make useful things with purpose.</p>
+              <p class="home-about__body">From shaping a brand to building what comes next, we focus on clarity, thoughtful collaboration and work that moves your business forward.</p>
+              <a class="btn-pill btn-pill--arrow home-about__link" href="about-us.html"><span>Get to know us</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <figure class="home-about__visual"><img src="assets/images/home/about-team.jpg" alt="A creative team collaborating around project ideas in their studio" loading="lazy" width="1200" height="900"><figcaption><span class="home-about__visual-mark"><i class="ph ph-sparkle" aria-hidden="true"></i></span><span>Independent thinking.<br>Ideas that move you forward.</span></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-projects" aria-labelledby="featuredProjectsTitle">
+      <div class="container featured-projects__intro">
+        <div class="row align-items-end gy-4">
+          <div class="col-lg-8">
+            <p class="eyebrow featured-projects__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Selected work</p>
+            <h2 id="featuredProjectsTitle" class="featured-projects__title">A few projects.<br><span>A lot of thoughtful work.</span></h2>
+            <p class="featured-projects__lead">A glimpse at the ideas, details and digital experiences we bring to life with our partners.</p>
+          </div>
+          <div class="col-lg-4 featured-projects__cta"><a class="btn-pill btn-pill--arrow" href="portfolio.html"><span>View all projects</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a></div>
+        </div>
+      </div>
+      <div class="container-fluid featured-projects__work">
+        <div class="featured-projects__stack">
+          <article class="featured-project-card" data-featured-project style="--project-index:1">
+            <div class="row g-0 align-items-stretch">
+              <div class="col-lg-5"><div class="featured-project-card__copy"><p class="featured-project-card__category">Technology &amp; Apps <span> / 01</span></p><h3>Northstar</h3><p>A clearer digital platform for a team building what comes next. A sample project story exploring product strategy, interface design and a scalable web experience.</p><a class="featured-project-card__link" href="single-project.html?project=northstar">Explore project <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><span class="featured-project-card__index" aria-hidden="true">01</span></div></div>
+              <div class="col-lg-7"><div class="featured-project-card__image-window" data-project-image><img src="assets/images/projects/Technology &amp; Apps/featured-northstar.svg" alt="Illustrative Northstar digital platform project preview" data-project-art loading="lazy" width="1200" height="1900"></div></div>
+            </div>
+          </article>
+          <article class="featured-project-card" data-featured-project style="--project-index:2">
+            <div class="row g-0 align-items-stretch">
+              <div class="col-lg-5"><div class="featured-project-card__copy"><p class="featured-project-card__category">Shopping &amp; eCommerce <span> / 02</span></p><h3>Fieldnotes</h3><p>A thoughtful storefront for useful everyday goods. This sample concept brings product discovery and a smooth shopping journey together.</p><a class="featured-project-card__link" href="single-project.html?project=fieldnotes">Explore project <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><span class="featured-project-card__index" aria-hidden="true">02</span></div></div>
+              <div class="col-lg-7"><div class="featured-project-card__image-window" data-project-image><img src="assets/images/projects/Shopping &amp; eCommerce/featured-fieldnotes.svg" alt="Illustrative Fieldnotes e-commerce project preview" data-project-art loading="lazy" width="1200" height="1900"></div></div>
+            </div>
+          </article>
+          <article class="featured-project-card" data-featured-project style="--project-index:3">
+            <div class="row g-0 align-items-stretch">
+              <div class="col-lg-5"><div class="featured-project-card__copy"><p class="featured-project-card__category">Health &amp; Medical <span> / 03</span></p><h3>Wellspace</h3><p>A calm, accessible digital experience for wellbeing. This illustrative concept focuses on clear information, reassuring design and an easier path to support.</p><a class="featured-project-card__link" href="single-project.html?project=wellspace">Explore project <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a><span class="featured-project-card__index" aria-hidden="true">03</span></div></div>
+              <div class="col-lg-7"><div class="featured-project-card__image-window" data-project-image><img src="assets/images/projects/Health &amp; Medical/featured-wellspace.svg" alt="Illustrative Wellspace health website project preview" data-project-art loading="lazy" width="1200" height="1900"></div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-overview" aria-labelledby="processOverviewTitle">
+      <div class="container">
+        <div class="process-overview__intro row align-items-end gy-4">
+          <div class="col-lg-8"><p class="eyebrow process-overview__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> How we work</p><h2 id="processOverviewTitle" class="process-overview__title">A clear process.<br><span>Good work, step by step.</span></h2><p class="process-overview__lead">A considered path from the first conversation to a confident launch—built around open collaboration and clear decisions.</p></div>
+          <div class="col-lg-4 process-overview__cta"><a class="btn-pill btn-pill--outline" href="process.html">Explore our full process <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></div>
+        </div>
+        <div class="row g-4 process-overview__grid">
+          <div class="col-md-6 col-xl-3 process-overview__item"><article class="process-overview__card"><div class="process-overview__card-top"><span class="process-overview__number">01</span><span class="process-overview__icon"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></span></div><h3>Discover</h3><p>We listen, ask the right questions and get close to the people and context behind the challenge.</p><span class="process-overview__connector" aria-hidden="true"><i class="ph ph-arrow-right"></i></span></article></div>
+          <div class="col-md-6 col-xl-3 process-overview__item"><article class="process-overview__card"><div class="process-overview__card-top"><span class="process-overview__number">02</span><span class="process-overview__icon"><i class="ph ph-compass" aria-hidden="true"></i></span></div><h3>Define</h3><p>Together, we agree the goals, shape the scope and set a clear direction for the work.</p><span class="process-overview__connector" aria-hidden="true"><i class="ph ph-arrow-right"></i></span></article></div>
+          <div class="col-md-6 col-xl-3 process-overview__item"><article class="process-overview__card"><div class="process-overview__card-top"><span class="process-overview__number">03</span><span class="process-overview__icon"><i class="ph ph-pen-nib" aria-hidden="true"></i></span></div><h3>Create</h3><p>We explore ideas, make things tangible and refine the details with your team.</p><span class="process-overview__connector" aria-hidden="true"><i class="ph ph-arrow-right"></i></span></article></div>
+          <div class="col-md-6 col-xl-3 process-overview__item"><article class="process-overview__card"><div class="process-overview__card-top"><span class="process-overview__number">04</span><span class="process-overview__icon"><i class="ph ph-rocket-launch" aria-hidden="true"></i></span></div><h3>Deliver</h3><p>We launch with care, share what your team needs and help plan the next steps.</p></article></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-industries" aria-labelledby="homeIndustriesTitle">
+      <div class="container">
+        <div class="home-industries__intro row align-items-end gy-4">
+          <div class="col-lg-8"><p class="eyebrow home-industries__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Industries</p><h2 id="homeIndustriesTitle" class="home-industries__title">Different worlds.<br><span>One thoughtful approach.</span></h2><p class="home-industries__lead">We bring a fresh perspective to the challenges shaping businesses, communities and the way people live.</p></div>
+          <div class="col-lg-4 home-industries__cta"><a class="btn-pill btn-pill--outline" href="industries.html">Explore industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></div>
+        </div>
+        <div class="industry-bento" aria-label="Industries we work with">
+          <a class="industry-bento__card industry-bento__card--feature" href="industries.html?industry=technology"><img class="industry-bento__image" src="assets/images/industries/technology.jpg" alt="" aria-hidden="true" loading="lazy"><span class="industry-bento__meta">01 <span>Technology &amp; Apps</span></span><span class="industry-bento__body"><span class="industry-bento__title">Technology &amp; Apps</span><span class="industry-bento__copy">Digital products and platforms made clearer, more useful and ready to grow.</span></span><span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+          <a class="industry-bento__card industry-bento__card--commerce" href="industries.html?industry=ecommerce"><img class="industry-bento__image" src="assets/images/industries/commerce.jpg" alt="" aria-hidden="true" loading="lazy"><span class="industry-bento__meta">02 <span>Retail</span></span><span class="industry-bento__body"><span class="industry-bento__title">Shopping &amp; eCommerce</span><span class="industry-bento__copy">Better storefronts and smoother journeys from discovery to checkout.</span></span><span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+          <a class="industry-bento__card industry-bento__card--health" href="industries.html?industry=health"><img class="industry-bento__image" src="assets/images/industries/health.jpg" alt="" aria-hidden="true" loading="lazy"><span class="industry-bento__meta">03 <span>Wellbeing</span></span><span class="industry-bento__body"><span class="industry-bento__title">Health &amp; Medical</span><span class="industry-bento__copy">Human-centred experiences for care and wellbeing.</span></span><span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+          <a class="industry-bento__card industry-bento__card--finance" href="industries.html?industry=finance"><img class="industry-bento__image" src="assets/images/industries/finance.jpg" alt="" aria-hidden="true" loading="lazy"><span class="industry-bento__meta">04 <span>Professional services</span></span><span class="industry-bento__body"><span class="industry-bento__title">Finance &amp; Law</span><span class="industry-bento__copy">Clear communication for complex decisions and services.</span></span><span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+          <a class="industry-bento__card industry-bento__card--education" href="industries.html?industry=education"><img class="industry-bento__image" src="assets/images/industries/education.jpg" alt="" aria-hidden="true" loading="lazy"><span class="industry-bento__meta">05 <span>Learning</span></span><span class="industry-bento__body"><span class="industry-bento__title">Education</span><span class="industry-bento__copy">Digital spaces that help people discover, learn and make progress.</span></span><span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+          <a class="industry-bento__card industry-bento__card--travel" href="industries.html?industry=travel"><img class="industry-bento__image" src="assets/images/industries/travel.jpg" alt="" aria-hidden="true" loading="lazy"><span class="industry-bento__meta">06 <span>Hospitality</span></span><span class="industry-bento__body"><span class="industry-bento__title">Travel &amp; Accommodation</span><span class="industry-bento__copy">Memorable digital journeys for places, stays and experiences.</span></span><span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-alify" aria-labelledby="whyAlifyTitle">
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-lg-5">
+          <div class="col-lg-5">
+            <div class="why-alify__intro">
+              <p class="eyebrow why-alify__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Why Alify</p>
+              <h2 id="whyAlifyTitle" class="why-alify__title">Good work is more than what you make.</h2>
+              <p class="why-alify__lead">It’s how you think, how you work together and how confidently you can take the next step.</p>
+              <a class="btn-pill btn-pill--outline why-alify__cta" href="contact-us.html">Let’s talk about your goals <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="row g-3 why-alify__grid">
+              <div class="col-md-6"><article class="why-alify__card"><span class="why-alify__number">01 <span>Perspective</span></span><h3>Independent thinking</h3><p>We start with the real challenge, ask useful questions and recommend what makes sense for your team.</p></article></div>
+              <div class="col-md-6"><article class="why-alify__card"><span class="why-alify__number">02 <span>People</span></span><h3>Close collaboration</h3><p>You work directly with the people shaping and making the work, with clear communication throughout.</p></article></div>
+              <div class="col-md-6"><article class="why-alify__card"><span class="why-alify__number">03 <span>Craft</span></span><h3>Thoughtful from end to end</h3><p>Strategy, design and technology stay connected, so every detail supports the bigger picture.</p></article></div>
+              <div class="col-md-6"><article class="why-alify__card"><span class="why-alify__number">04 <span>Momentum</span></span><h3>Made for what’s next</h3><p>We create useful, flexible foundations that can grow with your business and its changing needs.</p></article></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-highlight" aria-labelledby="caseHighlightTitle" data-case-highlight>
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-lg-5">
+          <div class="col-lg-6">
+            <figure class="case-highlight__visual">
+              <img class="case-highlight__image-layer is-active" src="assets/images/projects/Technology &amp; Apps/featured-northstar.svg" alt="Illustrative Northstar digital platform concept" loading="eager" width="1200" height="1900" data-case-image-layer>
+              <img class="case-highlight__image-layer" src="assets/images/projects/Health &amp; Medical/featured-wellspace.svg" alt="" aria-hidden="true" loading="lazy" width="1200" height="1900" data-case-image-layer>
+              <figcaption><span class="case-highlight__visual-label" data-case-count>Case study / 01</span><span class="case-highlight__visual-title" data-case-client>Northstar</span></figcaption>
+            </figure>
+          </div>
+          <div class="col-lg-6">
+            <div class="case-highlight__content" data-case-content>
+              <p class="eyebrow case-highlight__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Case study highlight</p>
+              <p class="case-highlight__category"><span data-case-category>Technology &amp; Apps</span> <span class="case-highlight__sample-label">· Illustrative concept</span></p>
+              <h2 id="caseHighlightTitle" data-case-title>Northstar: making complexity feel clear.</h2>
+              <p class="case-highlight__lead" data-case-lead>A sample project story about helping a growing team bring its digital product and brand experience into focus.</p>
+              <div class="case-highlight__points">
+                <div><span>01</span><p><strong data-case-point-title="challenge">The challenge</strong><span data-case-point-copy="challenge">A fragmented product story made it harder for customers to understand what to do next.</span></p></div>
+                <div><span>02</span><p><strong data-case-point-title="approach">Our approach</strong><span data-case-point-copy="approach">Align the product narrative, simplify key journeys and create a flexible interface system.</span></p></div>
+                <div><span>03</span><p><strong data-case-point-title="outcome">The outcome</strong><span data-case-point-copy="outcome">A clearer digital direction and a stronger foundation for future product growth.</span></p></div>
+              </div>
+              <p class="case-highlight__disclaimer">Illustrative sample content — replace with approved client details and verified outcomes.</p>
+              <div class="case-highlight__actions"><a class="btn-pill btn-pill--arrow" href="single-case-study.html" data-case-link><span>Read the case study</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span></a><a class="case-highlight__all-link" href="case-studies.html">All case studies <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+        </div>
+        <div class="case-highlight__controls" aria-label="Case study controls"><span class="case-highlight__counter" aria-live="polite" data-case-counter>01 <span>/ 03</span></span><button type="button" data-case-prev aria-label="Previous case study"><i class="ph ph-arrow-left" aria-hidden="true"></i></button><button type="button" data-case-next aria-label="Next case study"><i class="ph ph-arrow-right" aria-hidden="true"></i></button></div>
+      </div>
+    </section>
+    <section class="home-testimonials" aria-labelledby="homeTestimonialsTitle" data-testimonials>
+      <div class="container">
+        <div class="home-testimonials__intro">
+          <p class="home-testimonials__badge"><span class="home-testimonials__google"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google Reviews</span><span class="home-testimonials__stars" aria-hidden="true"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="home-testimonials__score">4.9 <span>average rating</span></span></p>
+          <h2 id="homeTestimonialsTitle">Kind words from <span>good company.</span></h2>
+          <p class="home-testimonials__lead">Notes from the teams we build with. Reviews below are illustrative samples — connect your Google Business Profile to show live feedback.</p>
+        </div>
+
+        <div class="home-testimonials__viewport">
+          <ul class="home-testimonials__track" role="list" aria-label="Client testimonials" tabindex="0" data-testimonial-track>
+            <li class="testimonial-card is-active" aria-current="true">
+              <div class="testimonial-card__top"><span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span></div>
+              <blockquote class="testimonial-card__quote"><p>Alify took a genuinely messy brief and turned it into a website we are proud to share. Every review felt calm, considered and on time.</p></blockquote>
+              <div class="testimonial-card__author"><span class="testimonial-card__avatar" aria-hidden="true">MK</span><div><span class="testimonial-card__name">Mahnoor Khan</span><span class="testimonial-card__role">Marketing lead, Northstar</span></div></div>
+            </li>
+  <li class="testimonial-card">
+              <div class="testimonial-card__top"><span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span></div>
+              <blockquote class="testimonial-card__quote"><p>They asked sharper questions than we did. The new store is clearer, faster and finally tells the right story about our products.</p></blockquote>
+              <div class="testimonial-card__author"><span class="testimonial-card__avatar" aria-hidden="true">DA</span><div><span class="testimonial-card__name">Daniyal Ahmed</span><span class="testimonial-card__role">Founder, Fieldnotes</span></div></div>
+            </li>
+  <li class="testimonial-card">
+              <div class="testimonial-card__top"><span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span></div>
+              <blockquote class="testimonial-card__quote"><p>Handovers were documented, deadlines held, and nothing felt rushed. Working with them was like adding a senior team overnight.</p></blockquote>
+              <div class="testimonial-card__author"><span class="testimonial-card__avatar" aria-hidden="true">SI</span><div><span class="testimonial-card__name">Sana Iqbal</span><span class="testimonial-card__role">Product manager, Wellspace</span></div></div>
+            </li>
+  <li class="testimonial-card">
+              <div class="testimonial-card__top"><span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span></div>
+              <blockquote class="testimonial-card__quote"><p>Support conversations got simpler because people can finally find what they need. That clarity was worth the whole engagement.</p></blockquote>
+              <div class="testimonial-card__author"><span class="testimonial-card__avatar" aria-hidden="true">BR</span><div><span class="testimonial-card__name">Bilal Raza</span><span class="testimonial-card__role">Operations director, Latitude</span></div></div>
+            </li>
+  <li class="testimonial-card">
+              <div class="testimonial-card__top"><span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span></div>
+              <blockquote class="testimonial-card__quote"><p>Beautiful design is easy to find. Clear thinking is not, and that is exactly what we walked away with here.</p></blockquote>
+              <div class="testimonial-card__author"><span class="testimonial-card__avatar" aria-hidden="true">HS</span><div><span class="testimonial-card__name">Hira Sheikh</span><span class="testimonial-card__role">Brand lead, Solstice</span></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="home-testimonials__controls">
+          <p class="home-testimonials__status" aria-live="polite" data-testimonial-status>Review 1 of 5</p>
+          <div class="home-testimonials__arrows">
+            <button type="button" data-testimonial-prev aria-label="Previous testimonial" aria-controls="homeTestimonialsTitle"><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+            <button type="button" data-testimonial-next aria-label="Next testimonial"><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-pricing" aria-labelledby="homePricingTitle">
+      <div class="container">
+        <div class="home-pricing__intro">
+          <p class="eyebrow home-pricing__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Plans &amp; pricing</p>
+          <h2 id="homePricingTitle">Clear starting points, <span>no surprise invoices.</span></h2>
+          <p class="home-pricing__lead">Three ways to work with us, from a focused launch to an ongoing partnership. Every engagement starts with a scoped quote.</p>
+        </div>
+
+        <div class="home-pricing__grid">
+          <article class="home-pricing-card">
+            <h3 class="home-pricing-card__name">Launch</h3>
+            <p class="home-pricing-card__summary">A focused first site for a small team that needs to look credible fast.</p>
+            <p class="home-pricing-card__price">from $2,400 <small>/ fixed project</small></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Up to 5 pages</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Design + build</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Responsive &amp; accessible</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>2–3 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="pricing.html">See what’s included <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card home-pricing-card--featured">
+            <span class="home-pricing-card__badge">Most chosen</span>
+            <h3 class="home-pricing-card__name">Growth</h3>
+            <p class="home-pricing-card__summary">For teams ready to scale traffic, content and conversions without guesswork.</p>
+            <p class="home-pricing-card__price">from $6,800 <small>/ fixed project</small></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Up to 12 pages + CMS</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>UX and conversion review</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Technical SEO setup</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>6–8 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="pricing.html">See what’s included <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card">
+            <h3 class="home-pricing-card__name">Partner</h3>
+            <p class="home-pricing-card__summary">Ongoing design and development support, shaped around your roadmap.</p>
+            <p class="home-pricing-card__price">from $1,900 <small>/ per month</small></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Monthly retainers</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Priority turnaround</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Design + dev hours</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Quarterly roadmap review</li>
+            </ul>
+            <a class="home-pricing-card__link" href="pricing.html">See what’s included <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+        </div>
+
+        <div class="home-pricing__footer">
+          <p class="home-pricing__note">Illustrative starting points. Final pricing depends on scope, timeline and integrations.</p>
+          <div class="home-pricing__actions">
+            <a class="btn-pill btn-pill--outline" href="pricing.html">Compare plans <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn-pill btn-pill--arrow" href="get-a-quote.html"><span>Get a quote</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="siteFooter">
+    <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
+      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+        <source src="assets/images/background-videos/footer-cta.mp4" type="video/mp4">
+      </video>
+      <div class="container footer-cta__container">
+        <div class="row">
+          <div class="col-12">
+            <p class="eyebrow footer-cta__eyebrow"><i class="ph ph-triangle footer-cta__eyebrow-icon" aria-hidden="true"></i>Have a good one in mind?</p>
+            <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
+            <div class="footer-cta__action">
+              <a class="btn-pill btn-pill--arrow" href="lets-get-started.html">
+                <span>Start a project</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+              <a class="btn-pill btn-pill--outline footer-cta__secondary" href="contact-us.html">Or schedule a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container site-footer__main">
+      <div class="row gy-5">
+        <div class="col-12 col-lg-4 col-md-6">
+          <a class="site-footer__brand" href="index.html" aria-label="Alify home">
+            <img src="assets/images/logo/light-logo.png" alt="Alify">
+          </a>
+          <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
+          <div class="site-footer__socials" aria-label="Social media">
+            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2 col-md-3">
+          <h3 class="site-footer__heading">Explore</h3>
+          <nav class="site-footer__links" aria-label="Explore links">
+            <a href="index.html">Home</a>
+            <a href="about-us.html">About Us</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+          </nav>
+        </div>
+        <div class="col-6 col-lg-2 col-md-3">
+          <h3 class="site-footer__heading">Discover</h3>
+          <nav class="site-footer__links" aria-label="Discover links">
+            <a href="services.html">Services</a>
+            <a href="industries.html">Industries</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="process.html">Our Process</a>
+            <a href="faq.html">FAQs</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="contact-us.html">Get in touch</a>
+          </nav>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <div class="site-footer__contact-card">
+            <p class="site-footer__contact-kicker">Have a project in mind?</p>
+            <h3>Let’s talk about<br>what’s possible.</h3>
+            <p class="site-footer__contact-copy">Tell us what you’re working on. We’ll help you find the right next step.</p>
+            <a class="site-footer__contact-link" href="contact-us.html">Start a conversation <span aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="site-footer__bottom">
+        <span>© <span id="currentYear"></span> Alify. All rights reserved.</span>
+        <div class="site-footer__legal">
+          <a href="legal.html#privacy">Privacy Policy</a>
+          <a href="legal.html#terms">Terms of Use</a>
+        </div>
+        <a class="site-footer__back-top" href="#top" aria-label="Back to top">Back to top <i class="ph ph-arrow-up" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="assets/gsap/gsap.min.js"></script>
+  <script defer src="assets/gsap/ScrollTrigger.min.js"></script>
+  <script defer src="assets/gsap/ScrollToPlugin.min.js"></script>
+  <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</body>
+</html>

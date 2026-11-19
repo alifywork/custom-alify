@@ -1,0 +1,110 @@
+/* ============================================================
+   variables.css — Design Tokens / CSS Variables
+   ============================================================ */
+
+:root {
+  /* ---------- Brand Palette ---------- */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-primary: #0F3473;
+  --color-secondary: #F6F4F1;
+  --color-accent: #E05A3A;
+  --color-amber: #D98A2B;
+  --color-amber-light: #F4C778;
+  --color-teal: #0F8A73;
+  --color-teal-deep: #1B4D45;
+  --color-charcoal: #12151C;
+
+  /* ---------- Semantic / Compatibility Tokens ---------- */
+  --color-primary-dark: #0A285B;
+  --color-primary-light: #315895;
+  --color-success: var(--color-teal);
+  --color-warning: var(--color-amber);
+  --color-danger: var(--color-accent);
+  --color-info: var(--color-teal);
+  --color-light: var(--color-secondary);
+  --color-dark: var(--color-charcoal);
+
+  /* ---------- Base / Neutral ---------- */
+  --color-body: var(--color-charcoal);
+  --color-body-bg: var(--color-white);
+  --color-muted: #656A73;
+  --color-border: #D8D7D4;
+  --color-border-light: #E8E6E2;
+
+  /* ---------- Typography ---------- */
+  --font-primary: 'Poppins', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-accent: 'Manrope', sans-serif;
+
+  /* Fluid type scales smoothly with viewport width. */
+  --font-size-base: clamp(0.9375rem, 0.25vw + 0.875rem, 1.0625rem);
+  --font-size-sm: clamp(0.8125rem, 0.15vw + 0.775rem, 0.9rem);
+  --font-size-lg: clamp(1.0625rem, 0.45vw + 0.95rem, 1.35rem);
+  --font-size-xs: clamp(0.7rem, 0.1vw + 0.675rem, 0.78rem);
+  --font-size-h1: clamp(2rem, 4vw + 0.75rem, 3.75rem);
+  --font-size-h2: clamp(1.75rem, 3vw + 0.75rem, 3rem);
+  --font-size-h3: clamp(1.5rem, 2vw + 0.75rem, 2.25rem);
+  --font-size-h4: clamp(1.3rem, 1.3vw + 0.75rem, 1.9rem);
+  --font-size-h5: clamp(1.15rem, 0.8vw + 0.75rem, 1.5rem);
+  --font-size-h6: clamp(1rem, 0.5vw + 0.75rem, 1.25rem);
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-base: 1.6;
+  --line-height-heading: 1.2;
+  --line-height-sm: 1.4;
+
+  /* ---------- Spacing ---------- */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  --spacing-section: 5rem;
+
+  /* ---------- Border Radius ---------- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 50rem;
+  --radius-circle: 50%;
+
+  /* ---------- Shadows ---------- */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --shadow-none: none;
+
+  /* ---------- Transitions ---------- */
+  --transition-fast: all 0.15s ease-in-out;
+  --transition-base: all 0.3s ease-in-out;
+  --transition-slow: all 0.5s ease-in-out;
+
+  /* ---------- Z-Index ---------- */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-tooltip: 1080;
+
+  /* ---------- Container / Layout ---------- */
+  --container-max-width: 1320px;
+  --header-height: 80px;
+
+  /* ---------- Breakpoints (reference only) ---------- */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+}
