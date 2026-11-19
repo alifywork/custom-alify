@@ -38,6 +38,7 @@
     initQuoteWizard();
     initNotFoundSearch();
     initPortfolioFilters();
+    initBlogArchive();
     initServiceSlider();
     initFeaturedProjectEffects();
     initCaseHighlightSlider();
@@ -294,6 +295,182 @@
         });
       });
     });
+  }
+
+  /* ---------- Blog archive: category filter, search, pagination, shareable URL ---------- */
+  function initBlogArchive() {
+    var root = document.querySelector('[data-blog-archive]');
+    if (!root) return;
+
+    var grid = root.querySelector('[data-blog-grid]');
+    var posts = grid ? Array.prototype.slice.call(grid.querySelectorAll('[data-blog-post]')) : [];
+    if (!grid || !posts.length) return;
+
+    var chips = Array.prototype.slice.call(root.querySelectorAll('[data-blog-category]'));
+    var searchInput = root.querySelector('[data-blog-search]');
+    var resetBtn = root.querySelector('[data-blog-reset]');
+    var countEl = root.querySelector('[data-blog-count]');
+    var emptyEl = root.querySelector('[data-blog-empty]');
+    var pager = root.querySelector('[data-blog-pagination]');
+    var perPage = parseInt(root.getAttribute('data-per-page'), 10) || 6;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    var categories = chips.map(function (chip) { return chip.getAttribute('data-blog-category'); });
+    var params = new URLSearchParams(window.location.search);
+    var requestedCategory = params.get('category') || 'all';
+    var state = {
+      category: categories.indexOf(requestedCategory) > -1 ? requestedCategory : 'all',
+      query: (params.get('q') || '').trim(),
+      page: Math.max(1, parseInt(params.get('page'), 10) || 1)
+    };
+
+    if (searchInput) searchInput.value = state.query;
+
+    function matches(post) {
+      if (state.category !== 'all' && post.getAttribute('data-category') !== state.category) return false;
+      if (!state.query) return true;
+      var haystack = (post.getAttribute('data-search') || post.textContent || '').toLowerCase();
+      return haystack.indexOf(state.query.toLowerCase()) !== -1;
+    }
+
+    function syncUrl(push) {
+      var next = new URLSearchParams();
+      if (state.category !== 'all') next.set('category', state.category);
+      if (state.query) next.set('q', state.query);
+      if (state.page > 1) next.set('page', String(state.page));
+      var qs = next.toString();
+      var url = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+      if (push && window.history.pushState) window.history.pushState(null, '', url);
+      else if (window.history.replaceState) window.history.replaceState(null, '', url);
+    }
+
+    function renderPager(totalPages) {
+      if (!pager) return;
+      pager.innerHTML = '';
+      if (totalPages < 2) return;
+
+      function makeButton(label, page, options) {
+        options = options || {};
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'blog-pagination__btn';
+        btn.textContent = label;
+        if (options.current) btn.setAttribute('aria-current', 'page');
+        if (options.disabled) btn.disabled = true;
+        if (options.aria) btn.setAttribute('aria-label', options.aria);
+        if (!options.disabled && !options.current) {
+          btn.addEventListener('click', function () {
+            state.page = page;
+            render(true, true);
+          });
+        }
+        return btn;
+      }
+
+      pager.appendChild(makeButton('Prev', state.page - 1, {
+        disabled: state.page === 1,
+        aria: 'Previous page'
+      }));
+
+      for (var i = 1; i <= totalPages; i += 1) {
+        pager.appendChild(makeButton(String(i), i, {
+          current: i === state.page,
+          aria: 'Page ' + i
+        }));
+      }
+
+      pager.appendChild(makeButton('Next', state.page + 1, {
+        disabled: state.page === totalPages,
+        aria: 'Next page'
+      }));
+    }
+
+    function render(fromUser, scrollToArchive) {
+      var visible = posts.filter(matches);
+      var totalPages = Math.max(1, Math.ceil(visible.length / perPage));
+      if (state.page > totalPages) state.page = totalPages;
+
+      var start = (state.page - 1) * perPage;
+      var pagePosts = visible.slice(start, start + perPage);
+
+      posts.forEach(function (post) {
+        post.hidden = pagePosts.indexOf(post) === -1;
+      });
+
+      chips.forEach(function (chip) {
+        var active = chip.getAttribute('data-blog-category') === state.category;
+        chip.classList.toggle('is-active', active);
+        chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      if (countEl) {
+        var total = posts.length;
+        if (visible.length === total) {
+          countEl.textContent = total + ' articles';
+        } else if (!visible.length) {
+          countEl.textContent = 'No articles match';
+        } else {
+          countEl.textContent = 'Showing ' + visible.length + ' of ' + total + ' articles';
+        }
+      }
+
+      if (emptyEl) emptyEl.hidden = visible.length > 0;
+
+      renderPager(totalPages);
+      syncUrl(false);
+
+      if (fromUser && scrollToArchive && !reduceMotion.matches) {
+        var top = root.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        state.category = chip.getAttribute('data-blog-category');
+        state.page = 1;
+        render(true);
+      });
+    });
+
+    if (searchInput) {
+      var timer = null;
+      searchInput.addEventListener('input', function () {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          state.query = searchInput.value.trim();
+          state.page = 1;
+          render(true);
+        }, 180);
+      });
+      searchInput.addEventListener('search', function () {
+        state.query = searchInput.value.trim();
+        state.page = 1;
+        render(true);
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        state.category = 'all';
+        state.query = '';
+        state.page = 1;
+        if (searchInput) searchInput.value = '';
+        render(true);
+      });
+    }
+
+    window.addEventListener('popstate', function () {
+      var next = new URLSearchParams(window.location.search);
+      var cat = next.get('category') || 'all';
+      state.category = categories.indexOf(cat) > -1 ? cat : 'all';
+      state.query = (next.get('q') || '').trim();
+      state.page = Math.max(1, parseInt(next.get('page'), 10) || 1);
+      if (searchInput) searchInput.value = state.query;
+      render(false);
+    });
+
+    render(false);
   }
 
   /* ---------- Homepage service carousel controls ---------- */
