@@ -795,10 +795,6 @@
    ============================================================ */
 
 /* Hero facts */
-.about-hero__facts { display: flex; flex-wrap: wrap; gap: 18px clamp(20px,3.4vw,40px); max-width: 720px; margin: 34px 0 0; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.16); }
-.about-hero__facts div { min-width: 0; }
-.about-hero__facts dt { margin-bottom: 6px; color: rgba(255,255,255,.52); font: 600 .62rem var(--font-accent); letter-spacing: .16em; text-transform: uppercase; }
-.about-hero__facts dd { margin: 0; color: #fff; font: 400 1.05rem/1.3 var(--font-heading); letter-spacing: -.01em; }
 
 /* Story */
 .about-story__visual img { border-radius: 26px; }
@@ -868,7 +864,7 @@
 .about-tools__chips li:hover { border-color: var(--color-primary); color: var(--color-primary); }
 
 /* Quote */
-@media (max-width: 767.98px) { .about-hero__facts { gap: 14px 22px; margin-top: 26px; padding-top: 20px; } .about-hero__facts dd { font-size: .96rem; } .about-team__join .arrow__btn-link { width: fit-content; } }
+@media (max-width: 767.98px) { .about-team__join .arrow__btn-link { width: fit-content; } }
 @media (max-width: 575.98px) { .about-work__list li { grid-template-columns: 24px minmax(0,1fr); } .about-work__icon { display: none; } .about-reach__legend { font-size: .56rem; } }
 @media (prefers-reduced-motion: reduce) { .about-stat::after,.about-team__card::after,.about-pillar--value,.about-reach__pin { transition: none; } }
 
@@ -956,7 +952,6 @@
 .about-story__badge { z-index: 3; right: 22px; bottom: 40px; left: auto; }
 
 /* Hero facts centred with the hero copy. */
-.about-hero__facts { margin: 34px auto 0; }
 .about-clients__track span { color: rgba(18,21,28,.55); }
 
 /* Stats header breathing room. */
@@ -1090,4 +1085,95 @@
 @media (max-width: 575.98px) {
   .about-reach__aside { grid-template-columns: minmax(0,1fr); row-gap: 22px; }
   .about-tools__chips { gap: 8px; }
+}
+
+/* ============================================================
+   About page — final polish pass
+   ============================================================ */
+
+/* One vertical rhythm for every About section. */
+.about-story,
+.about-pillars,
+.about-team,
+.about-work,
+.about-reach,
+.about-tools { padding-block: clamp(80px,9vw,132px); }
+
+/* Headings: same tracking and balanced wrapping everywhere. */
+.about-story__title,
+.about-pillars__head h2,
+.about-team__head h2,
+.about-work__head h2,
+.about-reach__head h2,
+.about-tools__head h2 { letter-spacing: -.038em; text-wrap: balance; }
+.about-pillars__head { max-width: 760px; }
+.about-team__head,
+.about-reach__head { margin-bottom: clamp(32px,3.4vw,46px); }
+.about-pillar h3 { text-wrap: balance; }
+.about-story__lead { text-wrap: pretty; }
+.about-story__body,
+.about-team__bio,
+.about-reach__intro,
+.about-tools__lead { text-wrap: pretty; }
+
+/* Eyebrows sit on one grid line across sections. */
+.about-story__eyebrow,
+.about-pillars__eyebrow,
+.about-team__eyebrow,
+.about-work__eyebrow,
+.about-reach__eyebrow,
+.about-tools__eyebrow { margin-bottom: 18px; letter-spacing: .14em; text-transform: uppercase; }
+
+/* Card system: two radii only, one border tone, calm hover lift. */
+.about-pillar,
+.about-team__card,
+.about-tools__group { border-radius: 22px; }
+.about-work__panel,
+.about-reach__map,
+.about-reach__aside,
+.about-story__visual img { border-radius: 24px; }
+.about-story__visual img { border: 1px solid rgba(18,21,28,.08); }
+
+.about-tools__group,
+.about-work__panel,
+.about-team__card { transition: transform .32s cubic-bezier(.2,.7,.2,1), border-color .32s ease, background-color .32s ease; }
+.about-tools__group:hover { transform: translateY(-4px); border-color: rgba(18,21,28,.17); }
+.about-work__panel:hover { border-color: rgba(18,21,28,.17); }
+.about-work__panel--dark:hover { border-color: rgba(244,199,120,.3); }
+
+/* Team cards: footers line up, bios never crowd the link. */
+.about-team__bio { padding-bottom: 20px; }
+.about-team__social { margin-top: auto; }
+.about-team__avatar { border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(18,21,28,.1); }
+
+/* Panel headers share one divider treatment. */
+.about-work__panel h3 { padding-bottom: 18px; border-bottom: 1px solid rgba(18,21,28,.09); }
+.about-work__panel--dark h3 { border-bottom-color: rgba(255,255,255,.13); }
+
+/* Focus states are visible everywhere on this page. */
+.about-tools__chips li:focus-visible,
+.about-team__social:focus-visible,
+.about-clients__track span:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-tools__group,
+  .about-work__panel,
+  .about-team__card { transition: none; }
+  .about-tools__group:hover,
+  .about-work__panel:hover { transform: none; }
+}
+
+/* Pillars and working-style heads match the other section heads. */
+.about-pillars__head,
+.about-work__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px clamp(24px,4vw,64px); max-width: none; }
+.about-pillars__head-copy { max-width: 620px; }
+.about-work__head-copy { max-width: 640px; }
+.about-pillars__intro,
+.about-work__intro { max-width: 330px; margin: 0; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.8; text-wrap: pretty; }
+
+@media (max-width: 991.98px) {
+  .about-pillars__head,
+  .about-work__head { align-items: flex-start; }
+  .about-pillars__intro,
+  .about-work__intro { max-width: 440px; }
 }
