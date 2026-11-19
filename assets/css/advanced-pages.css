@@ -441,10 +441,10 @@
 .home-testimonials__track { --card-width: clamp(272px, 31vw, 420px); position: relative; display: flex; gap: clamp(16px,2vw,26px); margin: 0; padding: 14px calc(50% - var(--card-width) / 2) 22px; overflow-x: auto; list-style: none; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; overscroll-behavior-x: contain; }
 .home-testimonials__track::-webkit-scrollbar { display: none; }
 .home-testimonials__track:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 6px; border-radius: 22px; }
-.testimonial-card { position: relative; isolation: isolate; display: flex; flex: 0 0 var(--card-width); flex-direction: column; overflow: hidden; padding: clamp(24px,2.6vw,34px); border: 1px solid rgba(18,21,28,.07); border-radius: 20px; background: #F7F5F1; opacity: .62; transform: scale(.945); scroll-snap-align: center; transition: opacity .45s ease, transform .55s cubic-bezier(.2,.7,.2,1), background-color .45s ease, border-color .45s ease, box-shadow .45s ease; }
+.testimonial-card { position: relative; isolation: isolate; display: flex; flex: 0 0 var(--card-width); flex-direction: column; overflow: hidden; padding: clamp(24px,2.6vw,34px); border: 1px solid rgba(18,21,28,.07); border-radius: 20px; background: #F7F5F1; opacity: .62; transform: scale(.945); scroll-snap-align: center; transition: opacity .45s ease, transform .55s cubic-bezier(.2,.7,.2,1), background .45s ease, border-color .45s ease; }
 .testimonial-card::before { position: absolute; z-index: -1; top: -34px; right: 16px; color: rgba(18,21,28,.045); font: 400 9rem/1 var(--font-heading); content: "\201C"; pointer-events: none; transition: color .45s ease; }
 .testimonial-card::after { position: absolute; top: 0; right: 0; left: 0; height: 3px; background: transparent; content: ""; transition: background .45s ease; }
-.testimonial-card.is-active { border-color: rgba(18,21,28,.1); background: #fff; box-shadow: 0 30px 50px -34px rgba(16,25,35,.4); opacity: 1; transform: none; }
+.testimonial-card.is-active { border-color: rgba(18,21,28,.14); background: linear-gradient(168deg,#fff 0%,#FFFDF8 58%,#FBF5EC 100%); box-shadow: inset 0 0 0 1px rgba(18,21,28,.05); opacity: 1; transform: none; }
 .testimonial-card.is-active::before { color: rgba(244,199,120,.42); }
 .testimonial-card.is-active::after { background: linear-gradient(90deg,var(--color-amber-light),rgba(244,199,120,.15) 55%,transparent); }
 .testimonial-card__top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
