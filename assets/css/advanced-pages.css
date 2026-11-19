@@ -945,3 +945,52 @@
   .about-clients__track { animation: none; }
   .about-clients__viewport { overflow-x: auto; mask-image: none; -webkit-mask-image: none; }
 }
+
+/* ============================================================
+   About page — fixes and final polish
+   ============================================================ */
+
+/* Story collage: keep the inset photo small regardless of base img rules. */
+.about-story__visual .about-story__img { height: clamp(360px,44vw,540px); }
+.about-story__visual .about-story__img--sm { position: absolute; z-index: 2; bottom: 0; left: -14px; width: 34%; height: clamp(120px,15vw,180px); border: 6px solid #fff; border-radius: 20px; box-shadow: 0 18px 40px -26px rgba(16,25,35,.5); }
+.about-story__badge { z-index: 3; right: 22px; bottom: 40px; left: auto; }
+
+/* Hero facts centred with the hero copy. */
+.about-hero__facts { margin: 34px auto 0; }
+.about-clients__track span { color: rgba(18,21,28,.55); }
+
+/* Stats header breathing room. */
+.about-stats__head { display: block; }
+.about-stats__note { max-width: 520px; margin: 14px 0 0; font-size: .68rem; }
+
+/* Value cards: arrow affordance instead of empty space. */
+.about-pillar--value { padding-bottom: 62px; }
+.about-pillar__arrow { position: absolute; right: 22px; bottom: 20px; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(18,21,28,.14); border-radius: 50%; color: var(--color-primary); font-size: .85rem; transition: transform .3s ease, background-color .3s ease, color .3s ease, border-color .3s ease; }
+.about-pillar--value:hover .about-pillar__arrow { transform: rotate(45deg); border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+
+/* Working style heading fits on one line at desktop. */
+.about-work__head { max-width: 860px; }
+
+/* Reach: full-width map, regions below in one row. */
+.about-reach__grid { grid-template-columns: minmax(0,1fr); gap: clamp(16px,2vw,22px); align-items: start; }
+.about-reach__map { padding: clamp(18px,2.2vw,30px); }
+.about-reach__frame img { display: block; width: 100%; height: auto; }
+.about-reach__aside { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px clamp(18px,2.4vw,30px); padding: clamp(22px,2.4vw,28px); }
+.about-reach__aside-label { grid-column: 1 / -1; margin-bottom: 8px; }
+.about-reach__aside-note { grid-column: 1 / -1; margin-top: 14px; padding-top: 14px; }
+.about-reach__region + .about-reach__region { margin-top: 0; padding-top: 0; border-top: 0; }
+.about-reach__region { padding-left: 0; }
+.about-reach__countries { display: flex; flex-wrap: wrap; gap: 6px; }
+.about-reach__countries li { padding: 4px 9px; font-size: .68rem; }
+
+/* Testimonials on inner pages: no jump to the last card. */
+.home-testimonials__track { scroll-snap-type: x proximity; }
+
+@media (max-width: 991.98px) {
+  .about-reach__aside { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: 20px; }
+  .about-story__visual .about-story__img--sm { display: none; }
+}
+@media (max-width: 575.98px) {
+  .about-reach__aside { grid-template-columns: minmax(0,1fr); }
+  .about-stats__note { font-size: .66rem; }
+}

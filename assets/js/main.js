@@ -518,6 +518,11 @@
       if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(nearestIndex() - 1); }
     });
     sync();
+    // Start on the first review even if the browser restores a scroll position.
+    requestAnimationFrame(function () {
+      if (track.scrollLeft > 0) track.scrollLeft = centreFor(cards[0]);
+      schedule();
+    });
   }
 
   /* ---------- Service detail personalization from carousel links ---------- */
