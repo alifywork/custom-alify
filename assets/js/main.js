@@ -39,6 +39,9 @@
     initNotFoundSearch();
     initPortfolioFilters();
     initBlogArchive();
+    initReadingProgress();
+    initArticleToc();
+    initShareButtons();
     initServiceSlider();
     initFeaturedProjectEffects();
     initCaseHighlightSlider();
@@ -484,6 +487,187 @@
     });
 
     render(false);
+  }
+
+  /* ---------- Article reading progress ---------- */
+  function initReadingProgress() {
+    var bar = document.querySelector('[data-reading-bar]');
+    var body = document.querySelector('[data-article-body]');
+    if (!bar || !body) return;
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var rect = body.getBoundingClientRect();
+      var start = rect.top + window.scrollY;
+      var travel = Math.max(rect.height - window.innerHeight * 0.55, 1);
+      var pct = (window.scrollY - start + window.innerHeight * 0.2) / travel;
+      pct = Math.max(0, Math.min(1, pct));
+      bar.style.width = (pct * 100).toFixed(2) + '%';
+    }
+
+    function request() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+  }
+
+  /* ---------- Table of contents built from the article ---------- */
+  function initArticleToc() {
+    var body = document.querySelector('[data-article-body]');
+    var list = document.querySelector('[data-article-toc-list]');
+    if (!body || !list) return;
+
+    var toc = document.querySelector('[data-article-toc]');
+    var heads = Array.prototype.slice.call(body.querySelectorAll('h2'));
+    if (!heads.length) {
+      if (toc) toc.hidden = true;
+      return;
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var links = [];
+
+    function setActive(id) {
+      links.forEach(function (item) {
+        var active = item.heading.id === id;
+        item.link.classList.toggle('is-active', active);
+        if (active) item.link.setAttribute('aria-current', 'true');
+        else item.link.removeAttribute('aria-current');
+      });
+    }
+
+    heads.forEach(function (heading, index) {
+      if (!heading.id) heading.id = 'section-' + (index + 1);
+
+      var item = document.createElement('li');
+      item.className = 'article-toc__item';
+
+      var link = document.createElement('a');
+      link.className = 'article-toc__link';
+      link.href = '#' + heading.id;
+
+      var num = document.createElement('span');
+      num.className = 'article-toc__num';
+      num.setAttribute('aria-hidden', 'true');
+      num.textContent = ('0' + (index + 1)).slice(-2);
+
+      var text = document.createElement('span');
+      text.textContent = heading.textContent.trim();
+
+      link.appendChild(num);
+      link.appendChild(text);
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (heading.scrollIntoView) {
+          heading.scrollIntoView({
+            behavior: reduceMotion.matches ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        } else {
+          window.scrollTo(0, heading.getBoundingClientRect().top + window.scrollY - 100);
+        }
+        setActive(heading.id);
+        if (window.history.replaceState) window.history.replaceState(null, '', '#' + heading.id);
+      });
+
+      item.appendChild(link);
+      list.appendChild(item);
+      links.push({ heading: heading, link: link });
+    });
+
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-100px 0px -68% 0px', threshold: 0 });
+      heads.forEach(function (heading) { spy.observe(heading); });
+    }
+
+    if (window.location.hash) {
+      var hash = window.location.hash.slice(1);
+      if (heads.some(function (h) { return h.id === hash; })) setActive(hash);
+    }
+  }
+
+  /* ---------- Share buttons (network share, native share, copy link) ---------- */
+  function initShareButtons() {
+    var buttons = document.querySelectorAll('[data-share]');
+    if (!buttons.length) return;
+
+    function announce(btn, message) {
+      var block = btn.closest('.article-share');
+      var status = block ? block.querySelector('[data-share-status]') : null;
+      if (!status) return;
+      status.textContent = message;
+      status.classList.add('is-visible');
+      window.clearTimeout(status._timer);
+      status._timer = window.setTimeout(function () {
+        status.classList.remove('is-visible');
+      }, 4000);
+    }
+
+    function legacyCopy(text) {
+      var field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      var copied = false;
+      try {
+        copied = document.execCommand('copy');
+      } catch (error) {
+        copied = false;
+      }
+      document.body.removeChild(field);
+      return copied;
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var kind = button.getAttribute('data-share');
+        var url = window.location.href;
+        var title = document.title;
+
+        if (kind === 'copy') {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(function () {
+              announce(button, 'Link copied to your clipboard.');
+            }).catch(function () {
+              announce(button, legacyCopy(url) ? 'Link copied to your clipboard.' : 'Copy failed — copy the address bar instead.');
+            });
+          } else {
+            announce(button, legacyCopy(url) ? 'Link copied to your clipboard.' : 'Copy failed — copy the address bar instead.');
+          }
+          return;
+        }
+
+        var targets = {
+          linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url),
+          x: 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title),
+          facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url),
+          mail: 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(url)
+        };
+
+        if (kind === 'native' && navigator.share) {
+          navigator.share({ title: title, url: url }).catch(function () {});
+          return;
+        }
+
+        if (targets[kind]) {
+          window.open(targets[kind], '_blank', 'noopener,noreferrer,width=640,height=560');
+        }
+      });
+    });
   }
 
   /* ---------- Homepage service carousel controls ---------- */
