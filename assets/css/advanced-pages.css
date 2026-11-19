@@ -414,7 +414,7 @@
 .case-highlight__all-link:hover { color: var(--color-teal); text-decoration: none; }
 .case-highlight__all-link i { transition: transform .2s ease; }
 .case-highlight__all-link:hover i { transform: translateX(3px); }
-@media (max-width: 991.98px) { .case-highlight__content { max-width: none; min-height: 0; justify-content: flex-start; padding-block: 0; } }
+@media (max-width: 991.98px) { .case-highlight > .container { display: flex; flex-direction: column; } .case-highlight__controls { order: -1; justify-content: space-between; margin: 0 0 20px; } .case-highlight__counter { margin-right: auto; } .case-highlight__content { max-width: none; min-height: 0; justify-content: flex-start; padding-block: 0; } }
 @media (max-width: 575.98px) { .case-highlight__visual { height: 360px; } .case-highlight__visual figcaption { right: 18px; bottom: 18px; left: 18px; } .case-highlight__actions { gap: 14px; } }
 @media (prefers-reduced-motion: reduce) { .case-highlight__eyebrow i { animation: none; } .case-highlight__image-layer { transition: none; } }
 .case-highlight__controls { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: clamp(28px,4vw,44px); }
@@ -423,4 +423,4 @@
 .case-highlight__controls button { display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid rgba(18,21,28,.18); border-radius: 50%; background: transparent; color: var(--color-primary); font-size: 1.15rem; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
 .case-highlight__controls button:hover,.case-highlight__controls button:focus-visible { transform: translateY(-2px); border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
 .case-highlight__controls button:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 3px; }
-@media (max-width: 575.98px) { .case-highlight__controls { margin-top: 24px; } .case-highlight__controls button { width: 44px; height: 44px; } }
+@media (max-width: 575.98px) { .case-highlight__controls { margin: 0 0 16px; } .case-highlight__controls button { width: 44px; height: 44px; } }
