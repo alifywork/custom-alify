@@ -39,6 +39,7 @@
     initNotFoundSearch();
     initPortfolioFilters();
     initServiceSlider();
+    initFeaturedProjectEffects();
     initSingleServiceDetail();
     initSmoothScroll();
     initBackToTop();
@@ -319,6 +320,31 @@
     var next = slider.querySelector('[data-service-next]');
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });
+  }
+
+  /* ---------- Featured projects: sticky stack and GSAP image-scroll hover ---------- */
+  function initFeaturedProjectEffects() {
+    var cards = document.querySelectorAll('[data-featured-project]');
+    if (!cards.length) return;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    cards.forEach(function (card) {
+      var viewport = card.querySelector('[data-project-image]');
+      var image = viewport && viewport.querySelector('[data-project-art]');
+      if (!viewport || !image || typeof gsap === 'undefined' || reduceMotion) return;
+      function scrollImage() {
+        var travel = Math.min(0, viewport.clientHeight - image.getBoundingClientRect().height);
+        gsap.to(image, { y: travel, duration: 1.8, ease: 'none', overwrite: 'auto' });
+      }
+      function resetImage() {
+        gsap.to(image, { y: 0, duration: 0.55, ease: 'power2.out', overwrite: 'auto' });
+      }
+      viewport.addEventListener('mouseenter', scrollImage);
+      viewport.addEventListener('mouseleave', resetImage);
+      viewport.addEventListener('focusin', scrollImage);
+      viewport.addEventListener('focusout', resetImage);
+      if (image.complete) gsap.set(image, { y: 0 });
+      else image.addEventListener('load', function () { gsap.set(image, { y: 0 }); }, { once: true });
+    });
   }
 
   /* ---------- Service detail personalization from carousel links ---------- */
