@@ -41,6 +41,7 @@
     initServiceSlider();
     initFeaturedProjectEffects();
     initCaseHighlightSlider();
+    initTestimonials();
     initSingleServiceDetail();
     initSmoothScroll();
     initBackToTop();
@@ -457,6 +458,66 @@
     var next = root.querySelector('[data-case-next]');
     if (prev) prev.addEventListener('click', function () { render(current - 1); });
     if (next) next.addEventListener('click', function () { render(current + 1); });
+  }
+
+  /* ---------- Homepage testimonials: centre-active Google review slider ---------- */
+  function initTestimonials() {
+    var track = document.querySelector('[data-testimonial-track]');
+    if (!track) return;
+    var cards = Array.prototype.slice.call(track.children);
+    if (!cards.length) return;
+    var prev = document.querySelector('[data-testimonial-prev]');
+    var next = document.querySelector('[data-testimonial-next]');
+    var status = document.querySelector('[data-testimonial-status]');
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var active = 0;
+    var frame = null;
+
+    function centreFor(card) {
+      return card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2;
+    }
+    function nearestIndex() {
+      var middle = track.scrollLeft + track.clientWidth / 2;
+      var best = 0;
+      var bestDistance = Infinity;
+      cards.forEach(function (card, index) {
+        var distance = Math.abs(card.offsetLeft + card.offsetWidth / 2 - middle);
+        if (distance < bestDistance) { bestDistance = distance; best = index; }
+      });
+      return best;
+    }
+    function sync() {
+      frame = null;
+      active = nearestIndex();
+      cards.forEach(function (card, index) {
+        var isActive = index === active;
+        card.classList.toggle('is-active', isActive);
+        if (isActive) card.setAttribute('aria-current', 'true');
+        else card.removeAttribute('aria-current');
+      });
+      if (prev) prev.disabled = active === 0;
+      if (next) next.disabled = active === cards.length - 1;
+      if (status) status.textContent = 'Review ' + (active + 1) + ' of ' + cards.length;
+    }
+    function schedule() {
+      if (!frame) frame = requestAnimationFrame(sync);
+    }
+    function goTo(index) {
+      var target = Math.max(0, Math.min(cards.length - 1, index));
+      active = target;
+      track.scrollTo({ left: centreFor(cards[target]), behavior: reduceMotion ? 'auto' : 'smooth' });
+      schedule();
+    }
+
+    track.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    if (prev) prev.addEventListener('click', function () { goTo(nearestIndex() - 1); });
+    if (next) next.addEventListener('click', function () { goTo(nearestIndex() + 1); });
+    track.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight') { event.preventDefault(); goTo(nearestIndex() + 1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(nearestIndex() - 1); }
+    });
+    sync();
   }
 
   /* ---------- Service detail personalization from carousel links ---------- */
