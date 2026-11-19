@@ -371,7 +371,8 @@
 .why-alify__eyebrow i { display: inline-block; color: var(--color-amber-light); transform-origin: center; animation: hero-triangle-spin 6s linear infinite; }
 .why-alify__title { margin: 0; color: #fff; font: 400 var(--font-size-h2)/1.1 var(--font-heading); letter-spacing: -.04em; }
 .why-alify__lead { margin: 20px 0 0; color: rgba(255,255,255,.69); font-size: var(--font-size-lg); line-height: 1.7; }
-.why-alify__cta { margin-top: 27px; border-color: rgba(255,255,255,.5); color: #fff; }
+.why-alify__cta { margin-top: 27px; border-color: rgba(255,255,255,.5); background: transparent; color: #fff; text-decoration: none; }
+.why-alify__cta:hover,.why-alify__cta:focus-visible { text-decoration: none; }
 .why-alify__cta:hover,.why-alify__cta:focus-visible { border-color: var(--color-amber-light); background: var(--color-amber-light); color: var(--color-charcoal); }
 .why-alify__card { position: relative; height: 100%; min-height: 220px; padding: clamp(22px,2.5vw,32px); overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 14px; background: linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018)); transition: transform .25s ease, border-color .25s ease, background .25s ease; }
 .why-alify__card::before { position: absolute; top: 0; left: 24px; width: 46px; height: 2px; background: var(--color-teal); content: ''; transition: width .3s ease; }
