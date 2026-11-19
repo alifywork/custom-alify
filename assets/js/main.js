@@ -384,20 +384,27 @@
         outcome: 'A calmer experience concept that puts clarity and people first.'
       }
     ];
-    var image = root.querySelector('[data-case-image]');
+    var layers = Array.prototype.slice.call(root.querySelectorAll('[data-case-image-layer]'));
     var content = root.querySelector('[data-case-content]');
     var counter = root.querySelector('[data-case-counter]');
+    if (layers.length < 2 || !content) return;
+    var activeLayer = layers[0];
     var current = 0;
-    if (!image || !content) return;
-    items.forEach(function (item) { var preload = new Image(); preload.src = item.image; });
+    var request = 0;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var loaded = items.map(function (item) {
+      return new Promise(function (resolve) {
+        var probe = new Image();
+        probe.onload = resolve;
+        probe.onerror = resolve;
+        probe.src = item.image;
+        if (probe.complete) resolve();
+      });
+    });
 
-    function render(index) {
-      current = (index + items.length) % items.length;
-      var item = items[current];
-      image.src = item.image;
-      image.alt = item.alt;
+    function updateText(item, index) {
       root.querySelector('[data-case-client]').textContent = item.client;
-      root.querySelector('[data-case-count]').textContent = 'Case study / ' + String(current + 1).padStart(2, '0');
+      root.querySelector('[data-case-count]').textContent = 'Case study / ' + String(index + 1).padStart(2, '0');
       root.querySelector('[data-case-category]').textContent = item.category;
       root.querySelector('[data-case-title]').textContent = item.title;
       root.querySelector('[data-case-lead]').textContent = item.lead;
@@ -405,12 +412,46 @@
       root.querySelector('[data-case-point-copy="approach"]').textContent = item.approach;
       root.querySelector('[data-case-point-copy="outcome"]').textContent = item.outcome;
       root.querySelector('[data-case-link]').href = 'single-case-study.html?case=' + item.slug;
+      if (counter) counter.innerHTML = String(index + 1).padStart(2, '0') + ' <span>/ ' + String(items.length).padStart(2, '0') + '</span>';
+    }
+
+    function render(index) {
+      current = (index + items.length) % items.length;
+      var item = items[current];
+      var thisRequest = ++request;
       if (counter) counter.innerHTML = String(current + 1).padStart(2, '0') + ' <span>/ ' + String(items.length).padStart(2, '0') + '</span>';
-      if (typeof gsap !== 'undefined') {
-        gsap.killTweensOf([image, content]);
-        gsap.fromTo(image, { x: -54, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .55, ease: 'power2.out', overwrite: 'auto' });
-        gsap.fromTo(content, { x: 54, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .55, delay: .06, ease: 'power2.out', overwrite: 'auto' });
-      }
+      loaded[current].then(function () {
+        if (thisRequest !== request) return;
+        var incoming = activeLayer === layers[0] ? layers[1] : layers[0];
+        var outgoing = activeLayer;
+        incoming.src = item.image;
+        incoming.alt = item.alt;
+        incoming.removeAttribute('aria-hidden');
+        updateText(item, current);
+
+        if (typeof gsap !== 'undefined' && !reduceMotion) {
+          gsap.killTweensOf([incoming, outgoing, content]);
+          gsap.set(incoming, { x: -44, autoAlpha: 0, zIndex: 2 });
+          gsap.set(outgoing, { x: 0, autoAlpha: 1, zIndex: 1 });
+          gsap.set(content, { x: 46, autoAlpha: 0 });
+          var timeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
+          timeline.to(outgoing, { x: 34, autoAlpha: 0, duration: .46, ease: 'power2.in' }, 0)
+            .to(incoming, { x: 0, autoAlpha: 1, duration: .58, ease: 'power3.out' }, 0)
+            .to(content, { x: 0, autoAlpha: 1, duration: .52, ease: 'power3.out' }, .08)
+            .call(function () {
+              outgoing.classList.remove('is-active');
+              outgoing.setAttribute('aria-hidden', 'true');
+              incoming.classList.add('is-active');
+              activeLayer = incoming;
+              gsap.set(outgoing, { x: 0, zIndex: 0 });
+            });
+        } else {
+          outgoing.classList.remove('is-active');
+          outgoing.setAttribute('aria-hidden', 'true');
+          incoming.classList.add('is-active');
+          activeLayer = incoming;
+        }
+      });
     }
     var prev = root.querySelector('[data-case-prev]');
     var next = root.querySelector('[data-case-next]');
