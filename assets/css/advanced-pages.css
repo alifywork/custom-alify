@@ -103,7 +103,7 @@
 [data-portfolio-item][hidden] {display: none !important;}
 .page-card__title {margin: 0 0 12px; color: var(--color-charcoal); font-family: var(--font-heading); font-size: var(--font-size-h4); font-weight: 400;}
 /* Homepage trusted-client ticker; names are intentionally illustrative placeholders. */
-.trusted-clients {overflow: hidden; padding-block: clamp(32px, 4vw, 50px); border-bottom: 1px solid rgba(18,21,28,.08); background: #fff;}
+.trusted-clients {overflow: hidden; padding-block: 0; border-bottom: 1px solid rgba(18,21,28,.08); background: #fff;}
 .trusted-ticker {position: relative; overflow: hidden; mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);}
 .trusted-ticker__track {display: flex; width: max-content; animation: trustedTickerMove 38s linear infinite;}
 .trusted-ticker:hover .trusted-ticker__track {animation-play-state: paused;}
@@ -664,14 +664,6 @@
    ============================================================ */
 
 /* Client marquee under the hero */
-.about-clients {padding-block: clamp(28px,3.4vw,44px); border-bottom: 1px solid rgba(18,21,28,.08); background: #fff;}
-.about-clients__inner {display: flex; flex-wrap: wrap; align-items: center; gap: 18px 34px;}
-.about-clients__label {flex: 0 0 auto; margin: 0; color: var(--color-muted); font: 600 .62rem var(--font-accent); letter-spacing: .18em; text-transform: uppercase;}
-.about-clients__viewport {position: relative; flex: 1 1 320px; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); -webkit-mask-image: linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
-.about-clients__track {display: flex; align-items: center; gap: clamp(26px,4vw,54px); width: max-content; animation: about-marquee 34s linear infinite;}
-.about-clients__track span {color: rgba(18,21,28,.42); font: 500 clamp(.95rem,1.3vw,1.1rem)/1 var(--font-heading); letter-spacing: -.01em; white-space: nowrap; transition: color .25s ease;}
-.about-clients__track span:hover {color: var(--color-primary);}
-.about-clients:hover .about-clients__track {animation-play-state: paused;}
 @keyframes about-marquee {from { transform: translateX(0); } to { transform: translateX(-50%); }}
 /* Story collage */
 .about-story__visual {position: relative; padding-bottom: 26px;}
@@ -711,7 +703,6 @@
 }
 
 @media (max-width: 767.98px) {
-.about-clients__inner {gap: 12px;}
 .about-work__list--checks {grid-template-columns: minmax(0,1fr);}
 }
 
@@ -720,10 +711,6 @@
 .about-work__panel--dark .about-work__list li {padding-top: 14px;}
 }
 
-@media (prefers-reduced-motion: reduce) {
-.about-clients__track {animation: none;}
-.about-clients__viewport {overflow-x: auto; mask-image: none; -webkit-mask-image: none;}
-}
 
 /* ============================================================
    About page — fixes and final polish
@@ -734,7 +721,6 @@
 .about-story__visual .about-story__img--sm {position: absolute; z-index: 2; bottom: 0; left: -14px; width: 34%; height: clamp(120px,15vw,180px); border: 6px solid #fff; border-radius: 20px; box-shadow: 0 18px 40px -26px rgba(16,25,35,.5);}
 .about-story__badge {z-index: 3; right: 22px; bottom: 40px; left: auto;}
 /* Hero facts centred with the hero copy. */
-.about-clients__track span {color: rgba(18,21,28,.55);}
 /* Stats header breathing room. */
 .about-stats__head {display: block;}
 .about-stats__note {max-width: 520px; margin: 14px 0 0; font-size: .68rem;}
@@ -908,7 +894,6 @@
 /* Focus states are visible everywhere on this page. */
 .about-tools__chips li:focus-visible,
 .about-team__social:focus-visible,
-.about-clients__track span:focus-visible {outline: 2px solid var(--color-primary); outline-offset: 3px;}
 
 @media (prefers-reduced-motion: reduce) {
 .about-tools__group,
