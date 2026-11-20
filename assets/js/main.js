@@ -40,6 +40,7 @@
     initFilterSelects();
     initSmoothScroll();
     initBackToTop();
+    initScrollToBottom();
     initActiveNav();
     initRevealAnimations();
     initCounters();
@@ -52,8 +53,8 @@
   /* ---------- Local Hero Background Videos ---------- */
   function initBackgroundVideos() {
     var videoSections = [
-      { selector: '.home-hero', source: 'assets/images/background-videos/home-hero.mp4', type: 'video/mp4' },
-      { selector: '.inner-hero', source: 'assets/images/background-videos/inner-hero.mp4', type: 'video/mp4' }
+      { selector: '.home-hero', source: 'assets/images/background-videos/home-hero.mp4', poster: 'assets/images/background-videos/home-hero-poster.jpg', type: 'video/mp4' },
+      { selector: '.inner-hero', source: 'assets/images/background-videos/inner-hero.mp4', poster: 'assets/images/background-videos/inner-hero-poster.jpg', type: 'video/mp4' }
     ];
 
     videoSections.forEach(function (item) {
@@ -68,6 +69,7 @@
         video.loop = true;
         video.playsInline = true;
         video.preload = 'none';
+        if (item.poster) video.setAttribute('poster', item.poster);
         video.setAttribute('aria-hidden', 'true');
         video.setAttribute('tabindex', '-1');
         video.setAttribute('disablepictureinpicture', '');
@@ -730,6 +732,40 @@
         gsap.to(window, { duration: 0.8, scrollTo: 0, ease: 'power3.out' });
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  /* ---------- Floating Scroll-to-Bottom ---------- */
+  function initScrollToBottom() {
+    var btn = document.getElementById('scrollToBottom');
+    if (!btn) return;
+
+    var shown = false;
+
+    function toggle() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var shouldShow = max > 600 && window.scrollY < 200;
+      if (shouldShow === shown) return;
+      shown = shouldShow;
+      btn.classList.toggle('is-visible', shouldShow);
+      btn.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      btn.tabIndex = shouldShow ? 0 : -1;
+    }
+
+    btn.setAttribute('aria-hidden', 'true');
+    btn.tabIndex = -1;
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    window.addEventListener('resize', toggle);
+    window.addEventListener('load', toggle);
+
+    btn.addEventListener('click', function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+        gsap.to(window, { duration: 1, scrollTo: max, ease: 'power3.inOut' });
+      } else {
+        window.scrollTo({ top: max, behavior: 'smooth' });
       }
     });
   }

@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#F6F4F1">
   <meta name="description" content="Request a conversation with Alify and share your preferred time.">
   <title>Book a Call | Alify</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="canonical" href="https://alify.studio/book-a-call.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Alify">
@@ -428,6 +431,7 @@
                 <h3 tabindex="-1" data-form-success-title>Call request received.</h3>
                 <p data-form-success-text>Thanks — we will confirm the slot by email shortly.</p>
                 <button class="contact-form__again" type="button" data-form-again>Send another request</button>
+                <a class="contact-form__next-link" href="thank-you.html">See what happens next <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
               </div>
             </div>
           </div>
@@ -554,7 +558,7 @@
 
   <footer class="site-footer" id="siteFooter">
     <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
-      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/images/background-videos/footer-cta-poster.jpg">
         <source src="assets/images/background-videos/footer-cta.mp4" type="video/mp4">
       </video>
       <div class="container footer-cta__container">
@@ -634,6 +638,9 @@
   <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll back to top">
     <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+  <button class="back-to-top back-to-top--down" id="scrollToBottom" type="button" aria-label="Scroll to bottom">
+    <i class="ph ph-arrow-down" aria-hidden="true"></i>
   </button>
 
   <script defer src="assets/js/modules/forms-flow.js"></script>

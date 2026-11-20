@@ -1,7 +1,7 @@
 # custom-alify
 # custom-alify — static prototype
 
-Marketing site for Alify: 26 static pages, plain HTML + Bootstrap 5 layout, GSAP for motion.
+Marketing site for Alify: 34 static pages, plain HTML + Bootstrap 5 layout, GSAP for motion.
 Everything is local (no build step). Open `index.html` or run `python3 -m http.server 8000`.
 
 ## Page map
@@ -11,9 +11,9 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 | `index.html` | Home: hero, clients, 9 services, about, projects, process, industries, why Alify, case highlight, testimonials, pricing, journal, FAQ |
 | `about-us.html` | Story, pillars, stats, team, working style, reach, tools, testimonials |
 | `services.html` | 9-service catalogue (homepage cards), journey, industries, pricing, FAQ |
-| `web-development.html`, `brand-design.html`, `digital-growth.html`, `ecommerce.html` | Service detail template |
+| `web-development.html` | Flagship web development service (bespoke copy) |
 | `service-wordpress.html`, `service-shopify.html`, `service-ui-ux.html`, `service-seo.html`, `service-digital-marketing.html`, `service-content-writing.html`, `service-logo-designing.html`, `service-ai-automation.html` | Static service detail pages (one per catalogue service) |
-| `single-service.html` | Generic service template; still personalises through `?service=…` for backwards-compatible links |
+| `templates/single-service.html` | Off-site service template (`noindex`, not linked, not in the sitemap); personalises through `?service=…`. Asset paths are `../`-prefixed so it only works inside `templates/` |
 | `portfolio.html`, `single-project.html` | Work index (filter sidebar) + project template |
 | `industries.html` | Six sectors, `?industry=technology\|ecommerce\|health\|finance\|education\|travel` deep-links a panel |
 | `case-studies.html`, `single-case-study.html` | Case index (two dropdown filters) + case template |
@@ -23,6 +23,11 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 | `legal.html` | Privacy policy (`#privacy`) and terms (`#terms`) — footer links land here |
 | `404.html` | Not found (noindex) |
 | `work.html` | Redirect stub to `portfolio.html` (noindex) |
+| `brand-design.html` | Redirect stub to `service-logo-designing.html` (noindex, merged into the identity page) |
+| `digital-growth.html` | Redirect stub to `service-seo.html` (noindex, merged into SEO + marketing) |
+| `ecommerce.html` | Redirect stub to `service-shopify.html` (noindex, merged into Shopify) |
+| `robots.txt` | Crawl rules; disallows the stubs, thank-you, 404 and `templates/`, points at the sitemap |
+| `sitemap.xml` | 28 indexable URLs (stubs, `thank-you`, `404` and `templates/` excluded) |
 
 ## CSS structure
 
@@ -39,7 +44,10 @@ The three `advanced-pages-*` files are split by selector ownership; a page loads
 ## JavaScript modules
 
 `assets/js/main.js` (≈35 KB) holds the shared shell: hero videos, lazy loading, header, nav dropdowns, drawers,
-active nav, reveal animations, counters, forms, back-to-top, filters shared by several pages.
+active nav, reveal animations, counters, forms, the floating scroll-to-top (`#backToTop`) and
+scroll-to-bottom (`#scrollToBottom`) controls, filters shared by several pages.
+Both floating controls share the `.back-to-top` skin; the down variant adds `.back-to-top--down`
+(down arrow shows in the first 200px of scroll, up arrow after 400px, never both at once).
 
 Page-specific behaviour lives in `assets/js/modules/` and is only loaded where its hooks exist:
 
@@ -49,7 +57,7 @@ Page-specific behaviour lives in `assets/js/modules/` and is only loaded where i
 | `editorial.js` | blog, single-blog-post, faq, testimonials | `data-blog-archive`, `data-faq-directory`, `data-review-archive`, article TOC/share |
 | `work-grid.js` | portfolio, case-studies, single-project, single-case-study, testimonials | `data-portfolio-grid`, `data-case-filters`, `data-gallery`, `data-video-modal` |
 | `sliders.js` | home, about, services | `data-service-slider`, `data-case-highlight`, `data-testimonial-track`, `data-featured-project` |
-| `service-detail.js` | single-service | `?service=` personalisation |
+| `service-detail.js` | `templates/single-service.html` | `?service=` personalisation |
 
 ## Forms
 
@@ -70,18 +78,34 @@ Social preview image: `assets/images/social/og-default.png` (1200×630).
 
 ## Performance
 
-* Background videos are lazy: `preload="none"` and the real `src` moves to `data-src`; `initLazyVideos()` swaps it
-  in through an `IntersectionObserver` (250px margin). First paint no longer downloads the 45 MB of MP4s.
-* Compress the originals once with ffmpeg before launch (sources stay in `assets/images/background-videos/`):
+* Background videos are already compressed (1280px wide, no audio, CRF 30, `+faststart`). The whole
+  `assets/images/background-videos/` folder is 4.1 MB, down from 46 MB:
+
+| File | Size |
+| --- | --- |
+| `home-hero.mp4` | 886 KB |
+| `inner-hero.mp4` | 1.29 MB |
+| `footer-cta.mp4` | 2.0 MB |
+
+* Every video has a poster frame (`home-hero-poster.jpg` 39 KB, `inner-hero-poster.jpg` 10 KB,
+  `footer-cta-poster.jpg` 45 KB) so the first paint shows artwork instead of black.
+* Videos stay lazy anyway: `preload="none"`, the real `src` moves to `data-src`, and `initLazyVideos()`
+  swaps it in through an `IntersectionObserver` (250px margin).
+* Re-encode commands (sources stay in `assets/images/background-videos/`):
 
 ```bash
-ffmpeg -i home-hero.mp4 -vf "scale=1280:-2" -an -c:v libx264 -crf 30 -preset slow -movflags +faststart home-hero-web.mp4
-ffmpeg -i inner-hero.mp4 -vf "scale=1280:-2" -an -c:v libx264 -crf 30 -preset slow -movflags +faststart inner-hero-web.mp4
-ffmpeg -i footer-cta.mp4 -vf "scale=1280:-2" -an -c:v libx264 -crf 30 -preset slow -movflags +faststart footer-cta-web.mp4
+ffmpeg -i IN.mp4 -vf "scale=1280:-2" -an -c:v libx264 -crf 30 -preset medium -movflags +faststart -y OUT.mp4
+ffmpeg -ss 1 -i OUT.mp4 -frames:v 1 -q:v 4 -y OUT-poster.jpg
 ```
+
+## Icons
+
+`assets/images/favicon.svg` (scalable, used by every page), `favicon-32x32.png`, `apple-touch-icon.png`
+(180×180) and `icon-192.png` — navy tile, cream “A”, amber dot.
 
 ## Placeholders to replace before launch
 
 * Phone number (`+92 300 123 4567`), social profile URLs and `hello@alify.studio`.
 * Legal copy — reviewed by a lawyer for the operating jurisdiction.
-* Project names, metrics and testimonials are illustrative.
+* Project names, metrics and testimonials are illustrative stand-ins — swap in real client work before publishing.
+* Forms run in preview mode until `data-endpoint` is set (see **Forms**); only then will a submission reach a mailbox.

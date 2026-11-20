@@ -1388,6 +1388,13 @@ h1,h2,h3,h4,h5,h6,
 .back-to-top:active { transform: translateY(0); }
 .back-to-top:focus-visible { outline: 3px solid var(--color-amber-light); outline-offset: 3px; }
 .back-to-top i { display: block; font-size: 1.15rem; }
+/* Mirror control: scroll to the bottom of the page (element: #scrollToBottom) */
+.back-to-top--down {
+  bottom: calc(clamp(18px, 2.4vw, 30px) + 58px);
+}
+.back-to-top--down:hover { transform: translateY(3px); }
+.back-to-top--down:active { transform: translateY(0); }
 @media (max-width: 575.98px) {
   .back-to-top { width: 44px; height: 44px; right: 14px; bottom: 16px; }
+  .back-to-top--down { bottom: calc(16px + 54px); }
 }

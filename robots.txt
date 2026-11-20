@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Utility and noindex pages
+Disallow: /404.html
+Disallow: /thank-you.html
+Disallow: /work.html
+Disallow: /brand-design.html
+Disallow: /digital-growth.html
+Disallow: /ecommerce.html
+Disallow: /templates/
+
+Sitemap: https://alify.studio/sitemap.xml
