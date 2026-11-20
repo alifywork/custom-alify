@@ -4,8 +4,93 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F6F4F1">
-  <meta name="description" content="Explore illustrative Alify portfolio projects across brand, web, commerce and digital products.">
+  <meta name="description" content="Explore Alify Alify portfolio projects across brand, web, commerce and digital products.">
   <title>Portfolio | Alify</title>
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="canonical" href="https://alify.studio/portfolio.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alify">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Portfolio | Alify">
+  <meta property="og:description" content="Explore Alify Alify portfolio projects across brand, web, commerce and digital products.">
+  <meta property="og:url" content="https://alify.studio/portfolio.html">
+  <meta property="og:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alify — ideas that move you forward">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portfolio | Alify">
+  <meta name="twitter:description" content="Explore Alify Alify portfolio projects across brand, web, commerce and digital products.">
+  <meta name="twitter:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://alify.studio/#organization",
+      "name": "Alify",
+      "url": "https://alify.studio/",
+      "logo": "https://alify.studio/assets/images/logo/sticky-logo.png",
+      "email": "hello@alify.studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karachi",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://www.instagram.com/alify.studio/",
+        "https://www.linkedin.com/company/alify-studio/",
+        "https://www.facebook.com/alify.studio/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://alify.studio/#website",
+      "url": "https://alify.studio/",
+      "name": "Alify",
+      "publisher": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://alify.studio/portfolio.html#webpage",
+      "url": "https://alify.studio/portfolio.html",
+      "name": "Portfolio | Alify",
+      "description": "Explore Alify portfolio projects across brand, web, commerce and product design.",
+      "isPartOf": {
+        "@id": "https://alify.studio/#website"
+      },
+      "about": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://alify.studio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://alify.studio/portfolio.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
   <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -13,13 +98,20 @@
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/utility.css">
   <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/arrow-buttons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/nav-menus.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/inner-pages.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
   <link rel="stylesheet" href="assets/css/advanced-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-editorial.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-work.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-services.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/video-backgrounds.css">
   <link rel="stylesheet" href="assets/icons/phosphor.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body id="top">
   <header class="site-header" id="siteHeader">
@@ -29,20 +121,68 @@
         <img class="site-header__logo-sticky" src="assets/images/logo/sticky-logo.png" alt="" aria-hidden="true">
       </a>
 
-      <nav class="site-nav" aria-label="Main navigation">
+            <nav class="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="index.html">Home</a>
-        <a class="site-nav__link" href="about-us.html">About Us</a>
-        <a class="site-nav__link" href="services.html">Services</a>
-        <a class="site-nav__link" href="portfolio.html">Work</a>
-        <a class="site-nav__link" href="industries.html">Industries</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navAboutMenu" data-nav-toggle>
+            <span>About Us</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu site-nav__menu--narrow" id="navAboutMenu" data-nav-menu>
+            <p class="site-nav__menu-label">The studio</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="about-us.html"><span class="site-nav__menu-name">About Alify</span><span class="site-nav__menu-desc">The studio and how we work</span></a>
+              <a class="site-nav__menu-link" href="process.html"><span class="site-nav__menu-name">Our process</span><span class="site-nav__menu-desc">Six phases, no surprises</span></a>
+              <a class="site-nav__menu-link" href="pricing.html"><span class="site-nav__menu-name">Pricing</span><span class="site-nav__menu-desc">Three ways to work together</span></a>
+              <a class="site-nav__menu-link" href="testimonials.html"><span class="site-nav__menu-name">Testimonials</span><span class="site-nav__menu-desc">What clients say</span></a>
+              <a class="site-nav__menu-link" href="faq.html"><span class="site-nav__menu-name">FAQ</span><span class="site-nav__menu-desc">Answers before you ask</span></a>
+              <a class="site-nav__menu-link" href="contact-us.html"><span class="site-nav__menu-name">Contact</span><span class="site-nav__menu-desc">Start a conversation</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu" data-nav-toggle>
+            <span>Services</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navServicesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Nine connected services</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="web-development.html"><span class="site-nav__menu-name">Web Development</span><span class="site-nav__menu-desc">Fast, accessible websites</span></a>
+              <a class="site-nav__menu-link" href="service-wordpress.html"><span class="site-nav__menu-name">WordPress Development</span><span class="site-nav__menu-desc">Sites your team can run</span></a>
+              <a class="site-nav__menu-link" href="service-shopify.html"><span class="site-nav__menu-name">Shopify Development</span><span class="site-nav__menu-desc">Stores built to convert</span></a>
+              <a class="site-nav__menu-link" href="service-ui-ux.html"><span class="site-nav__menu-name">UI / UX Design</span><span class="site-nav__menu-desc">Journeys people finish</span></a>
+              <a class="site-nav__menu-link" href="service-seo.html"><span class="site-nav__menu-name">SEO</span><span class="site-nav__menu-desc">Technical and on-page search</span></a>
+              <a class="site-nav__menu-link" href="service-digital-marketing.html"><span class="site-nav__menu-name">Digital Marketing</span><span class="site-nav__menu-desc">Campaigns that compound</span></a>
+              <a class="site-nav__menu-link" href="service-content-writing.html"><span class="site-nav__menu-name">Content Writing</span><span class="site-nav__menu-desc">Clear, useful copy</span></a>
+              <a class="site-nav__menu-link" href="service-logo-designing.html"><span class="site-nav__menu-name">Logo Designing</span><span class="site-nav__menu-desc">Identities that stick</span></a>
+              <a class="site-nav__menu-link" href="service-ai-automation.html"><span class="site-nav__menu-name">AI Automation</span><span class="site-nav__menu-desc">Workflows that save hours</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="services.html">All services <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <a class="site-nav__link" href="portfolio.html">Portfolio</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navIndustriesMenu" data-nav-toggle>
+            <span>Industries</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navIndustriesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Where we work</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="industries.html?industry=technology"><span class="site-nav__menu-name">Technology & Apps</span><span class="site-nav__menu-desc">SaaS, platforms, product teams</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=ecommerce"><span class="site-nav__menu-name">E-commerce & Retail</span><span class="site-nav__menu-desc">Stores, catalogues, checkout</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=health"><span class="site-nav__menu-name">Health & Wellbeing</span><span class="site-nav__menu-desc">Clinics, care, wellness brands</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=finance"><span class="site-nav__menu-name">Finance & Professional</span><span class="site-nav__menu-desc">Fintech, advisory, services</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=education"><span class="site-nav__menu-name">Education</span><span class="site-nav__menu-desc">Schools, courses, learning tools</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=travel"><span class="site-nav__menu-name">Travel & Hospitality</span><span class="site-nav__menu-desc">Hotels, tours, booking flows</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="industries.html">All industries <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="case-studies.html">Case Studies</a>
         <a class="site-nav__link" href="blog.html">Blog</a>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn-pill btn-pill--arrow site-header__cta" href="lets-get-started.html">
-          <span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-        </a>
+        <a class="arrow__btn-link btn-teal-deep site-header__cta" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
         <button class="btn-icon site-header__about-toggle" type="button" aria-label="Open Alify information" aria-controls="aboutDrawer" aria-expanded="false">
           <i class="ph ph-dots-nine" aria-hidden="true"></i>
         </button>
@@ -65,16 +205,16 @@
       <h2>We are <span>ALIFY</span></h2>
       <p class="site-drawer__description">We turn ambitious ideas into thoughtful digital experiences. Strategy, creativity and technology—working together to move your business forward.</p>
       <div class="site-drawer__ctas">
-        <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
-        <a class="btn-pill btn-pill--outline" href="contact-us.html">Schedule a Call</a>
+        <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Schedule a Call</a>
       </div>
     </div>
     <div class="site-drawer__bottom">
       <span class="site-drawer__social-label">Follow along</span>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -84,32 +224,286 @@
       <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
       <button class="btn-icon site-drawer__close" type="button" aria-label="Close navigation menu"><i class="ph ph-x" aria-hidden="true"></i></button>
     </div>
-    <nav class="site-drawer__nav" aria-label="Mobile navigation">
+        <nav class="site-drawer__nav" aria-label="Mobile navigation">
       <a href="index.html"><span>01</span> Home <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="about-us.html"><span>02</span> About Us <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="services.html"><span>03</span> Services <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="portfolio.html"><span>04</span> Work <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="industries.html"><span>05</span> Industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerAboutSub" data-nav-group-toggle>
+          <span><span>02</span> About Us</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerAboutSub" hidden>
+            <a href="about-us.html">About Alify</a>
+            <a href="process.html">Our process</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+      </div>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerServicesSub" data-nav-group-toggle>
+          <span><span>03</span> Services</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerServicesSub" hidden>
+            <a href="web-development.html">Web Development</a>
+            <a href="service-wordpress.html">WordPress Development</a>
+            <a href="service-shopify.html">Shopify Development</a>
+            <a href="service-ui-ux.html">UI / UX Design</a>
+            <a href="service-seo.html">SEO</a>
+            <a href="service-digital-marketing.html">Digital Marketing</a>
+            <a href="service-content-writing.html">Content Writing</a>
+            <a href="service-logo-designing.html">Logo Designing</a>
+            <a href="service-ai-automation.html">AI Automation</a>
+          <a class="site-drawer__sub-all" href="services.html">All services</a>
+        </div>
+      </div>
+      <a href="portfolio.html"><span>04</span> Portfolio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerIndustriesSub" data-nav-group-toggle>
+          <span><span>05</span> Industries</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerIndustriesSub" hidden>
+            <a href="industries.html?industry=technology">Technology & Apps</a>
+            <a href="industries.html?industry=ecommerce">E-commerce & Retail</a>
+            <a href="industries.html?industry=health">Health & Wellbeing</a>
+            <a href="industries.html?industry=finance">Finance & Professional</a>
+            <a href="industries.html?industry=education">Education</a>
+            <a href="industries.html?industry=travel">Travel & Hospitality</a>
+          <a class="site-drawer__sub-all" href="industries.html">All industries</a>
+        </div>
+      </div>
       <a href="case-studies.html"><span>06</span> Case Studies <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
       <a href="blog.html"><span>07</span> Blog <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
     </nav>
     <div class="site-drawer__bottom site-drawer__bottom--menu">
-      <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+      <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Selected work</p><h1 id="pageHeroTitle">Good work starts<br><span>with the right question.</span></h1><p class="inner-hero__description">A selection of illustrative projects and the thinking behind them. Project names and details are sample content for this website build.</p><div class="inner-hero__actions"><a class="btn-pill btn-pill--arrow" href="get-a-quote.html"><span>Get a quote</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right"></i></span></a><a class="btn-pill btn-pill--outline" href="services.html">All services</a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Selected work</p><h1 id="pageHeroTitle">Good work starts<br><span>with the right question.</span></h1><p class="inner-hero__description">A selection of projects and the thinking behind them.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="btn-pill btn-pill--on-dark" href="case-studies.html">Read case studies</a></div></div></div></section>
+
+    <section class="work-filters filter-browser" aria-labelledby="workFiltersTitle">
+  <div class="container">
+    <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Selected work</p>
+            <h2 id="workFiltersTitle">A selection of projects,<br><span>and the thinking behind them.</span></h2>
+          </div>
+        </div>
+    <div class="filter-shell">
+      <aside class="filter-shell__side" aria-label="Filter options">
+        <p class="filter-shell__title">Filters</p>
+            <div class="filter-shell__field">
+              <span class="filter-shell__label">Discipline</span>
+              <span class="filter-shell__select-wrap">
+                <select class="filter-shell__select" data-filter-select="portfolio-filter" aria-label="Filter projects by discipline">
+                  <option value="all">All projects</option>
+                  <option value="websites">Websites</option>
+                  <option value="ecommerce">E-commerce</option>
+                  <option value="brand">Brand & identity</option>
+                  <option value="product">Product design</option>
+                </select>
+                <i class="ph ph-caret-down filter-shell__caret" aria-hidden="true"></i>
+              </span>
+            </div>
+        <p class="blog-filters__count filter-shell__status" data-portfolio-status aria-live="polite"></p>
+        <button class="filter-shell__reset" type="button" data-filter-reset="portfolio-filter">
+          <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>Reset filters
+        </button>
+      </aside>
+      <div class="filter-shell__main">
+<div class="work-grid__inner" data-portfolio-grid data-per-batch="6">
+        <article class="work-card" data-portfolio-item="websites">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Technology &amp; Apps/featured-northstar.svg" alt="Northstar website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Websites</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Northstar</span>
+              <span class="work-card__text">A digital platform for teams building what is next.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Technology &amp; Apps</span><span class="work-card__year">2026</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="ecommerce">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Shopping &amp; eCommerce/featured-fieldnotes.svg" alt="Fieldnotes website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">E-commerce</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Fieldnotes</span>
+              <span class="work-card__text">A simpler storefront for a growing catalogue.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Shopping &amp; eCommerce</span><span class="work-card__year">2026</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="product">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Health &amp; Medical/featured-wellspace.svg" alt="Wellspace website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Product design</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Wellspace</span>
+              <span class="work-card__text">Guidance and next steps that are easy to find.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Health &amp; Medical</span><span class="work-card__year">2025</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="websites">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Finance &amp; Law/featured-meridian.svg" alt="Meridian website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Websites</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Meridian</span>
+              <span class="work-card__text">Clear numbers for people who do not read charts.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Finance &amp; Law</span><span class="work-card__year">2025</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="ecommerce">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Food &amp; Drink/featured-copperline.svg" alt="Copperline website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">E-commerce</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Copperline</span>
+              <span class="work-card__text">A roast-to-order shop built around a weekly rhythm.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Food &amp; Drink</span><span class="work-card__year">2025</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="websites">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Education/featured-kindred.svg" alt="Kindred website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Websites</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Kindred</span>
+              <span class="work-card__text">Courses that fit around a working week.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Education</span><span class="work-card__year">2025</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="brand">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Business &amp; Services/featured-harbor.svg" alt="Harbor website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Brand &amp; identity</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Harbor</span>
+              <span class="work-card__text">One identity that holds across four regional teams.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Business &amp; Services</span><span class="work-card__year">2024</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="brand">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Fashion &amp; Beauty/featured-pulse.svg" alt="Pulse website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Brand &amp; identity</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Pulse</span>
+              <span class="work-card__text">Everyday knitwear, made to be kept.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Fashion &amp; Beauty</span><span class="work-card__year">2024</span></span>
+            </span>
+          </a>
+        </article>
+        <article class="work-card" data-portfolio-item="product">
+          <a class="work-card__link" href="single-case-study.html">
+            <span class="work-card__media">
+              <img src="assets/images/projects/Real Estate &amp; Construction/featured-foundry.svg" alt="Foundry website preview" loading="lazy" width="1200" height="1900">
+            </span>
+            <span class="work-card__body">
+              <span class="work-card__meta"><span class="work-card__cat">Product design</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+              <span class="work-card__title">Foundry</span>
+              <span class="work-card__text">A development site that sells streets, not floor plans.</span>
+              <span class="work-card__foot"><span class="work-card__tag">Real Estate &amp; Construction</span><span class="work-card__year">2024</span></span>
+            </span>
+          </a>
+        </article>
+        </div>
+        <p class="work-empty" data-portfolio-empty hidden>Nothing in this category yet — but we would happily take it on. <a href="contact-us.html">Tell us about the project</a>.</p>
+      </div>
+    </div>
+    <div class="filter-shell__chips" hidden>
+      <div class="blog-filters__cats" role="group" aria-label="Filter projects by discipline">
+<button class="blog-filters__chip is-active" type="button" data-portfolio-filter="all" aria-pressed="true">All projects</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="websites" aria-pressed="false">Websites</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="ecommerce" aria-pressed="false">E-commerce</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="brand" aria-pressed="false">Brand &amp; identity</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="product" aria-pressed="false">Product design</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="work-pagination" aria-labelledby="workPaginationTitle">
+      <div class="container">
+        <h2 class="visually-hidden" id="workPaginationTitle">More projects</h2>
+        <div class="work-pagination__inner">
+          <p class="work-pagination__status" data-portfolio-progress aria-live="polite"></p>
+          <button class="arrow__btn-link btn-primary work-pagination__more" type="button" data-portfolio-more>
+            <span class="arrow__btn-text">Load more projects</span>
+            <span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap">
+              <i class="ph ph-arrow-down arrow__icon arrow__icon--first"></i>
+              <i class="ph ph-arrow-down arrow__icon arrow__icon--second"></i>
+            </span></span>
+          </button>
+          <p class="work-pagination__note">Nothing is padded out with templates. Every project above is real work, or a live concept we would happily build.</p>
+          <a class="btn-pill btn-pill--quiet" href="case-studies.html">Read the case studies</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-quote work-testimonial" aria-labelledby="workQuoteTitle">
+      <div class="container">
+        <div class="row gy-4 gx-lg-5 align-items-center">
+          <div class="col-lg-5">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> In their words</p>
+            <h2 class="svc-quote__title" id="workQuoteTitle">What the work<br><span>feels like to live with.</span></h2>
+            <p class="svc-quote__lead">One client on what changed after launch, in their own words. More reviews live on the testimonials page.</p>
+            <a class="svc-story-link" href="testimonials.html">Read all reviews <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="col-lg-6 offset-lg-1">
+            <article class="testimonial-card start-trust__quote svc-quote__card">
+              <div class="testimonial-card__top">
+                <span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span>
+                <span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span>
+              </div>
+              <blockquote class="testimonial-card__quote">
+                <p>We came for a website and left with a way of describing the business. Two years on, the same pages are still doing the work — and the same files are still easy to use.</p>
+              </blockquote>
+              <div class="testimonial-card__author">
+                <span class="testimonial-card__avatar" aria-hidden="true">MA</span>
+                <div>
+                  <span class="testimonial-card__name">Mahnoor Ali</span>
+                  <span class="testimonial-card__role">Founder, Hammer &amp; Fern</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
     <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
-      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/images/background-videos/footer-cta-poster.jpg">
         <source src="assets/images/background-videos/footer-cta.mp4" type="video/mp4">
       </video>
       <div class="container footer-cta__container">
@@ -118,10 +512,8 @@
             <p class="eyebrow footer-cta__eyebrow"><i class="ph ph-triangle footer-cta__eyebrow-icon" aria-hidden="true"></i>Have a good one in mind?</p>
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
-              <a class="btn-pill btn-pill--arrow" href="lets-get-started.html">
-                <span>Start a project</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-              </a>
-              <a class="btn-pill btn-pill--outline footer-cta__secondary" href="contact-us.html">Or schedule a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+              <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>
@@ -136,9 +528,9 @@
           </a>
           <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
           <div class="site-footer__socials" aria-label="Social media">
-            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="col-6 col-lg-2 col-md-3">
@@ -185,6 +577,14 @@
   <script defer src="assets/gsap/ScrollTrigger.min.js"></script>
   <script defer src="assets/gsap/ScrollToPlugin.min.js"></script>
   <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll back to top">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+  <button class="back-to-top back-to-top--down" id="scrollToBottom" type="button" aria-label="Scroll to bottom">
+    <i class="ph ph-arrow-down" aria-hidden="true"></i>
+  </button>
+
+  <script defer src="assets/js/modules/work-grid.js"></script>
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>

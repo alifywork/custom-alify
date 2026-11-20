@@ -6,6 +6,91 @@
   <meta name="theme-color" content="#F6F4F1">
   <meta name="description" content="Learn how Alify takes projects from discovery through launch and improvement.">
   <title>Our Process | Alify</title>
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="canonical" href="https://alify.studio/process.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alify">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Our Process | Alify">
+  <meta property="og:description" content="Learn how Alify takes projects from discovery through launch and improvement.">
+  <meta property="og:url" content="https://alify.studio/process.html">
+  <meta property="og:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alify — ideas that move you forward">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Our Process | Alify">
+  <meta name="twitter:description" content="Learn how Alify takes projects from discovery through launch and improvement.">
+  <meta name="twitter:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://alify.studio/#organization",
+      "name": "Alify",
+      "url": "https://alify.studio/",
+      "logo": "https://alify.studio/assets/images/logo/sticky-logo.png",
+      "email": "hello@alify.studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karachi",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://www.instagram.com/alify.studio/",
+        "https://www.linkedin.com/company/alify-studio/",
+        "https://www.facebook.com/alify.studio/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://alify.studio/#website",
+      "url": "https://alify.studio/",
+      "name": "Alify",
+      "publisher": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://alify.studio/process.html#webpage",
+      "url": "https://alify.studio/process.html",
+      "name": "Our Process | Alify",
+      "description": "Learn how Alify takes projects from discovery through launch and improvement.",
+      "isPartOf": {
+        "@id": "https://alify.studio/#website"
+      },
+      "about": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://alify.studio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Process",
+          "item": "https://alify.studio/process.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
   <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -13,13 +98,18 @@
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/utility.css">
   <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/arrow-buttons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/nav-menus.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/inner-pages.css">
   <link rel="stylesheet" href="assets/css/advanced-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-editorial.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-services.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/video-backgrounds.css">
   <link rel="stylesheet" href="assets/icons/phosphor.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body id="top">
   <header class="site-header" id="siteHeader">
@@ -29,20 +119,68 @@
         <img class="site-header__logo-sticky" src="assets/images/logo/sticky-logo.png" alt="" aria-hidden="true">
       </a>
 
-      <nav class="site-nav" aria-label="Main navigation">
+            <nav class="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="index.html">Home</a>
-        <a class="site-nav__link" href="about-us.html">About Us</a>
-        <a class="site-nav__link" href="services.html">Services</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navAboutMenu" data-nav-toggle>
+            <span>About Us</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu site-nav__menu--narrow" id="navAboutMenu" data-nav-menu>
+            <p class="site-nav__menu-label">The studio</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="about-us.html"><span class="site-nav__menu-name">About Alify</span><span class="site-nav__menu-desc">The studio and how we work</span></a>
+              <a class="site-nav__menu-link" href="process.html"><span class="site-nav__menu-name">Our process</span><span class="site-nav__menu-desc">Six phases, no surprises</span></a>
+              <a class="site-nav__menu-link" href="pricing.html"><span class="site-nav__menu-name">Pricing</span><span class="site-nav__menu-desc">Three ways to work together</span></a>
+              <a class="site-nav__menu-link" href="testimonials.html"><span class="site-nav__menu-name">Testimonials</span><span class="site-nav__menu-desc">What clients say</span></a>
+              <a class="site-nav__menu-link" href="faq.html"><span class="site-nav__menu-name">FAQ</span><span class="site-nav__menu-desc">Answers before you ask</span></a>
+              <a class="site-nav__menu-link" href="contact-us.html"><span class="site-nav__menu-name">Contact</span><span class="site-nav__menu-desc">Start a conversation</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu" data-nav-toggle>
+            <span>Services</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navServicesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Nine connected services</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="web-development.html"><span class="site-nav__menu-name">Web Development</span><span class="site-nav__menu-desc">Fast, accessible websites</span></a>
+              <a class="site-nav__menu-link" href="service-wordpress.html"><span class="site-nav__menu-name">WordPress Development</span><span class="site-nav__menu-desc">Sites your team can run</span></a>
+              <a class="site-nav__menu-link" href="service-shopify.html"><span class="site-nav__menu-name">Shopify Development</span><span class="site-nav__menu-desc">Stores built to convert</span></a>
+              <a class="site-nav__menu-link" href="service-ui-ux.html"><span class="site-nav__menu-name">UI / UX Design</span><span class="site-nav__menu-desc">Journeys people finish</span></a>
+              <a class="site-nav__menu-link" href="service-seo.html"><span class="site-nav__menu-name">SEO</span><span class="site-nav__menu-desc">Technical and on-page search</span></a>
+              <a class="site-nav__menu-link" href="service-digital-marketing.html"><span class="site-nav__menu-name">Digital Marketing</span><span class="site-nav__menu-desc">Campaigns that compound</span></a>
+              <a class="site-nav__menu-link" href="service-content-writing.html"><span class="site-nav__menu-name">Content Writing</span><span class="site-nav__menu-desc">Clear, useful copy</span></a>
+              <a class="site-nav__menu-link" href="service-logo-designing.html"><span class="site-nav__menu-name">Logo Designing</span><span class="site-nav__menu-desc">Identities that stick</span></a>
+              <a class="site-nav__menu-link" href="service-ai-automation.html"><span class="site-nav__menu-name">AI Automation</span><span class="site-nav__menu-desc">Workflows that save hours</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="services.html">All services <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="portfolio.html">Portfolio</a>
-        <a class="site-nav__link" href="industries.html">Industries</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navIndustriesMenu" data-nav-toggle>
+            <span>Industries</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navIndustriesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Where we work</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="industries.html?industry=technology"><span class="site-nav__menu-name">Technology & Apps</span><span class="site-nav__menu-desc">SaaS, platforms, product teams</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=ecommerce"><span class="site-nav__menu-name">E-commerce & Retail</span><span class="site-nav__menu-desc">Stores, catalogues, checkout</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=health"><span class="site-nav__menu-name">Health & Wellbeing</span><span class="site-nav__menu-desc">Clinics, care, wellness brands</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=finance"><span class="site-nav__menu-name">Finance & Professional</span><span class="site-nav__menu-desc">Fintech, advisory, services</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=education"><span class="site-nav__menu-name">Education</span><span class="site-nav__menu-desc">Schools, courses, learning tools</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=travel"><span class="site-nav__menu-name">Travel & Hospitality</span><span class="site-nav__menu-desc">Hotels, tours, booking flows</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="industries.html">All industries <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="case-studies.html">Case Studies</a>
         <a class="site-nav__link" href="blog.html">Blog</a>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn-pill btn-pill--arrow site-header__cta" href="lets-get-started.html">
-          <span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-        </a>
+        <a class="arrow__btn-link btn-teal-deep site-header__cta" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
         <button class="btn-icon site-header__about-toggle" type="button" aria-label="Open Alify information" aria-controls="aboutDrawer" aria-expanded="false">
           <i class="ph ph-dots-nine" aria-hidden="true"></i>
         </button>
@@ -65,16 +203,16 @@
       <h2>We are <span>ALIFY</span></h2>
       <p class="site-drawer__description">We turn ambitious ideas into thoughtful digital experiences. Strategy, creativity and technology—working together to move your business forward.</p>
       <div class="site-drawer__ctas">
-        <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
-        <a class="btn-pill btn-pill--outline" href="contact-us.html">Schedule a Call</a>
+        <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Schedule a Call</a>
       </div>
     </div>
     <div class="site-drawer__bottom">
       <span class="site-drawer__social-label">Follow along</span>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -84,21 +222,62 @@
       <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
       <button class="btn-icon site-drawer__close" type="button" aria-label="Close navigation menu"><i class="ph ph-x" aria-hidden="true"></i></button>
     </div>
-    <nav class="site-drawer__nav" aria-label="Mobile navigation">
+        <nav class="site-drawer__nav" aria-label="Mobile navigation">
       <a href="index.html"><span>01</span> Home <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="about-us.html"><span>02</span> About Us <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="services.html"><span>03</span> Services <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerAboutSub" data-nav-group-toggle>
+          <span><span>02</span> About Us</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerAboutSub" hidden>
+            <a href="about-us.html">About Alify</a>
+            <a href="process.html">Our process</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+      </div>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerServicesSub" data-nav-group-toggle>
+          <span><span>03</span> Services</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerServicesSub" hidden>
+            <a href="web-development.html">Web Development</a>
+            <a href="service-wordpress.html">WordPress Development</a>
+            <a href="service-shopify.html">Shopify Development</a>
+            <a href="service-ui-ux.html">UI / UX Design</a>
+            <a href="service-seo.html">SEO</a>
+            <a href="service-digital-marketing.html">Digital Marketing</a>
+            <a href="service-content-writing.html">Content Writing</a>
+            <a href="service-logo-designing.html">Logo Designing</a>
+            <a href="service-ai-automation.html">AI Automation</a>
+          <a class="site-drawer__sub-all" href="services.html">All services</a>
+        </div>
+      </div>
       <a href="portfolio.html"><span>04</span> Portfolio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="industries.html"><span>05</span> Industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerIndustriesSub" data-nav-group-toggle>
+          <span><span>05</span> Industries</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerIndustriesSub" hidden>
+            <a href="industries.html?industry=technology">Technology & Apps</a>
+            <a href="industries.html?industry=ecommerce">E-commerce & Retail</a>
+            <a href="industries.html?industry=health">Health & Wellbeing</a>
+            <a href="industries.html?industry=finance">Finance & Professional</a>
+            <a href="industries.html?industry=education">Education</a>
+            <a href="industries.html?industry=travel">Travel & Hospitality</a>
+          <a class="site-drawer__sub-all" href="industries.html">All industries</a>
+        </div>
+      </div>
       <a href="case-studies.html"><span>06</span> Case Studies <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
       <a href="blog.html"><span>07</span> Blog <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
     </nav>
     <div class="site-drawer__bottom site-drawer__bottom--menu">
-      <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+      <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -109,18 +288,390 @@
       <div class="container"><div class="inner-hero__content">
         <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Our process</p>
         <h1 id="pageHeroTitle">Good work is a process.<br><span>Let’s make it clear.</span></h1>
-        <p class="inner-hero__description">A collaborative path that brings clarity to decisions and momentum to the work.</p>
+        <p class="inner-hero__description">Six clear phases from the first conversation to post-launch support — fixed scope, weekly demos and no surprises along the way.</p>
         <div class="inner-hero__actions">
-          <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
-          <a class="btn-pill btn-pill--outline" href="index.html">Back to Home</a>
+          <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="btn-pill btn-pill--on-dark" href="book-a-call.html">Book a call</a>
         </div>
       </div></div>
+    </section>
+
+    <section class="journey journey--process" aria-labelledby="roadmapTitle">
+      <div class="container">
+        <div class="journey__head">
+          <div class="journey__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> The timeline</p>
+            <h2 id="roadmapTitle" class="journey__head-title">Six phases.<br><span>No guesswork.</span></h2>
+            <p class="journey__head-lead">Each phase has one job, a fixed outcome and a decision we make together. You always know what is happening this week and what comes next.</p>
+          </div>
+          <div class="journey__head-aside">
+            <div class="journey__facts">
+            <div class="journey__fact"><span>Typical build</span><strong>4–8 weeks</strong></div>
+            <div class="journey__fact"><span>Your time</span><strong>2–3 hrs / week</strong></div>
+            </div>
+            <a class="btn-pill btn-pill--quiet" href="book-a-call.html">Book a kickoff call</a>
+          </div>
+        </div>
+
+        <ol class="journey__list" aria-label="Six phases of a project">
+            <li class="journey__step">
+              <span class="journey__node" aria-hidden="true">01</span>
+              <article class="journey__card">
+                <span class="journey__ghost" aria-hidden="true">01</span>
+                <div class="journey__card-top">
+                  <span class="journey__icon" aria-hidden="true"><i class="ph ph-magnifying-glass"></i></span>
+                  <span class="journey__duration"><i class="ph ph-clock" aria-hidden="true"></i> Week 1</span>
+                </div>
+                <h3 class="journey__title">Discover</h3>
+                <p class="journey__text">We start with the business, not the pixels: goals, audience, competitors and what success actually looks like in numbers.</p>
+                <p class="journey__outcome"><i class="ph ph-check-circle" aria-hidden="true"></i><span><strong>Outcome:</strong> Brief agreed and success metrics written down.</span></p>
+              </article>
+            </li>
+            <li class="journey__step">
+              <span class="journey__node" aria-hidden="true">02</span>
+              <article class="journey__card">
+                <span class="journey__ghost" aria-hidden="true">02</span>
+                <div class="journey__card-top">
+                  <span class="journey__icon" aria-hidden="true"><i class="ph ph-compass"></i></span>
+                  <span class="journey__duration"><i class="ph ph-clock" aria-hidden="true"></i> Week 1–2</span>
+                </div>
+                <h3 class="journey__title">Strategy</h3>
+                <p class="journey__text">Positioning, page structure and a measurement plan. This is where we agree the single idea the site has to land — before anything visual.</p>
+                <p class="journey__outcome"><i class="ph ph-check-circle" aria-hidden="true"></i><span><strong>Outcome:</strong> Direction, scope and fixed price signed off.</span></p>
+              </article>
+            </li>
+            <li class="journey__step">
+              <span class="journey__node" aria-hidden="true">03</span>
+              <article class="journey__card">
+                <span class="journey__ghost" aria-hidden="true">03</span>
+                <div class="journey__card-top">
+                  <span class="journey__icon" aria-hidden="true"><i class="ph ph-pen-nib"></i></span>
+                  <span class="journey__duration"><i class="ph ph-clock" aria-hidden="true"></i> Week 2–4</span>
+                </div>
+                <h3 class="journey__title">Design</h3>
+                <p class="journey__text">Wireframes first, then the visual system. You see real pages in sequence, not mood boards, and we refine them in two structured rounds.</p>
+                <p class="journey__outcome"><i class="ph ph-check-circle" aria-hidden="true"></i><span><strong>Outcome:</strong> Key pages approved at desktop and mobile.</span></p>
+              </article>
+            </li>
+            <li class="journey__step">
+              <span class="journey__node" aria-hidden="true">04</span>
+              <article class="journey__card">
+                <span class="journey__ghost" aria-hidden="true">04</span>
+                <div class="journey__card-top">
+                  <span class="journey__icon" aria-hidden="true"><i class="ph ph-code"></i></span>
+                  <span class="journey__duration"><i class="ph ph-clock" aria-hidden="true"></i> Week 4–7</span>
+                </div>
+                <h3 class="journey__title">Build</h3>
+                <p class="journey__text">The front-end build on the agreed CMS. Responsive at every breakpoint, with performance, accessibility and SEO handled inside the build, not bolted on.</p>
+                <p class="journey__outcome"><i class="ph ph-check-circle" aria-hidden="true"></i><span><strong>Outcome:</strong> Staging site live for your review.</span></p>
+              </article>
+            </li>
+            <li class="journey__step">
+              <span class="journey__node" aria-hidden="true">05</span>
+              <article class="journey__card">
+                <span class="journey__ghost" aria-hidden="true">05</span>
+                <div class="journey__card-top">
+                  <span class="journey__icon" aria-hidden="true"><i class="ph ph-rocket-launch"></i></span>
+                  <span class="journey__duration"><i class="ph ph-clock" aria-hidden="true"></i> Week 7–8</span>
+                </div>
+                <h3 class="journey__title">Launch</h3>
+                <p class="journey__text">QA, redirects, analytics, DNS and a go-live checklist. We launch in a quiet window and watch the first 48 hours closely.</p>
+                <p class="journey__outcome"><i class="ph ph-check-circle" aria-hidden="true"></i><span><strong>Outcome:</strong> Site live, tracking verified, access handed over.</span></p>
+              </article>
+            </li>
+            <li class="journey__step">
+              <span class="journey__node" aria-hidden="true">06</span>
+              <article class="journey__card">
+                <span class="journey__ghost" aria-hidden="true">06</span>
+                <div class="journey__card-top">
+                  <span class="journey__icon" aria-hidden="true"><i class="ph ph-lifebuoy"></i></span>
+                  <span class="journey__duration"><i class="ph ph-clock" aria-hidden="true"></i> Ongoing</span>
+                </div>
+                <h3 class="journey__title">Support</h3>
+                <p class="journey__text">Thirty days of included support after launch, then optional care: monitoring, updates, small improvements and a monthly report.</p>
+                <p class="journey__outcome"><i class="ph ph-check-circle" aria-hidden="true"></i><span><strong>Outcome:</strong> Your team confident, or a care plan running.</span></p>
+              </article>
+            </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="process-deliverables" aria-labelledby="deliverablesTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> What you get</p>
+            <h2 id="deliverablesTitle">Every phase ends with <span>something you can keep.</span></h2>
+          </div>
+          <p class="blog-archive__lead">No vague progress updates. Each step closes with documents, designs or code you actually own.</p>
+        </div>
+        <div class="row g-4 process-deliverables__grid">
+            <div class="col-md-6 col-xl-4">
+              <article class="process-deliverables__card">
+                <div class="process-deliverables__top">
+                  <span class="process-deliverables__icon" aria-hidden="true"><i class="ph ph-magnifying-glass"></i></span>
+                  <div>
+                    <span class="process-deliverables__step">Phase 01</span>
+                    <h3>Discover</h3>
+                  </div>
+                </div>
+                <ul class="process-deliverables__list">
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Kickoff workshop</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Stakeholder interviews</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Audit of the current site</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Written brief and success metrics</span></li>
+                </ul>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="process-deliverables__card">
+                <div class="process-deliverables__top">
+                  <span class="process-deliverables__icon" aria-hidden="true"><i class="ph ph-compass"></i></span>
+                  <div>
+                    <span class="process-deliverables__step">Phase 02</span>
+                    <h3>Strategy</h3>
+                  </div>
+                </div>
+                <ul class="process-deliverables__list">
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Positioning notes</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Sitemap and page roles</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Content and messaging plan</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Scope, timeline and fixed quote</span></li>
+                </ul>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="process-deliverables__card">
+                <div class="process-deliverables__top">
+                  <span class="process-deliverables__icon" aria-hidden="true"><i class="ph ph-pen-nib"></i></span>
+                  <div>
+                    <span class="process-deliverables__step">Phase 03</span>
+                    <h3>Design</h3>
+                  </div>
+                </div>
+                <ul class="process-deliverables__list">
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Wireframes for key pages</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Visual direction</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Responsive page designs</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Component library in Figma</span></li>
+                </ul>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="process-deliverables__card">
+                <div class="process-deliverables__top">
+                  <span class="process-deliverables__icon" aria-hidden="true"><i class="ph ph-code"></i></span>
+                  <div>
+                    <span class="process-deliverables__step">Phase 04</span>
+                    <h3>Build</h3>
+                  </div>
+                </div>
+                <ul class="process-deliverables__list">
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Component-based front-end</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>CMS setup and content entry</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>QA across devices and browsers</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Speed and accessibility pass</span></li>
+                </ul>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="process-deliverables__card">
+                <div class="process-deliverables__top">
+                  <span class="process-deliverables__icon" aria-hidden="true"><i class="ph ph-rocket-launch"></i></span>
+                  <div>
+                    <span class="process-deliverables__step">Phase 05</span>
+                    <h3>Launch</h3>
+                  </div>
+                </div>
+                <ul class="process-deliverables__list">
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Redirect map</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Analytics and tracking</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>SEO and metadata</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Go-live checklist</span></li>
+                </ul>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="process-deliverables__card">
+                <div class="process-deliverables__top">
+                  <span class="process-deliverables__icon" aria-hidden="true"><i class="ph ph-lifebuoy"></i></span>
+                  <div>
+                    <span class="process-deliverables__step">Phase 06</span>
+                    <h3>Support</h3>
+                  </div>
+                </div>
+                <ul class="process-deliverables__list">
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Handover recording</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Editable content guide</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>30 days of fixes</span></li>
+                  <li><i class="ph ph-check" aria-hidden="true"></i><span>Monthly care option</span></li>
+                </ul>
+              </article>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-expectations" aria-labelledby="expectationsTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Working together</p>
+            <h2 id="expectationsTitle">Clear on both sides, <span>from day one.</span></h2>
+          </div>
+          <p class="blog-archive__lead">A good process is a two-way agreement. Here is what you get from us, and what keeps it moving.</p>
+        </div>
+        <div class="row g-4 process-expectations__panels">
+            <div class="col-lg-6">
+              <div class="process-expectations__panel">
+                <h3>What you can expect</h3>
+                <ul class="process-expectations__list">
+                  <li><i class="ph ph-file-text" aria-hidden="true"></i><div><strong>A fixed quote before work starts</strong><span>Scope, pages and price agreed in writing — no hourly drift.</span></div></li>
+                  <li><i class="ph ph-video-camera" aria-hidden="true"></i><div><strong>A demo every week</strong><span>You see the work live each Thursday, not a status email.</span></div></li>
+                  <li><i class="ph ph-users-three" aria-hidden="true"></i><div><strong>One senior lead</strong><span>The person who scopes your project also designs it.</span></div></li>
+                  <li><i class="ph ph-check-circle" aria-hidden="true"></i><div><strong>Nothing hidden at the end</strong><span>Files, accounts and documentation handed over at launch.</span></div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="process-expectations__panel process-expectations__panel--warm">
+                <h3>What we’ll ask of you</h3>
+                <ul class="process-expectations__list">
+                  <li><i class="ph ph-lightning" aria-hidden="true"></i><div><strong>Quick decisions</strong><span>One decision-maker who can approve within 48 hours.</span></div></li>
+                  <li><i class="ph ph-chat-circle-dots" aria-hidden="true"></i><div><strong>Honest feedback</strong><span>Straight answers on what feels right and what does not.</span></div></li>
+                  <li><i class="ph ph-kanban" aria-hidden="true"></i><div><strong>Access and assets</strong><span>Brand files, logins and any existing content you have.</span></div></li>
+                  <li><i class="ph ph-calendar-check" aria-hidden="true"></i><div><strong>Two hours a week</strong><span>For the weekly demo and one round of written feedback.</span></div></li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-tools" aria-labelledby="toolsTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Tools &amp; communication</p>
+            <h2 id="toolsTitle">Where we talk, <span>and what you see.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Four simple habits keep projects calm: one channel, one weekly call, one board, one report.</p>
+        </div>
+        <div class="row g-4 process-tools__grid">
+            <div class="col-sm-6 col-xl-3">
+              <article class="process-tools__card">
+                <span class="process-tools__icon" aria-hidden="true"><i class="ph ph-slack-logo"></i></span>
+                <h3>A shared Slack channel</h3>
+                <p>One channel with your team, our designers and the developer on your build. Questions get answered the same day, in the open.</p>
+                <span class="process-tools__meta"><i class="ph ph-dots-three-outline" aria-hidden="true"></i> Same-day replies</span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="process-tools__card">
+                <span class="process-tools__icon" aria-hidden="true"><i class="ph ph-video-camera"></i></span>
+                <h3>Weekly demo call</h3>
+                <p>Thirty minutes every week to see the work on screen and agree the next round. Miss it and the recording covers you.</p>
+                <span class="process-tools__meta"><i class="ph ph-dots-three-outline" aria-hidden="true"></i> Thursdays, 30 min</span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="process-tools__card">
+                <span class="process-tools__icon" aria-hidden="true"><i class="ph ph-kanban"></i></span>
+                <h3>A live project board</h3>
+                <p>Every task, decision and open question lives in one board — in progress, in review, done. No chasing for updates.</p>
+                <span class="process-tools__meta"><i class="ph ph-dots-three-outline" aria-hidden="true"></i> Always up to date</span>
+              </article>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <article class="process-tools__card">
+                <span class="process-tools__icon" aria-hidden="true"><i class="ph ph-chart-line-up"></i></span>
+                <h3>A monthly report</h3>
+                <p>After launch, a short report on traffic, speed and conversions, with what we are fixing next. No dashboard to decode.</p>
+                <span class="process-tools__meta"><i class="ph ph-dots-three-outline" aria-hidden="true"></i> First week of each month</span>
+              </article>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-faq process-faq" aria-labelledby="processFaqTitle">
+      <div class="container">
+        <div class="row gy-5 gx-lg-5">
+          <div class="col-lg-5">
+            <div class="home-faq__intro">
+              <p class="eyebrow home-faq__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Good to know</p>
+              <h2 id="processFaqTitle">Questions about<br><span>the process.</span></h2>
+              <p class="home-faq__lead">The practical things clients ask before kickoff. Anything else, we are one short call away.</p>
+              <div class="home-faq__panel">
+                <p class="home-faq__panel-title">Still curious?</p>
+                <p class="home-faq__panel-text">Browse the full list, or talk it through with a real person.</p>
+                <div class="home-faq__panel-actions">
+                  <a class="arrow__btn-link btn-primary" href="faq.html"><span class="arrow__btn-text">All FAQs</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+                  <a class="home-faq__link" href="book-a-call.html">Book a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="home-faq__list">
+          <details class="home-faq__row" name="processFaq" open>
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">01</span>
+              <span class="home-faq__label">How long does a project take?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>A focused marketing site runs four to eight weeks from kickoff. Larger builds, ecommerce or product work take eight to fourteen, depending on content and how fast approvals come back.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="processFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">02</span>
+              <span class="home-faq__label">Who is our main point of contact?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>A senior designer or strategist leads your project and stays with it from kickoff to launch. You get their direct Slack and email — no account-manager relay.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="processFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">03</span>
+              <span class="home-faq__label">How often will we see progress?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Every week. We demo live work on Thursdays and the staging link is always available, so nothing appears for the first time at launch.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="processFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">04</span>
+              <span class="home-faq__label">What if we need changes mid-project?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Small adjustments inside the current phase are absorbed. Anything that changes the agreed scope is quoted and added to a change list, so the launch date does not silently slip.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="processFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">05</span>
+              <span class="home-faq__label">Where does communication happen?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Day-to-day questions and files live in your Slack channel. Formal approvals, quotes and scope changes are confirmed by email so there is always a record.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="processFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">06</span>
+              <span class="home-faq__label">What happens after launch?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Thirty days of support is included for fixes and small changes. After that, most clients move onto a monthly care plan or book work as needed.</p></div></div>
+          </details>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
     <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
-      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/images/background-videos/footer-cta-poster.jpg">
         <source src="assets/images/background-videos/footer-cta.mp4" type="video/mp4">
       </video>
       <div class="container footer-cta__container">
@@ -129,10 +680,8 @@
             <p class="eyebrow footer-cta__eyebrow"><i class="ph ph-triangle footer-cta__eyebrow-icon" aria-hidden="true"></i>Have a good one in mind?</p>
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
-              <a class="btn-pill btn-pill--arrow" href="lets-get-started.html">
-                <span>Start a project</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-              </a>
-              <a class="btn-pill btn-pill--outline footer-cta__secondary" href="contact-us.html">Or schedule a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+              <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>
@@ -147,9 +696,9 @@
           </a>
           <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
           <div class="site-footer__socials" aria-label="Social media">
-            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="col-6 col-lg-2 col-md-3">
@@ -200,6 +749,13 @@
   <script defer src="assets/gsap/ScrollTrigger.min.js"></script>
   <script defer src="assets/gsap/ScrollToPlugin.min.js"></script>
   <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll back to top">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+  <button class="back-to-top back-to-top--down" id="scrollToBottom" type="button" aria-label="Scroll to bottom">
+    <i class="ph ph-arrow-down" aria-hidden="true"></i>
+  </button>
+
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>

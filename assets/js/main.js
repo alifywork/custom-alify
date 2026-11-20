@@ -29,26 +29,25 @@
   /* ---------- DOM Ready ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     initBackgroundVideos();
+    initLazyVideos();
     initHeader();
     initCurrentPage();
     initDrawers();
+    initNavMenus();
     initPricingTabs();
-    initFaqFilters();
-    initReviewFilters();
-    initQuoteWizard();
     initNotFoundSearch();
-    initPortfolioFilters();
-    initServiceSlider();
-    initFeaturedProjectEffects();
-    initCaseHighlightSlider();
-    initTestimonials();
-    initSingleServiceDetail();
+    initIndustrySwitcher();
+    initFilterSelects();
     initSmoothScroll();
     initBackToTop();
+    initScrollToBottom();
     initActiveNav();
     initRevealAnimations();
+    initSectionReveals();
+    initQuoteSliders();
     initCounters();
     initForms();
+    initAjaxForms();
     initTooltips();
     initYear();
   });
@@ -56,8 +55,8 @@
   /* ---------- Local Hero Background Videos ---------- */
   function initBackgroundVideos() {
     var videoSections = [
-      { selector: '.home-hero', source: 'assets/images/background-videos/home-hero.mp4', type: 'video/mp4' },
-      { selector: '.inner-hero', source: 'assets/images/background-videos/inner-hero.mp4', type: 'video/mp4' }
+      { selector: '.home-hero', source: 'assets/images/background-videos/home-hero.mp4', poster: 'assets/images/background-videos/home-hero-poster.jpg', type: 'video/mp4' },
+      { selector: '.inner-hero', source: 'assets/images/background-videos/inner-hero.mp4', poster: 'assets/images/background-videos/inner-hero-poster.jpg', type: 'video/mp4' }
     ];
 
     videoSections.forEach(function (item) {
@@ -71,7 +70,8 @@
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
-        video.preload = 'metadata';
+        video.preload = 'none';
+        if (item.poster) video.setAttribute('poster', item.poster);
         video.setAttribute('aria-hidden', 'true');
         video.setAttribute('tabindex', '-1');
         video.setAttribute('disablepictureinpicture', '');
@@ -85,6 +85,49 @@
     });
   }
 
+  /* ---------- Lazy background videos (45 MB of MP4s, never fetched up front) ---------- */
+  function initLazyVideos() {
+    var videos = Array.prototype.slice.call(document.querySelectorAll('video.background-video'));
+    if (!videos.length) return;
+
+    function start(video) {
+      var pending = video.querySelectorAll('source[data-src]');
+      if (!pending.length) return;
+      Array.prototype.forEach.call(pending, function (source) {
+        source.setAttribute('src', source.getAttribute('data-src'));
+        source.removeAttribute('data-src');
+      });
+      video.load();
+      var playing = video.play();
+      if (playing && playing.catch) playing.catch(function () { /* autoplay blocked: poster frame stays */ });
+    }
+
+    videos.forEach(function (video) {
+      video.removeAttribute('autoplay');
+      video.setAttribute('preload', 'none');
+      video.muted = true;
+      Array.prototype.forEach.call(video.querySelectorAll('source[src]'), function (source) {
+        source.setAttribute('data-src', source.getAttribute('src'));
+        source.removeAttribute('src');
+      });
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach(start);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        start(entry.target);
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: '250px 0px' });
+
+    videos.forEach(function (video) { observer.observe(video); });
+  }
+
   /* ---------- Compact Sticky Header ---------- */
   function initHeader() {
     var header = document.querySelector('.site-header');
@@ -95,6 +138,88 @@
     }
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
+  }
+
+  /* ---------- Header dropdown menus + mobile accordion ---------- */
+  function initNavMenus() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-nav-item]'));
+
+    function close(item) {
+      item.classList.remove('is-open');
+      var btn = item.querySelector('[data-nav-toggle]');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function closeAll(except) {
+      items.forEach(function (item) { if (item !== except) close(item); });
+    }
+
+    var desktop = window.matchMedia('(min-width: 992px)');
+
+    items.forEach(function (item) {
+      var btn = item.querySelector('[data-nav-toggle]');
+      if (!btn) return;
+
+      btn.addEventListener('click', function (event) {
+        event.preventDefault();
+        var willOpen = !item.classList.contains('is-open');
+        closeAll(item);
+        item.classList.toggle('is-open', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+
+      var closeTimer = null;
+
+      function cancelClose() {
+        if (closeTimer) {
+          window.clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      }
+
+      item.addEventListener('mouseenter', function () {
+        if (!desktop.matches) return;
+        cancelClose();
+        closeAll(item);
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      });
+
+      item.addEventListener('mouseleave', function () {
+        if (!desktop.matches) return;
+        cancelClose();
+        // Small grace period so the pointer can cross the gap into the panel.
+        closeTimer = window.setTimeout(function () {
+          close(item);
+          closeTimer = null;
+        }, 180);
+      });
+
+      item.addEventListener('focusout', function (event) {
+        if (!item.contains(event.relatedTarget)) close(item);
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('[data-nav-item]')) closeAll(null);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeAll(null);
+    });
+
+    window.addEventListener('scroll', function () { closeAll(null); }, { passive: true });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-nav-group-toggle]')).forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        var group = toggle.closest('[data-nav-group]');
+        var sub = document.getElementById(toggle.getAttribute('aria-controls'));
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        if (group) group.classList.toggle('is-open', !isOpen);
+        if (sub) sub.hidden = isOpen;
+      });
+    });
   }
 
   /* ---------- Highlight the current page in both navigation menus ---------- */
@@ -111,449 +236,379 @@
     });
   }
 
-  /* ---------- Pricing service tabs ---------- */
-  function initPricingTabs() {
-    var tabs = document.querySelectorAll('[data-pricing-tab]');
-    if (!tabs.length) return;
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var selected = tab.getAttribute('data-pricing-tab');
-        tabs.forEach(function (item) { item.setAttribute('aria-selected', item === tab ? 'true' : 'false'); });
-        document.querySelectorAll('[data-pricing-panel]').forEach(function (panel) {
-          panel.hidden = panel.getAttribute('data-pricing-panel') !== selected;
-        });
-      });
-    });
-  }
-
-  /* ---------- Searchable/category-filtered FAQ ---------- */
-  function initFaqFilters() {
-    var faqRoot = document.querySelector('[data-faq-root]');
-    if (!faqRoot) return;
-    var activeCategory = 'all';
-    var search = faqRoot.querySelector('[data-faq-search]');
-    var items = faqRoot.querySelectorAll('[data-faq-item]');
-    var tabs = faqRoot.querySelectorAll('[data-faq-filter]');
-    var empty = faqRoot.querySelector('[data-faq-empty]');
-
-    function update() {
-      var query = search ? search.value.trim().toLowerCase() : '';
-      var visibleCount = 0;
-      items.forEach(function (item) {
-        var matchesCategory = activeCategory === 'all' || item.getAttribute('data-category') === activeCategory;
-        var matchesText = !query || item.textContent.toLowerCase().indexOf(query) !== -1;
-        item.hidden = !(matchesCategory && matchesText);
-        if (!item.hidden) visibleCount += 1;
-      });
-      if (empty) empty.hidden = visibleCount !== 0;
+  /* ---------- AJAX forms: validation, submit state, success panel ---------- */
+  function storeSubmission(payload) {
+    try {
+      var key = 'alify:submissions';
+      var list = JSON.parse(window.localStorage.getItem(key) || '[]');
+      list.push(payload);
+      window.localStorage.setItem(key, JSON.stringify(list.slice(-25)));
+    } catch (error) {
+      /* storage blocked (private mode) — the flow still works, nothing is kept */
     }
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        activeCategory = tab.getAttribute('data-faq-filter');
-        tabs.forEach(function (item) { item.setAttribute('aria-pressed', item === tab ? 'true' : 'false'); });
-        update();
-      });
-    });
-    if (search) search.addEventListener('input', update);
-    update();
   }
 
-  /* ---------- Testimonial service filters ---------- */
-  function initReviewFilters() {
-    var root = document.querySelector('[data-reviews-root]');
-    if (!root) return;
-    var filters = root.querySelectorAll('[data-review-filter]');
-    var cards = root.querySelectorAll('[data-review-card]');
-    filters.forEach(function (filter) {
-      filter.addEventListener('click', function () {
-        var category = filter.getAttribute('data-review-filter');
-        filters.forEach(function (item) { item.setAttribute('aria-pressed', item === filter ? 'true' : 'false'); });
-        cards.forEach(function (card) {
-          card.hidden = category !== 'all' && card.getAttribute('data-service') !== category;
+  function initAjaxForms() {
+    var forms = Array.prototype.slice.call(document.querySelectorAll('[data-ajax-form]'));
+    if (!forms.length) return;
+
+    forms.forEach(function (form) {
+      var section = form.closest('section') || document;
+      var submit = form.querySelector('[type="submit"]');
+      var submitLabel = submit ? submit.querySelector('.arrow__btn-text') : null;
+      var idleLabel = submitLabel ? submitLabel.textContent : 'Send';
+      var errorBox = section.querySelector('[data-form-error]');
+      var successBox = section.querySelector('[data-form-success]');
+      var successTitle = section.querySelector('[data-form-success-title]');
+      var successText = section.querySelector('[data-form-success-text]');
+      var again = section.querySelector('[data-form-again]');
+      var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+      var demoTitles = form.getAttribute('data-form-title-demo') || 'Saved — not sent yet.';
+      var sentTitles = form.getAttribute('data-form-title-sent') || 'Sent.';
+      var demoText = form.getAttribute('data-form-text-demo') ||
+        'This preview build has no mail server connected, so your details are saved on this device only. Email hello@alify.studio and we will pick it up from there.';
+      var sentText = form.getAttribute('data-form-text-sent') ||
+        'Thanks — your message is with us. Expect a reply within one working day.';
+
+      function clearInvalid() {
+        fields.forEach(function (field) { field.classList.remove('is-invalid'); });
+      }
+
+      function setSending(sending) {
+        if (submit) submit.disabled = sending;
+        form.setAttribute('aria-busy', sending ? 'true' : 'false');
+        if (submitLabel) submitLabel.textContent = sending ? 'Sending…' : idleLabel;
+      }
+
+      function showError(show) {
+        if (errorBox) errorBox.hidden = !show;
+      }
+
+      function endpoint() {
+        var action = (form.getAttribute('action') || '').trim();
+        if (form.getAttribute('data-endpoint')) return form.getAttribute('data-endpoint').trim();
+        return action && action !== '#' && !/^(javascript:|mailto:|tel:)/i.test(action) ? action : '';
+      }
+
+      function sendRequest(data) {
+        var url = endpoint();
+        if (!url) {
+          storeSubmission(data);
+          return new Promise(function (resolve) {
+            window.setTimeout(function () { resolve({ demo: true }); }, 700);
+          });
+        }
+        return window.fetch(url, {
+          method: (form.getAttribute('method') || 'post').toUpperCase(),
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        }).then(function (response) {
+          if (!response.ok) throw new Error('Request failed: ' + response.status);
+          storeSubmission(data);
+          return { demo: false };
         });
-      });
-    });
-  }
+      }
 
-  /* ---------- Seven-step project quote wizard ---------- */
-  function initQuoteWizard() {
-    var form = document.querySelector('[data-quote-wizard]');
-    if (!form) return;
-    var steps = Array.prototype.slice.call(form.querySelectorAll('[data-quote-step]'));
-    var progress = Array.prototype.slice.call(form.querySelectorAll('[data-quote-progress]'));
-    var currentIndex = 0;
-    var serviceOptions = {
-      'WordPress': ['Custom WordPress website', 'WooCommerce store', 'WordPress redesign', 'WordPress migration', 'Maintenance & care'],
-      'Shopify': ['New Shopify store', 'Theme customization', 'Shopify migration', 'Conversion improvements', 'Store maintenance'],
-      'UI/UX': ['UX research', 'Website UI/UX design', 'Product design', 'Usability audit', 'Design system'],
-      'SEO': ['Technical SEO', 'On-page SEO', 'SEO audit', 'Migration SEO', 'Content strategy']
-    };
-    var subserviceField = form.querySelector('[name="subservice"]');
-    form.querySelectorAll('input[name="service"]').forEach(function (radio) {
-      radio.addEventListener('change', function () {
-        if (!subserviceField) return;
-        subserviceField.innerHTML = '<option value="" selected disabled>Select a sub-service</option>';
-        (serviceOptions[radio.value] || []).forEach(function (label) {
-          var option = document.createElement('option');
-          option.value = label;
-          option.textContent = label;
-          subserviceField.appendChild(option);
-        });
-      });
-    });
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        showError(false);
+        clearInvalid();
 
-    function showStep(index) {
-      currentIndex = Math.max(0, Math.min(index, steps.length - 1));
-      steps.forEach(function (step, i) {
-        step.hidden = i !== currentIndex;
-        step.setAttribute('aria-hidden', i === currentIndex ? 'false' : 'true');
-      });
-      progress.forEach(function (item, i) {
-        item.classList.toggle('is-current', i === currentIndex);
-        item.classList.toggle('is-done', i < currentIndex);
-      });
-      var heading = steps[currentIndex].querySelector('h2');
-      if (heading) heading.setAttribute('tabindex', '-1'), heading.focus();
-      if (currentIndex === steps.length - 1) updateQuoteSummary(form);
-    }
+        if (!form.checkValidity()) {
+          fields.forEach(function (field) {
+            if (field.willValidate && !field.checkValidity()) field.classList.add('is-invalid');
+          });
+          var firstInvalid = form.querySelector('.is-invalid');
+          if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
+          form.classList.add('was-validated');
+          return;
+        }
 
-    function validateStep(step) {
-      var fields = step.querySelectorAll('input[required], select[required], textarea[required]');
-      var valid = true;
-      var missingChoice = false;
-      var radiosChecked = {};
-      fields.forEach(function (field) {
-        if (field.type === 'radio') {
-          if (!radiosChecked[field.name]) {
-            radiosChecked[field.name] = true;
-            var group = step.querySelectorAll('input[type="radio"][name="' + field.name + '"]');
-            var checked = Array.prototype.some.call(group, function (radio) { return radio.checked; });
-            if (!checked) {
-              valid = false;
-              missingChoice = true;
-              var label = field.closest('label');
-              if (label) label.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+        var data = {};
+        new FormData(form).forEach(function (value, key) { data[key] = value; });
+        data._page = window.location.pathname.split('/').pop() || 'index.html';
+        data._submittedAt = new Date().toISOString();
+
+        setSending(true);
+        sendRequest(data).then(function (result) {
+          setSending(false);
+          form.reset();
+          form.classList.remove('was-validated');
+          form.hidden = true;
+          if (successBox) {
+            successBox.hidden = false;
+            if (successTitle) successTitle.textContent = result.demo ? demoTitles : sentTitles;
+            if (successText) successText.textContent = result.demo ? demoText : sentText;
+            if (successTitle && successTitle.focus) successTitle.focus();
           }
-        } else if (!field.checkValidity()) {
-          field.classList.add('is-invalid');
-          field.reportValidity();
-          valid = false;
-        } else {
-          field.classList.remove('is-invalid');
-        }
-      });
-      var stepError = step.querySelector('[data-step-error]');
-      if (stepError) {
-        stepError.textContent = missingChoice ? 'Please select an option to continue.' : 'Please complete the required fields to continue.';
-        stepError.hidden = valid;
-      }
-      return valid;
-    }
-
-    function updateQuoteSummary(currentForm) {
-      currentForm.querySelectorAll('[data-summary-for]').forEach(function (node) {
-        var field = currentForm.elements[node.getAttribute('data-summary-for')];
-        if (!field) return;
-        var value = '';
-        if (field.length && field[0] && field[0].type === 'radio') {
-          var selected = currentForm.querySelector('input[name="' + field[0].name + '"]:checked');
-          value = selected ? selected.value : '';
-        } else {
-          value = field.value || '';
-        }
-        node.textContent = value || 'Not provided';
-      });
-    }
-
-    form.querySelectorAll('[data-quote-next]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        if (validateStep(steps[currentIndex])) showStep(currentIndex + 1);
-      });
-    });
-    form.querySelectorAll('[data-quote-prev]').forEach(function (button) {
-      button.addEventListener('click', function () { showStep(currentIndex - 1); });
-    });
-    showStep(0);
-  }
-
-  /* ---------- Portfolio category filters ---------- */
-  function initPortfolioFilters() {
-    var grid = document.querySelector('[data-portfolio-grid]');
-    if (!grid) return;
-    var filters = document.querySelectorAll('[data-portfolio-filter]');
-    var cards = grid.querySelectorAll('[data-portfolio-item]');
-    filters.forEach(function (filter) {
-      filter.addEventListener('click', function () {
-        var category = filter.getAttribute('data-portfolio-filter');
-        filters.forEach(function (item) {
-          item.setAttribute('aria-pressed', item === filter ? 'true' : 'false');
-        });
-        cards.forEach(function (card) {
-          card.hidden = category !== 'all' && card.getAttribute('data-portfolio-item') !== category;
+        }).catch(function () {
+          setSending(false);
+          showError(true);
         });
       });
+
+      fields.forEach(function (field) {
+        field.addEventListener('input', function () { field.classList.remove('is-invalid'); });
+        field.addEventListener('change', function () { field.classList.remove('is-invalid'); });
+      });
+
+      if (again) {
+        again.addEventListener('click', function () {
+          if (successBox) successBox.hidden = true;
+          form.hidden = false;
+          clearInvalid();
+          var firstField = fields[0];
+          if (firstField && firstField.focus) firstField.focus();
+        });
+      }
     });
   }
 
-  /* ---------- Homepage service carousel controls ---------- */
-  function initServiceSlider() {
-    var slider = document.querySelector('[data-service-slider]');
-    if (!slider) return;
-    var track = slider.querySelector('[data-service-track]');
-    var cards = track ? track.querySelectorAll('.service-slide') : [];
-    if (!track || !cards.length) return;
-    function move(direction) {
-      var first = cards[0];
-      var styles = window.getComputedStyle(track);
-      var gap = parseFloat(styles.columnGap || styles.gap) || 0;
-      var maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-      if (direction > 0 && track.scrollLeft >= maxScroll - 2) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-        return;
-      }
-      if (direction < 0 && track.scrollLeft <= 2) {
-        track.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        return;
-      }
-      track.scrollBy({ left: direction * (first.getBoundingClientRect().width + gap), behavior: 'smooth' });
-    }
-    var prev = slider.querySelector('[data-service-prev]');
-    var next = slider.querySelector('[data-service-next]');
-    if (prev) prev.addEventListener('click', function () { move(-1); });
-    if (next) next.addEventListener('click', function () { move(1); });
-  }
-
-  /* ---------- Featured projects: sticky stack and GSAP image-scroll hover ---------- */
-  function initFeaturedProjectEffects() {
-    var cards = document.querySelectorAll('[data-featured-project]');
-    if (!cards.length) return;
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    cards.forEach(function (card) {
-      var viewport = card.querySelector('[data-project-image]');
-      var image = viewport && viewport.querySelector('[data-project-art]');
-      if (!viewport || !image || typeof gsap === 'undefined' || reduceMotion) return;
-      function scrollImage() {
-        var travel = Math.min(0, viewport.clientHeight - image.getBoundingClientRect().height);
-        gsap.to(image, { y: travel, duration: 1.8, ease: 'none', overwrite: 'auto' });
-      }
-      function resetImage() {
-        gsap.to(image, { y: 0, duration: 0.55, ease: 'power2.out', overwrite: 'auto' });
-      }
-      viewport.addEventListener('mouseenter', scrollImage);
-      viewport.addEventListener('mouseleave', resetImage);
-      viewport.addEventListener('focusin', scrollImage);
-      viewport.addEventListener('focusout', resetImage);
-      if (image.complete) gsap.set(image, { y: 0 });
-      else image.addEventListener('load', function () { gsap.set(image, { y: 0 }); }, { once: true });
-    });
-  }
-
-  /* ---------- Case study highlight carousel ---------- */
-  function initCaseHighlightSlider() {
-    var root = document.querySelector('[data-case-highlight]');
+  /* ---------- Book a call: week/slot picker that feeds the request form ---------- */
+  function initPricingTabs() {
+    var root = document.querySelector('[data-pricing-tabs]');
     if (!root) return;
-    var items = [
-      {
-        slug: 'northstar', client: 'Northstar', category: 'Technology & Apps',
-        image: 'assets/images/projects/Technology%20%26%20Apps/featured-northstar.svg',
-        alt: 'Illustrative Northstar digital platform concept',
-        title: 'Northstar: making complexity feel clear.',
-        lead: 'A sample project story about helping a growing team bring its digital product and brand experience into focus.',
-        challenge: 'A fragmented product story made it harder for customers to understand what to do next.',
-        approach: 'Align the product narrative, simplify key journeys and create a flexible interface system.',
-        outcome: 'A clearer digital direction and a stronger foundation for future product growth.'
-      },
-      {
-        slug: 'fieldnotes', client: 'Fieldnotes', category: 'Shopping & eCommerce',
-        image: 'assets/images/projects/Shopping%20%26%20eCommerce/featured-fieldnotes.svg',
-        alt: 'Illustrative Fieldnotes e-commerce concept',
-        title: 'Fieldnotes: a simpler way to shop.',
-        lead: 'An illustrative commerce story about making product discovery feel clear, considered and easy to navigate.',
-        challenge: 'A growing catalogue and competing priorities made the shopping journey feel harder than it needed to be.',
-        approach: 'Bring product categories, editorial storytelling and store interactions into one coherent experience.',
-        outcome: 'A clearer storefront direction designed to support confident browsing and checkout.'
-      },
-      {
-        slug: 'wellspace', client: 'Wellspace', category: 'Health & Medical',
-        image: 'assets/images/projects/Health%20%26%20Medical/featured-wellspace.svg',
-        alt: 'Illustrative Wellspace health and wellbeing concept',
-        title: 'Wellspace: making support easier to find.',
-        lead: 'An illustrative wellbeing story focused on a calmer, more accessible way to discover support.',
-        challenge: 'Important guidance and next steps were difficult to find across a busy digital experience.',
-        approach: 'Organize key information into a reassuring visual system with simple, accessible pathways.',
-        outcome: 'A calmer experience concept that puts clarity and people first.'
-      }
-    ];
-    var layers = Array.prototype.slice.call(root.querySelectorAll('[data-case-image-layer]'));
-    var content = root.querySelector('[data-case-content]');
-    var counter = root.querySelector('[data-case-counter]');
-    if (layers.length < 2 || !content) return;
-    var activeLayer = layers[0];
-    var current = 0;
-    var request = 0;
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var loaded = items.map(function (item) {
-      return new Promise(function (resolve) {
-        var probe = new Image();
-        probe.onload = resolve;
-        probe.onerror = resolve;
-        probe.src = item.image;
-        if (probe.complete) resolve();
-      });
-    });
 
-    function updateText(item, index) {
-      root.querySelector('[data-case-client]').textContent = item.client;
-      root.querySelector('[data-case-count]').textContent = 'Case study / ' + String(index + 1).padStart(2, '0');
-      root.querySelector('[data-case-category]').textContent = item.category;
-      root.querySelector('[data-case-title]').textContent = item.title;
-      root.querySelector('[data-case-lead]').textContent = item.lead;
-      root.querySelector('[data-case-point-copy="challenge"]').textContent = item.challenge;
-      root.querySelector('[data-case-point-copy="approach"]').textContent = item.approach;
-      root.querySelector('[data-case-point-copy="outcome"]').textContent = item.outcome;
-      root.querySelector('[data-case-link]').href = 'single-case-study.html?case=' + item.slug;
-      if (counter) counter.innerHTML = String(index + 1).padStart(2, '0') + ' <span>/ ' + String(items.length).padStart(2, '0') + '</span>';
-    }
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-pricing-tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-pricing-panel]'));
+    if (!tabs.length || !panels.length) return;
 
-    function render(index) {
-      current = (index + items.length) % items.length;
-      var item = items[current];
-      var thisRequest = ++request;
-      if (counter) counter.innerHTML = String(current + 1).padStart(2, '0') + ' <span>/ ' + String(items.length).padStart(2, '0') + '</span>';
-      loaded[current].then(function () {
-        if (thisRequest !== request) return;
-        var incoming = activeLayer === layers[0] ? layers[1] : layers[0];
-        var outgoing = activeLayer;
-        incoming.src = item.image;
-        incoming.alt = item.alt;
-        incoming.removeAttribute('aria-hidden');
-        updateText(item, current);
-
-        if (typeof gsap !== 'undefined' && !reduceMotion) {
-          gsap.killTweensOf([incoming, outgoing, content]);
-          gsap.set(incoming, { x: -44, autoAlpha: 0, zIndex: 2 });
-          gsap.set(outgoing, { x: 0, autoAlpha: 1, zIndex: 1 });
-          gsap.set(content, { x: 46, autoAlpha: 0 });
-          var timeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
-          timeline.to(outgoing, { x: 34, autoAlpha: 0, duration: .46, ease: 'power2.in' }, 0)
-            .to(incoming, { x: 0, autoAlpha: 1, duration: .58, ease: 'power3.out' }, 0)
-            .to(content, { x: 0, autoAlpha: 1, duration: .52, ease: 'power3.out' }, .08)
-            .call(function () {
-              outgoing.classList.remove('is-active');
-              outgoing.setAttribute('aria-hidden', 'true');
-              incoming.classList.add('is-active');
-              activeLayer = incoming;
-              gsap.set(outgoing, { x: 0, zIndex: 0 });
-            });
-        } else {
-          outgoing.classList.remove('is-active');
-          outgoing.setAttribute('aria-hidden', 'true');
-          incoming.classList.add('is-active');
-          activeLayer = incoming;
-        }
-      });
-    }
-    var prev = root.querySelector('[data-case-prev]');
-    var next = root.querySelector('[data-case-next]');
-    if (prev) prev.addEventListener('click', function () { render(current - 1); });
-    if (next) next.addEventListener('click', function () { render(current + 1); });
-  }
-
-  /* ---------- Homepage testimonials: centre-active Google review slider ---------- */
-  function initTestimonials() {
-    var track = document.querySelector('[data-testimonial-track]');
-    if (!track) return;
-    var cards = Array.prototype.slice.call(track.children);
-    if (!cards.length) return;
-    var prev = document.querySelector('[data-testimonial-prev]');
-    var next = document.querySelector('[data-testimonial-next]');
-    var status = document.querySelector('[data-testimonial-status]');
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var active = 0;
-    var frame = null;
-
-    function centreFor(card) {
-      return card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2;
-    }
-    function nearestIndex() {
-      var middle = track.scrollLeft + track.clientWidth / 2;
-      var best = 0;
-      var bestDistance = Infinity;
-      cards.forEach(function (card, index) {
-        var distance = Math.abs(card.offsetLeft + card.offsetWidth / 2 - middle);
-        if (distance < bestDistance) { bestDistance = distance; best = index; }
-      });
-      return best;
-    }
-    function sync() {
-      frame = null;
-      active = nearestIndex();
-      cards.forEach(function (card, index) {
-        var isActive = index === active;
-        card.classList.toggle('is-active', isActive);
-        if (isActive) card.setAttribute('aria-current', 'true');
-        else card.removeAttribute('aria-current');
-      });
-      if (prev) prev.disabled = active === 0;
-      if (next) next.disabled = active === cards.length - 1;
-      if (status) status.textContent = 'Review ' + (active + 1) + ' of ' + cards.length;
-    }
-    function schedule() {
-      if (!frame) frame = requestAnimationFrame(sync);
-    }
-    function goTo(index) {
-      var target = Math.max(0, Math.min(cards.length - 1, index));
-      active = target;
-      track.scrollTo({ left: centreFor(cards[target]), behavior: reduceMotion ? 'auto' : 'smooth' });
-      schedule();
-    }
-
-    track.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    if (prev) prev.addEventListener('click', function () { goTo(nearestIndex() - 1); });
-    if (next) next.addEventListener('click', function () { goTo(nearestIndex() + 1); });
-    track.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowRight') { event.preventDefault(); goTo(nearestIndex() + 1); }
-      if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(nearestIndex() - 1); }
-    });
-    sync();
-  }
-
-  /* ---------- Service detail personalization from carousel links ---------- */
-  function initSingleServiceDetail() {
-    if (!document.querySelector('.article-layout') || !/single-service\.html$/.test(window.location.pathname)) return;
-    var serviceNames = {
-      'web-development': ['Web Development', 'Fast, accessible websites designed to turn your goals into intuitive online experiences.'],
-      'wordpress': ['WordPress Web Development', 'Flexible WordPress websites and custom experiences your team can confidently manage.'],
-      'shopify': ['Shopify Web Development', 'Conversion-minded Shopify stores that make product discovery and checkout feel simple.'],
-      'ui-ux': ['UI / UX', 'Research-led user journeys and interfaces that help people get where they need to go.'],
-      'seo': ['Search Engine Optimization', 'Technical and on-page SEO to improve discoverability and earn the right organic traffic.'],
-      'digital-marketing': ['Digital Marketing', 'Connected digital campaigns that build awareness, engagement and measurable momentum.'],
-      'content-writing': ['Content Writing', 'Clear, useful content shaped around your voice, audience and business objectives.'],
-      'logo-designing': ['Logo Designing', 'Distinctive logo concepts and visual foundations that make your brand memorable.'],
-      'ai-automation': ['AI Automation', 'Practical AI-powered workflows to reduce repetitive work and create more room for impact.']
-    };
+    var values = tabs.map(function (tab) { return tab.getAttribute('data-pricing-tab'); });
+    var live = document.querySelector('[data-pricing-live]');
     var params = new URLSearchParams(window.location.search);
-    var selected = serviceNames[params.get('service')];
-    if (!selected) return;
-    var title = document.querySelector('#pageHeroTitle');
-    var heroDescription = document.querySelector('.inner-hero__description');
-    var docTitle = document.querySelector('title');
-    if (title) title.textContent = selected[0];
-    if (heroDescription) heroDescription.textContent = selected[1];
-    if (docTitle) docTitle.textContent = selected[0] + ' | Alify';
+    var requested = params.get('service');
+
+    function labelFor(value) {
+      var match = tabs.filter(function (tab) { return tab.getAttribute('data-pricing-tab') === value; })[0];
+      return match ? match.textContent.trim() : value;
+    }
+
+    function activate(value, updateUrl) {
+      if (values.indexOf(value) === -1) value = values[0];
+
+      tabs.forEach(function (tab) {
+        var on = tab.getAttribute('data-pricing-tab') === value;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.setAttribute('tabindex', on ? '0' : '-1');
+      });
+
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-pricing-panel') !== value;
+      });
+
+      root.setAttribute('data-active', value);
+      if (live) live.textContent = 'Showing ' + labelFor(value) + ' pricing';
+
+      if (updateUrl && window.history.replaceState) {
+        var next = new URLSearchParams(window.location.search);
+        if (value === values[0]) next.delete('service');
+        else next.set('service', value);
+        var qs = next.toString();
+        window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+      }
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        activate(tab.getAttribute('data-pricing-tab'), true);
+      });
+
+      tab.addEventListener('keydown', function (event) {
+        var nextIndex = index;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        var target = tabs[nextIndex];
+        activate(target.getAttribute('data-pricing-tab'), true);
+        target.focus();
+      });
+    });
+
+    window.addEventListener('popstate', function () {
+      var next = new URLSearchParams(window.location.search);
+      activate(next.get('service') || values[0], false);
+    });
+
+    activate(requested || values[0], false);
+  }
+  /* ---------- Seven-step project quote wizard ---------- */
+  function initFilterSelects() {
+    var selects = Array.prototype.slice.call(document.querySelectorAll('[data-filter-select]'));
+    if (!selects.length) return;
+
+    function chips(name) {
+      return Array.prototype.slice.call(document.querySelectorAll('[data-' + name + ']'));
+    }
+
+    function activeValue(name) {
+      var chip = chips(name).filter(function (item) {
+        return item.classList.contains('is-active') || item.getAttribute('aria-pressed') === 'true' ||
+          item.getAttribute('aria-selected') === 'true';
+      })[0];
+      return chip ? chip.getAttribute('data-' + name) : null;
+    }
+
+    function syncSelects() {
+      selects.forEach(function (select) {
+        var value = activeValue(select.getAttribute('data-filter-select'));
+        if (value) select.value = value;
+      });
+    }
+
+    selects.forEach(function (select) {
+      select.addEventListener('change', function () {
+        var name = select.getAttribute('data-filter-select');
+        var chip = chips(name).filter(function (item) {
+          return item.getAttribute('data-' + name) === select.value;
+        })[0];
+        if (chip) chip.click();
+        syncSelects();
+      });
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-filter-reset-group]')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        button.getAttribute('data-filter-reset-group').split(',').forEach(function (name) {
+          name = name.trim();
+          var all = chips(name).filter(function (item) { return item.getAttribute('data-' + name) === 'all'; })[0];
+          if (all) all.click();
+        });
+        syncSelects();
+      });
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-filter-reset]')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        var name = button.getAttribute('data-filter-reset');
+        var all = chips(name).filter(function (item) { return item.getAttribute('data-' + name) === 'all'; })[0];
+        if (all) all.click();
+        syncSelects();
+      });
+    });
+
+    // Keep the dropdowns honest when a chip is clicked directly or from a URL.
+    document.addEventListener('click', function () { window.setTimeout(syncSelects, 0); });
+    syncSelects();
   }
 
-  /* ---------- Lightweight 404 quick-link search ---------- */
+  /* ---------- Portfolio: discipline filters, chip counts, load more ---------- */
+  function initIndustrySwitcher() {
+    var root = document.querySelector('[data-industry-switcher]');
+    if (!root) return;
+
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-industry-tab]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-industry-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    var values = tabs.map(function (tab) { return tab.getAttribute('data-industry-tab'); });
+    var params = new URLSearchParams(window.location.search);
+    var requested = params.get('industry');
+
+    function activate(value, updateUrl) {
+      if (values.indexOf(value) === -1) value = values[0];
+
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute('data-industry-tab') === value;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+      });
+
+      panels.forEach(function (panel) {
+        var active = panel.getAttribute('data-industry-panel') === value;
+        panel.classList.toggle('is-active', active);
+        panel.hidden = !active;
+      });
+
+      if (!updateUrl || !window.history || !window.history.replaceState) return;
+      var url = new URL(window.location.href);
+      url.searchParams.set('industry', value);
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        activate(tab.getAttribute('data-industry-tab'), true);
+      });
+
+      tab.addEventListener('keydown', function (event) {
+        var next = null;
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = index + 1;
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = index - 1;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === null) return;
+        event.preventDefault();
+        var target = tabs[(next + tabs.length) % tabs.length];
+        activate(target.getAttribute('data-industry-tab'), true);
+        target.focus();
+      });
+    });
+
+    // Cards in the industries grid jump to this block and select their industry.
+    document.querySelectorAll('[data-industry-jump]').forEach(function (card) {
+      card.addEventListener('click', function () {
+        activate(card.getAttribute('data-industry-jump'), true);
+      });
+    });
+
+    activate(requested || values[0], false);
+  }
+
+  /* ---------- Blog archive: category filter, search, pagination, shareable URL ---------- */
   function initNotFoundSearch() {
     var search = document.querySelector('[data-404-search]');
     if (!search) return;
+
     var links = document.querySelectorAll('[data-404-link]');
-    search.addEventListener('input', function () {
-      var term = search.value.trim().toLowerCase();
-      links.forEach(function (link) { link.hidden = !!term && link.textContent.toLowerCase().indexOf(term) === -1; });
+    var status = document.querySelector('[data-404-status]');
+    var empty = document.querySelector('[data-404-empty]');
+    var clear = document.querySelector('[data-404-clear]');
+    var chips = document.querySelectorAll('[data-404-suggest]');
+
+    function apply() {
+      var term = search.value.trim();
+      var lower = term.toLowerCase();
+      var shown = 0;
+
+      links.forEach(function (link) {
+        var match = !lower || link.textContent.toLowerCase().indexOf(lower) !== -1;
+        link.hidden = !match;
+        if (match) shown += 1;
+      });
+
+      if (clear) clear.hidden = !term;
+      if (status) {
+        if (!term) status.textContent = '';
+        else if (shown) status.textContent = shown + ' of ' + links.length + ' pages match “' + term + '”';
+        else status.textContent = 'No pages match “' + term + '”';
+      }
+      if (empty) empty.hidden = !term || shown > 0;
+    }
+
+    search.addEventListener('input', apply);
+
+    if (clear) {
+      clear.addEventListener('click', function () {
+        search.value = '';
+        apply();
+        search.focus();
+      });
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        search.value = chip.getAttribute('data-404-suggest') || '';
+        apply();
+        search.focus();
+      });
     });
+
+    apply();
   }
 
   /* ---------- Right-side About and Navigation Drawers ---------- */
@@ -656,21 +711,63 @@
     var btn = document.getElementById('backToTop');
     if (!btn) return;
 
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 400) {
-        btn.classList.remove('d-none');
-        btn.classList.add('d-flex');
-      } else {
-        btn.classList.add('d-none');
-        btn.classList.remove('d-flex');
-      }
-    }, { passive: true });
+    var shown = false;
+
+    function toggle() {
+      var shouldShow = window.scrollY > 400;
+      if (shouldShow === shown) return;
+      shown = shouldShow;
+      btn.classList.toggle('is-visible', shouldShow);
+      btn.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      // Keep the control out of the tab order while it is hidden.
+      btn.tabIndex = shouldShow ? 0 : -1;
+    }
+
+    btn.setAttribute('aria-hidden', 'true');
+    btn.tabIndex = -1;
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    window.addEventListener('resize', toggle);
 
     btn.addEventListener('click', function () {
       if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
         gsap.to(window, { duration: 0.8, scrollTo: 0, ease: 'power3.out' });
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  /* ---------- Floating Scroll-to-Bottom ---------- */
+  function initScrollToBottom() {
+    var btn = document.getElementById('scrollToBottom');
+    if (!btn) return;
+
+    var shown = false;
+
+    function toggle() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var shouldShow = max > 600 && window.scrollY < 200;
+      if (shouldShow === shown) return;
+      shown = shouldShow;
+      btn.classList.toggle('is-visible', shouldShow);
+      btn.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      btn.tabIndex = shouldShow ? 0 : -1;
+    }
+
+    btn.setAttribute('aria-hidden', 'true');
+    btn.tabIndex = -1;
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    window.addEventListener('resize', toggle);
+    window.addEventListener('load', toggle);
+
+    btn.addEventListener('click', function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+        gsap.to(window, { duration: 1, scrollTo: max, ease: 'power3.inOut' });
+      } else {
+        window.scrollTo({ top: max, behavior: 'smooth' });
       }
     });
   }
@@ -788,6 +885,152 @@
     }
   }
 
+  /* ---------- Section reveals ----------
+     Every top-level <section> fades its blocks in once, as it enters the
+     viewport. Nothing is hidden in CSS, so if GSAP fails to load the page
+     stays fully visible; transforms are cleared afterwards so sticky
+     cards keep working. */
+  function initSectionReveals() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (document.documentElement.hasAttribute('data-no-section-anim')) return;
+
+    var STICKY_INSIDE = '.featured-project-card, .filter-shell__side, [data-sticky]';
+    // Modules that already drive their own GSAP tweens — never animate these.
+    var SELF_MANAGED = '[data-case-highlight], [data-testimonial-track], [data-service-slider], [data-gallery], [data-video-modal]';
+
+    function animatable(el) {
+      if (!el || el.hidden) return false;
+      var cs = window.getComputedStyle(el);
+      if (cs.display === 'none' || cs.position === 'fixed' || cs.position === 'sticky') return false;
+      if (el.hasAttribute('data-no-anim')) return false;
+      if (el.matches(SELF_MANAGED)) return false;
+      if (el.querySelector(STICKY_INSIDE)) return false;
+      return true;
+    }
+
+    // Card grids animate card by card; everything else moves as one block.
+    function expand(el) {
+      var display = window.getComputedStyle(el).display;
+      if (display !== 'grid' && display.indexOf('flex') !== 0) return [el];
+      var kids = Array.prototype.filter.call(el.children, animatable);
+      return kids.length >= 3 && kids.length <= 9 ? kids : [el];
+    }
+
+    function targetsFor(section) {
+      var root = section.querySelector(':scope > .container, :scope > .container-fluid') || section;
+      var kids = Array.prototype.filter.call(root.children, animatable);
+
+      // A single wrapper (row / grid / stack) is unwrapped so its columns
+      // animate one by one instead of the whole block moving together.
+      if (kids.length === 1 && kids[0].children.length > 1) {
+        var inner = Array.prototype.filter.call(kids[0].children, animatable);
+        if (inner.length > 1) kids = inner;
+      }
+
+      var out = [];
+      kids.forEach(function (kid) { out = out.concat(expand(kid)); });
+      return out.slice(0, 10);
+    }
+
+    function animateHero(section) {
+      var items = section.querySelectorAll(
+        '.hero-eyebrow, h1, .home-hero__description, .inner-hero__description, .home-hero__actions, .inner-hero__actions'
+      );
+      if (!items.length) return;
+      gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.85 }, delay: 0.12 })
+        .from(items, { y: 24, opacity: 0, stagger: 0.1, clearProps: 'transform,opacity' });
+    }
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll('main section, .site-footer section'),
+      function (section) {
+        if (section.closest('.site-drawer') || section.closest('[data-no-anim]')) return;
+        if (section.parentElement && section.parentElement.closest('section')) return;   // nested sections: the outer one covers them
+        if (section.matches('.home-hero, .inner-hero')) { animateHero(section); return; }
+
+        var targets = targetsFor(section);
+        if (!targets.length) return;
+
+        try {
+          gsap.timeline({
+            scrollTrigger: { trigger: section, start: 'top 82%', once: true },
+            defaults: { duration: 0.65, ease: 'power2.out' },
+            onComplete: function () { gsap.set(targets, { clearProps: 'transform,opacity' }); }
+          }).from(targets, { y: 26, opacity: 0, stagger: 0.07 });
+        } catch (err) {
+          gsap.set(targets, { clearProps: 'transform,opacity' });
+        }
+      }
+    );
+
+    // Lazy images and posters change the page height, so re-measure once
+    // everything has settled.
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+  }
+
+  /* ---------- Service quote slider (one review per view) ---------- */
+  function initQuoteSliders() {
+    var sliders = document.querySelectorAll('[data-quote-slider]');
+    if (!sliders.length) return;
+
+    Array.prototype.forEach.call(sliders, function (root) {
+      var track = root.querySelector('[data-quote-track]');
+      if (!track) return;
+
+      var slides = track.querySelectorAll('.svc-quote__slide');
+      var prev = root.querySelector('[data-quote-prev]');
+      var next = root.querySelector('[data-quote-next]');
+      var status = root.querySelector('[data-quote-status]');
+      var total = slides.length;
+      if (total < 2) {
+        if (prev) prev.disabled = true;
+        if (next) next.disabled = true;
+        return;
+      }
+
+      function step() { return track.clientWidth || 1; }
+      function current() {
+        return Math.max(0, Math.min(total - 1, Math.round(track.scrollLeft / step())));
+      }
+
+      function update() {
+        var i = current();
+        if (status) status.textContent = 'Review ' + (i + 1) + ' of ' + total;
+        if (prev) prev.disabled = i === 0;
+        if (next) next.disabled = i === total - 1;
+        Array.prototype.forEach.call(slides, function (slide, index) {
+          slide.setAttribute('aria-hidden', index === i ? 'false' : 'true');
+        });
+      }
+
+      function goTo(index) {
+        var left = Math.max(0, Math.min(total - 1, index)) * step();
+        if (typeof track.scrollTo === 'function') {
+          track.scrollTo({ left: left, behavior: 'smooth' });
+        } else {
+          track.scrollLeft = left;
+        }
+        update();
+      }
+
+      if (prev) prev.addEventListener('click', function () { goTo(current() - 1); });
+      if (next) next.addEventListener('click', function () { goTo(current() + 1); });
+
+      track.addEventListener('scroll', function () {
+        window.clearTimeout(track._quoteTimer);
+        track._quoteTimer = window.setTimeout(update, 90);
+      }, { passive: true });
+
+      track.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current() + 1); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current() - 1); }
+      });
+
+      update();
+    });
+  }
+
   /* ---------- Animated Counters ---------- */
   function initCounters() {
     var counters = document.querySelectorAll('[data-counter]');
@@ -827,23 +1070,49 @@
 
   /* ---------- Form Validation (Bootstrap) ---------- */
   function initForms() {
-    var forms = document.querySelectorAll('.needs-validation');
+    var forms = Array.prototype.slice.call(
+      document.querySelectorAll('form.needs-validation:not([data-ajax-form])')
+    );
     if (!forms.length) return;
 
     forms.forEach(function (form) {
+      var submit = form.querySelector('[type="submit"]');
+      var status = form.querySelector('[data-form-status]');
+      var defaultStatus = status ? status.textContent : '';
+
       form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
         if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else if (form.hasAttribute('data-demo-form')) {
-          event.preventDefault();
-          var status = form.querySelector('[data-form-status]');
-          if (status) {
-            status.textContent = 'This form is ready for the site’s email or CRM connection; no message is sent yet.';
-            status.classList.add('is-visible');
-          }
+          form.classList.add('was-validated');
+          var invalid = form.querySelector(':invalid');
+          if (invalid && invalid.focus) invalid.focus();
+          return;
         }
+
+        var data = {};
+        new FormData(form).forEach(function (value, key) { data[key] = value; });
+        data._page = window.location.pathname.split('/').pop() || 'index.html';
+        data._submittedAt = new Date().toISOString();
+        storeSubmission(data);
+
         form.classList.add('was-validated');
+        if (submit) {
+          submit.disabled = true;
+          window.setTimeout(function () { submit.disabled = false; }, 2400);
+        }
+        if (status) {
+          status.textContent = 'You are on the list. This preview build keeps your address on this device only — email hello@alify.studio if you would rather not wait.';
+          status.classList.add('is-visible');
+        }
+        form.reset();
+        form.classList.remove('was-validated');
+        window.setTimeout(function () {
+          if (status) {
+            status.classList.remove('is-visible');
+            status.textContent = defaultStatus;
+          }
+        }, 9000);
       }, false);
     });
   }

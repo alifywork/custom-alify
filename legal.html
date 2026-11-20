@@ -6,6 +6,91 @@
   <meta name="theme-color" content="#F6F4F1">
   <meta name="description" content="Draft privacy and terms information for Alify; pending review and customization.">
   <title>Legal | Alify</title>
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="canonical" href="https://alify.studio/legal.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alify">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Legal | Alify">
+  <meta property="og:description" content="Draft privacy and terms information for Alify; pending review and customization.">
+  <meta property="og:url" content="https://alify.studio/legal.html">
+  <meta property="og:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alify — ideas that move you forward">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legal | Alify">
+  <meta name="twitter:description" content="Draft privacy and terms information for Alify; pending review and customization.">
+  <meta name="twitter:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://alify.studio/#organization",
+      "name": "Alify",
+      "url": "https://alify.studio/",
+      "logo": "https://alify.studio/assets/images/logo/sticky-logo.png",
+      "email": "hello@alify.studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karachi",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://www.instagram.com/alify.studio/",
+        "https://www.linkedin.com/company/alify-studio/",
+        "https://www.facebook.com/alify.studio/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://alify.studio/#website",
+      "url": "https://alify.studio/",
+      "name": "Alify",
+      "publisher": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://alify.studio/legal.html#webpage",
+      "url": "https://alify.studio/legal.html",
+      "name": "Legal | Alify",
+      "description": "Draft privacy and terms information for Alify; pending review and customization.",
+      "isPartOf": {
+        "@id": "https://alify.studio/#website"
+      },
+      "about": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://alify.studio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Legal",
+          "item": "https://alify.studio/legal.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
   <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -13,13 +98,18 @@
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/utility.css">
   <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/arrow-buttons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/nav-menus.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/inner-pages.css">
   <link rel="stylesheet" href="assets/css/advanced-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-services.css">
+  <link rel="stylesheet" href="assets/css/legal.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/video-backgrounds.css">
   <link rel="stylesheet" href="assets/icons/phosphor.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body id="top">
   <header class="site-header" id="siteHeader">
@@ -29,20 +119,68 @@
         <img class="site-header__logo-sticky" src="assets/images/logo/sticky-logo.png" alt="" aria-hidden="true">
       </a>
 
-      <nav class="site-nav" aria-label="Main navigation">
+            <nav class="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="index.html">Home</a>
-        <a class="site-nav__link" href="about-us.html">About Us</a>
-        <a class="site-nav__link" href="services.html">Services</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navAboutMenu" data-nav-toggle>
+            <span>About Us</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu site-nav__menu--narrow" id="navAboutMenu" data-nav-menu>
+            <p class="site-nav__menu-label">The studio</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="about-us.html"><span class="site-nav__menu-name">About Alify</span><span class="site-nav__menu-desc">The studio and how we work</span></a>
+              <a class="site-nav__menu-link" href="process.html"><span class="site-nav__menu-name">Our process</span><span class="site-nav__menu-desc">Six phases, no surprises</span></a>
+              <a class="site-nav__menu-link" href="pricing.html"><span class="site-nav__menu-name">Pricing</span><span class="site-nav__menu-desc">Three ways to work together</span></a>
+              <a class="site-nav__menu-link" href="testimonials.html"><span class="site-nav__menu-name">Testimonials</span><span class="site-nav__menu-desc">What clients say</span></a>
+              <a class="site-nav__menu-link" href="faq.html"><span class="site-nav__menu-name">FAQ</span><span class="site-nav__menu-desc">Answers before you ask</span></a>
+              <a class="site-nav__menu-link" href="contact-us.html"><span class="site-nav__menu-name">Contact</span><span class="site-nav__menu-desc">Start a conversation</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu" data-nav-toggle>
+            <span>Services</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navServicesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Nine connected services</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="web-development.html"><span class="site-nav__menu-name">Web Development</span><span class="site-nav__menu-desc">Fast, accessible websites</span></a>
+              <a class="site-nav__menu-link" href="service-wordpress.html"><span class="site-nav__menu-name">WordPress Development</span><span class="site-nav__menu-desc">Sites your team can run</span></a>
+              <a class="site-nav__menu-link" href="service-shopify.html"><span class="site-nav__menu-name">Shopify Development</span><span class="site-nav__menu-desc">Stores built to convert</span></a>
+              <a class="site-nav__menu-link" href="service-ui-ux.html"><span class="site-nav__menu-name">UI / UX Design</span><span class="site-nav__menu-desc">Journeys people finish</span></a>
+              <a class="site-nav__menu-link" href="service-seo.html"><span class="site-nav__menu-name">SEO</span><span class="site-nav__menu-desc">Technical and on-page search</span></a>
+              <a class="site-nav__menu-link" href="service-digital-marketing.html"><span class="site-nav__menu-name">Digital Marketing</span><span class="site-nav__menu-desc">Campaigns that compound</span></a>
+              <a class="site-nav__menu-link" href="service-content-writing.html"><span class="site-nav__menu-name">Content Writing</span><span class="site-nav__menu-desc">Clear, useful copy</span></a>
+              <a class="site-nav__menu-link" href="service-logo-designing.html"><span class="site-nav__menu-name">Logo Designing</span><span class="site-nav__menu-desc">Identities that stick</span></a>
+              <a class="site-nav__menu-link" href="service-ai-automation.html"><span class="site-nav__menu-name">AI Automation</span><span class="site-nav__menu-desc">Workflows that save hours</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="services.html">All services <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="portfolio.html">Portfolio</a>
-        <a class="site-nav__link" href="industries.html">Industries</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navIndustriesMenu" data-nav-toggle>
+            <span>Industries</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navIndustriesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Where we work</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="industries.html?industry=technology"><span class="site-nav__menu-name">Technology & Apps</span><span class="site-nav__menu-desc">SaaS, platforms, product teams</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=ecommerce"><span class="site-nav__menu-name">E-commerce & Retail</span><span class="site-nav__menu-desc">Stores, catalogues, checkout</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=health"><span class="site-nav__menu-name">Health & Wellbeing</span><span class="site-nav__menu-desc">Clinics, care, wellness brands</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=finance"><span class="site-nav__menu-name">Finance & Professional</span><span class="site-nav__menu-desc">Fintech, advisory, services</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=education"><span class="site-nav__menu-name">Education</span><span class="site-nav__menu-desc">Schools, courses, learning tools</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=travel"><span class="site-nav__menu-name">Travel & Hospitality</span><span class="site-nav__menu-desc">Hotels, tours, booking flows</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="industries.html">All industries <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="case-studies.html">Case Studies</a>
         <a class="site-nav__link" href="blog.html">Blog</a>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn-pill btn-pill--arrow site-header__cta" href="lets-get-started.html">
-          <span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-        </a>
+        <a class="arrow__btn-link btn-teal-deep site-header__cta" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
         <button class="btn-icon site-header__about-toggle" type="button" aria-label="Open Alify information" aria-controls="aboutDrawer" aria-expanded="false">
           <i class="ph ph-dots-nine" aria-hidden="true"></i>
         </button>
@@ -65,16 +203,16 @@
       <h2>We are <span>ALIFY</span></h2>
       <p class="site-drawer__description">We turn ambitious ideas into thoughtful digital experiences. Strategy, creativity and technology—working together to move your business forward.</p>
       <div class="site-drawer__ctas">
-        <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
-        <a class="btn-pill btn-pill--outline" href="contact-us.html">Schedule a Call</a>
+        <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Schedule a Call</a>
       </div>
     </div>
     <div class="site-drawer__bottom">
       <span class="site-drawer__social-label">Follow along</span>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -84,32 +222,235 @@
       <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
       <button class="btn-icon site-drawer__close" type="button" aria-label="Close navigation menu"><i class="ph ph-x" aria-hidden="true"></i></button>
     </div>
-    <nav class="site-drawer__nav" aria-label="Mobile navigation">
+        <nav class="site-drawer__nav" aria-label="Mobile navigation">
       <a href="index.html"><span>01</span> Home <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="about-us.html"><span>02</span> About Us <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="services.html"><span>03</span> Services <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerAboutSub" data-nav-group-toggle>
+          <span><span>02</span> About Us</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerAboutSub" hidden>
+            <a href="about-us.html">About Alify</a>
+            <a href="process.html">Our process</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+      </div>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerServicesSub" data-nav-group-toggle>
+          <span><span>03</span> Services</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerServicesSub" hidden>
+            <a href="web-development.html">Web Development</a>
+            <a href="service-wordpress.html">WordPress Development</a>
+            <a href="service-shopify.html">Shopify Development</a>
+            <a href="service-ui-ux.html">UI / UX Design</a>
+            <a href="service-seo.html">SEO</a>
+            <a href="service-digital-marketing.html">Digital Marketing</a>
+            <a href="service-content-writing.html">Content Writing</a>
+            <a href="service-logo-designing.html">Logo Designing</a>
+            <a href="service-ai-automation.html">AI Automation</a>
+          <a class="site-drawer__sub-all" href="services.html">All services</a>
+        </div>
+      </div>
       <a href="portfolio.html"><span>04</span> Portfolio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="industries.html"><span>05</span> Industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerIndustriesSub" data-nav-group-toggle>
+          <span><span>05</span> Industries</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerIndustriesSub" hidden>
+            <a href="industries.html?industry=technology">Technology & Apps</a>
+            <a href="industries.html?industry=ecommerce">E-commerce & Retail</a>
+            <a href="industries.html?industry=health">Health & Wellbeing</a>
+            <a href="industries.html?industry=finance">Finance & Professional</a>
+            <a href="industries.html?industry=education">Education</a>
+            <a href="industries.html?industry=travel">Travel & Hospitality</a>
+          <a class="site-drawer__sub-all" href="industries.html">All industries</a>
+        </div>
+      </div>
       <a href="case-studies.html"><span>06</span> Case Studies <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
       <a href="blog.html"><span>07</span> Blog <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
     </nav>
     <div class="site-drawer__bottom site-drawer__bottom--menu">
-      <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+      <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Legal information</p><h1 id="pageHeroTitle">Clear terms.<br><span>Respect for your privacy.</span></h1><p class="inner-hero__description">Read the current draft notices. All policy text needs organization-specific review before publication.</p><div class="inner-hero__actions"><a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon"><i class="ph ph-arrow-up-right"></i></span></a><a class="btn-pill btn-pill--outline" href="index.html">Back to Home</a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Legal information</p><h1 id="pageHeroTitle">Clear terms.<br><span>Respect for your privacy.</span></h1><p class="inner-hero__description">How we handle your data, and the terms we work under.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="btn-pill btn-pill--on-dark" href="index.html">Back to Home</a></div></div></div></section>
+    <section class="legal-doc" aria-labelledby="legalDocTitle">
+      <div class="container">
+        <h2 class="visually-hidden" id="legalDocTitle">Privacy policy and terms of service</h2>
+        <div class="legal-doc__layout">
+          <aside class="legal-doc__side" aria-label="Document contents">
+            <p class="legal-doc__side-title">On this page</p>
+          <div class="legal-doc__toc-group">
+            <a class="legal-doc__toc-title" href="#privacy">Privacy policy</a>
+            <nav class="legal-doc__toc-links" aria-label="Privacy policy sections">
+            <a href="#privacy-1">1. What this policy covers</a>
+            <a href="#privacy-2">2. Information you give us</a>
+            <a href="#privacy-3">3. Information we collect automatically</a>
+            <a href="#privacy-4">4. Cookies and local storage</a>
+            <a href="#privacy-5">5. Analytics</a>
+            <a href="#privacy-6">6. How we use your information</a>
+            <a href="#privacy-7">7. Who we share it with</a>
+            <a href="#privacy-8">8. How long we keep it</a>
+            <a href="#privacy-9">9. Your rights</a>
+            <a href="#privacy-10">10. Security</a>
+            <a href="#privacy-11">11. Children</a>
+            <a href="#privacy-12">12. Changes to this policy</a>
+            </nav>
+          </div>
+          <div class="legal-doc__toc-group">
+            <a class="legal-doc__toc-title" href="#terms">Terms of service</a>
+            <nav class="legal-doc__toc-links" aria-label="Terms of service sections">
+            <a href="#terms-1">1. These terms</a>
+            <a href="#terms-2">2. Quotes and scope</a>
+            <a href="#terms-3">3. Payment</a>
+            <a href="#terms-4">4. Timelines</a>
+            <a href="#terms-5">5. Your responsibilities</a>
+            <a href="#terms-6">6. Revisions</a>
+            <a href="#terms-7">7. Intellectual property</a>
+            <a href="#terms-8">8. Confidentiality</a>
+            <a href="#terms-9">9. Third-party services</a>
+            <a href="#terms-10">10. Cancellation</a>
+            <a href="#terms-11">11. Liability</a>
+            <a href="#terms-12">12. Governing law</a>
+            </nav>
+          </div>
+            <p class="legal-doc__side-note">Questions about either document? Write to <a href="mailto:hello@alify.studio">hello@alify.studio</a>.</p>
+          </aside>
+          <div class="legal-doc__main">
+      <article class="legal-doc__article" id="privacy">
+        <p class="eyebrow legal-doc__eyebrow">Privacy</p>
+        <h2 class="legal-doc__title">Privacy policy</h2>
+        <p class="legal-doc__updated">Last updated 13 November 2026</p>
+        <div class="legal-doc__prose">
+          <section class="legal-doc__block" id="privacy-1">
+            <h3><span class="legal-doc__num" aria-hidden="true">01</span>What this policy covers</h3>
+            <p>This policy explains what information Alify collects when you use this website, why we collect it and the choices you have. It applies to alify.studio and to enquiries, quotes and project work that start here.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-2">
+            <h3><span class="legal-doc__num" aria-hidden="true">02</span>Information you give us</h3>
+            <p>When you send a form, request a quote or book a call we collect the details you type in: your name, email address, company, phone number, budget range and anything you write in the message field. We only ask for what we need to reply properly.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-3">
+            <h3><span class="legal-doc__num" aria-hidden="true">03</span>Information we collect automatically</h3>
+            <p>Our server logs the pages you request, the time of the request and your approximate location derived from your IP address. We use this to keep the site fast and to spot abuse. We do not build advertising profiles from it.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-4">
+            <h3><span class="legal-doc__num" aria-hidden="true">04</span>Cookies and local storage</h3>
+            <p>This site uses a small number of first-party cookies and local storage keys so preferences such as your last filter selection survive a page reload. You can clear them at any time in your browser settings; nothing essential breaks if you do.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-5">
+            <h3><span class="legal-doc__num" aria-hidden="true">05</span>Analytics</h3>
+            <p>If analytics are enabled, we use a privacy-friendly setup that records page views, referrers and device type without cross-site tracking. Analytics data is aggregated and never sold.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-6">
+            <h3><span class="legal-doc__num" aria-hidden="true">06</span>How we use your information</h3>
+            <p>We use your details to answer your enquiry, prepare a quote, deliver agreed work, send invoices, and — only if you opt in — share occasional studio updates. We never sell your data and we do not share it with advertisers.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-7">
+            <h3><span class="legal-doc__num" aria-hidden="true">07</span>Who we share it with</h3>
+            <p>We share the minimum necessary with the processors that run our business: email hosting, project management, accounting and, where a project requires it, hosting or payment providers. Each is bound by a data-processing agreement.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-8">
+            <h3><span class="legal-doc__num" aria-hidden="true">08</span>How long we keep it</h3>
+            <p>Enquiries that do not become projects are deleted after twelve months. Project records, contracts and invoices are kept for seven years to meet tax and legal obligations. Analytics data is retained in aggregate for twenty-six months.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-9">
+            <h3><span class="legal-doc__num" aria-hidden="true">09</span>Your rights</h3>
+            <p>You can ask us for a copy of the data we hold about you, ask us to correct it, or ask us to delete it. Write to hello@alify.studio and we will respond within thirty days. If you are in the EU or UK, you also have the right to complain to your local supervisory authority.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-10">
+            <h3><span class="legal-doc__num" aria-hidden="true">10</span>Security</h3>
+            <p>Access to client data is limited to the people working on your project. We use encrypted connections, password managers, two-factor authentication and regular backups. No system is perfect; if a breach ever affects your data we will tell you promptly.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-11">
+            <h3><span class="legal-doc__num" aria-hidden="true">11</span>Children</h3>
+            <p>This website is aimed at businesses. We do not knowingly collect data from anyone under sixteen. If you believe a child has sent us details, contact us and we will remove them.</p>
+          </section>
+          <section class="legal-doc__block" id="privacy-12">
+            <h3><span class="legal-doc__num" aria-hidden="true">12</span>Changes to this policy</h3>
+            <p>When we change how we handle data we update this page and revise the date at the top. Material changes are also announced in the studio newsletter.</p>
+          </section>
+        </div>
+      </article>
+
+      <article class="legal-doc__article" id="terms">
+        <p class="eyebrow legal-doc__eyebrow">Terms</p>
+        <h2 class="legal-doc__title">Terms of service</h2>
+        <p class="legal-doc__updated">Last updated 13 November 2026</p>
+        <div class="legal-doc__prose">
+          <section class="legal-doc__block" id="terms-1">
+            <h3><span class="legal-doc__num" aria-hidden="true">01</span>These terms</h3>
+            <p>These terms govern the use of this website and any proposal, quote or project that follows from it. Where a signed statement of work exists, that document takes precedence over anything written here.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-2">
+            <h3><span class="legal-doc__num" aria-hidden="true">02</span>Quotes and scope</h3>
+            <p>Every quote is fixed for the scope described in it. Anything not written in the scope is not included. If the brief changes after approval we will price the difference in writing before doing the work.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-3">
+            <h3><span class="legal-doc__num" aria-hidden="true">03</span>Payment</h3>
+            <p>Projects are invoiced in milestones, typically fifty percent to start and the balance before launch. Retainers are invoiced monthly in advance. Invoices are payable within fourteen days. Work may be paused on overdue accounts.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-4">
+            <h3><span class="legal-doc__num" aria-hidden="true">04</span>Timelines</h3>
+            <p>Dates assume feedback within two working days at each review stage. If feedback is delayed the schedule moves by the same amount. We will always tell you early if a date is at risk.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-5">
+            <h3><span class="legal-doc__num" aria-hidden="true">05</span>Your responsibilities</h3>
+            <p>You agree to provide content, access and decisions on time, and to confirm that any material you supply — copy, images, fonts, trademarks — is licensed for the use you have asked for.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-6">
+            <h3><span class="legal-doc__num" aria-hidden="true">06</span>Revisions</h3>
+            <p>Each stage includes two rounds of revision unless the scope says otherwise. Further rounds are billed at the studio's hourly rate. Revisions do not include a change of direction after a stage has been approved.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-7">
+            <h3><span class="legal-doc__num" aria-hidden="true">07</span>Intellectual property</h3>
+            <p>On final payment you own the delivered designs, code and content created for you. We retain ownership of our pre-existing tools, libraries and internal frameworks, and we may show the work in our portfolio unless you ask us in writing not to.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-8">
+            <h3><span class="legal-doc__num" aria-hidden="true">08</span>Confidentiality</h3>
+            <p>Anything you share that is not public stays confidential. We will not disclose it to third parties without permission and we ask the same of our collaborators.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-9">
+            <h3><span class="legal-doc__num" aria-hidden="true">09</span>Third-party services</h3>
+            <p>Projects often rely on hosting, CMS, payment or analytics providers. Their terms and availability are outside our control. We will recommend sensible options, but licence and subscription costs are yours to hold.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-10">
+            <h3><span class="legal-doc__num" aria-hidden="true">10</span>Cancellation</h3>
+            <p>Either side may end an engagement with fourteen days' written notice. You pay for work completed up to that date plus any non-refundable third-party costs already committed. Deposits are non-refundable once discovery has started.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-11">
+            <h3><span class="legal-doc__num" aria-hidden="true">11</span>Liability</h3>
+            <p>We deliver work with reasonable skill and care. Our total liability for any claim is limited to the fees paid for the engagement in question. We are not liable for indirect losses such as lost profit or lost opportunity.</p>
+          </section>
+          <section class="legal-doc__block" id="terms-12">
+            <h3><span class="legal-doc__num" aria-hidden="true">12</span>Governing law</h3>
+            <p>These terms are governed by the laws of Pakistan, and the courts of Karachi have exclusive jurisdiction over any dispute. We will always try to resolve a disagreement directly first.</p>
+          </section>
+        </div>
+      </article>
+            <div class="legal-doc__foot">
+              <p>Still unsure about something? Ask before you sign — a short email is usually enough.</p>
+              <a class="btn-pill btn-pill--quiet" href="contact-us.html">Ask a question</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
     <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
-      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/images/background-videos/footer-cta-poster.jpg">
         <source src="assets/images/background-videos/footer-cta.mp4" type="video/mp4">
       </video>
       <div class="container footer-cta__container">
@@ -118,10 +459,8 @@
             <p class="eyebrow footer-cta__eyebrow"><i class="ph ph-triangle footer-cta__eyebrow-icon" aria-hidden="true"></i>Have a good one in mind?</p>
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
-              <a class="btn-pill btn-pill--arrow" href="lets-get-started.html">
-                <span>Start a project</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-              </a>
-              <a class="btn-pill btn-pill--outline footer-cta__secondary" href="contact-us.html">Or schedule a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+              <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>
@@ -136,9 +475,9 @@
           </a>
           <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
           <div class="site-footer__socials" aria-label="Social media">
-            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="col-6 col-lg-2 col-md-3">
@@ -189,6 +528,13 @@
   <script defer src="assets/gsap/ScrollTrigger.min.js"></script>
   <script defer src="assets/gsap/ScrollToPlugin.min.js"></script>
   <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll back to top">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+  <button class="back-to-top back-to-top--down" id="scrollToBottom" type="button" aria-label="Scroll to bottom">
+    <i class="ph ph-arrow-down" aria-hidden="true"></i>
+  </button>
+
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>

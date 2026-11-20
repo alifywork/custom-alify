@@ -4,8 +4,93 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F6F4F1">
-  <meta name="description" content="Explore sample plans for WordPress, Shopify, UI/UX and SEO services.">
+  <meta name="description" content="Three transparent ways to work with us across web, brand, growth and content services.">
   <title>Pricing | Alify</title>
+    <link rel="icon" href="assets/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="canonical" href="https://alify.studio/pricing.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alify">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Pricing | Alify">
+  <meta property="og:description" content="Three transparent ways to work with us across web, brand, growth and content services.">
+  <meta property="og:url" content="https://alify.studio/pricing.html">
+  <meta property="og:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alify — ideas that move you forward">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pricing | Alify">
+  <meta name="twitter:description" content="Three transparent ways to work with us across web, brand, growth and content services.">
+  <meta name="twitter:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://alify.studio/#organization",
+      "name": "Alify",
+      "url": "https://alify.studio/",
+      "logo": "https://alify.studio/assets/images/logo/sticky-logo.png",
+      "email": "hello@alify.studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karachi",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://www.instagram.com/alify.studio/",
+        "https://www.linkedin.com/company/alify-studio/",
+        "https://www.facebook.com/alify.studio/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://alify.studio/#website",
+      "url": "https://alify.studio/",
+      "name": "Alify",
+      "publisher": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://alify.studio/pricing.html#webpage",
+      "url": "https://alify.studio/pricing.html",
+      "name": "Pricing | Alify",
+      "description": "Three transparent ways to work with us across web, brand, growth and content services.",
+      "isPartOf": {
+        "@id": "https://alify.studio/#website"
+      },
+      "about": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://alify.studio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pricing",
+          "item": "https://alify.studio/pricing.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
   <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -13,13 +98,18 @@
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/utility.css">
   <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/arrow-buttons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/nav-menus.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/inner-pages.css">
   <link rel="stylesheet" href="assets/css/advanced-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-editorial.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-services.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/video-backgrounds.css">
   <link rel="stylesheet" href="assets/icons/phosphor.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body id="top">
   <header class="site-header" id="siteHeader">
@@ -29,20 +119,68 @@
         <img class="site-header__logo-sticky" src="assets/images/logo/sticky-logo.png" alt="" aria-hidden="true">
       </a>
 
-      <nav class="site-nav" aria-label="Main navigation">
+            <nav class="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="index.html">Home</a>
-        <a class="site-nav__link" href="about-us.html">About Us</a>
-        <a class="site-nav__link" href="services.html">Services</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navAboutMenu" data-nav-toggle>
+            <span>About Us</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu site-nav__menu--narrow" id="navAboutMenu" data-nav-menu>
+            <p class="site-nav__menu-label">The studio</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="about-us.html"><span class="site-nav__menu-name">About Alify</span><span class="site-nav__menu-desc">The studio and how we work</span></a>
+              <a class="site-nav__menu-link" href="process.html"><span class="site-nav__menu-name">Our process</span><span class="site-nav__menu-desc">Six phases, no surprises</span></a>
+              <a class="site-nav__menu-link" href="pricing.html"><span class="site-nav__menu-name">Pricing</span><span class="site-nav__menu-desc">Three ways to work together</span></a>
+              <a class="site-nav__menu-link" href="testimonials.html"><span class="site-nav__menu-name">Testimonials</span><span class="site-nav__menu-desc">What clients say</span></a>
+              <a class="site-nav__menu-link" href="faq.html"><span class="site-nav__menu-name">FAQ</span><span class="site-nav__menu-desc">Answers before you ask</span></a>
+              <a class="site-nav__menu-link" href="contact-us.html"><span class="site-nav__menu-name">Contact</span><span class="site-nav__menu-desc">Start a conversation</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu" data-nav-toggle>
+            <span>Services</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navServicesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Nine connected services</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="web-development.html"><span class="site-nav__menu-name">Web Development</span><span class="site-nav__menu-desc">Fast, accessible websites</span></a>
+              <a class="site-nav__menu-link" href="service-wordpress.html"><span class="site-nav__menu-name">WordPress Development</span><span class="site-nav__menu-desc">Sites your team can run</span></a>
+              <a class="site-nav__menu-link" href="service-shopify.html"><span class="site-nav__menu-name">Shopify Development</span><span class="site-nav__menu-desc">Stores built to convert</span></a>
+              <a class="site-nav__menu-link" href="service-ui-ux.html"><span class="site-nav__menu-name">UI / UX Design</span><span class="site-nav__menu-desc">Journeys people finish</span></a>
+              <a class="site-nav__menu-link" href="service-seo.html"><span class="site-nav__menu-name">SEO</span><span class="site-nav__menu-desc">Technical and on-page search</span></a>
+              <a class="site-nav__menu-link" href="service-digital-marketing.html"><span class="site-nav__menu-name">Digital Marketing</span><span class="site-nav__menu-desc">Campaigns that compound</span></a>
+              <a class="site-nav__menu-link" href="service-content-writing.html"><span class="site-nav__menu-name">Content Writing</span><span class="site-nav__menu-desc">Clear, useful copy</span></a>
+              <a class="site-nav__menu-link" href="service-logo-designing.html"><span class="site-nav__menu-name">Logo Designing</span><span class="site-nav__menu-desc">Identities that stick</span></a>
+              <a class="site-nav__menu-link" href="service-ai-automation.html"><span class="site-nav__menu-name">AI Automation</span><span class="site-nav__menu-desc">Workflows that save hours</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="services.html">All services <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="portfolio.html">Portfolio</a>
-        <a class="site-nav__link" href="industries.html">Industries</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navIndustriesMenu" data-nav-toggle>
+            <span>Industries</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navIndustriesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Where we work</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="industries.html?industry=technology"><span class="site-nav__menu-name">Technology & Apps</span><span class="site-nav__menu-desc">SaaS, platforms, product teams</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=ecommerce"><span class="site-nav__menu-name">E-commerce & Retail</span><span class="site-nav__menu-desc">Stores, catalogues, checkout</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=health"><span class="site-nav__menu-name">Health & Wellbeing</span><span class="site-nav__menu-desc">Clinics, care, wellness brands</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=finance"><span class="site-nav__menu-name">Finance & Professional</span><span class="site-nav__menu-desc">Fintech, advisory, services</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=education"><span class="site-nav__menu-name">Education</span><span class="site-nav__menu-desc">Schools, courses, learning tools</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=travel"><span class="site-nav__menu-name">Travel & Hospitality</span><span class="site-nav__menu-desc">Hotels, tours, booking flows</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="industries.html">All industries <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="case-studies.html">Case Studies</a>
         <a class="site-nav__link" href="blog.html">Blog</a>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn-pill btn-pill--arrow site-header__cta" href="lets-get-started.html">
-          <span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-        </a>
+        <a class="arrow__btn-link btn-teal-deep site-header__cta" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
         <button class="btn-icon site-header__about-toggle" type="button" aria-label="Open Alify information" aria-controls="aboutDrawer" aria-expanded="false">
           <i class="ph ph-dots-nine" aria-hidden="true"></i>
         </button>
@@ -65,16 +203,16 @@
       <h2>We are <span>ALIFY</span></h2>
       <p class="site-drawer__description">We turn ambitious ideas into thoughtful digital experiences. Strategy, creativity and technology—working together to move your business forward.</p>
       <div class="site-drawer__ctas">
-        <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
-        <a class="btn-pill btn-pill--outline" href="contact-us.html">Schedule a Call</a>
+        <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Schedule a Call</a>
       </div>
     </div>
     <div class="site-drawer__bottom">
       <span class="site-drawer__social-label">Follow along</span>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -84,21 +222,62 @@
       <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
       <button class="btn-icon site-drawer__close" type="button" aria-label="Close navigation menu"><i class="ph ph-x" aria-hidden="true"></i></button>
     </div>
-    <nav class="site-drawer__nav" aria-label="Mobile navigation">
+        <nav class="site-drawer__nav" aria-label="Mobile navigation">
       <a href="index.html"><span>01</span> Home <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="about-us.html"><span>02</span> About Us <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="services.html"><span>03</span> Services <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerAboutSub" data-nav-group-toggle>
+          <span><span>02</span> About Us</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerAboutSub" hidden>
+            <a href="about-us.html">About Alify</a>
+            <a href="process.html">Our process</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+      </div>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerServicesSub" data-nav-group-toggle>
+          <span><span>03</span> Services</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerServicesSub" hidden>
+            <a href="web-development.html">Web Development</a>
+            <a href="service-wordpress.html">WordPress Development</a>
+            <a href="service-shopify.html">Shopify Development</a>
+            <a href="service-ui-ux.html">UI / UX Design</a>
+            <a href="service-seo.html">SEO</a>
+            <a href="service-digital-marketing.html">Digital Marketing</a>
+            <a href="service-content-writing.html">Content Writing</a>
+            <a href="service-logo-designing.html">Logo Designing</a>
+            <a href="service-ai-automation.html">AI Automation</a>
+          <a class="site-drawer__sub-all" href="services.html">All services</a>
+        </div>
+      </div>
       <a href="portfolio.html"><span>04</span> Portfolio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="industries.html"><span>05</span> Industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerIndustriesSub" data-nav-group-toggle>
+          <span><span>05</span> Industries</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerIndustriesSub" hidden>
+            <a href="industries.html?industry=technology">Technology & Apps</a>
+            <a href="industries.html?industry=ecommerce">E-commerce & Retail</a>
+            <a href="industries.html?industry=health">Health & Wellbeing</a>
+            <a href="industries.html?industry=finance">Finance & Professional</a>
+            <a href="industries.html?industry=education">Education</a>
+            <a href="industries.html?industry=travel">Travel & Hospitality</a>
+          <a class="site-drawer__sub-all" href="industries.html">All industries</a>
+        </div>
+      </div>
       <a href="case-studies.html"><span>06</span> Case Studies <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
       <a href="blog.html"><span>07</span> Blog <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
     </nav>
     <div class="site-drawer__bottom site-drawer__bottom--menu">
-      <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
+      <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -107,20 +286,612 @@
     <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle">
       <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video>
       <div class="container"><div class="inner-hero__content">
-        <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Plans & pricing</p>
+        <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Plans &amp; pricing</p>
         <h1 id="pageHeroTitle">Clear options.<br><span>Built around your goals.</span></h1>
-        <p class="inner-hero__description">Explore illustrative starting points for our services. We’ll shape the right scope and final quote together.</p>
+        <p class="inner-hero__description">Three transparent ways to work with us across four service lines. Every quote is fixed before the work starts — no hourly drift, no surprise invoices.</p>
         <div class="inner-hero__actions">
-          <a class="btn-pill btn-pill--arrow" href="lets-get-started.html"><span>Let’s get started</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></a>
-          <a class="btn-pill btn-pill--outline" href="index.html">Back to Home</a>
+          <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="btn-pill btn-pill--on-dark" href="get-a-quote.html">Get a custom quote</a>
         </div>
       </div></div>
+    </section>
+
+    <section class="home-pricing pricing-plans" aria-labelledby="plansTitle">
+      <div class="container">
+        <div class="home-pricing__intro">
+          <p class="eyebrow home-pricing__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Plans &amp; pricing</p>
+          <h2 id="plansTitle">Clear starting points, <span>no surprise invoices.</span></h2>
+          <p class="home-pricing__lead">Three ways to work with us, for each service. Pick the line of work below to see the tiers, then compare every detail further down the page.</p>
+        </div>
+
+        <div class="pricing-plans__tabs-wrap">
+          <div class="pricing-tabs" role="tablist" aria-label="Choose a service" data-pricing-tabs>
+            <button class="pricing-tab is-active" type="button" role="tab" id="plansTab-website" aria-selected="true" aria-controls="plans-website compare-website" tabindex="0" data-pricing-tab="website"><i class="ph ph-globe" aria-hidden="true"></i>Website</button>
+            <button class="pricing-tab" type="button" role="tab" id="plansTab-branding" aria-selected="false" aria-controls="plans-branding compare-branding" tabindex="-1" data-pricing-tab="branding"><i class="ph ph-pen-nib" aria-hidden="true"></i>Branding</button>
+            <button class="pricing-tab" type="button" role="tab" id="plansTab-ecommerce" aria-selected="false" aria-controls="plans-ecommerce compare-ecommerce" tabindex="-1" data-pricing-tab="ecommerce"><i class="ph ph-shopping-cart" aria-hidden="true"></i>Ecommerce</button>
+            <button class="pricing-tab" type="button" role="tab" id="plansTab-growth" aria-selected="false" aria-controls="plans-growth compare-growth" tabindex="-1" data-pricing-tab="growth"><i class="ph ph-chart-line-up" aria-hidden="true"></i>Growth</button>
+          </div>
+        </div>
+        <p class="visually-hidden" role="status" aria-live="polite" data-pricing-live></p>
+
+        <div class="pricing-panel" id="plans-website" role="tabpanel" aria-labelledby="plansTab-website" data-pricing-panel="website">
+          <div class="home-pricing__grid">
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">01</span>
+              <span class="home-pricing-card__tag">Project</span>
+            </div>
+            <h3 class="home-pricing-card__name">Launch</h3>
+            <p class="home-pricing-card__summary">A focused first site for a small team that needs to look credible fast.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$2,400</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Up to 5 pages</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Design + build</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Responsive &amp; accessible</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>2–3 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Launch</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card home-pricing-card--featured">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">02</span>
+              <span class="home-pricing-card__badge">Most chosen</span>
+            </div>
+            <h3 class="home-pricing-card__name">Growth</h3>
+            <p class="home-pricing-card__summary">For teams ready to scale traffic, content and conversions without guesswork.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$6,800</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Up to 12 pages + CMS</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>UX and conversion review</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Technical SEO setup</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>6–8 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Growth</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">03</span>
+              <span class="home-pricing-card__tag">Retainer</span>
+            </div>
+            <h3 class="home-pricing-card__name">Partner</h3>
+            <p class="home-pricing-card__summary">Ongoing design and development support, shaped around your roadmap.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$1,900</strong><em>per month</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Monthly retainer</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Priority turnaround</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Design + dev hours</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Quarterly roadmap review</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Partner</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          </div>
+        </div>
+
+        <div class="pricing-panel" id="plans-branding" role="tabpanel" aria-labelledby="plansTab-branding" data-pricing-panel="branding" hidden>
+          <div class="home-pricing__grid">
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">01</span>
+              <span class="home-pricing-card__tag">Project</span>
+            </div>
+            <h3 class="home-pricing-card__name">Essentials</h3>
+            <p class="home-pricing-card__summary">A clean identity for a new venture that needs the basics done properly.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$1,600</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Logo suite, three routes</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Core colour &amp; type system</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Brand one-pager</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>2–3 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Essentials</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card home-pricing-card--featured">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">02</span>
+              <span class="home-pricing-card__badge">Most chosen</span>
+            </div>
+            <h3 class="home-pricing-card__name">Identity</h3>
+            <p class="home-pricing-card__summary">A full identity system your team can apply without a designer in the room.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$3,800</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Logo suite + marks</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Full brand guidelines</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Stationery &amp; social kit</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>4–6 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Identity</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">03</span>
+              <span class="home-pricing-card__tag">Retainer</span>
+            </div>
+            <h3 class="home-pricing-card__name">Partner</h3>
+            <p class="home-pricing-card__summary">Ongoing design for campaigns, decks and everything in between.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$1,400</strong><em>per month</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Monthly design retainer</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Deck &amp; campaign assets</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Brand guardianship</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Quarterly review</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Partner</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          </div>
+        </div>
+
+        <div class="pricing-panel" id="plans-ecommerce" role="tabpanel" aria-labelledby="plansTab-ecommerce" data-pricing-panel="ecommerce" hidden>
+          <div class="home-pricing__grid">
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">01</span>
+              <span class="home-pricing-card__tag">Project</span>
+            </div>
+            <h3 class="home-pricing-card__name">Starter</h3>
+            <p class="home-pricing-card__summary">A small catalogue store that looks good and checks out cleanly.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$3,200</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Up to 30 products</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Theme design + build</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Payments &amp; shipping setup</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>3–4 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Starter</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card home-pricing-card--featured">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">02</span>
+              <span class="home-pricing-card__badge">Most chosen</span>
+            </div>
+            <h3 class="home-pricing-card__name">Store</h3>
+            <p class="home-pricing-card__summary">A full storefront with the merchandising and retention basics finished.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$8,400</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Up to 250 products</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Custom theme + sections</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Email capture &amp; recovery</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>6–9 week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Store</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">03</span>
+              <span class="home-pricing-card__tag">Retainer</span>
+            </div>
+            <h3 class="home-pricing-card__name">Partner</h3>
+            <p class="home-pricing-card__summary">Ongoing trade support: new sections, promotions and conversion work.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$2,200</strong><em>per month</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Monthly dev retainer</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Campaign landing pages</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>CRO &amp; speed checks</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Quarterly review</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Partner</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          </div>
+        </div>
+
+        <div class="pricing-panel" id="plans-growth" role="tabpanel" aria-labelledby="plansTab-growth" data-pricing-panel="growth" hidden>
+          <div class="home-pricing__grid">
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">01</span>
+              <span class="home-pricing-card__tag">Sprint</span>
+            </div>
+            <h3 class="home-pricing-card__name">Sprint</h3>
+            <p class="home-pricing-card__summary">A focused four-week push on the one channel that matters most.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$1,800</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Channel audit</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>4-week action plan</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Landing page + tracking</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Weekly check-ins</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Sprint</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card home-pricing-card--featured">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">02</span>
+              <span class="home-pricing-card__badge">Most chosen</span>
+            </div>
+            <h3 class="home-pricing-card__name">Engine</h3>
+            <p class="home-pricing-card__summary">A compounding content and SEO engine, built and handed to your team.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$4,800</strong><em>fixed project</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Technical SEO fixes</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Content system + 8 briefs</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Analytics dashboard</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>8-week sprint</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Engine</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          <article class="home-pricing-card">
+            <div class="home-pricing-card__top">
+              <span class="home-pricing-card__index">03</span>
+              <span class="home-pricing-card__tag">Retainer</span>
+            </div>
+            <h3 class="home-pricing-card__name">Partner</h3>
+            <p class="home-pricing-card__summary">A monthly growth partnership across SEO, content and paid.</p>
+            <p class="home-pricing-card__price"><small>from</small><strong>$2,600</strong><em>per month</em></p>
+            <ul class="home-pricing-card__list">
+              <li><i class="ph ph-check" aria-hidden="true"></i>Monthly strategy</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Content production</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Paid &amp; CRO experiments</li>
+              <li><i class="ph ph-check" aria-hidden="true"></i>Monthly report</li>
+            </ul>
+            <a class="home-pricing-card__link" href="lets-get-started.html"><span>Start with Partner</span><i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </article>
+          </div>
+        </div>
+
+        <div class="home-pricing__footer">
+          <p class="home-pricing__note">Starting points. Final pricing depends on scope, integrations and timeline — every engagement begins with a fixed, itemised quote.</p>
+          <div class="home-pricing__actions">
+            <a class="btn-pill btn-pill--quiet" href="get-a-quote.html">Get a custom quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-compare" aria-labelledby="compareTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Side by side</p>
+            <h2 id="compareTitle">Compare every tier, <span>line by line.</span></h2>
+          </div>
+          <p class="blog-archive__lead">The table follows the service selected above, so you can check exactly where each tier stops.</p>
+        </div>
+          <div class="pricing-compare__wrap" id="compare-website" data-pricing-panel="website">
+            <div class="pricing-compare__scroll">
+              <table class="pricing-compare__table">
+                <caption>Website plans compared by tier</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">What’s included</th>
+                    <th scope="col">Launch</th>
+                    <th scope="col" class="is-featured">Growth<span class="pricing-compare__badge">Most chosen</span></th>
+                    <th scope="col">Partner</th>
+                  </tr>
+                </thead>
+                <tbody>
+              <tr>
+                <th scope="row">Pages included</th><td>Up to 5</td><td class="is-featured">Up to 12</td><td>Rolling by month</td>
+              </tr>
+              <tr>
+                <th scope="row">Content management</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Design rounds</th><td>2</td><td class="is-featured">3</td><td>Ongoing</td>
+              </tr>
+              <tr>
+                <th scope="row">Copywriting</th><td>Your content</td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">SEO setup</th><td>On-page basics</td><td class="is-featured">Technical setup</td><td>Monthly work</td>
+              </tr>
+              <tr>
+                <th scope="row">Support after launch</th><td>14 days</td><td class="is-featured">30 days</td><td>Ongoing</td>
+              </tr>
+              <tr>
+                <th scope="row">Typical delivery</th><td>2–3 weeks</td><td class="is-featured">6–8 weeks</td><td>Rolling</td>
+              </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="pricing-compare__wrap" id="compare-branding" data-pricing-panel="branding" hidden>
+            <div class="pricing-compare__scroll">
+              <table class="pricing-compare__table">
+                <caption>Branding plans compared by tier</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">What’s included</th>
+                    <th scope="col">Essentials</th>
+                    <th scope="col" class="is-featured">Identity<span class="pricing-compare__badge">Most chosen</span></th>
+                    <th scope="col">Partner</th>
+                  </tr>
+                </thead>
+                <tbody>
+              <tr>
+                <th scope="row">Logo routes</th><td>3</td><td class="is-featured">5</td><td>Ongoing</td>
+              </tr>
+              <tr>
+                <th scope="row">Brand guidelines</th><td>One-pager</td><td class="is-featured">Full document</td><td>Full + updates</td>
+              </tr>
+              <tr>
+                <th scope="row">Stationery &amp; templates</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td>On request</td>
+              </tr>
+              <tr>
+                <th scope="row">Social kit</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td>Ongoing</td>
+              </tr>
+              <tr>
+                <th scope="row">Deck &amp; document templates</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Brand training session</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><span class="pricing-compare__none" aria-label="Not included">—</span></td><td>Quarterly</td>
+              </tr>
+              <tr>
+                <th scope="row">Typical delivery</th><td>2–3 weeks</td><td class="is-featured">4–6 weeks</td><td>Rolling</td>
+              </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="pricing-compare__wrap" id="compare-ecommerce" data-pricing-panel="ecommerce" hidden>
+            <div class="pricing-compare__scroll">
+              <table class="pricing-compare__table">
+                <caption>Ecommerce plans compared by tier</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">What’s included</th>
+                    <th scope="col">Starter</th>
+                    <th scope="col" class="is-featured">Store<span class="pricing-compare__badge">Most chosen</span></th>
+                    <th scope="col">Partner</th>
+                  </tr>
+                </thead>
+                <tbody>
+              <tr>
+                <th scope="row">Products supported</th><td>Up to 30</td><td class="is-featured">Up to 250</td><td>Unlimited</td>
+              </tr>
+              <tr>
+                <th scope="row">Payments &amp; shipping</th><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Custom storefront sections</th><td>3</td><td class="is-featured">8</td><td>Ongoing</td>
+              </tr>
+              <tr>
+                <th scope="row">Email capture &amp; recovery</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Conversion checks</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td>Monthly</td>
+              </tr>
+              <tr>
+                <th scope="row">Speed optimisation</th><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Typical delivery</th><td>3–4 weeks</td><td class="is-featured">6–9 weeks</td><td>Rolling</td>
+              </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="pricing-compare__wrap" id="compare-growth" data-pricing-panel="growth" hidden>
+            <div class="pricing-compare__scroll">
+              <table class="pricing-compare__table">
+                <caption>Growth plans compared by tier</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">What’s included</th>
+                    <th scope="col">Sprint</th>
+                    <th scope="col" class="is-featured">Engine<span class="pricing-compare__badge">Most chosen</span></th>
+                    <th scope="col">Partner</th>
+                  </tr>
+                </thead>
+                <tbody>
+              <tr>
+                <th scope="row">Channel audit</th><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Content briefs</th><td>2</td><td class="is-featured">8</td><td>Ongoing</td>
+              </tr>
+              <tr>
+                <th scope="row">Landing pages</th><td>1</td><td class="is-featured">3</td><td>Monthly</td>
+              </tr>
+              <tr>
+                <th scope="row">Tracking &amp; analytics</th><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Paid experiments</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><span class="pricing-compare__none" aria-label="Not included">—</span></td><td>Monthly</td>
+              </tr>
+              <tr>
+                <th scope="row">Monthly reporting</th><td><span class="pricing-compare__none" aria-label="Not included">—</span></td><td class="is-featured"><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td><td><i class="ph ph-check pricing-compare__check" aria-hidden="true"></i><span class="visually-hidden">Included</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Engagement length</th><td>4 weeks</td><td class="is-featured">8 weeks</td><td>Rolling</td>
+              </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <p class="pricing-compare__note">Anything marked “Ongoing” is scoped month to month as part of a retainer, not a fixed project.</p>
+      </div>
+    </section>
+
+    <section class="pricing-addons" aria-labelledby="addonsTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Add-ons</p>
+            <h2 id="addonsTitle">Smaller pieces, <span>quoted the same way.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Add any of these to a project or book them on their own. Same fixed-price rule applies.</p>
+        </div>
+        <div class="row g-4 pricing-addons__grid">
+            <div class="col-md-6 col-xl-4">
+              <article class="pricing-addons__card">
+                <span class="pricing-addons__icon" aria-hidden="true"><i class="ph ph-file-plus"></i></span>
+                <h3>Extra page</h3>
+                <p>A new page designed and built into the existing site, matching the current system.</p>
+                <span class="pricing-addons__price">From $180 / page</span>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="pricing-addons__card">
+                <span class="pricing-addons__icon" aria-hidden="true"><i class="ph ph-pencil-simple"></i></span>
+                <h3>Copywriting</h3>
+                <p>Page copy written from a short interview, with one round of edits included.</p>
+                <span class="pricing-addons__price">From $90 / page</span>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="pricing-addons__card">
+                <span class="pricing-addons__icon" aria-hidden="true"><i class="ph ph-palette"></i></span>
+                <h3>Logo refresh</h3>
+                <p>A careful update to an existing mark — cleaner geometry, same recognition.</p>
+                <span class="pricing-addons__price">From $650</span>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="pricing-addons__card">
+                <span class="pricing-addons__icon" aria-hidden="true"><i class="ph ph-camera"></i></span>
+                <h3>Photo &amp; art direction</h3>
+                <p>A shot list, photographer briefing and on-set direction for the pages that need real imagery.</p>
+                <span class="pricing-addons__price">From $450 / shoot</span>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="pricing-addons__card">
+                <span class="pricing-addons__icon" aria-hidden="true"><i class="ph ph-layout"></i></span>
+                <h3>Campaign landing page</h3>
+                <p>A focused page for one launch or offer, with tracking and a clear call to action.</p>
+                <span class="pricing-addons__price">From $900</span>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="pricing-addons__card">
+                <span class="pricing-addons__icon" aria-hidden="true"><i class="ph ph-gauge"></i></span>
+                <h3>Speed &amp; SEO audit</h3>
+                <p>A prioritised report on what is slowing the site down and what to fix first.</p>
+                <span class="pricing-addons__price">From $380</span>
+              </article>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-quotes" aria-labelledby="quotesTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Custom quotes</p>
+            <h2 id="quotesTitle">How the final number <span>actually gets made.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Three short steps between a rough idea and a quote you can plan a budget around.</p>
+        </div>
+        <div class="row g-4 pricing-quotes__steps">
+            <div class="col-md-4">
+              <article class="pricing-quotes__step">
+                <span class="pricing-quotes__num"><span class="pricing-quotes__num-badge">01</span>Share the brief</span>
+                <p>Five minutes in our guided form: the service, the pages, your timeline and a budget range if you have one.</p>
+                <span class="pricing-quotes__icon" aria-hidden="true"><i class="ph ph-file-text"></i></span>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="pricing-quotes__step">
+                <span class="pricing-quotes__num"><span class="pricing-quotes__num-badge">02</span>Scoping call</span>
+                <p>Thirty minutes to pressure-test the scope. We say what fits, what we would cut and what it costs.</p>
+                <span class="pricing-quotes__icon" aria-hidden="true"><i class="ph ph-chat-circle-dots"></i></span>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="pricing-quotes__step">
+                <span class="pricing-quotes__num"><span class="pricing-quotes__num-badge">03</span>Fixed quote in 48 hours</span>
+                <p>A line-item quote arrives within two working days — pages, revisions and handover included.</p>
+                <span class="pricing-quotes__icon" aria-hidden="true"><i class="ph ph-receipt"></i></span>
+              </article>
+            </div>
+        </div>
+
+        <div class="pricing-quotes__factors">
+          <div>
+            <h3>What moves the price</h3>
+            <p>Four things decide most of the difference between one quote and another. Nothing is padded in later.</p>
+            <div class="pricing-quotes__chips">
+              <span class="pricing-quotes__chip"><i class="ph ph-files" aria-hidden="true"></i>Page count</span>
+              <span class="pricing-quotes__chip"><i class="ph ph-plugs-connected" aria-hidden="true"></i>Integrations</span>
+              <span class="pricing-quotes__chip"><i class="ph ph-text-aa" aria-hidden="true"></i>Content readiness</span>
+              <span class="pricing-quotes__chip"><i class="ph ph-calendar-blank" aria-hidden="true"></i>Timeline</span>
+            </div>
+          </div>
+          <div class="pricing-quotes__actions">
+            <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            <a class="btn-pill btn-pill--quiet" href="book-a-call.html">Book a call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-faq pricing-faq" aria-labelledby="pricingFaqTitle">
+      <div class="container">
+        <div class="row gy-5 gx-lg-5">
+          <div class="col-lg-5">
+            <div class="home-faq__intro">
+              <p class="eyebrow home-faq__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Good to know</p>
+              <h2 id="pricingFaqTitle">Questions about<br><span>cost and scope.</span></h2>
+              <p class="home-faq__lead">The money questions clients ask before signing anything. Straight answers, no small print.</p>
+              <div class="home-faq__panel">
+                <p class="home-faq__panel-title">Still deciding?</p>
+                <p class="home-faq__panel-text">Send the rough idea. We will tell you what it realistically costs before you commit.</p>
+                <div class="home-faq__panel-actions">
+                  <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+                  <a class="home-faq__link" href="faq.html">All FAQs <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="home-faq__list">
+          <details class="home-faq__row" name="pricingFaq" open>
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">01</span>
+              <span class="home-faq__label">Why is the pricing listed as “from”?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Because scope changes the number. The figures here are honest starting points for the described tier; a site with ten integrations and a forty-page catalogue sits well above them.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="pricingFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">02</span>
+              <span class="home-faq__label">How do you keep a quote fixed?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>We scope before we quote — pages, revisions, integrations and handover are listed line by line. If the scope holds, the price holds. Anything new is quoted before it is built.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="pricingFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">03</span>
+              <span class="home-faq__label">What are the payment terms?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Typically 40% to start, 30% at design sign-off and the balance before launch. Retainers are billed monthly in advance, with no long lock-in.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="pricingFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">04</span>
+              <span class="home-faq__label">Are there hidden costs?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>No. Third-party costs — fonts, plugins, hosting, stock imagery or paid media — are listed separately and only bought once you approve them.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="pricingFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">05</span>
+              <span class="home-faq__label">What if our scope grows mid-project?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Small adjustments inside the current phase are absorbed. Anything larger is quoted as a change and added to the list, so the launch date never slips silently.</p></div></div>
+          </details>
+          <details class="home-faq__row" name="pricingFaq">
+            <summary class="home-faq__question">
+              <span class="home-faq__index" aria-hidden="true">06</span>
+              <span class="home-faq__label">Do you offer retainers instead of projects?</span>
+              <span class="home-faq__icon" aria-hidden="true"><i class="ph ph-plus"></i></span>
+            </summary>
+            <div class="home-faq__answer"><div><p>Yes. The Partner tier is a monthly retainer for ongoing design and development. It can start after a project or on its own, with a quarterly review.</p></div></div>
+          </details>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
     <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
-      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+      <video class="background-video footer-cta__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/images/background-videos/footer-cta-poster.jpg">
         <source src="assets/images/background-videos/footer-cta.mp4" type="video/mp4">
       </video>
       <div class="container footer-cta__container">
@@ -129,10 +900,8 @@
             <p class="eyebrow footer-cta__eyebrow"><i class="ph ph-triangle footer-cta__eyebrow-icon" aria-hidden="true"></i>Have a good one in mind?</p>
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
-              <a class="btn-pill btn-pill--arrow" href="lets-get-started.html">
-                <span>Start a project</span><span class="btn-pill__icon" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
-              </a>
-              <a class="btn-pill btn-pill--outline footer-cta__secondary" href="contact-us.html">Or schedule a call <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+              <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>
@@ -147,9 +916,9 @@
           </a>
           <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
           <div class="site-footer__socials" aria-label="Social media">
-            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="col-6 col-lg-2 col-md-3">
@@ -200,6 +969,13 @@
   <script defer src="assets/gsap/ScrollTrigger.min.js"></script>
   <script defer src="assets/gsap/ScrollToPlugin.min.js"></script>
   <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Scroll back to top">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+  <button class="back-to-top back-to-top--down" id="scrollToBottom" type="button" aria-label="Scroll to bottom">
+    <i class="ph ph-arrow-down" aria-hidden="true"></i>
+  </button>
+
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>
