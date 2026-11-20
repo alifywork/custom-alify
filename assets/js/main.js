@@ -45,6 +45,7 @@
     initTestimonialFilters();
     initFaqDirectory();
     initVideoModal();
+    initGalleryLightbox();
     initServiceSlider();
     initFeaturedProjectEffects();
     initCaseHighlightSlider();
@@ -1208,6 +1209,65 @@
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && !modal.hidden) close();
+    });
+  }
+
+  /* ---------- Project gallery lightbox ---------- */
+  function initGalleryLightbox() {
+    var modal = document.querySelector('[data-gallery-modal]');
+    if (!modal) return;
+    var openers = Array.prototype.slice.call(document.querySelectorAll('[data-gallery-open]'));
+    var image = modal.querySelector('[data-gallery-image]');
+    var caption = modal.querySelector('[data-gallery-caption]');
+    var counter = modal.querySelector('[data-gallery-count]');
+    var prevBtn = modal.querySelector('[data-gallery-prev]');
+    var nextBtn = modal.querySelector('[data-gallery-next]');
+    if (!openers.length || !image) return;
+
+    var index = 0;
+    var lastTrigger = null;
+
+    function show(i) {
+      index = (i + openers.length) % openers.length;
+      var trigger = openers[index];
+      var thumb = trigger.querySelector('img');
+      image.src = trigger.getAttribute('data-gallery-src') || '';
+      image.alt = thumb ? thumb.alt : '';
+      if (caption) caption.textContent = trigger.getAttribute('data-gallery-caption') || '';
+      if (counter) counter.textContent = (index + 1) + ' / ' + openers.length;
+    }
+
+    function open(i, trigger) {
+      lastTrigger = trigger || openers[i];
+      show(i);
+      modal.hidden = false;
+      document.body.classList.add('has-open-modal');
+      var closeBtn = modal.querySelector('.video-modal__close');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove('has-open-modal');
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    openers.forEach(function (trigger, i) {
+      trigger.addEventListener('click', function () { open(i, trigger); });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { show(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { show(index + 1); });
+
+    modal.querySelectorAll('[data-gallery-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (modal.hidden) return;
+      if (event.key === 'Escape') close();
+      if (event.key === 'ArrowLeft') show(index - 1);
+      if (event.key === 'ArrowRight') show(index + 1);
     });
   }
 

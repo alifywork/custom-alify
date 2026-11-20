@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Illustrative Northstar homepage layout detail">
+<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#38BFA2"/><stop offset="1" stop-color="#153978"/></linearGradient><pattern id="px" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#0F2A4D" stroke-opacity=".07"/></pattern></defs>
+<rect width="1200" height="760" fill="#F4F2EE"/><rect width="1200" height="760" fill="#fff"/>
+<rect width="1200" height="70" fill="#fff" stroke="#E7EBEF"/>
+<circle cx="56" cy="35" r="12" fill="#38BFA2"/><text x="82" y="42" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#17212E">NORTHSTAR</text>
+<text x="880" y="42" font-family="Arial,sans-serif" font-size="14" fill="#7E8A96">PRODUCT   STORIES   CONTACT</text>
+<rect y="70" width="1200" height="300" fill="#153978"/>
+<text x="80" y="170" font-family="Arial,sans-serif" font-size="14" letter-spacing="4" fill="#38BFA2">PLATFORM FOR TEAMS</text>
+<text x="76" y="250" font-family="Arial,sans-serif" font-size="56" font-weight="700" fill="#fff">One place for the next decision.</text>
+<rect x="80" y="286" width="200" height="52" rx="26" fill="#38BFA2"/><text x="112" y="318" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#08301F">BOOK A DEMO</text>
+<rect x="820" y="120" width="300" height="220" rx="18" fill="#fff" opacity=".95"/><rect x="844" y="146" width="140" height="12" rx="6" fill="#D3DAE1"/><rect x="844" y="176" width="252" height="110" rx="12" fill="url(#g1)"/><rect x="844" y="300" width="200" height="10" rx="5" fill="#E2E7EB"/>
+<text x="80" y="432" font-family="Arial,sans-serif" font-size="14" letter-spacing="4" fill="#153978">THREE THINGS, DONE WELL</text>
+<rect x="80" y="462" width="340" height="220" rx="18" fill="#F4F2EE"/><rect x="112" y="492" width="46" height="46" rx="12" fill="#38BFA2"/><rect x="112" y="562" width="200" height="14" rx="7" fill="#C9D2DB"/><rect x="112" y="592" width="270" height="10" rx="5" fill="#DDE3E8"/><rect x="112" y="614" width="230" height="10" rx="5" fill="#DDE3E8"/>
+<rect x="440" y="462" width="340" height="220" rx="18" fill="#F4F2EE"/><rect x="472" y="492" width="46" height="46" rx="12" fill="#153978"/><rect x="472" y="562" width="200" height="14" rx="7" fill="#C9D2DB"/><rect x="472" y="592" width="270" height="10" rx="5" fill="#DDE3E8"/><rect x="472" y="614" width="230" height="10" rx="5" fill="#DDE3E8"/>
+<rect x="800" y="462" width="320" height="220" rx="18" fill="#F4F2EE"/><rect x="832" y="492" width="46" height="46" rx="12" fill="#F4C778"/><rect x="832" y="562" width="200" height="14" rx="7" fill="#C9D2DB"/><rect x="832" y="592" width="250" height="10" rx="5" fill="#DDE3E8"/><rect x="832" y="614" width="210" height="10" rx="5" fill="#DDE3E8"/></svg>
