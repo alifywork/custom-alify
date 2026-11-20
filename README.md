@@ -129,11 +129,14 @@ All icons come from the supplied brand mark (navy circle `#0F3473`, white triang
 | `favicon.ico` | 16/32/48 multi-size fallback for `/favicon.ico` |
 | `favicon-32x32.png` | browser tabs |
 | `favicon-192x192.png` | Android home screen / PWA |
-| `apple-touch-icon.png` | 180×180, circle flattened onto a navy square (iOS masks transparency to black) |
+| `apple-touch-icon.png` | 180×180, round mark flattened onto navy `#0F3473` (iOS masks transparency to black) |
 | `favicon-512x512.png` | store listings, docs |
 
-Re-generate from the source `favicon.png` (625×625) with PIL — downscale with LANCZOS and keep the
-180px touch icon composited on navy.
+The mark is the white hollow triangle inside a navy `#0F3473` circle, transparent outside the circle
+with a 2–3% margin so browser chrome never clips it. Re-generate from the source (625×625 PNG) with
+PIL: crop to the circle's alpha bounding box, compose on a transparent square at 97% (98% for the
+32px), downscale with LANCZOS, and keep the 180px touch icon composited on navy. Icon links carry
+`?v=2` so returning visitors drop the previous cached favicon.
 
 ## Placeholders to replace before launch
 
