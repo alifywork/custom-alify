@@ -2580,3 +2580,9 @@ h1,h2,h3,h4,h5,h6,
   .filter-shell { grid-template-columns: minmax(0,1fr); }
   .filter-shell__side { position: static; }
 }
+/* Plain pills inside two-button action rows keep the same rhythm as arrow CTAs. */
+.footer-cta__action .btn-pill,
+.site-drawer__ctas .btn-pill { flex: 0 0 auto; }
+@media (max-width: 767.98px) {
+  .footer-cta__action .btn-pill { width: 100%; }
+}
