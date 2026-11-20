@@ -352,10 +352,20 @@
     var progress = Array.prototype.slice.call(form.querySelectorAll('[data-quote-progress]'));
     var currentIndex = 0;
     var serviceOptions = {
+      'Website design & build': ['Marketing website', 'Custom WordPress build', 'Webflow build', 'Redesign of an existing site', 'Platform migration', 'Ongoing care'],
+      'Brand identity': ['New brand identity', 'Brand refresh', 'Brand guidelines', 'Logo suite only', 'Design system', 'Pitch or deck design'],
+      'Ecommerce': ['New Shopify store', 'WooCommerce store', 'Theme customization', 'Store migration', 'Conversion improvements', 'Store maintenance'],
+      'Growth & SEO': ['Technical SEO', 'On-page SEO', 'SEO audit', 'Content strategy', 'Paid + CRO', 'Analytics setup'],
       'WordPress': ['Custom WordPress website', 'WooCommerce store', 'WordPress redesign', 'WordPress migration', 'Maintenance & care'],
       'Shopify': ['New Shopify store', 'Theme customization', 'Shopify migration', 'Conversion improvements', 'Store maintenance'],
       'UI/UX': ['UX research', 'Website UI/UX design', 'Product design', 'Usability audit', 'Design system'],
       'SEO': ['Technical SEO', 'On-page SEO', 'SEO audit', 'Migration SEO', 'Content strategy']
+    };
+    var servicePrices = {
+      'Website design & build': 'from $2,400',
+      'Brand identity': 'from $1,600',
+      'Ecommerce': 'from $3,200',
+      'Growth & SEO': 'from $1,800'
     };
     var subserviceField = form.querySelector('[name="subservice"]');
     form.querySelectorAll('input[name="service"]').forEach(function (radio) {
@@ -381,9 +391,29 @@
         item.classList.toggle('is-current', i === currentIndex);
         item.classList.toggle('is-done', i < currentIndex);
       });
+      var stepLabel = steps[currentIndex].getAttribute('data-quote-label') || '';
+      var chrome = form.closest('[data-quote-wizard-wrap]') || form;
+      var counter = chrome.querySelector('[data-quote-step-count]');
+      var labelNode = chrome.querySelector('[data-quote-step-label]');
+      var live = chrome.querySelector('[data-quote-live]');
+      var prevButton = form.querySelector('[data-quote-prev]');
+      var nextButton = form.querySelector('[data-quote-next]');
+      var submitButton = form.querySelector('[type="submit"]');
+
+      if (counter) counter.textContent = String(currentIndex + 1);
+      if (labelNode) labelNode.textContent = stepLabel;
+      if (live) live.textContent = 'Step ' + (currentIndex + 1) + ' of ' + steps.length + (stepLabel ? ': ' + stepLabel : '');
+      if (prevButton) prevButton.hidden = currentIndex === 0;
+      if (nextButton) nextButton.hidden = currentIndex === steps.length - 1;
+      if (submitButton) submitButton.hidden = currentIndex !== steps.length - 1;
+
       var heading = steps[currentIndex].querySelector('h2');
-      if (heading) heading.setAttribute('tabindex', '-1'), heading.focus();
-      if (currentIndex === steps.length - 1) updateQuoteSummary(form);
+      if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus({ preventScroll: true });
+      }
+
+      updateQuoteSummary(form);
     }
 
     function validateStep(step) {
@@ -401,7 +431,7 @@
               valid = false;
               missingChoice = true;
               var label = field.closest('label');
-              if (label) label.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              if (label && label.scrollIntoView) label.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }
         } else if (!field.checkValidity()) {
@@ -421,18 +451,26 @@
     }
 
     function updateQuoteSummary(currentForm) {
-      currentForm.querySelectorAll('[data-summary-for]').forEach(function (node) {
-        var field = currentForm.elements[node.getAttribute('data-summary-for')];
-        if (!field) return;
+      // The summary can sit outside the form, so look it up on the page.
+      document.querySelectorAll('[data-summary-for]').forEach(function (node) {
+        var name = node.getAttribute('data-summary-for');
+        var fields = currentForm.querySelectorAll('[name="' + name + '"]');
+        if (!fields.length) return;
         var value = '';
-        if (field.length && field[0] && field[0].type === 'radio') {
-          var selected = currentForm.querySelector('input[name="' + field[0].name + '"]:checked');
-          value = selected ? selected.value : '';
+        if (fields[0].type === 'radio') {
+          var checked = Array.prototype.filter.call(fields, function (field) { return field.checked; })[0];
+          value = checked ? checked.value : '';
         } else {
-          value = field.value || '';
+          value = fields[0].value || '';
         }
         node.textContent = value || 'Not provided';
       });
+
+      var priceNode = document.querySelector('[data-quote-price]');
+      if (priceNode) {
+        var service = currentForm.querySelector('input[name="service"]:checked');
+        priceNode.textContent = service ? (servicePrices[service.value] || 'Confirmed on the call') : 'Pick a service';
+      }
     }
 
     form.querySelectorAll('[data-quote-next]').forEach(function (button) {
@@ -443,6 +481,24 @@
     form.querySelectorAll('[data-quote-prev]').forEach(function (button) {
       button.addEventListener('click', function () { showStep(currentIndex - 1); });
     });
+
+    // A submit can only happen on the last step, but earlier answers may have
+    // been edited since; check every step and jump back to the first problem.
+    form.addEventListener('submit', function (event) {
+      updateQuoteSummary(form);
+      var firstInvalid = -1;
+      steps.forEach(function (step, index) {
+        if (!validateStep(step) && firstInvalid === -1) firstInvalid = index;
+      });
+      if (firstInvalid !== -1) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        showStep(firstInvalid);
+      }
+    });
+
+    form.addEventListener('input', function () { updateQuoteSummary(form); });
+
     showStep(0);
   }
 

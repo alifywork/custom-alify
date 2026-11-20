@@ -271,3 +271,97 @@ a.contact-details__value:hover { color: var(--color-primary); text-decoration: n
   .brief-aside__eyebrow i { animation: none; }
   .brief-chip span { transition: none; }
 }
+
+/* ============================================================
+   Get a Quote — wizard card, progress bar, summary, next steps
+   ============================================================ */
+
+.quote-wizard-section { padding-block: clamp(56px,7vw,96px); background: #fff; }
+.quote-card { padding: clamp(18px,2.4vw,26px); border: 1px solid rgba(18,21,28,.07); border-radius: 26px; background: #FBFAF7; }
+.quote-wizard { padding: clamp(22px,3.2vw,38px); border: 1px solid rgba(18,21,28,.09); border-radius: 20px; background: #fff; }
+.quote-wizard__head { margin-bottom: clamp(20px,2.4vw,26px); }
+.quote-wizard__eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 12px; color: var(--color-teal); font: 600 var(--font-size-xs) var(--font-accent); letter-spacing: .12em; text-transform: uppercase; }
+.quote-wizard__eyebrow i { color: var(--color-amber); animation: hero-triangle-spin 6s linear infinite; }
+.quote-wizard__title { margin: 0; color: var(--color-charcoal); font: 400 clamp(1.35rem,2vw,1.6rem)/1.25 var(--font-heading); letter-spacing: -.025em; }
+
+/* Progress bar */
+.quote-progress { display: flex; gap: 6px; margin: 0 0 10px; }
+.quote-progress__step { flex: 1 1 0; height: 6px; border-radius: 99px; background: #E7E3DC; transition: background-color .3s ease, background-image .3s ease; }
+.quote-progress__step.is-done { background: var(--color-teal); }
+.quote-progress__step.is-current { background: linear-gradient(90deg,var(--color-teal) 0%,var(--color-teal) 62%,rgba(15,138,115,.22) 100%); }
+.quote-progress__meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 14px; margin: 0 0 clamp(22px,2.6vw,28px); color: var(--color-muted); font: 600 .66rem var(--font-accent); letter-spacing: .13em; text-transform: uppercase; }
+.quote-progress__meta strong { color: var(--color-charcoal); font-weight: 700; }
+
+/* Steps */
+.quote-step { margin: 0; padding: 0; border: 0; }
+.quote-step[hidden] { display: none !important; }
+.quote-step h2 { margin: 0 0 6px; color: var(--color-charcoal); font: 400 clamp(1.25rem,1.85vw,1.55rem)/1.28 var(--font-heading); letter-spacing: -.025em; outline: none; }
+.quote-step__lead { max-width: 62ch; margin: 0 0 clamp(18px,2.2vw,24px); color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.72; text-wrap: pretty; }
+.quote-field-gap { margin-top: 20px; }
+.quote-error { margin: 14px 0 0; color: #B4483C; font-size: var(--font-size-sm); line-height: 1.6; }
+.quote-error[hidden] { display: none; }
+
+/* Choice cards */
+.quote-choice { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 10px; }
+.quote-choice label { position: relative; display: block; }
+.quote-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.quote-choice span { display: flex; flex-direction: column; gap: 10px; min-height: 104px; padding: 16px; border: 1px solid rgba(18,21,28,.13); border-radius: 14px; background: #fff; color: var(--color-charcoal); font: 500 .82rem/1.45 var(--font-accent); cursor: pointer; transition: border-color .2s ease, background-color .2s ease, transform .2s ease; }
+.quote-choice span i { color: var(--color-teal); font-size: 1.15rem; transition: color .2s ease; }
+.quote-choice label:hover span { transform: translateY(-2px); border-color: rgba(15,52,115,.32); }
+.quote-choice input:checked + span { border-color: var(--color-primary); background: #F5F8FD; box-shadow: inset 0 0 0 1px var(--color-primary); }
+.quote-choice input:checked + span i { color: var(--color-primary); }
+.quote-choice input:focus-visible + span { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.quote-choice--compact { grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); }
+.quote-choice--compact span { min-height: 62px; justify-content: center; }
+
+/* Controls */
+.quote-step__controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: clamp(22px,2.6vw,30px); padding-top: clamp(18px,2vw,22px); border-top: 1px solid rgba(18,21,28,.08); }
+.quote-step__controls .arrow__btn-link { padding: 0; border: 0; background: none; cursor: pointer; }
+.quote-step__controls [hidden] { display: none !important; }
+.quote-back { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1px solid rgba(18,21,28,.14); border-radius: 99px; background: #fff; color: var(--color-charcoal); font: 600 .76rem var(--font-accent); cursor: pointer; transition: border-color .2s ease, color .2s ease, background-color .2s ease; }
+.quote-back:hover { border-color: var(--color-primary); background: #FBFAF7; color: var(--color-primary); }
+.quote-back i { font-size: .95rem; }
+.quote-back[hidden] { display: none !important; }
+.quote-submit { margin-left: auto; }
+
+/* Summary */
+.quote-summary-section { padding-block: clamp(56px,7vw,96px); background: #F6F4F1; }
+.quote-summary-card { padding: clamp(22px,3vw,32px); border: 1px solid rgba(18,21,28,.09); border-radius: 22px; background: #fff; }
+.quote-summary { display: grid; gap: 0; margin: 0; }
+.quote-summary div { display: grid; grid-template-columns: 170px minmax(0,1fr); gap: 14px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(18,21,28,.07); }
+.quote-summary div:first-child { padding-top: 0; }
+.quote-summary div:last-child { padding-bottom: 0; border-bottom: 0; }
+.quote-summary dt { color: rgba(18,21,28,.44); font: 600 .64rem var(--font-accent); letter-spacing: .15em; text-transform: uppercase; }
+.quote-summary dd { margin: 0; color: var(--color-charcoal); font: 500 var(--font-size-sm) var(--font-accent); line-height: 1.6; overflow-wrap: anywhere; }
+.quote-estimate { display: flex; height: 100%; flex-direction: column; padding: clamp(22px,2.6vw,30px); border: 1px solid rgba(15,52,115,.12); border-radius: 22px; background: linear-gradient(168deg,#fff 0%,#F8FAFE 62%,#F1F5FB 100%); }
+.quote-estimate__label { color: rgba(18,21,28,.44); font: 600 .62rem var(--font-accent); letter-spacing: .16em; text-transform: uppercase; }
+.quote-estimate__value { display: block; margin-top: 10px; color: var(--color-primary); font: 400 clamp(1.6rem,2.4vw,2.1rem)/1.1 var(--font-heading); letter-spacing: -.035em; }
+.quote-estimate__note { margin: 12px 0 0; color: var(--color-muted); font-size: var(--font-size-xs); line-height: 1.7; }
+.quote-estimate__actions { margin-top: auto; padding-top: 20px; }
+
+/* What happens next */
+.quote-next-section { padding-block: clamp(56px,7vw,96px) clamp(72px,9vw,120px); background: #fff; }
+.quote-next__panel { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: clamp(20px,3vw,40px); align-items: center; margin-top: clamp(16px,2vw,22px); padding: clamp(22px,2.8vw,32px); border: 1px solid rgba(18,21,28,.09); border-radius: 22px; background: linear-gradient(168deg,#fff 0%,#FFFDF8 58%,#FBF5EC 100%); }
+.quote-next__panel h3 { margin: 0; color: var(--color-charcoal); font: 400 clamp(1.3rem,1.9vw,1.6rem)/1.25 var(--font-heading); letter-spacing: -.025em; }
+.quote-next__panel p { max-width: 56ch; margin: 10px 0 0; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.75; }
+.quote-next__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 991.98px) {
+  .quote-next__panel { grid-template-columns: minmax(0,1fr); align-items: start; }
+}
+@media (max-width: 575.98px) {
+  .quote-card { padding: 12px; border-radius: 20px; }
+  .quote-wizard { padding: 20px 16px; border-radius: 16px; }
+  .quote-choice { grid-template-columns: minmax(0,1fr); }
+  .quote-choice span { min-height: 0; }
+  .quote-step__controls { flex-wrap: wrap; }
+  .quote-submit { width: 100%; margin-left: 0; }
+  .quote-summary div { grid-template-columns: minmax(0,1fr); gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quote-wizard__eyebrow i { animation: none; }
+  .quote-choice span,
+  .quote-choice span i,
+  .quote-progress__step,
+  .quote-back { transition: none; }
+}

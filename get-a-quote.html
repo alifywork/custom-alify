@@ -104,7 +104,251 @@
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Get a quote</p><h1 id="pageHeroTitle">A good brief starts<br><span>with a few answers.</span></h1><p class="inner-hero__description">Tell us about the service, scope and timeline you have in mind. This guided form helps organize the conversation.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="index.html"><span class="arrow__btn-text">Back to Home</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle">
+      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video>
+      <div class="container"><div class="inner-hero__content">
+        <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Get a quote</p>
+        <h1 id="pageHeroTitle">A good brief starts<br><span>with a few answers.</span></h1>
+        <p class="inner-hero__description">Six short questions, roughly two minutes. At the end you get an indicative range and a fixed quote within 48 hours.</p>
+        <div class="inner-hero__actions">
+          <a class="arrow__btn-link btn-amber-light" href="#quote-wizard"><span class="arrow__btn-text">Start the wizard</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-outline-light" href="contact-us.html"><span class="arrow__btn-text">Talk to a human</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="quote-wizard-section" id="quote-wizard" aria-labelledby="quoteWizardTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Project wizard</p>
+            <h2 id="quoteWizardTitle">Six questions, <span>no interrogation.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Answer what you know. You can move back at any point, and nothing sends until the final step.</p>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-wizard" data-quote-wizard-wrap>
+            <div class="quote-wizard__head">
+              <p class="eyebrow quote-wizard__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Step by step</p>
+              <h3 class="quote-wizard__title">Build your quote</h3>
+            </div>
+
+            <div class="quote-progress" role="group" aria-label="Wizard progress">
+              <span class="quote-progress__step is-current" data-quote-progress aria-hidden="true"></span>
+              <span class="quote-progress__step" data-quote-progress aria-hidden="true"></span>
+              <span class="quote-progress__step" data-quote-progress aria-hidden="true"></span>
+              <span class="quote-progress__step" data-quote-progress aria-hidden="true"></span>
+              <span class="quote-progress__step" data-quote-progress aria-hidden="true"></span>
+              <span class="quote-progress__step" data-quote-progress aria-hidden="true"></span>
+            </div>
+            <p class="quote-progress__meta"><span>Step <strong data-quote-step-count>1</strong> of 6 &middot; <span data-quote-step-label>Service</span></span><span>~2 minutes</span></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-quote-live></p>
+
+            <form class="quote-form" id="quoteForm" action="#" method="post" novalidate data-quote-wizard data-ajax-form data-form-title-demo="Quote brief ready — not sent yet." data-form-title-sent="Quote brief received.">
+
+              <fieldset class="quote-step" data-quote-step data-quote-label="Service">
+                <h2>What do you need?</h2>
+                <p class="quote-step__lead">Pick the main line of work. You can add more later in the conversation.</p>
+                <div class="quote-choice">
+                  <label><input type="radio" name="service" value="Website design &amp; build" required><span><i class="ph ph-globe" aria-hidden="true"></i>Website design &amp; build</span></label>
+                  <label><input type="radio" name="service" value="Brand identity" required><span><i class="ph ph-pen-nib" aria-hidden="true"></i>Brand identity</span></label>
+                  <label><input type="radio" name="service" value="Ecommerce" required><span><i class="ph ph-shopping-cart" aria-hidden="true"></i>Ecommerce</span></label>
+                  <label><input type="radio" name="service" value="Growth &amp; SEO" required><span><i class="ph ph-chart-line-up" aria-hidden="true"></i>Growth &amp; SEO</span></label>
+                </div>
+                <p class="quote-error" data-step-error hidden></p>
+              </fieldset>
+
+              <fieldset class="quote-step" data-quote-step data-quote-label="Project type" hidden aria-hidden="true">
+                <h2>Which kind of project?</h2>
+                <p class="quote-step__lead">The options update based on the service you chose.</p>
+                <label class="form-label" for="quoteSubservice">Project type <span class="contact-form__required" aria-hidden="true">*</span></label>
+                <select class="form-select" id="quoteSubservice" name="subservice" required>
+                  <option value="" selected disabled>Choose a project type</option>
+                </select>
+                <p class="quote-error" data-step-error hidden></p>
+              </fieldset>
+
+              <fieldset class="quote-step" data-quote-step data-quote-label="Scope" hidden aria-hidden="true">
+                <h2>How big is it?</h2>
+                <p class="quote-step__lead">A rough size is enough — this decides the shape of the quote, not the price yet.</p>
+                <div class="quote-choice quote-choice--compact">
+                  <label><input type="radio" name="scope" value="Small site (1–5 pages)" required><span>Small site (1–5 pages)</span></label>
+                  <label><input type="radio" name="scope" value="Standard site (6–12 pages)" required><span>Standard site (6–12 pages)</span></label>
+                  <label><input type="radio" name="scope" value="Large site or store (12+ pages)" required><span>Large site or store (12+ pages)</span></label>
+                  <label><input type="radio" name="scope" value="Not sure yet" required><span>Not sure yet</span></label>
+                </div>
+                <label class="form-label quote-field-gap" for="quoteNotes">Anything we should know? <span class="contact-form__optional">(optional)</span></label>
+                <textarea class="form-control" id="quoteNotes" name="notes" rows="3" placeholder="Integrations, accessibility requirements, an existing site we should look at…"></textarea>
+                <p class="quote-error" data-step-error hidden></p>
+              </fieldset>
+
+              <fieldset class="quote-step" data-quote-step data-quote-label="Budget" hidden aria-hidden="true">
+                <h2>What budget are you working with?</h2>
+                <p class="quote-step__lead">Honest ranges get honest scopes. We will tell you if what you want does not fit the number.</p>
+                <div class="quote-choice quote-choice--compact">
+                  <label><input type="radio" name="budget" value="Under $2,500" required><span>Under $2,500</span></label>
+                  <label><input type="radio" name="budget" value="$2,500 – $6,000" required><span>$2,500 – $6,000</span></label>
+                  <label><input type="radio" name="budget" value="$6,000 – $12,000" required><span>$6,000 – $12,000</span></label>
+                  <label><input type="radio" name="budget" value="$12,000+" required><span>$12,000+</span></label>
+                  <label><input type="radio" name="budget" value="Not sure — advise me" required><span>Not sure — advise me</span></label>
+                </div>
+                <p class="quote-error" data-step-error hidden></p>
+              </fieldset>
+
+              <fieldset class="quote-step" data-quote-step data-quote-label="Timeline" hidden aria-hidden="true">
+                <h2>When would you like to start?</h2>
+                <p class="quote-step__lead">Nothing is booked at this stage — this just tells us where to place you.</p>
+                <div class="quote-choice quote-choice--compact">
+                  <label><input type="radio" name="timeline" value="As soon as possible" required><span>As soon as possible</span></label>
+                  <label><input type="radio" name="timeline" value="In 1–2 months" required><span>In 1–2 months</span></label>
+                  <label><input type="radio" name="timeline" value="In 3–6 months" required><span>In 3–6 months</span></label>
+                  <label><input type="radio" name="timeline" value="Just exploring" required><span>Just exploring</span></label>
+                </div>
+                <p class="quote-error" data-step-error hidden></p>
+              </fieldset>
+
+              <fieldset class="quote-step" data-quote-step data-quote-label="Contact details" hidden aria-hidden="true">
+                <h2>Where do we send the quote?</h2>
+                <p class="quote-step__lead">One working day for a reply, 48 hours for a fixed, itemised quote.</p>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="quoteName">Full name <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <input class="form-control" id="quoteName" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="quoteEmail">Work email <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <input class="form-control" id="quoteEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="quoteCompany">Company <span class="contact-form__optional">(optional)</span></label>
+                    <input class="form-control" id="quoteCompany" name="company" type="text" placeholder="Company or brand" autocomplete="organization">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="quotePhone">Phone or WhatsApp <span class="contact-form__optional">(optional)</span></label>
+                    <input class="form-control" id="quotePhone" name="phone" type="tel" placeholder="+92 300 000 0000" autocomplete="tel">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="quoteMessage">Anything else? <span class="contact-form__optional">(optional)</span></label>
+                    <textarea class="form-control" id="quoteMessage" name="message" rows="4" placeholder="Links, deadlines, or the thing you are unsure about."></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label class="contact-form__consent">
+                      <input type="checkbox" name="consent" required>
+                      <span>I’m happy to be contacted about this quote — see the <a href="legal.html">privacy note</a>.</span>
+                    </label>
+                  </div>
+                </div>
+                <p class="quote-error" data-step-error hidden></p>
+              </fieldset>
+
+              <div class="quote-step__controls">
+                <button class="quote-back" type="button" data-quote-prev hidden><i class="ph ph-arrow-left" aria-hidden="true"></i> Back</button>
+                <button class="arrow__btn-link btn-primary quote-next-btn" type="button" data-quote-next><span class="arrow__btn-text">Continue</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></button>
+                <button class="arrow__btn-link btn-primary contact-form__submit quote-submit" type="submit" hidden><span class="arrow__btn-text">Send my brief</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></button>
+              </div>
+
+              <div class="contact-form__feedback contact-form__feedback--error" role="alert" data-form-error hidden>
+                <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                <div><strong>That did not send.</strong><span>Please try again, or email <a href="mailto:hello@alify.studio">hello@alify.studio</a> directly.</span></div>
+              </div>
+            </form>
+
+            <div class="contact-form__feedback contact-form__feedback--success" role="status" aria-live="polite" data-form-success hidden>
+              <span class="contact-form__success-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+              <h3 tabindex="-1" data-form-success-title>Quote brief received.</h3>
+              <p data-form-success-text>Thanks — we will come back to you within one working day.</p>
+              <button class="contact-form__again" type="button" data-form-again>Start another quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-summary-section" aria-labelledby="quoteSummaryTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Quote summary</p>
+            <h2 id="quoteSummaryTitle">Everything you have <span>told us so far.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Updates as you move through the wizard. Nothing is sent until the last step.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-8">
+            <div class="quote-summary-card">
+              <dl class="quote-summary">
+                <div><dt>Service</dt><dd data-summary-for="service">Not provided</dd></div>
+                <div><dt>Project type</dt><dd data-summary-for="subservice">Not provided</dd></div>
+                <div><dt>Scope</dt><dd data-summary-for="scope">Not provided</dd></div>
+                <div><dt>Budget</dt><dd data-summary-for="budget">Not provided</dd></div>
+                <div><dt>Timeline</dt><dd data-summary-for="timeline">Not provided</dd></div>
+                <div><dt>Name</dt><dd data-summary-for="name">Not provided</dd></div>
+                <div><dt>Email</dt><dd data-summary-for="email">Not provided</dd></div>
+              </dl>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <aside class="quote-estimate" aria-labelledby="quoteEstimateTitle">
+              <span class="quote-estimate__label" id="quoteEstimateTitle">Typical starting point</span>
+              <strong class="quote-estimate__value" data-quote-price>Pick a service</strong>
+              <p class="quote-estimate__note">Starting figures, not a final price. Scope, integrations and timeline decide the fixed quote — which arrives within 48 hours of our call.</p>
+              <div class="quote-estimate__actions">
+                <a class="arrow__btn-link btn-outline" href="#quote-wizard"><span class="arrow__btn-text">Edit my answers</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-next-section" aria-labelledby="quoteNextTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> What happens next</p>
+            <h2 id="quoteNextTitle">From answers to <span>a fixed quote.</span></h2>
+          </div>
+          <p class="blog-archive__lead">No chasing, no discovery maze — three clear steps after you hit send.</p>
+        </div>
+
+        <div class="row g-4 pricing-quotes__steps">
+            <div class="col-md-4">
+              <article class="pricing-quotes__step">
+                <span class="pricing-quotes__num"><span class="pricing-quotes__num-badge">01</span>We read the brief</span>
+                <p>Same day. A person reads the scope, budget and timeline before anything is quoted.</p>
+                <span class="pricing-quotes__icon" aria-hidden="true"><i class="ph ph-envelope-open"></i></span>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="pricing-quotes__step">
+                <span class="pricing-quotes__num"><span class="pricing-quotes__num-badge">02</span>Fixed quote in 48 hours</span>
+                <p>A line-item quote with pages, revisions and handover listed, so nothing appears later.</p>
+                <span class="pricing-quotes__icon" aria-hidden="true"><i class="ph ph-receipt"></i></span>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="pricing-quotes__step">
+                <span class="pricing-quotes__num"><span class="pricing-quotes__num-badge">03</span>Kickoff from your start date</span>
+                <p>Sign off, pay the first instalment and we book a kickoff slot that matches your timeline.</p>
+                <span class="pricing-quotes__icon" aria-hidden="true"><i class="ph ph-rocket-launch"></i></span>
+              </article>
+            </div>
+        </div>
+
+        <div class="quote-next__panel">
+          <div>
+            <h3>Would rather just talk?</h3>
+            <p>Skip the wizard. A 30-minute call is often faster if the project is still shaping up in your head.</p>
+          </div>
+          <div class="quote-next__actions">
+            <a class="arrow__btn-link btn-primary" href="book-a-call.html"><span class="arrow__btn-text">Book a call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            <a class="arrow__btn-link btn-outline" href="contact-us.html"><span class="arrow__btn-text">Send a message</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
