@@ -104,35 +104,39 @@
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Selected work</p><h1 id="pageHeroTitle">Good work starts<br><span>with the right question.</span></h1><p class="inner-hero__description">A selection of illustrative projects and the thinking behind them. Project names and details are sample content for this website build.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="case-studies.html"><span class="arrow__btn-text">Read case studies</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Selected work</p><h1 id="pageHeroTitle">Good work starts<br><span>with the right question.</span></h1><p class="inner-hero__description">A selection of illustrative projects and the thinking behind them.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="case-studies.html"><span class="arrow__btn-text">Read case studies</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
 
-    <section class="work-filters" aria-labelledby="workFiltersTitle">
-      <div class="container">
-        <div class="blog-archive__head">
+    <section class="work-filters filter-browser" aria-labelledby="workFiltersTitle">
+  <div class="container">
+    <div class="blog-archive__head">
           <div class="blog-archive__head-copy">
             <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Selected work</p>
             <h2 id="workFiltersTitle">A selection of projects,<br><span>and the thinking behind them.</span></h2>
           </div>
-          <p class="blog-archive__lead">Filter by the kind of work. Every project here was scoped, designed and built by the same small team.</p>
         </div>
-
-        <div class="blog-filters work-filters__bar" role="group" aria-label="Filter projects by discipline">
-          <div class="blog-filters__cats">
-          <button class="blog-filters__chip is-active" type="button" data-portfolio-filter="all" aria-pressed="true">All projects</button>
-          <button class="blog-filters__chip" type="button" data-portfolio-filter="websites" aria-pressed="false">Websites</button>
-          <button class="blog-filters__chip" type="button" data-portfolio-filter="ecommerce" aria-pressed="false">E-commerce</button>
-          <button class="blog-filters__chip" type="button" data-portfolio-filter="brand" aria-pressed="false">Brand &amp; identity</button>
-          <button class="blog-filters__chip" type="button" data-portfolio-filter="product" aria-pressed="false">Product design</button>
-          </div>
-          <p class="blog-filters__count" data-portfolio-status aria-live="polite"></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="work-grid" aria-labelledby="workGridTitle">
-      <div class="container">
-        <h2 class="visually-hidden" id="workGridTitle">Project grid</h2>
-        <div class="work-grid__inner" data-portfolio-grid data-per-batch="6">
+    <div class="filter-shell">
+      <aside class="filter-shell__side" aria-label="Filter options">
+        <p class="filter-shell__title">Filters</p>
+            <div class="filter-shell__field">
+              <span class="filter-shell__label">Discipline</span>
+              <span class="filter-shell__select-wrap">
+                <select class="filter-shell__select" data-filter-select="portfolio-filter" aria-label="Filter projects by discipline">
+                  <option value="all">All projects</option>
+                  <option value="websites">Websites</option>
+                  <option value="ecommerce">E-commerce</option>
+                  <option value="brand">Brand & identity</option>
+                  <option value="product">Product design</option>
+                </select>
+                <i class="ph ph-caret-down filter-shell__caret" aria-hidden="true"></i>
+              </span>
+            </div>
+        <p class="blog-filters__count filter-shell__status" data-portfolio-status aria-live="polite"></p>
+        <button class="filter-shell__reset" type="button" data-filter-reset="portfolio-filter">
+          <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>Reset filters
+        </button>
+      </aside>
+      <div class="filter-shell__main">
+<div class="work-grid__inner" data-portfolio-grid data-per-batch="6">
         <article class="work-card" data-portfolio-item="websites">
           <a class="work-card__link" href="single-case-study.html">
             <span class="work-card__media">
@@ -253,7 +257,18 @@
         </div>
         <p class="work-empty" data-portfolio-empty hidden>Nothing in this category yet — but we would happily take it on. <a href="contact-us.html">Tell us about the project</a>.</p>
       </div>
-    </section>
+    </div>
+    <div class="filter-shell__chips" hidden>
+      <div class="blog-filters__cats" role="group" aria-label="Filter projects by discipline">
+<button class="blog-filters__chip is-active" type="button" data-portfolio-filter="all" aria-pressed="true">All projects</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="websites" aria-pressed="false">Websites</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="ecommerce" aria-pressed="false">E-commerce</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="brand" aria-pressed="false">Brand &amp; identity</button>
+          <button class="blog-filters__chip" type="button" data-portfolio-filter="product" aria-pressed="false">Product design</button>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="work-pagination" aria-labelledby="workPaginationTitle">
       <div class="container">
@@ -268,7 +283,7 @@
             </span></span>
           </button>
           <p class="work-pagination__note">Nothing is padded out with templates. Every project above is real work, or a live concept we would happily build.</p>
-          <a class="arrow__btn-link btn-outline" href="case-studies.html"><span class="arrow__btn-text">Read the case studies</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="btn-pill btn-pill--quiet" href="case-studies.html">Read the case studies</a>
         </div>
       </div>
     </section>
@@ -317,7 +332,7 @@
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
               <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
-              <a class="arrow__btn-link btn-outline-light" href="contact-us.html"><span class="arrow__btn-text">Or schedule a call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>

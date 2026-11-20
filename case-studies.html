@@ -103,53 +103,54 @@
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Case studies</p><h1 id="pageHeroTitle">Real challenges.<br><span>Thoughtful responses.</span></h1><p class="inner-hero__description">The following case study examples use dummy names and outcomes. Replace with approved client stories and verified results.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="services.html"><span class="arrow__btn-text">All services</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Case studies</p><h1 id="pageHeroTitle">Real challenges.<br><span>Thoughtful responses.</span></h1><p class="inner-hero__description">Illustrative case studies with measurable outcomes.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="services.html"><span class="arrow__btn-text">All services</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
 
-    <section class="case-filters-section" aria-labelledby="caseFiltersTitle">
-      <div class="container">
-        <div class="blog-archive__head">
+    <section class="case-filters-section filter-browser" aria-labelledby="caseFiltersTitle">
+  <div class="container">
+    <div class="blog-archive__head">
           <div class="blog-archive__head-copy">
             <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Filters</p>
             <h2 id="caseFiltersTitle">Nine stories,<br><span>sorted two ways.</span></h2>
           </div>
-          <p class="blog-archive__lead">Narrow by sector or by the kind of work. Both filters apply at once, so you can ask for “commerce, brand identity” and get exactly that.</p>
         </div>
-
-        <div class="case-filters" data-case-filters>
-          <div class="case-filters__row">
-            <span class="case-filters__label" id="caseIndustryLabel">Industry</span>
-            <div class="case-filters__chips" role="group" aria-labelledby="caseIndustryLabel">
-              <button class="blog-filters__chip is-active" type="button" data-case-industry-filter="all" aria-pressed="true">All industries</button>
-              <button class="blog-filters__chip" type="button" data-case-industry-filter="technology" aria-pressed="false">Technology</button>
-              <button class="blog-filters__chip" type="button" data-case-industry-filter="commerce" aria-pressed="false">Commerce</button>
-              <button class="blog-filters__chip" type="button" data-case-industry-filter="health" aria-pressed="false">Health</button>
-              <button class="blog-filters__chip" type="button" data-case-industry-filter="finance" aria-pressed="false">Finance</button>
-              <button class="blog-filters__chip" type="button" data-case-industry-filter="education" aria-pressed="false">Education</button>
-              <button class="blog-filters__chip" type="button" data-case-industry-filter="hospitality" aria-pressed="false">Hospitality</button>
+    <div class="filter-shell">
+      <aside class="filter-shell__side" aria-label="Filter options">
+        <p class="filter-shell__title">Filters</p>
+            <div class="filter-shell__field">
+              <span class="filter-shell__label">Industry</span>
+              <span class="filter-shell__select-wrap">
+                <select class="filter-shell__select" data-filter-select="case-industry-filter" aria-label="Filter case studies by industry">
+                  <option value="all">All industries</option>
+                  <option value="technology">Technology</option>
+                  <option value="commerce">Commerce</option>
+                  <option value="health">Health</option>
+                  <option value="finance">Finance</option>
+                  <option value="education">Education</option>
+                  <option value="hospitality">Hospitality</option>
+                </select>
+                <i class="ph ph-caret-down filter-shell__caret" aria-hidden="true"></i>
+              </span>
             </div>
-          </div>
-          <div class="case-filters__row">
-            <span class="case-filters__label" id="caseServiceLabel">Service</span>
-            <div class="case-filters__chips" role="group" aria-labelledby="caseServiceLabel">
-              <button class="blog-filters__chip is-active" type="button" data-case-service-filter="all" aria-pressed="true">All services</button>
-              <button class="blog-filters__chip" type="button" data-case-service-filter="websites" aria-pressed="false">Websites</button>
-              <button class="blog-filters__chip" type="button" data-case-service-filter="ecommerce" aria-pressed="false">E-commerce</button>
-              <button class="blog-filters__chip" type="button" data-case-service-filter="brand" aria-pressed="false">Brand &amp; identity</button>
-              <button class="blog-filters__chip" type="button" data-case-service-filter="product" aria-pressed="false">Product design</button>
+            <div class="filter-shell__field">
+              <span class="filter-shell__label">Service</span>
+              <span class="filter-shell__select-wrap">
+                <select class="filter-shell__select" data-filter-select="case-service-filter" aria-label="Filter case studies by service">
+                  <option value="all">All services</option>
+                  <option value="websites">Websites</option>
+                  <option value="ecommerce">E-commerce</option>
+                  <option value="brand">Brand & identity</option>
+                  <option value="product">Product design</option>
+                </select>
+                <i class="ph ph-caret-down filter-shell__caret" aria-hidden="true"></i>
+              </span>
             </div>
-          </div>
-          <div class="case-filters__foot">
-            <p class="case-filters__status" data-case-status aria-live="polite"></p>
-            <button class="case-filters__reset" type="button" data-case-reset>Reset filters <i class="ph ph-arrows-counter-clockwise" aria-hidden="true"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="case-grid" aria-labelledby="caseGridTitle">
-      <div class="container">
-        <h2 class="visually-hidden" id="caseGridTitle">Case studies</h2>
-        <div class="case-grid__inner" data-case-grid>
+        <p class="case-filters__status filter-shell__status" data-case-status aria-live="polite"></p>
+        <button class="filter-shell__reset" type="button" data-filter-reset-group="case-industry-filter,case-service-filter">
+          <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>Reset filters
+        </button>
+      </aside>
+      <div class="filter-shell__main">
+<div class="case-grid__inner" data-case-grid>
         <article class="case-card" data-case-card data-case-industry="technology" data-case-service="websites">
           <a class="case-card__link" href="single-case-study.html">
             <span class="case-card__media">
@@ -405,7 +406,30 @@
         </div>
         <p class="case-empty" data-case-empty hidden>No case studies match both filters yet. Try a wider combination — or <a href="contact-us.html">tell us what you are looking for</a>.</p>
       </div>
-    </section>
+    </div>
+    <div class="filter-shell__chips" hidden>
+      <div class="case-filters" data-case-filters>
+        <div class="case-filters__chips" role="group" aria-label="Filter case studies by industry">
+<button class="blog-filters__chip is-active" type="button" data-case-industry-filter="all" aria-pressed="true">All industries</button>
+              <button class="blog-filters__chip" type="button" data-case-industry-filter="technology" aria-pressed="false">Technology</button>
+              <button class="blog-filters__chip" type="button" data-case-industry-filter="commerce" aria-pressed="false">Commerce</button>
+              <button class="blog-filters__chip" type="button" data-case-industry-filter="health" aria-pressed="false">Health</button>
+              <button class="blog-filters__chip" type="button" data-case-industry-filter="finance" aria-pressed="false">Finance</button>
+              <button class="blog-filters__chip" type="button" data-case-industry-filter="education" aria-pressed="false">Education</button>
+              <button class="blog-filters__chip" type="button" data-case-industry-filter="hospitality" aria-pressed="false">Hospitality</button>
+        </div>
+        <button class="case-filters__reset" type="button" data-case-reset>Reset filters</button>
+        <div class="case-filters__chips" role="group" aria-label="Filter case studies by service">
+<button class="blog-filters__chip is-active" type="button" data-case-service-filter="all" aria-pressed="true">All services</button>
+              <button class="blog-filters__chip" type="button" data-case-service-filter="websites" aria-pressed="false">Websites</button>
+              <button class="blog-filters__chip" type="button" data-case-service-filter="ecommerce" aria-pressed="false">E-commerce</button>
+              <button class="blog-filters__chip" type="button" data-case-service-filter="brand" aria-pressed="false">Brand &amp; identity</button>
+              <button class="blog-filters__chip" type="button" data-case-service-filter="product" aria-pressed="false">Product design</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="svc-projects case-summary" aria-labelledby="caseSummaryTitle">
       <div class="container">
@@ -414,7 +438,6 @@
             <p class="eyebrow svc-projects__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Results summary</p>
             <h2 id="caseSummaryTitle">What the nine<br><span>add up to.</span></h2>
           </div>
-          <p class="blog-archive__lead svc-projects__lead">Aggregated from the case studies above. Illustrative figures — replace with verified numbers before launch.</p>
         </div>
 
         <ul class="sproj-metrics">
@@ -442,7 +465,7 @@
 
         <div class="case-summary__foot">
           <a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
-          <a class="arrow__btn-link btn-outline-light" href="portfolio.html"><span class="arrow__btn-text">See the portfolio</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="btn-pill btn-pill--on-dark" href="portfolio.html">See the portfolio</a>
         </div>
       </div>
     </section>
@@ -460,7 +483,7 @@
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
               <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
-              <a class="arrow__btn-link btn-outline-light" href="contact-us.html"><span class="arrow__btn-text">Or schedule a call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>

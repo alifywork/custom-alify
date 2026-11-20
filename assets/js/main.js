@@ -40,6 +40,7 @@
     initPortfolioFilters();
     initIndustrySwitcher();
     initCaseStudyFilters();
+    initFilterSelects();
     initBlogArchive();
     initReadingProgress();
     initArticleToc();
@@ -637,6 +638,66 @@
   }
 
   /* ---------- Portfolio category filters ---------- */
+  /* ---------- Filter sidebars: native selects drive the existing chip filters ---------- */
+  function initFilterSelects() {
+    var selects = Array.prototype.slice.call(document.querySelectorAll('[data-filter-select]'));
+    if (!selects.length) return;
+
+    function chips(name) {
+      return Array.prototype.slice.call(document.querySelectorAll('[data-' + name + ']'));
+    }
+
+    function activeValue(name) {
+      var chip = chips(name).filter(function (item) {
+        return item.classList.contains('is-active') || item.getAttribute('aria-pressed') === 'true' ||
+          item.getAttribute('aria-selected') === 'true';
+      })[0];
+      return chip ? chip.getAttribute('data-' + name) : null;
+    }
+
+    function syncSelects() {
+      selects.forEach(function (select) {
+        var value = activeValue(select.getAttribute('data-filter-select'));
+        if (value) select.value = value;
+      });
+    }
+
+    selects.forEach(function (select) {
+      select.addEventListener('change', function () {
+        var name = select.getAttribute('data-filter-select');
+        var chip = chips(name).filter(function (item) {
+          return item.getAttribute('data-' + name) === select.value;
+        })[0];
+        if (chip) chip.click();
+        syncSelects();
+      });
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-filter-reset-group]')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        button.getAttribute('data-filter-reset-group').split(',').forEach(function (name) {
+          name = name.trim();
+          var all = chips(name).filter(function (item) { return item.getAttribute('data-' + name) === 'all'; })[0];
+          if (all) all.click();
+        });
+        syncSelects();
+      });
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-filter-reset]')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        var name = button.getAttribute('data-filter-reset');
+        var all = chips(name).filter(function (item) { return item.getAttribute('data-' + name) === 'all'; })[0];
+        if (all) all.click();
+        syncSelects();
+      });
+    });
+
+    // Keep the dropdowns honest when a chip is clicked directly or from a URL.
+    document.addEventListener('click', function () { window.setTimeout(syncSelects, 0); });
+    syncSelects();
+  }
+
   /* ---------- Portfolio: discipline filters, chip counts, load more ---------- */
   function initPortfolioFilters() {
     var grid = document.querySelector('[data-portfolio-grid]');

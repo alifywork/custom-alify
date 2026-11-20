@@ -113,7 +113,7 @@
             <p class="rating-summary__value">4.9<span>/5</span></p>
             <span class="home-testimonials__stars" aria-hidden="true"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span>
             <h2 class="rating-summary__title" id="ratingTitle">Rated by the teams we build with</h2>
-            <p class="rating-summary__meta">Based on 42 reviews · Illustrative sample data</p>
+            <p class="rating-summary__meta">Based on 42 reviews</p>
           </div>
           <div class="rating-summary__breakdown">
             <div class="rating-bar"><span class="rating-bar__label">5 star</span><span class="rating-bar__track"><span class="rating-bar__fill" style="width:86%"></span></span><span class="rating-bar__count">36</span></div>
@@ -136,28 +136,36 @@
 
     <section class="reviews" aria-labelledby="reviewsTitle" data-review-archive>
       <div class="container">
-        <div class="blog-archive__head">
+<div class="blog-archive__head">
           <div class="blog-archive__head-copy">
             <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Client voices</p>
             <h2 id="reviewsTitle">What working together <span>actually feels like.</span></h2>
           </div>
-          <p class="blog-archive__lead">Filter by the kind of work. Every note comes from a team we have shipped with.</p>
         </div>
 
-        <div class="blog-filters" role="group" aria-label="Filter reviews by topic">
-          <div class="blog-filters__cats">
-            <button class="blog-filters__chip is-active" type="button" data-review-filter="all" aria-pressed="true">All reviews</button>
-            <button class="blog-filters__chip" type="button" data-review-filter="strategy" aria-pressed="false">Strategy</button>
-            <button class="blog-filters__chip" type="button" data-review-filter="design" aria-pressed="false">Design</button>
-            <button class="blog-filters__chip" type="button" data-review-filter="development" aria-pressed="false">Development</button>
-            <button class="blog-filters__chip" type="button" data-review-filter="growth" aria-pressed="false">Growth</button>
-          </div>
-          <button class="blog-filters__reset" type="button" data-review-reset><i class="ph ph-arrows-clockwise" aria-hidden="true"></i> Reset</button>
-        </div>
-
-        <p class="blog-filters__count" aria-live="polite" data-review-count>9 reviews</p>
-
-        <ul class="reviews__grid" role="list">
+        <div class="filter-shell">
+          <aside class="filter-shell__side" aria-label="Filter options">
+            <p class="filter-shell__title">Filters</p>
+            <div class="filter-shell__field">
+              <span class="filter-shell__label">Topic</span>
+              <span class="filter-shell__select-wrap">
+                <select class="filter-shell__select" data-filter-select="review-filter" aria-label="Filter reviews by topic">
+                    <option value="all">All reviews</option>
+                    <option value="strategy">Strategy</option>
+                    <option value="design">Design</option>
+                    <option value="development">Development</option>
+                    <option value="growth">Growth</option>
+                </select>
+                <i class="ph ph-caret-down filter-shell__caret" aria-hidden="true"></i>
+              </span>
+            </div>
+            <p class="blog-filters__count filter-shell__status" aria-live="polite" data-review-count>9 reviews</p>
+            <button class="filter-shell__reset" type="button" data-filter-reset="review-filter">
+              <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>Reset filters
+            </button>
+          </aside>
+          <div class="filter-shell__main">
+<ul class="reviews__grid" role="list">
           <li class="testimonial-card" data-review-item data-review-category="strategy" data-review-search="mahnoor khan marketing lead, northstar alify took a genuinely messy brief and turned it into a website we are proud to share. every review felt calm, considered and on time. strategy">
             <div class="testimonial-card__top"><span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span></div>
             <blockquote class="testimonial-card__quote"><p>Alify took a genuinely messy brief and turned it into a website we are proud to share. Every review felt calm, considered and on time.</p></blockquote>
@@ -206,6 +214,18 @@
         </ul>
 
         <p class="blog-grid__empty" data-review-empty hidden>No reviews in that topic yet — try another filter.</p>
+          </div>
+        </div>
+        <div class="filter-shell__chips" hidden>
+          <div class="blog-filters__cats">
+<button class="blog-filters__chip is-active" type="button" data-review-filter="all" aria-pressed="true">All reviews</button>
+            <button class="blog-filters__chip" type="button" data-review-filter="strategy" aria-pressed="false">Strategy</button>
+            <button class="blog-filters__chip" type="button" data-review-filter="design" aria-pressed="false">Design</button>
+            <button class="blog-filters__chip" type="button" data-review-filter="development" aria-pressed="false">Development</button>
+            <button class="blog-filters__chip" type="button" data-review-filter="growth" aria-pressed="false">Growth</button>
+          </div>
+          <button class="blog-filters__reset" type="button" data-review-reset><i class="ph ph-arrows-clockwise" aria-hidden="true"></i> Reset</button>
+        </div>
       </div>
     </section>
 
@@ -216,7 +236,6 @@
             <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> On camera</p>
             <h2 id="videoReviewsTitle">In their own <span>words.</span></h2>
           </div>
-          <p class="blog-archive__lead">Short clips from the people who lived the project. Sample player — drop in the real recordings.</p>
         </div>
         <div class="video-reviews__grid">
           <article class="video-card">
@@ -259,7 +278,6 @@
         <button class="video-modal__close" type="button" data-video-close aria-label="Close video"><i class="ph ph-x" aria-hidden="true"></i></button>
         <video class="video-modal__player" data-video-player controls playsinline></video>
         <p class="video-modal__title" id="videoModalTitle" data-video-caption></p>
-        <p class="video-modal__note">Placeholder clip — replace the source with the client's recording.</p>
       </div>
     </div>
   </main>
@@ -276,7 +294,7 @@
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
               <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
-              <a class="arrow__btn-link btn-outline-light" href="contact-us.html"><span class="arrow__btn-text">Or schedule a call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>

@@ -103,7 +103,7 @@
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> The Alify journal</p><h1 id="pageHeroTitle">A few things<br><span>we think about.</span></h1><p class="inner-hero__description">Perspectives and practical ideas for building useful, meaningful digital experiences. Articles shown are sample content.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="services.html"><span class="arrow__btn-text">All services</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> The Alify journal</p><h1 id="pageHeroTitle">A few things<br><span>we think about.</span></h1><p class="inner-hero__description">Perspectives and practical ideas for building useful, meaningful digital experiences.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="get-a-quote.html"><span class="arrow__btn-text">Get a quote</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="services.html"><span class="arrow__btn-text">All services</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
 
     <section class="blog-featured" aria-labelledby="blogFeaturedLabel">
       <div class="container">
@@ -134,36 +134,40 @@
 
     <section class="blog-archive" aria-labelledby="blogArchiveTitle" data-blog-archive data-per-page="6">
       <div class="container">
-        <div class="blog-archive__head">
+<div class="blog-archive__head">
           <div class="blog-archive__head-copy">
             <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> All writing</p>
             <h2 id="blogArchiveTitle">Every article, <span>sorted.</span></h2>
           </div>
-          <p class="blog-archive__lead">Filter by topic or search the archive. Your filters stay in the URL, so a link keeps its place.</p>
         </div>
 
-        <div class="blog-filters" role="search" aria-label="Filter articles">
-          <div class="blog-filters__cats" role="group" aria-label="Filter by topic">
-          <button class="blog-filters__chip is-active" type="button" data-blog-category="all" aria-pressed="true">All</button>
-          <button class="blog-filters__chip" type="button" data-blog-category="strategy" aria-pressed="false">Strategy</button>
-          <button class="blog-filters__chip" type="button" data-blog-category="design" aria-pressed="false">Design</button>
-          <button class="blog-filters__chip" type="button" data-blog-category="development" aria-pressed="false">Development</button>
-          <button class="blog-filters__chip" type="button" data-blog-category="growth" aria-pressed="false">Growth</button>
-          <button class="blog-filters__chip" type="button" data-blog-category="culture" aria-pressed="false">Culture</button>
-          </div>
-          <div class="blog-filters__tools">
-            <label class="blog-filters__search">
-              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
-              <span class="visually-hidden">Search articles</span>
-              <input type="search" placeholder="Search articles" autocomplete="off" data-blog-search>
-            </label>
-            <button class="blog-filters__reset" type="button" data-blog-reset><i class="ph ph-arrows-clockwise" aria-hidden="true"></i> Reset</button>
-          </div>
-        </div>
-
-        <p class="blog-filters__count" aria-live="polite" data-blog-count>9 articles</p>
-
-        <div class="blog-grid" data-blog-grid>
+        <div class="filter-shell">
+          <aside class="filter-shell__side" aria-label="Filter options">
+            <p class="filter-shell__title">Filters</p>
+            <div class="filter-shell__field">
+              <span class="filter-shell__label">Topic</span>
+              <span class="filter-shell__select-wrap">
+                <select class="filter-shell__select" data-filter-select="blog-category" aria-label="Filter by topic">
+                    <option value="all">All</option>
+                    <option value="strategy">Strategy</option>
+                    <option value="design">Design</option>
+                    <option value="development">Development</option>
+                    <option value="growth">Growth</option>
+                    <option value="culture">Culture</option>
+                </select>
+                <i class="ph ph-caret-down filter-shell__caret" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="filter-shell__search">
+              <label class="blog-filters__search"> <i class="ph ph-magnifying-glass" aria-hidden="true"></i> <span class="visually-hidden">Search articles</span> <input type="search" placeholder="Search articles" autocomplete="off" data-blog-search> </label>
+            </div>
+            <p class="blog-filters__count filter-shell__status" aria-live="polite" data-blog-count>9 articles</p>
+            <button class="filter-shell__reset" type="button" data-filter-reset="blog-category">
+              <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>Reset filters
+            </button>
+          </aside>
+          <div class="filter-shell__main">
+<div class="blog-grid" data-blog-grid>
           <article class="blog-card" data-blog-post data-category="design" data-search="the small interface decisions that build brand trust buttons, spacing, empty states — the details nobody mentions and everybody feels. trust is built in the small places. design systems design">
             <a class="blog-card__cover blog-card__cover--teal" href="single-blog-post.html" tabindex="-1" aria-hidden="true">
               <span class="blog-card__index">01</span>
@@ -277,6 +281,19 @@
         <p class="blog-grid__empty" data-blog-empty hidden>No articles match that search. Try another word, or reset the filters.</p>
 
         <nav class="blog-pagination" aria-label="Blog pages" data-blog-pagination></nav>
+          </div>
+        </div>
+        <div class="filter-shell__chips" hidden>
+          <div class="blog-filters__cats" role="group" aria-label="Filter by topic">
+<button class="blog-filters__chip is-active" type="button" data-blog-category="all" aria-pressed="true">All</button>
+          <button class="blog-filters__chip" type="button" data-blog-category="strategy" aria-pressed="false">Strategy</button>
+          <button class="blog-filters__chip" type="button" data-blog-category="design" aria-pressed="false">Design</button>
+          <button class="blog-filters__chip" type="button" data-blog-category="development" aria-pressed="false">Development</button>
+          <button class="blog-filters__chip" type="button" data-blog-category="growth" aria-pressed="false">Growth</button>
+          <button class="blog-filters__chip" type="button" data-blog-category="culture" aria-pressed="false">Culture</button>
+          </div>
+          <button class="blog-filters__reset" type="button" data-blog-reset><i class="ph ph-arrows-clockwise" aria-hidden="true"></i> Reset</button>
+        </div>
       </div>
     </section>
 
@@ -320,7 +337,7 @@
             <h2 id="footerCtaTitle">Let’s make something<br><span>meaningful together.</span></h2>
             <div class="footer-cta__action">
               <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
-              <a class="arrow__btn-link btn-outline-light" href="contact-us.html"><span class="arrow__btn-text">Or schedule a call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              <a class="btn-pill btn-pill--on-dark" href="contact-us.html">Or schedule a call</a>
             </div>
           </div>
         </div>
