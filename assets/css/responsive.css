@@ -1,0 +1,190 @@
+/* ============================================================
+   responsive.css — one responsive scale for every page
+   ------------------------------------------------------------
+   Loaded last on every page so it wins over the desktop rules in
+   the advanced-pages-* / forms / footer files. Only layout values
+   are normalised here (spacing rhythm, gutters, heights, wrapping);
+   colours, type choices and component skins stay in their own files.
+
+   Breakpoints: 1199 / 991 / 767 / 575 / 400
+   ============================================================ */
+
+/* ---------- 1. Global guards ---------- */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: clip; }
+img, svg, video, canvas, iframe { max-width: 100%; }
+img, video { height: auto; }
+/* Grid and flex children must be allowed to shrink below their content width. */
+.grid > *, [class$="__grid"] > *, [class$="__list"] > *, [class$="__cards"] > * { min-width: 0; }
+:where(h1, h2, h3, h4, h5, h6, p, li, dd, dt, figcaption, blockquote, .eyebrow) { overflow-wrap: break-word; }
+
+/* ---------- 2. Section rhythm ----------
+   Every content section gets the same vertical padding on small
+   screens instead of a 78-160px clamp minimum per section. */
+@media (max-width: 991.98px) {
+  .about-pillars, .about-reach, .about-stats, .about-story, .about-team, .about-tools,
+.about-vision, .about-work, .article-section, .blog-archive, .blog-featured,
+.call-agenda, .call-calendar-section, .call-form-section, .call-testimonial,
+.case-filters-section, .case-highlight, .case-metrics, .case-related,
+.contact-details, .contact-form-section, .contact-links, .contact-map,
+.contact-page, .contact-social, .deliverables-section, .error-cta, .error-links,
+.error-search, .faq-directory, .faq-section, .featured-projects, .filter-browser,
+.home-about, .home-faq, .home-industries, .home-journal, .home-services,
+.home-testimonials, .ind-grid, .ind-projects, .ind-switcher, .journey, .legal-doc,
+.page-banner, .page-content, .pricing-addons, .pricing-compare, .pricing-page,
+.pricing-quotes, .process-deliverables, .process-expectations, .process-overview,
+.process-roadmap, .process-tools, .quote-next-section, .quote-summary-section,
+.quote-wizard-section, .related-services, .reviews, .service-catalog,
+.service-journey, .service-quote, .services-catalog, .services-industries,
+.services-journey, .services-pricing, .sproj-gallery, .sproj-pager, .sproj-related,
+.start-brief, .start-steps, .start-trust, .svc-overview, .svc-packages, .svc-price,
+.svc-projects, .svc-quote, .svc-related, .svc-tools, .thanks-links, .thanks-steps,
+.utility-page, .why-alify, .work-filters { padding-block: 72px; }
+}
+@media (max-width: 767.98px) {
+  .about-pillars, .about-reach, .about-stats, .about-story, .about-team, .about-tools,
+.about-vision, .about-work, .article-section, .blog-archive, .blog-featured,
+.call-agenda, .call-calendar-section, .call-form-section, .call-testimonial,
+.case-filters-section, .case-highlight, .case-metrics, .case-related,
+.contact-details, .contact-form-section, .contact-links, .contact-map,
+.contact-page, .contact-social, .deliverables-section, .error-cta, .error-links,
+.error-search, .faq-directory, .faq-section, .featured-projects, .filter-browser,
+.home-about, .home-faq, .home-industries, .home-journal, .home-services,
+.home-testimonials, .ind-grid, .ind-projects, .ind-switcher, .journey, .legal-doc,
+.page-banner, .page-content, .pricing-addons, .pricing-compare, .pricing-page,
+.pricing-quotes, .process-deliverables, .process-expectations, .process-overview,
+.process-roadmap, .process-tools, .quote-next-section, .quote-summary-section,
+.quote-wizard-section, .related-services, .reviews, .service-catalog,
+.service-journey, .service-quote, .services-catalog, .services-industries,
+.services-journey, .services-pricing, .sproj-gallery, .sproj-pager, .sproj-related,
+.start-brief, .start-steps, .start-trust, .svc-overview, .svc-packages, .svc-price,
+.svc-projects, .svc-quote, .svc-related, .svc-tools, .thanks-links, .thanks-steps,
+.utility-page, .why-alify, .work-filters { padding-block: 54px; }
+}
+@media (max-width: 575.98px) {
+  .about-pillars, .about-reach, .about-stats, .about-story, .about-team, .about-tools,
+.about-vision, .about-work, .article-section, .blog-archive, .blog-featured,
+.call-agenda, .call-calendar-section, .call-form-section, .call-testimonial,
+.case-filters-section, .case-highlight, .case-metrics, .case-related,
+.contact-details, .contact-form-section, .contact-links, .contact-map,
+.contact-page, .contact-social, .deliverables-section, .error-cta, .error-links,
+.error-search, .faq-directory, .faq-section, .featured-projects, .filter-browser,
+.home-about, .home-faq, .home-industries, .home-journal, .home-services,
+.home-testimonials, .ind-grid, .ind-projects, .ind-switcher, .journey, .legal-doc,
+.page-banner, .page-content, .pricing-addons, .pricing-compare, .pricing-page,
+.pricing-quotes, .process-deliverables, .process-expectations, .process-overview,
+.process-roadmap, .process-tools, .quote-next-section, .quote-summary-section,
+.quote-wizard-section, .related-services, .reviews, .service-catalog,
+.service-journey, .service-quote, .services-catalog, .services-industries,
+.services-journey, .services-pricing, .sproj-gallery, .sproj-pager, .sproj-related,
+.start-brief, .start-steps, .start-trust, .svc-overview, .svc-packages, .svc-price,
+.svc-projects, .svc-quote, .svc-related, .svc-tools, .thanks-links, .thanks-steps,
+.utility-page, .why-alify, .work-filters { padding-block: 42px; }
+}
+@media (max-width: 399.98px) {
+  .about-pillars, .about-reach, .about-stats, .about-story, .about-team, .about-tools,
+.about-vision, .about-work, .article-section, .blog-archive, .blog-featured,
+.call-agenda, .call-calendar-section, .call-form-section, .call-testimonial,
+.case-filters-section, .case-highlight, .case-metrics, .case-related,
+.contact-details, .contact-form-section, .contact-links, .contact-map,
+.contact-page, .contact-social, .deliverables-section, .error-cta, .error-links,
+.error-search, .faq-directory, .faq-section, .featured-projects, .filter-browser,
+.home-about, .home-faq, .home-industries, .home-journal, .home-services,
+.home-testimonials, .ind-grid, .ind-projects, .ind-switcher, .journey, .legal-doc,
+.page-banner, .page-content, .pricing-addons, .pricing-compare, .pricing-page,
+.pricing-quotes, .process-deliverables, .process-expectations, .process-overview,
+.process-roadmap, .process-tools, .quote-next-section, .quote-summary-section,
+.quote-wizard-section, .related-services, .reviews, .service-catalog,
+.service-journey, .service-quote, .services-catalog, .services-industries,
+.services-journey, .services-pricing, .sproj-gallery, .sproj-pager, .sproj-related,
+.start-brief, .start-steps, .start-trust, .svc-overview, .svc-packages, .svc-price,
+.svc-projects, .svc-quote, .svc-related, .svc-tools, .thanks-links, .thanks-steps,
+.utility-page, .why-alify, .work-filters { padding-block: 36px; }
+}
+
+/* ---------- 3. Page gutters ---------- */
+@media (max-width: 767.98px) {
+  .container { --bs-gutter-x: 2.25rem; }
+}
+@media (max-width: 575.98px) {
+  .container { --bs-gutter-x: 2.5rem; }
+}
+
+/* ---------- 4. Heroes: content decides the height on phones ---------- */
+@media (max-width: 767.98px) {
+  .home-hero { min-height: 0; padding-block: 108px 84px; }
+  .inner-hero { min-height: 0; padding-block: 96px 72px; }
+  .home-hero__description, .inner-hero__description { max-width: 46ch; }
+  .home-hero__actions, .inner-hero__actions { gap: 12px; }
+}
+@media (max-width: 575.98px) {
+  .home-hero { padding-block: 96px 72px; }
+  .inner-hero { padding-block: 84px 60px; }
+  .home-hero h1, .inner-hero h1 { letter-spacing: -.04em; line-height: 1.04; }
+  .home-hero__description, .inner-hero__description { margin-top: 18px; }
+  .home-hero__scroll { display: none; }
+}
+
+/* ---------- 5. Section heads stack instead of squeezing ---------- */
+@media (max-width: 991.98px) {
+  [class$="__head"] { flex-wrap: wrap; row-gap: 14px; }
+}
+@media (max-width: 767.98px) {
+  [class$="__head"] > * { flex: 1 1 100%; }
+  [class$="__head"] [class$="__intro"], [class$="__head"] [class$="__lead"] { max-width: none; }
+}
+
+/* ---------- 6. Card grids: one gap value everywhere ---------- */
+@media (max-width: 767.98px) {
+  [class$="__grid"], [class$="__cards"] { gap: clamp(14px, 4vw, 20px); }
+}
+@media (max-width: 575.98px) {
+  /* Long service cards keep their copy fully visible instead of clipping it. */
+  .service-catalog-grid .service-slide { height: 340px; }
+  .service-catalog-grid .service-slide__excerpt { max-height: none; }
+}
+
+/* ---------- 7. Type scale ---------- */
+@media (max-width: 767.98px) {
+  h2, .h2 { letter-spacing: -.028em; line-height: 1.1; }
+  h3, .h3 { line-height: 1.16; }
+  body, p, li { line-height: 1.68; }
+}
+@media (max-width: 575.98px) {
+  h1, .h1 { letter-spacing: -.035em; }
+  h2, .h2 { letter-spacing: -.02em; }
+}
+
+/* ---------- 8. Tables stay readable: scroll, never squeeze ---------- */
+@media (max-width: 991.98px) {
+  .pricing-compare__scroll, .pricing-compare__wrap, .comparison-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pricing-compare__scroll::after { content: ""; }
+}
+
+/* ---------- 9. Forms ---------- */
+@media (max-width: 767.98px) {
+  .contact-form, .quote-step, .call-form, .start-brief form { min-width: 0; }
+  .contact-form__feedback, .contact-form__success { padding: 20px 18px; }
+}
+@media (max-width: 479.98px) {
+  .contact-form > .btn-pill, .contact-form .arrow__btn-link,
+  .contact-form__submit, .quote-submit, .call-form .arrow__btn-link {
+    width: 100%; justify-content: center;
+  }
+  .contact-form__next-link { display: flex; justify-content: center; margin-inline: 0; }
+}
+
+/* ---------- 10. Floating controls respect the home bar ---------- */
+@media (max-width: 991.98px) {
+  .back-to-top { bottom: calc(clamp(18px, 2.4vw, 30px) + env(safe-area-inset-bottom, 0px)); }
+  .back-to-top--down { bottom: calc(clamp(18px, 2.4vw, 30px) + 58px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 575.98px) {
+  .back-to-top { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .back-to-top--down { bottom: calc(16px + 54px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ---------- 11. Motion: no horizontal scroll from entrance offsets ---------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-reveal] * { transform: none !important; }
+}

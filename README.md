@@ -38,6 +38,10 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 * `advanced-pages-work.css` — portfolio, work cards, case studies, project galleries.
 * `advanced-pages-services.css` — service templates, journey, process, pricing, quote/call/contact flows.
 * `forms.css` (only on pages with forms or form components) and `legal.css` (legal page only).
+* `responsive.css` — loaded **last on every page**: one spacing/width scale for all sections
+  (72/54/42/36px vertical rhythm at 991/767/575/400px, container gutters, hero heights,
+  section-head wrapping, card gaps, table scrolling, mobile form buttons, FAB safe areas).
+  It only normalises layout values; component skins stay in their own files.
 
 The three `advanced-pages-*` files are split by selector ownership; a page loads only the groups whose class prefixes it uses, so adding a page means adding the matching `<link>`s.
 
