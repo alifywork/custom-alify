@@ -43,6 +43,7 @@
     initArticleToc();
     initShareButtons();
     initTestimonialFilters();
+    initFaqDirectory();
     initVideoModal();
     initServiceSlider();
     initFeaturedProjectEffects();
@@ -797,6 +798,127 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && !modal.hidden) close();
     });
+  }
+
+  /* ---------- FAQ directory: search + topic tabs (URL-persisted) ---------- */
+  function initFaqDirectory() {
+    var root = document.querySelector('[data-faq-directory]');
+    if (!root) return;
+
+    var items = Array.prototype.slice.call(root.querySelectorAll('[data-faq-item]'));
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-faq-tab]'));
+    if (!items.length || !tabs.length) return;
+
+    var search = root.querySelector('[data-faq-search]');
+    var reset = root.querySelector('[data-faq-reset]');
+    var countEl = root.querySelector('[data-faq-count]');
+    var emptyEl = root.querySelector('[data-faq-empty]');
+    var values = tabs.map(function (tab) { return tab.getAttribute('data-faq-tab'); });
+    var params = new URLSearchParams(window.location.search);
+    var requested = params.get('topic') || 'all';
+
+    var state = {
+      topic: values.indexOf(requested) > -1 ? requested : 'all',
+      query: (params.get('q') || '').trim()
+    };
+
+    if (search) search.value = state.query;
+
+    // Topic counts on the tabs.
+    tabs.forEach(function (tab) {
+      var value = tab.getAttribute('data-faq-tab');
+      var total = value === 'all' ? items.length : items.filter(function (item) {
+        return item.getAttribute('data-faq-category') === value;
+      }).length;
+      if (!total) return;
+      var badge = document.createElement('span');
+      badge.className = 'blog-filters__chip-count';
+      badge.textContent = String(total);
+      tab.appendChild(badge);
+    });
+
+    function syncUrl() {
+      if (!window.history.replaceState) return;
+      var next = new URLSearchParams();
+      if (state.topic !== 'all') next.set('topic', state.topic);
+      if (state.query) next.set('q', state.query);
+      var qs = next.toString();
+      window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+    }
+
+    function render() {
+      var query = state.query.toLowerCase();
+      var shown = items.filter(function (item) {
+        var topicOk = state.topic === 'all' || item.getAttribute('data-faq-category') === state.topic;
+        var haystack = (item.getAttribute('data-faq-search') || item.textContent || '').toLowerCase();
+        return topicOk && (!query || haystack.indexOf(query) !== -1);
+      });
+
+      items.forEach(function (item) { item.hidden = shown.indexOf(item) === -1; });
+
+      // Keep the visible numbering tidy after filtering.
+      shown.forEach(function (item, index) {
+        var num = item.querySelector('.home-faq__index');
+        if (num) num.textContent = ('0' + (index + 1)).slice(-2);
+      });
+
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute('data-faq-tab') === state.topic;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      if (countEl) {
+        if (shown.length === items.length) countEl.textContent = items.length + ' questions';
+        else if (!shown.length) countEl.textContent = 'No questions match';
+        else countEl.textContent = 'Showing ' + shown.length + ' of ' + items.length + ' questions';
+      }
+
+      if (emptyEl) emptyEl.hidden = shown.length > 0;
+      syncUrl();
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        state.topic = tab.getAttribute('data-faq-tab');
+        render();
+      });
+    });
+
+    if (search) {
+      var timer = null;
+      search.addEventListener('input', function () {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          state.query = search.value.trim();
+          render();
+        }, 180);
+      });
+      search.addEventListener('search', function () {
+        state.query = search.value.trim();
+        render();
+      });
+    }
+
+    if (reset) {
+      reset.addEventListener('click', function () {
+        state.topic = 'all';
+        state.query = '';
+        if (search) search.value = '';
+        render();
+      });
+    }
+
+    window.addEventListener('popstate', function () {
+      var next = new URLSearchParams(window.location.search);
+      var topic = next.get('topic') || 'all';
+      state.topic = values.indexOf(topic) > -1 ? topic : 'all';
+      state.query = (next.get('q') || '').trim();
+      if (search) search.value = state.query;
+      render();
+    });
+
+    render();
   }
 
   /* ---------- Homepage service carousel controls ---------- */

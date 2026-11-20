@@ -1642,3 +1642,35 @@ body.has-open-modal { overflow: hidden; }
 .reviews__grid .testimonial-card__quote p { opacity: 1; color: var(--color-charcoal); }
 .reviews__grid .testimonial-card__name { color: var(--color-charcoal); }
 .reviews__grid .testimonial-card__role { color: var(--color-muted); }
+
+/* ============================================================
+   FAQ page (reuses the homepage accordion language)
+   ============================================================ */
+
+.faq-directory { padding-block: clamp(56px,7vw,88px) clamp(56px,7vw,88px); background: #fff; }
+.faq-directory__list { display: grid; gap: 12px; margin-top: clamp(16px,2vw,22px); }
+.faq-directory .home-faq__row { padding-inline: clamp(16px,2vw,24px); border: 1px solid rgba(18,21,28,.09); border-radius: 16px; background: #fff; transition: border-color .25s ease, background-color .25s ease; }
+.faq-directory .home-faq__row:hover { border-color: rgba(18,21,28,.18); }
+.faq-directory .home-faq__row[open] { border-color: rgba(18,21,28,.16); background: linear-gradient(168deg,#fff 0%,#FFFDF8 58%,#FBF5EC 100%); }
+.faq-directory .home-faq__row[hidden] { display: none; }
+.faq-directory .home-faq__index { color: rgba(18,21,28,.32); }
+.faq-directory .home-faq__row summary { padding-block: clamp(16px,1.8vw,22px); }
+
+/* Still have questions */
+.faq-help { padding-block: 0 clamp(78px,10vw,138px); background: #fff; }
+.faq-help__card { display: grid; grid-template-columns: minmax(0,1.2fr) auto; gap: clamp(24px,4vw,56px); align-items: center; padding: clamp(28px,3.4vw,44px); border: 1px solid rgba(18,21,28,.09); border-radius: 24px; background: linear-gradient(168deg,#fff 0%,#FFFDF8 58%,#FBF5EC 100%); }
+.faq-help__eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 18px; color: var(--color-teal); font: 600 var(--font-size-xs) var(--font-accent); letter-spacing: .12em; text-transform: uppercase; }
+.faq-help__eyebrow i { display: inline-block; color: var(--color-amber); transform-origin: center; animation: hero-triangle-spin 6s linear infinite; }
+.faq-help h2 { margin: 0; color: var(--color-charcoal); font: 400 clamp(1.5rem,2.3vw,2rem)/1.2 var(--font-heading); letter-spacing: -.03em; text-wrap: balance; }
+.faq-help h2 span { color: var(--color-primary); }
+.faq-help__copy p:last-child { max-width: 52ch; margin: 14px 0 0; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.78; text-wrap: pretty; }
+.faq-help__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 991.98px) {
+  .faq-help__card { grid-template-columns: minmax(0,1fr); align-items: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-help__eyebrow i { animation: none; }
+  .faq-directory .home-faq__row { transition: none; }
+}
