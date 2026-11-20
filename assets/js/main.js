@@ -118,21 +118,77 @@
     });
   }
 
-  /* ---------- Pricing service tabs ---------- */
+  /* ---------- Pricing page: service tabs drive plans and the comparison table ---------- */
   function initPricingTabs() {
-    var tabs = document.querySelectorAll('[data-pricing-tab]');
-    if (!tabs.length) return;
-    tabs.forEach(function (tab) {
+    var root = document.querySelector('[data-pricing-tabs]');
+    if (!root) return;
+
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-pricing-tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-pricing-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    var values = tabs.map(function (tab) { return tab.getAttribute('data-pricing-tab'); });
+    var live = document.querySelector('[data-pricing-live]');
+    var params = new URLSearchParams(window.location.search);
+    var requested = params.get('service');
+
+    function labelFor(value) {
+      var match = tabs.filter(function (tab) { return tab.getAttribute('data-pricing-tab') === value; })[0];
+      return match ? match.textContent.trim() : value;
+    }
+
+    function activate(value, updateUrl) {
+      if (values.indexOf(value) === -1) value = values[0];
+
+      tabs.forEach(function (tab) {
+        var on = tab.getAttribute('data-pricing-tab') === value;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.setAttribute('tabindex', on ? '0' : '-1');
+      });
+
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-pricing-panel') !== value;
+      });
+
+      root.setAttribute('data-active', value);
+      if (live) live.textContent = 'Showing ' + labelFor(value) + ' pricing';
+
+      if (updateUrl && window.history.replaceState) {
+        var next = new URLSearchParams(window.location.search);
+        if (value === values[0]) next.delete('service');
+        else next.set('service', value);
+        var qs = next.toString();
+        window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+      }
+    }
+
+    tabs.forEach(function (tab, index) {
       tab.addEventListener('click', function () {
-        var selected = tab.getAttribute('data-pricing-tab');
-        tabs.forEach(function (item) { item.setAttribute('aria-selected', item === tab ? 'true' : 'false'); });
-        document.querySelectorAll('[data-pricing-panel]').forEach(function (panel) {
-          panel.hidden = panel.getAttribute('data-pricing-panel') !== selected;
-        });
+        activate(tab.getAttribute('data-pricing-tab'), true);
+      });
+
+      tab.addEventListener('keydown', function (event) {
+        var nextIndex = index;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        var target = tabs[nextIndex];
+        activate(target.getAttribute('data-pricing-tab'), true);
+        target.focus();
       });
     });
-  }
 
+    window.addEventListener('popstate', function () {
+      var next = new URLSearchParams(window.location.search);
+      activate(next.get('service') || values[0], false);
+    });
+
+    activate(requested || values[0], false);
+  }
   /* ---------- Searchable/category-filtered FAQ ---------- */
   function initFaqFilters() {
     var faqRoot = document.querySelector('[data-faq-root]');

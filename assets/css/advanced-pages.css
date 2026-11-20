@@ -1771,3 +1771,92 @@ body.has-open-modal { overflow: hidden; }
   .process-roadmap__eyebrow i { animation: none; }
   .process-roadmap__marker,.process-roadmap__card,.process-deliverables__card,.process-deliverables__icon,.process-tools__card,.process-tools__icon { transition: none; }
 }
+
+/* ============================================================
+   Pricing page — service tabs, plan cards (homepage component),
+   comparison tables, add-ons, custom-quote steps.
+   ============================================================ */
+
+/* --- 2. Service tabs --- */
+.pricing-plans__tabs-wrap { display: flex; justify-content: center; margin-bottom: clamp(26px,3.2vw,36px); }
+.pricing-plans .pricing-tabs { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0; padding: 6px; border: 1px solid rgba(18,21,28,.09); border-radius: 99px; background: #fff; }
+.pricing-plans .pricing-tab { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border: 1px solid transparent; border-radius: 99px; background: transparent; color: #3B414D; font: 600 .78rem var(--font-accent); letter-spacing: .02em; white-space: nowrap; cursor: pointer; transition: background-color .22s ease, color .22s ease, border-color .22s ease; }
+.pricing-plans .pricing-tab i { font-size: 1rem; color: var(--color-teal); transition: color .22s ease; }
+.pricing-plans .pricing-tab:hover { border-color: transparent; background: #F3F0EA; color: var(--color-primary); }
+.pricing-plans .pricing-tab.is-active,
+.pricing-plans .pricing-tab[aria-selected="true"] { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+.pricing-plans .pricing-tab.is-active i,
+.pricing-plans .pricing-tab[aria-selected="true"] i { color: var(--color-amber-light); }
+.pricing-plans .pricing-tab.is-active:hover { color: #fff; }
+.pricing-plans .pricing-tab:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.pricing-panel[hidden] { display: none; }
+
+/* --- 4. Comparison table --- */
+.pricing-compare { padding-block: clamp(64px,8vw,104px); background: #fff; }
+.pricing-compare__wrap { overflow: hidden; border: 1px solid rgba(18,21,28,.09); border-radius: 20px; background: #fff; }
+.pricing-compare__wrap[hidden] { display: none; }
+.pricing-compare__scroll { overflow-x: auto; }
+.pricing-compare__table { width: 100%; min-width: 660px; border-collapse: collapse; }
+.pricing-compare__table caption { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.pricing-compare__table thead th { padding: 20px 24px; border-bottom: 1px solid rgba(18,21,28,.1); color: var(--color-charcoal); font: 600 .72rem var(--font-accent); letter-spacing: .13em; text-transform: uppercase; text-align: center; vertical-align: bottom; }
+.pricing-compare__table thead th:first-child { color: var(--color-muted); text-align: left; }
+.pricing-compare__table thead th.is-featured { background: #FFF7EA; color: var(--color-primary); }
+.pricing-compare__badge { display: block; width: fit-content; margin: 8px auto 0; padding: 4px 10px; border-radius: 99px; background: var(--color-amber-light); color: #101923; font: 700 .58rem var(--font-accent); letter-spacing: .1em; }
+.pricing-compare__table tbody th { padding: 16px 24px; border-bottom: 1px solid rgba(18,21,28,.07); color: var(--color-charcoal); font: 500 var(--font-size-sm) var(--font-accent); text-align: left; }
+.pricing-compare__table tbody td { padding: 16px 24px; border-bottom: 1px solid rgba(18,21,28,.07); color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.5; text-align: center; }
+.pricing-compare__table tbody tr:last-child th,
+.pricing-compare__table tbody tr:last-child td { border-bottom: 0; }
+.pricing-compare__table tbody td.is-featured { background: #FFFBF3; color: var(--color-charcoal); font-weight: 600; }
+.pricing-compare__table tbody td.is-featured { box-shadow: inset 1px 0 0 rgba(244,199,120,.34), inset -1px 0 0 rgba(244,199,120,.34); }
+.pricing-compare__table thead th.is-featured { box-shadow: inset 1px 0 0 rgba(244,199,120,.34), inset -1px 0 0 rgba(244,199,120,.34); }
+.pricing-compare__check { color: var(--color-teal); font-size: 1.05rem; }
+.pricing-compare__none { color: rgba(18,21,28,.28); }
+.pricing-compare__note { max-width: 620px; margin: 20px 0 0; color: var(--color-muted); font-size: var(--font-size-xs); line-height: 1.7; }
+
+/* --- 5. Add-ons --- */
+.pricing-addons { padding-block: clamp(64px,8vw,104px); background: #F6F4F1; }
+.pricing-addons__grid { --bs-gutter-y: 1.35rem; }
+.pricing-addons__card { display: flex; height: 100%; flex-direction: column; padding: clamp(20px,2.2vw,26px); border: 1px solid rgba(18,21,28,.09); border-radius: 18px; background: #fff; transition: transform .25s ease, border-color .25s ease; }
+.pricing-addons__card:hover { transform: translateY(-4px); border-color: rgba(15,138,115,.32); }
+.pricing-addons__icon { display: grid; width: 44px; height: 44px; place-items: center; margin-bottom: 18px; border: 1px solid rgba(15,138,115,.14); border-radius: 12px; background: #EAF3F0; color: var(--color-teal-deep); font-size: 1.15rem; transition: background-color .25s ease, color .25s ease; }
+.pricing-addons__card:hover .pricing-addons__icon { background: var(--color-teal-deep); color: #fff; }
+.pricing-addons__card h3 { margin: 0 0 8px; color: var(--color-charcoal); font: 400 1.08rem/1.3 var(--font-heading); letter-spacing: -.02em; }
+.pricing-addons__card p { margin: 0 0 18px; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.72; text-wrap: pretty; }
+.pricing-addons__price { margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(18,21,28,.08); color: var(--color-primary); font: 600 .66rem var(--font-accent); letter-spacing: .13em; text-transform: uppercase; }
+
+/* --- 6. How custom quotes work --- */
+.pricing-quotes { padding-block: clamp(64px,8vw,104px); background: #fff; }
+.pricing-quotes__steps { --bs-gutter-y: 1.35rem; }
+.pricing-quotes__step { position: relative; height: 100%; padding: clamp(22px,2.4vw,28px); border: 1px solid rgba(18,21,28,.09); border-radius: 18px; background: #fff; transition: transform .25s ease, border-color .25s ease; }
+.pricing-quotes__step:hover { transform: translateY(-3px); border-color: rgba(15,138,115,.3); }
+.pricing-quotes__num { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--color-charcoal); font: 400 1.1rem/1.3 var(--font-heading); letter-spacing: -.02em; }
+.pricing-quotes__num-badge { display: grid; width: 40px; height: 40px; flex: 0 0 40px; place-items: center; border: 1px solid rgba(15,138,115,.25); border-radius: 50%; background: #fff; color: var(--color-teal-deep); font: 600 .72rem var(--font-accent); letter-spacing: .08em; }
+.pricing-quotes__step p { margin: 0; max-width: 34ch; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.75; text-wrap: pretty; }
+.pricing-quotes__icon { position: absolute; right: clamp(18px,2.2vw,24px); top: clamp(20px,2.2vw,26px); color: rgba(18,21,28,.18); font-size: 1.25rem; }
+.pricing-quotes__factors { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: clamp(20px,3vw,44px); align-items: center; margin-top: clamp(16px,2vw,22px); padding: clamp(22px,2.8vw,32px); border: 1px solid rgba(18,21,28,.09); border-radius: 22px; background: linear-gradient(168deg,#fff 0%,#FFFDF8 58%,#FBF5EC 100%); }
+.pricing-quotes__factors h3 { margin: 0; color: var(--color-charcoal); font: 400 clamp(1.3rem,1.9vw,1.6rem)/1.25 var(--font-heading); letter-spacing: -.025em; }
+.pricing-quotes__factors p { max-width: 56ch; margin: 10px 0 0; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.75; }
+.pricing-quotes__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.pricing-quotes__chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border: 1px solid rgba(18,21,28,.1); border-radius: 99px; background: #fff; color: var(--color-charcoal); font: 600 .7rem var(--font-accent); letter-spacing: .02em; }
+.pricing-quotes__chip i { color: var(--color-teal); font-size: .95rem; }
+.pricing-quotes__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 991.98px) {
+  .pricing-quotes__factors { grid-template-columns: minmax(0,1fr); align-items: start; }
+  .pricing-quotes__step p { max-width: none; }
+}
+@media (max-width: 575.98px) {
+  .pricing-plans .pricing-tabs { width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; border-radius: 999px; scrollbar-width: none; }
+  .pricing-plans .pricing-tabs::-webkit-scrollbar { display: none; }
+  .pricing-plans .pricing-tab { padding: 10px 16px; font-size: .74rem; }
+  .pricing-compare__table thead th,
+  .pricing-compare__table tbody th,
+  .pricing-compare__table tbody td { padding: 14px 16px; }
+  .pricing-quotes__icon { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pricing-plans .pricing-tab,
+  .pricing-addons__card,
+  .pricing-addons__icon,
+  .pricing-quotes__step { transition: none; }
+}
