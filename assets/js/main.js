@@ -57,6 +57,7 @@
     initCounters();
     initForms();
     initContactForm();
+    initCallCalendar();
     initTooltips();
     initYear();
   });
@@ -222,6 +223,136 @@
         if (firstField && firstField.focus) firstField.focus();
       });
     }
+  }
+
+  /* ---------- Book a call: week/slot picker that feeds the request form ---------- */
+  function initCallCalendar() {
+    var root = document.querySelector('[data-call-calendar]');
+    if (!root) return;
+
+    var daysWrap = root.querySelector('[data-call-days]');
+    var slotsWrap = root.querySelector('[data-call-slots]');
+    var monthNode = root.querySelector('[data-call-month]');
+    var prevButton = root.querySelector('[data-call-prev]');
+    var nextButton = root.querySelector('[data-call-next]');
+    var live = root.querySelector('[data-call-live]');
+    var slotNodes = document.querySelectorAll('[data-call-slot]');
+    var slotInputs = document.querySelectorAll('[data-call-slot-input]');
+    if (!daysWrap || !slotsWrap) return;
+
+    var TIMES = ['10:00', '11:30', '13:00', '14:30', '16:00', '17:30'];
+    var DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var MAX_WEEKS = 4;
+    var weekOffset = 0;
+    var selectedDay = 0;
+    var selectedTime = '';
+
+    function collectDays(offset) {
+      var days = [];
+      var cursor = new Date();
+      cursor.setHours(0, 0, 0, 0);
+      cursor.setDate(cursor.getDate() + offset * 7);
+      while (days.length < 5) {
+        if (cursor.getDay() !== 0 && cursor.getDay() !== 6) days.push(new Date(cursor));
+        cursor.setDate(cursor.getDate() + 1);
+      }
+      return days;
+    }
+
+    function monthLabel(days) {
+      var first = days[0];
+      var last = days[days.length - 1];
+      if (first.getMonth() === last.getMonth()) return MONTHS[first.getMonth()] + ' ' + first.getFullYear();
+      return MONTHS[first.getMonth()] + ' – ' + MONTHS[last.getMonth()] + ' ' + last.getFullYear();
+    }
+
+    function selectionLabel() {
+      if (!selectedTime) return '';
+      var days = collectDays(weekOffset);
+      var date = days[selectedDay];
+      if (!date) return '';
+      return DAY_NAMES[date.getDay()] + ' ' + date.getDate() + ' ' + MONTHS[date.getMonth()] + ' · ' + selectedTime + ' PKT';
+    }
+
+    function syncSelection() {
+      var label = selectionLabel();
+      slotNodes.forEach(function (node) { node.textContent = label || 'Pick a time above'; });
+      slotInputs.forEach(function (input) { input.value = label; });
+      if (live && label) live.textContent = 'Selected ' + label;
+    }
+
+    function renderSlots() {
+      slotsWrap.innerHTML = '';
+      TIMES.forEach(function (time) {
+        var button = document.createElement('button');
+        var active = time === selectedTime;
+        button.type = 'button';
+        button.className = 'call-calendar__slot';
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        button.textContent = time;
+        button.addEventListener('click', function () {
+          selectedTime = time;
+          renderSlots();
+          syncSelection();
+        });
+        slotsWrap.appendChild(button);
+      });
+    }
+
+    function render() {
+      var days = collectDays(weekOffset);
+      if (selectedDay >= days.length) selectedDay = 0;
+
+      if (monthNode) monthNode.textContent = monthLabel(days);
+      if (prevButton) prevButton.disabled = weekOffset === 0;
+      if (nextButton) nextButton.disabled = weekOffset >= MAX_WEEKS;
+
+      daysWrap.innerHTML = '';
+      days.forEach(function (date, index) {
+        var button = document.createElement('button');
+        var active = index === selectedDay;
+        button.type = 'button';
+        button.className = 'call-calendar__day';
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        button.setAttribute('data-call-day', String(index));
+        var name = document.createElement('span');
+        name.textContent = DAY_NAMES[date.getDay()];
+        var number = document.createElement('strong');
+        number.textContent = String(date.getDate());
+        button.appendChild(name);
+        button.appendChild(number);
+        button.addEventListener('click', function () {
+          selectedDay = index;
+          selectedTime = '';
+          render();
+        });
+        daysWrap.appendChild(button);
+      });
+
+      renderSlots();
+      syncSelection();
+    }
+
+    if (prevButton) {
+      prevButton.addEventListener('click', function () {
+        if (weekOffset === 0) return;
+        weekOffset -= 1;
+        selectedTime = '';
+        render();
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener('click', function () {
+        if (weekOffset >= MAX_WEEKS) return;
+        weekOffset += 1;
+        selectedTime = '';
+        render();
+      });
+    }
+
+    render();
   }
 
   /* ---------- Pricing page: service tabs drive plans and the comparison table ---------- */

@@ -104,7 +104,277 @@
   </aside>
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Book a call</p><h1 id="pageHeroTitle">Let’s make time<br><span>for a good conversation.</span></h1><p class="inner-hero__description">Request a call and share a little context. We’ll use it to make the conversation useful.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a><a class="arrow__btn-link btn-outline-light" href="index.html"><span class="arrow__btn-text">Back to Home</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
+    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle">
+      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video>
+      <div class="container"><div class="inner-hero__content">
+        <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Book a call</p>
+        <h1 id="pageHeroTitle">Thirty minutes.<br><span>No pitch deck.</span></h1>
+        <p class="inner-hero__description">A working conversation about what you are trying to build — what it needs, what it costs and whether we are the right team for it.</p>
+        <div class="inner-hero__actions">
+          <a class="arrow__btn-link btn-amber-light" href="#calendar"><span class="arrow__btn-text">Pick a time</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-outline-light" href="contact-us.html"><span class="arrow__btn-text">Send a message instead</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="call-calendar-section" id="calendar" aria-labelledby="calendarTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Pick a time</p>
+            <h2 id="calendarTitle">Pick a slot that <span>actually suits you.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Weekdays, six slots a day. Choose a day, then a time — it carries into the form below.</p>
+        </div>
+
+        <div class="row g-4 g-xl-5">
+          <div class="col-lg-7">
+            <div class="call-calendar" data-call-calendar>
+              <div class="call-calendar__top">
+                <p class="call-calendar__month" data-call-month>Loading available days…</p>
+                <div class="call-calendar__nav">
+                  <button type="button" data-call-prev aria-label="Previous week" disabled><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+                  <button type="button" data-call-next aria-label="Next week"><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+
+              <div class="call-calendar__days" data-call-days role="group" aria-label="Choose a day"></div>
+              <div class="call-calendar__slots" data-call-slots role="group" aria-label="Choose a time"></div>
+
+              <div class="call-calendar__foot">
+                <span><i class="ph ph-clock" aria-hidden="true"></i> All times in Pakistan Standard Time (UTC+5).</span>
+                <span class="call-calendar__chosen">Selected: <strong data-call-slot>Pick a time above</strong></span>
+              </div>
+              <p class="visually-hidden" role="status" aria-live="polite" data-call-live></p>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <aside class="call-facts" aria-labelledby="callFactsTitle">
+              <p class="eyebrow call-facts__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> The call</p>
+              <h2 id="callFactsTitle">What a first call is like.</h2>
+              <ul class="call-facts__list">
+              <li><i class="ph ph-clock" aria-hidden="true"></i><div><strong>30 minutes</strong><span>A hard stop, so we get to the point.</span></div></li>
+              <li><i class="ph ph-video-camera" aria-hidden="true"></i><div><strong>Google Meet</strong><span>The link is emailed the moment you book.</span></div></li>
+              <li><i class="ph ph-globe-hemisphere-west" aria-hidden="true"></i><div><strong>Your time zone</strong><span>Booked in PKT; we will move the call to suit yours.</span></div></li>
+              <li><i class="ph ph-chart-line-up" aria-hidden="true"></i><div><strong>No sales script</strong><span>You leave with a recommendation, whether we work together or not.</span></div></li>
+              </ul>
+              <p class="call-facts__note">Booked something that no longer works? Reply to the confirmation email and we will move it, no questions asked.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="call-form-section" id="pre-call" aria-labelledby="callFormTitle">
+      <div class="container">
+        <div class="row g-4 g-xl-5">
+          <div class="col-lg-7">
+            <div class="contact-form-card">
+              <div class="contact-form-card__head">
+                <p class="eyebrow contact-form-card__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Before we meet</p>
+                <h2 id="callFormTitle" class="contact-form-card__heading">Two minutes of context helps.</h2>
+                <p class="contact-form-card__lead">So the call starts at the useful part instead of the introductions.</p>
+              </div>
+
+              <form class="contact-form" id="callForm" action="#" method="post" data-ajax-form data-form-title-demo="Call request ready — not sent yet." data-form-title-sent="Call request received.">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="callName">Full name <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <input class="form-control" id="callName" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="callEmail">Work email <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <input class="form-control" id="callEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="callCompany">Company <span class="contact-form__optional">(optional)</span></label>
+                    <input class="form-control" id="callCompany" name="company" type="text" placeholder="Company or brand" autocomplete="organization">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="callRole">Your role <span class="contact-form__optional">(optional)</span></label>
+                    <input class="form-control" id="callRole" name="role" type="text" placeholder="Founder, marketing lead…" autocomplete="organization-title">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="callService">Service you are considering <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <select class="form-select" id="callService" name="service" required>
+                      <option value="" selected disabled>Select a service</option>
+                      <option>Website design &amp; build</option>
+                      <option>Brand identity</option>
+                      <option>Ecommerce</option>
+                      <option>Growth &amp; SEO</option>
+                      <option>Something else</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="callTimezone">Your time zone <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <select class="form-select" id="callTimezone" name="timezone" required>
+                      <option value="" selected disabled>Select a time zone</option>
+                      <option>PKT — Pakistan (UTC+5)</option>
+                      <option>GST — Gulf (UTC+4)</option>
+                      <option>GMT — UK (UTC+0)</option>
+                      <option>CET — Europe (UTC+1)</option>
+                      <option>EST — US East (UTC−5)</option>
+                      <option>PST — US West (UTC−8)</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="callSlot">Your selected slot</label>
+                    <input class="form-control" id="callSlot" name="slot" type="text" placeholder="Choose a time in the calendar above" data-call-slot-input readonly>
+                    <p class="call-form__hint"><i class="ph ph-info" aria-hidden="true"></i> Pick it in the calendar above and it fills in here.</p>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="callTopic">What would you like to cover? <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <textarea class="form-control" id="callTopic" name="topic" rows="5" placeholder="The project, the problem, and what you would like to leave the call knowing." required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label class="contact-form__consent">
+                      <input type="checkbox" name="consent" required>
+                      <span>I’m happy to be contacted about this call — see the <a href="legal.html">privacy note</a>.</span>
+                    </label>
+                  </div>
+                  <div class="col-12">
+                    <div class="contact-form__actions">
+                      <button class="arrow__btn-link btn-primary contact-form__submit" type="submit"><span class="arrow__btn-text">Request the call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></button>
+                      <p class="contact-form__note">We confirm by email, usually within the hour.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="contact-form__feedback contact-form__feedback--error" role="alert" data-form-error hidden>
+                  <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                  <div><strong>That did not send.</strong><span>Please try again, or email <a href="mailto:hello@alify.studio">hello@alify.studio</a> directly.</span></div>
+                </div>
+              </form>
+
+              <div class="contact-form__feedback contact-form__feedback--success" role="status" aria-live="polite" data-form-success hidden>
+                <span class="contact-form__success-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                <h3 tabindex="-1" data-form-success-title>Call request received.</h3>
+                <p data-form-success-text>Thanks — we will confirm the slot by email shortly.</p>
+                <button class="contact-form__again" type="button" data-form-again>Send another request</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <aside class="call-slot" aria-labelledby="callSlotTitle">
+              <span class="call-slot__label" id="callSlotTitle">Your slot</span>
+              <strong class="call-slot__value" data-call-slot>Pick a time above</strong>
+              <p class="call-slot__note">Held for 24 hours while we confirm. You can move it any time before the call.</p>
+              <div class="call-slot__actions">
+                <a class="arrow__btn-link btn-outline" href="#calendar"><span class="arrow__btn-text">Change the time</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              </div>
+            </aside>
+
+            <div class="call-prep" aria-labelledby="callPrepTitle">
+              <h3 id="callPrepTitle">Three things worth having ready</h3>
+              <ul class="call-prep__list">
+              <li><i class="ph ph-list-checks" aria-hidden="true"></i><div><strong>Your current site or store</strong><span>If it exists, we will look before the call.</span></div></li>
+              <li><i class="ph ph-target" aria-hidden="true"></i><div><strong>The one outcome that matters</strong><span>Not a wish list — the single result you need.</span></div></li>
+              <li><i class="ph ph-wallet" aria-hidden="true"></i><div><strong>A rough budget range</strong><span>It decides scope, not the other way around.</span></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="call-agenda" aria-labelledby="agendaTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> The agenda</p>
+            <h2 id="agendaTitle">Thirty minutes, <span>planned minute by minute.</span></h2>
+          </div>
+          <p class="blog-archive__lead">You will know what we are covering before you join, and what you leave with.</p>
+        </div>
+        <ol class="call-agenda__list">
+            <li class="call-agenda__item">
+              <span class="call-agenda__time" aria-hidden="true">00:00</span>
+              <div class="call-agenda__body"><h3>Intros and context</h3><p>Who is in the room, what your business does and why this came up now.</p></div>
+            </li>
+            <li class="call-agenda__item">
+              <span class="call-agenda__time" aria-hidden="true">05:00</span>
+              <div class="call-agenda__body"><h3>The goal</h3><p>What the project has to achieve, who it is for and how you would measure it.</p></div>
+            </li>
+            <li class="call-agenda__item">
+              <span class="call-agenda__time" aria-hidden="true">15:00</span>
+              <div class="call-agenda__body"><h3>Scope and constraints</h3><p>Pages, platforms, integrations, content and the deadline you are working to.</p></div>
+            </li>
+            <li class="call-agenda__item">
+              <span class="call-agenda__time" aria-hidden="true">25:00</span>
+              <div class="call-agenda__body"><h3>Honest next step</h3><p>A recommendation, a rough range and the three things we would do first — in writing.</p></div>
+            </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="about-team call-team" aria-labelledby="callTeamTitle">
+      <div class="container">
+        <div class="about-team__head">
+          <div>
+            <p class="eyebrow about-team__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Who you will meet</p>
+            <h2 id="callTeamTitle">Two of us, <span>usually.</span></h2>
+          </div>
+          <p class="about-team__intro">No account managers. The people on the call are the people who would do the work.</p>
+        </div>
+        <div class="about-team__grid">
+          <article class="about-team__card">
+            <div class="about-team__avatar" aria-hidden="true">MA</div>
+            <h3 class="about-team__name">Mahnoor Ali</h3>
+            <p class="about-team__role">Creative director</p>
+            <p class="about-team__meta"><i class="ph ph-map-pin" aria-hidden="true"></i>Karachi · GMT+5</p>
+            <p class="about-team__bio">Sets the visual direction and keeps every screen honest.</p>
+            <a class="about-team__social" href="https://www.linkedin.com/" aria-label="Mahnoor Ali on LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+          </article>
+          <article class="about-team__card">
+            <div class="about-team__avatar" aria-hidden="true">DR</div>
+            <h3 class="about-team__name">Daniyal Raza</h3>
+            <p class="about-team__role">Engineering lead</p>
+            <p class="about-team__meta"><i class="ph ph-map-pin" aria-hidden="true"></i>Lahore · GMT+5</p>
+            <p class="about-team__bio">Builds the systems behind the work and guards performance.</p>
+            <a class="about-team__social" href="https://www.linkedin.com/" aria-label="Daniyal Raza on LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+          </article>
+          <article class="about-team__card">
+            <div class="about-team__avatar" aria-hidden="true">SI</div>
+            <h3 class="about-team__name">Sana Iqbal</h3>
+            <p class="about-team__role">Product strategist</p>
+            <p class="about-team__meta"><i class="ph ph-map-pin" aria-hidden="true"></i>Dubai · GMT+4</p>
+            <p class="about-team__bio">Turns research and messy context into a plan everyone can follow.</p>
+            <a class="about-team__social" href="https://www.linkedin.com/" aria-label="Sana Iqbal on LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="call-testimonial" aria-labelledby="callQuoteTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> After the call</p>
+            <h2 id="callQuoteTitle">What people say <span>about the first call.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Not about the invoice — about the half hour.</p>
+        </div>
+
+        <article class="testimonial-card call-testimonial__card">
+          <div class="testimonial-card__top">
+            <span class="testimonial-card__stars" aria-label="Rated 5 out of 5"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span>
+            <span class="testimonial-card__source"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google review</span>
+          </div>
+          <blockquote class="testimonial-card__quote"><p>We booked the call expecting a sales conversation. We got forty minutes of questions we had not asked ourselves, and a written plan two days later. That half hour changed what we built.</p></blockquote>
+          <div class="testimonial-card__author">
+            <span class="testimonial-card__avatar" aria-hidden="true">OT</span>
+            <div><span class="testimonial-card__name">Omar Tariq</span><span class="testimonial-card__role">Co-founder, Ledger Works</span></div>
+          </div>
+        </article>
+
+        <div class="call-testimonial__actions">
+          <a class="arrow__btn-link btn-outline" href="testimonials.html"><span class="arrow__btn-text">Read all reviews</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">
