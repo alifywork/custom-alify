@@ -1860,3 +1860,46 @@ body.has-open-modal { overflow: hidden; }
   .pricing-addons__icon,
   .pricing-quotes__step { transition: none; }
 }
+
+/* ============================================================
+   Thank You page — confirmation, next steps, quick links, social
+   ============================================================ */
+
+.thanks-hero .inner-hero__content { display: flex; flex-direction: column; align-items: center; }
+.thanks-hero__medallion { display: grid; width: 74px; height: 74px; margin: 0 auto clamp(18px,2.4vw,24px); place-items: center; border-radius: 50%; background: var(--color-teal); color: #fff; font-size: 1.85rem; box-shadow: 0 0 0 9px rgba(15,138,115,.2); }
+.thanks-hero .hero-eyebrow { margin-bottom: 16px; }
+.thanks-hero__meta { display: inline-flex; align-items: center; gap: 8px; margin: clamp(20px,2.4vw,26px) 0 0; color: rgba(255,255,255,.6); font: 500 var(--font-size-xs) var(--font-accent); }
+.thanks-hero__meta i { color: var(--color-amber-light); }
+
+.thanks-steps { padding-block: clamp(56px,7vw,96px); background: #fff; }
+.thanks-steps__list { gap: clamp(14px,1.6vw,18px); }
+
+.thanks-links { padding-block: clamp(56px,7vw,96px); background: #F6F4F1; }
+.thanks-links__grid { --bs-gutter-y: 1.2rem; }
+.thanks-link { position: relative; display: flex; height: 100%; flex-direction: column; padding: clamp(22px,2.6vw,30px); border: 1px solid rgba(18,21,28,.09); border-radius: 20px; background: #fff; text-decoration: none; transition: transform .25s ease, border-color .25s ease; }
+.thanks-link:hover,.thanks-link:focus-visible { transform: translateY(-4px); border-color: rgba(15,138,115,.32); text-decoration: none; }
+.thanks-link__icon { display: grid; width: 48px; height: 48px; place-items: center; margin-bottom: 20px; border: 1px solid rgba(15,138,115,.14); border-radius: 14px; background: #EAF3F0; color: var(--color-teal-deep); font-size: 1.25rem; transition: background-color .25s ease, color .25s ease; }
+.thanks-link:hover .thanks-link__icon { background: var(--color-teal-deep); color: #fff; }
+.thanks-link__label { color: rgba(18,21,28,.42); font: 600 .62rem var(--font-accent); letter-spacing: .16em; text-transform: uppercase; }
+.thanks-link__title { margin-top: 8px; color: var(--color-charcoal); font: 400 clamp(1.25rem,1.8vw,1.45rem)/1.25 var(--font-heading); letter-spacing: -.025em; }
+.thanks-link__note { margin-top: 10px; max-width: 42ch; color: var(--color-muted); font-size: var(--font-size-sm); line-height: 1.72; text-wrap: pretty; }
+.thanks-link__arrow { position: absolute; top: clamp(20px,2.4vw,26px); right: clamp(20px,2.4vw,26px); display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(18,21,28,.16); border-radius: 50%; color: var(--color-primary); font-size: .85rem; transition: transform .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease; }
+.thanks-link:hover .thanks-link__arrow { border-color: var(--color-primary); background: var(--color-primary); color: #fff; transform: translate(2px,-2px); }
+.thanks-links__mini { display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(16px,2vw,22px); }
+.thanks-mini { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border: 1px solid rgba(18,21,28,.13); border-radius: 99px; background: #fff; color: var(--color-charcoal); font: 600 .76rem var(--font-accent); letter-spacing: .01em; text-decoration: none; transition: border-color .2s ease, color .2s ease; }
+.thanks-mini i { color: var(--color-teal); transition: transform .2s ease, color .2s ease; }
+.thanks-mini:hover,.thanks-mini:focus-visible { border-color: var(--color-primary); color: var(--color-primary); text-decoration: none; }
+.thanks-mini:hover i { color: var(--color-primary); transform: translateX(3px); }
+
+.thanks-social { background: #fff; }
+
+@media (max-width: 575.98px) {
+  .thanks-hero__medallion { width: 62px; height: 62px; font-size: 1.55rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .thanks-link,
+  .thanks-link__icon,
+  .thanks-link__arrow,
+  .thanks-mini,
+  .thanks-mini i { transition: none; }
+}
