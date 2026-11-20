@@ -181,8 +181,18 @@
         btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       });
 
+      var closeTimer = null;
+
+      function cancelClose() {
+        if (closeTimer) {
+          window.clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      }
+
       item.addEventListener('mouseenter', function () {
         if (!desktop.matches) return;
+        cancelClose();
         closeAll(item);
         item.classList.add('is-open');
         btn.setAttribute('aria-expanded', 'true');
@@ -190,7 +200,12 @@
 
       item.addEventListener('mouseleave', function () {
         if (!desktop.matches) return;
-        close(item);
+        cancelClose();
+        // Small grace period so the pointer can cross the gap into the panel.
+        closeTimer = window.setTimeout(function () {
+          close(item);
+          closeTimer = null;
+        }, 180);
       });
 
       item.addEventListener('focusout', function (event) {
@@ -205,6 +220,8 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') closeAll(null);
     });
+
+    window.addEventListener('scroll', function () { closeAll(null); }, { passive: true });
 
     Array.prototype.slice.call(document.querySelectorAll('[data-nav-group-toggle]')).forEach(function (toggle) {
       toggle.addEventListener('click', function () {

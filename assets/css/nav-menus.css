@@ -5,6 +5,17 @@
 .site-nav { overflow: visible; }
 .site-nav__item { position: relative; display: inline-flex; align-items: center; }
 
+/* Invisible hover bridge: keeps the menu open while the pointer travels
+   from the toggle down into the panel (the gap used to close it). */
+.site-nav__item.is-open::after {
+  position: absolute;
+  top: 100%;
+  right: -12px;
+  left: -12px;
+  height: 26px;
+  content: "";
+}
+
 .site-nav__toggle {
   padding: 0;
   border: 0;
@@ -23,7 +34,7 @@
 
 .site-nav__menu {
   position: absolute;
-  top: calc(100% + 20px);
+  top: calc(100% + 14px);
   left: 50%;
   z-index: 130;
   width: min(580px, 72vw);
