@@ -15,7 +15,8 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 | `service-wordpress.html`, `service-shopify.html`, `service-ui-ux.html`, `service-seo.html`, `service-digital-marketing.html`, `service-content-writing.html`, `service-logo-designing.html`, `service-ai-automation.html` | Static service detail pages (one per catalogue service) |
 | `templates/single-service.html` | Off-site service template (`noindex`, not linked, not in the sitemap); personalises through `?service=…`. Asset paths are `../`-prefixed so it only works inside `templates/` |
 | `portfolio.html`, `single-project.html` | Work index (filter sidebar) + project template |
-| `industries.html` | Six sectors, `?industry=technology\|ecommerce\|health\|finance\|education\|travel` deep-links a panel |
+| `industries.html` | Six sectors: bento grid, challenges/solutions switcher (`?industry=technology\|ecommerce\|health\|finance\|education\|travel` deep-links a panel), proof, stats |
+| `industry-technology.html`, `industry-ecommerce.html`, `industry-health.html`, `industry-finance.html`, `industry-education.html`, `industry-travel.html` | Industry detail pages (one per sector): sector overview, what we build, proof, reviews slider, FAQ, related services. Share the service-page shell, CSS and JSON-LD pattern |
 | `case-studies.html`, `single-case-study.html` | Case index (two dropdown filters) + case template |
 | `blog.html`, `single-blog-post.html` | Journal archive (search + dropdown) + article |
 | `pricing.html`, `process.html`, `faq.html`, `testimonials.html` | Supporting pages |
@@ -27,7 +28,7 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 | `digital-growth.html` | Redirect stub to `service-seo.html` (noindex, merged into SEO + marketing) |
 | `ecommerce.html` | Redirect stub to `service-shopify.html` (noindex, merged into Shopify) |
 | `robots.txt` | Crawl rules; disallows the stubs, thank-you, 404 and `templates/`, points at the sitemap |
-| `sitemap.xml` | 28 indexable URLs (stubs, `thank-you`, `404` and `templates/` excluded) |
+| `sitemap.xml` | 34 indexable URLs (stubs, `thank-you`, `404` and `templates/` excluded) |
 
 ## CSS structure
 

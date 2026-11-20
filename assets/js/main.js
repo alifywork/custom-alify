@@ -549,13 +549,6 @@
       });
     });
 
-    // Cards in the industries grid jump to this block and select their industry.
-    document.querySelectorAll('[data-industry-jump]').forEach(function (card) {
-      card.addEventListener('click', function () {
-        activate(card.getAttribute('data-industry-jump'), true);
-      });
-    });
-
     activate(requested || values[0], false);
   }
 
