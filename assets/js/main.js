@@ -56,6 +56,7 @@
     initRevealAnimations();
     initCounters();
     initForms();
+    initContactForm();
     initTooltips();
     initYear();
   });
@@ -116,6 +117,109 @@
         link.removeAttribute('aria-current');
       }
     });
+  }
+
+  /* ---------- Contact form: inline validation + AJAX submit ---------- */
+  function initContactForm() {
+    var form = document.querySelector('[data-ajax-form]');
+    if (!form) return;
+
+    var submit = form.querySelector('[type="submit"]');
+    var submitLabel = submit ? submit.querySelector('.arrow__btn-text') : null;
+    var idleLabel = submitLabel ? submitLabel.textContent : 'Send';
+    var errorBox = document.querySelector('[data-form-error]');
+    var successBox = document.querySelector('[data-form-success]');
+    var successTitle = document.querySelector('[data-form-success-title]');
+    var successText = document.querySelector('[data-form-success-text]');
+    var again = document.querySelector('[data-form-again]');
+    var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+
+    function clearInvalid() {
+      fields.forEach(function (field) { field.classList.remove('is-invalid'); });
+    }
+
+    function setSending(sending) {
+      if (submit) submit.disabled = sending;
+      form.setAttribute('aria-busy', sending ? 'true' : 'false');
+      if (submitLabel) submitLabel.textContent = sending ? 'Sending…' : idleLabel;
+    }
+
+    function showError(show) {
+      if (errorBox) errorBox.hidden = !show;
+    }
+
+    function sendRequest() {
+      var action = (form.getAttribute('action') || '').trim();
+      var hasEndpoint = action && action !== '#' && !/^(javascript:|mailto:|tel:)/i.test(action);
+
+      if (!hasEndpoint) {
+        // No backend wired up yet: keep the AJAX flow but never claim a delivery.
+        return new Promise(function (resolve) {
+          window.setTimeout(function () { resolve({ demo: true }); }, 850);
+        });
+      }
+
+      return window.fetch(action, {
+        method: (form.getAttribute('method') || 'post').toUpperCase(),
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).then(function (response) {
+        if (!response.ok) throw new Error('Request failed: ' + response.status);
+        return { demo: false };
+      });
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      showError(false);
+      clearInvalid();
+
+      if (!form.checkValidity()) {
+        fields.forEach(function (field) {
+          if (field.willValidate && !field.checkValidity()) field.classList.add('is-invalid');
+        });
+        var firstInvalid = form.querySelector('.is-invalid');
+        if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
+        form.classList.add('was-validated');
+        return;
+      }
+
+      setSending(true);
+      sendRequest().then(function (result) {
+        setSending(false);
+        form.reset();
+        form.classList.remove('was-validated');
+        form.hidden = true;
+        if (successBox) {
+          successBox.hidden = false;
+          if (successTitle) successTitle.textContent = result.demo ? 'Message ready — not sent yet.' : 'Message sent.';
+          if (successText) {
+            successText.textContent = result.demo
+              ? 'This preview has no mail server connected, so nothing was delivered. Email hello@alify.studio directly and we will pick it up from there.'
+              : 'Thanks — your message is with us. Expect a reply within one working day.';
+          }
+          if (successTitle && successTitle.focus) successTitle.focus();
+        }
+      }).catch(function () {
+        setSending(false);
+        showError(true);
+      });
+    });
+
+    fields.forEach(function (field) {
+      field.addEventListener('input', function () { field.classList.remove('is-invalid'); });
+      field.addEventListener('change', function () { field.classList.remove('is-invalid'); });
+    });
+
+    if (again) {
+      again.addEventListener('click', function () {
+        if (successBox) successBox.hidden = true;
+        form.hidden = false;
+        clearInvalid();
+        var firstField = fields[0];
+        if (firstField && firstField.focus) firstField.focus();
+      });
+    }
   }
 
   /* ---------- Pricing page: service tabs drive plans and the comparison table ---------- */

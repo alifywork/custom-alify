@@ -111,10 +111,330 @@
         <h1 id="pageHeroTitle">Let’s start<br><span>a conversation.</span></h1>
         <p class="inner-hero__description">Have a question, idea or challenge? Tell us a little about it and we’ll help you find the next step.</p>
         <div class="inner-hero__actions">
-          <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
-          <a class="arrow__btn-link btn-outline-light" href="index.html"><span class="arrow__btn-text">Back to Home</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-amber-light" href="#contact-form"><span class="arrow__btn-text">Send a message</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-outline-light" href="book-a-call.html"><span class="arrow__btn-text">Book a call</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
         </div>
       </div></div>
+    </section>
+
+    <section class="contact-form-section" id="contact-form" aria-labelledby="contactFormTitle">
+      <div class="container">
+        <div class="row g-4 g-xl-5">
+          <div class="col-lg-7">
+            <div class="contact-form-card">
+              <div class="contact-form-card__head">
+                <p class="eyebrow contact-form-card__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Tell us about it</p>
+                <h2 id="contactFormTitle" class="contact-form-card__heading">Start with a few details.</h2>
+                <p class="contact-form-card__lead">The more context you give, the more useful our first reply will be. Nothing here is a commitment.</p>
+              </div>
+
+              <form class="contact-form" id="contactForm" action="#" method="post" data-ajax-form>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactName">Full name <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <input class="form-control" id="contactName" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactEmail">Email <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <input class="form-control" id="contactEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactCompany">Company <span class="contact-form__optional">(optional)</span></label>
+                    <input class="form-control" id="contactCompany" name="company" type="text" placeholder="Company or brand" autocomplete="organization">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactPhone">Phone or WhatsApp <span class="contact-form__optional">(optional)</span></label>
+                    <input class="form-control" id="contactPhone" name="phone" type="tel" placeholder="+92 300 000 0000" autocomplete="tel">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactService">What do you need? <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <select class="form-select" id="contactService" name="service" required>
+                      <option value="" selected disabled>Select a service</option>
+                      <option>Website design &amp; build</option>
+                      <option>Brand identity</option>
+                      <option>Ecommerce</option>
+                      <option>Growth &amp; SEO</option>
+                      <option>Something else</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="contactBudget">Budget <span class="contact-form__optional">(optional)</span></label>
+                    <select class="form-select" id="contactBudget" name="budget">
+                      <option value="" selected>Not sure yet</option>
+                      <option>Under $2,500</option>
+                      <option>$2,500 – $6,000</option>
+                      <option>$6,000 – $12,000</option>
+                      <option>$12,000+</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="contactMessage">Message <span class="contact-form__required" aria-hidden="true">*</span></label>
+                    <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="What are you working on, and what would a good outcome look like?" required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <label class="contact-form__consent">
+                      <input type="checkbox" name="consent" required>
+                      <span>I’m happy to be contacted about this enquiry — see the <a href="legal.html">privacy note</a>.</span>
+                    </label>
+                  </div>
+                  <div class="col-12">
+                    <div class="contact-form__actions">
+                      <button class="arrow__btn-link btn-primary contact-form__submit" type="submit"><span class="arrow__btn-text">Send message</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></button>
+                      <p class="contact-form__note">We reply within one working day. Your details stay with us.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="contact-form__feedback contact-form__feedback--error" role="alert" data-form-error hidden>
+                  <i class="ph ph-warning-circle" aria-hidden="true"></i>
+                  <div>
+                    <strong>That did not send.</strong>
+                    <span>Please try again, or email <a href="mailto:hello@alify.studio">hello@alify.studio</a> directly.</span>
+                  </div>
+                </div>
+              </form>
+
+              <div class="contact-form__feedback contact-form__feedback--success" role="status" aria-live="polite" data-form-success hidden>
+                <span class="contact-form__success-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                <h3 tabindex="-1" data-form-success-title>Message received.</h3>
+                <p data-form-success-text>Thanks — we will come back to you within one working day.</p>
+                <button class="contact-form__again" type="button" data-form-again>Send another message</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <aside class="contact-next" aria-labelledby="contactNextTitle">
+              <p class="eyebrow contact-next__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> What happens next</p>
+              <h2 id="contactNextTitle">No bots, no black hole.</h2>
+              <ol class="contact-next__list">
+            <li>
+              <span class="contact-next__index" aria-hidden="true">01</span>
+              <div><strong>We read it properly</strong><span>Every message lands with a person, not a queue. Same day, usually within a few hours.</span></div>
+            </li>
+            <li>
+              <span class="contact-next__index" aria-hidden="true">02</span>
+              <div><strong>A real reply in one working day</strong><span>From the senior lead who would run your project — not a sales script.</span></div>
+            </li>
+            <li>
+              <span class="contact-next__index" aria-hidden="true">03</span>
+              <div><strong>A 30-minute call, if useful</strong><span>No deck, no pitch. We pressure-test the brief and tell you what it would take.</span></div>
+            </li>
+              </ol>
+              <div class="contact-next__foot">
+                <span>Prefer email?</span>
+                <a href="mailto:hello@alify.studio">hello@alify.studio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-details" aria-labelledby="contactDetailsTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Direct lines</p>
+            <h2 id="contactDetailsTitle">Five ways to reach <span>a human.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Pick whichever suits you. All of them land with the same small team.</p>
+        </div>
+        <div class="row g-4 contact-details__grid">
+            <div class="col-md-6 col-xl-4">
+              <article class="contact-details__card">
+                <span class="contact-details__icon" aria-hidden="true"><i class="ph ph-envelope-simple"></i></span>
+                <p class="contact-details__label">Email</p>
+                <a class="contact-details__value" href="mailto:hello@alify.studio">hello@alify.studio</a>
+                <p class="contact-details__note">Replies within one working day.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="contact-details__card">
+                <span class="contact-details__icon" aria-hidden="true"><i class="ph ph-phone"></i></span>
+                <p class="contact-details__label">Phone</p>
+                <a class="contact-details__value" href="tel:+922100000000">+92 21 0000 0000</a>
+                <p class="contact-details__note">Mon–Fri, 9:00–18:00 PKT.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="contact-details__card">
+                <span class="contact-details__icon" aria-hidden="true"><i class="ph ph-whatsapp-logo"></i></span>
+                <p class="contact-details__label">WhatsApp</p>
+                <a class="contact-details__value" href="https://wa.me/923000000000">+92 300 000 0000</a>
+                <p class="contact-details__note">Fastest for a quick question.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="contact-details__card">
+                <span class="contact-details__icon" aria-hidden="true"><i class="ph ph-map-pin"></i></span>
+                <p class="contact-details__label">Studio</p>
+                <a class="contact-details__value" href="https://www.google.com/maps/search/?api=1&amp;query=DHA+Phase+6+Karachi">Office 12, Sunset Boulevard,<br>DHA Phase 6, Karachi 75500</a>
+                <p class="contact-details__note">Visits by appointment.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="contact-details__card">
+                <span class="contact-details__icon" aria-hidden="true"><i class="ph ph-clock"></i></span>
+                <p class="contact-details__label">Opening hours</p>
+                <span class="contact-details__value">Mon–Fri, 9:00–18:00 PKT</span>
+                <p class="contact-details__note">Weekend enquiries answered Monday.</p>
+              </article>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-map" aria-labelledby="contactMapTitle">
+      <div class="container">
+        <div class="row g-4 g-xl-5 align-items-center">
+          <div class="col-lg-5">
+            <div class="contact-map__copy">
+              <p class="eyebrow contact-map__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Where we are</p>
+              <h2 id="contactMapTitle">A studio in Karachi, <span>clients everywhere.</span></h2>
+              <p class="contact-map__lead">We work from one studio and keep the team small on purpose. Calls happen in your time zone, and everything else lives in writing.</p>
+              <ul class="contact-map__regions">
+              <li><span class="contact-map__dot" aria-hidden="true"></span><div><strong>Karachi</strong><span>Studio &amp; team</span></div></li>
+              <li><span class="contact-map__dot" aria-hidden="true"></span><div><strong>Gulf</strong><span>Client overlap</span></div></li>
+              <li><span class="contact-map__dot" aria-hidden="true"></span><div><strong>UK &amp; Europe</strong><span>Client overlap</span></div></li>
+              <li><span class="contact-map__dot" aria-hidden="true"></span><div><strong>North America</strong><span>Async handover</span></div></li>
+              </ul>
+              <div class="contact-map__actions">
+                <a class="arrow__btn-link btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=DHA+Phase+6+Karachi" target="_blank" rel="noopener"><span class="arrow__btn-text">Open in Maps</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <figure class="contact-map__figure">
+              <iframe class="contact-map__frame" title="Map showing the Alify studio in DHA Phase 6, Karachi" src="https://www.openstreetmap.org/export/embed.html?bbox=66.9%2C24.75%2C67.2%2C24.95&amp;layer=mapnik&amp;marker=24.8138%2C67.0650" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <figcaption class="contact-map__caption">
+                <span><i class="ph ph-map-pin" aria-hidden="true"></i> DHA Phase 6, Karachi, Pakistan</span>
+                <span>24.8138° N, 67.0650° E</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-social" aria-labelledby="contactSocialTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Follow along</p>
+            <h2 id="contactSocialTitle">The work, <span>between projects.</span></h2>
+          </div>
+          <p class="blog-archive__lead">We post what we are actually doing — sketches, rebuilds and launches.</p>
+        </div>
+        <div class="row g-4 contact-social__grid">
+            <div class="col-sm-6 col-xl-3">
+              <a class="contact-social__card" href="https://www.instagram.com/" target="_blank" rel="noopener">
+                <span class="contact-social__icon" aria-hidden="true"><i class="ph ph-instagram-logo"></i></span>
+                <span class="contact-social__name">Instagram</span>
+                <span class="contact-social__handle">@alify.studio</span>
+                <span class="contact-social__note">Process, work in progress and the odd studio dog.</span>
+                <span class="contact-social__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <a class="contact-social__card" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+                <span class="contact-social__icon" aria-hidden="true"><i class="ph ph-linkedin-logo"></i></span>
+                <span class="contact-social__name">LinkedIn</span>
+                <span class="contact-social__handle">Alify Studio</span>
+                <span class="contact-social__note">Case studies, hiring notes and longer thoughts.</span>
+                <span class="contact-social__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <a class="contact-social__card" href="https://www.facebook.com/" target="_blank" rel="noopener">
+                <span class="contact-social__icon" aria-hidden="true"><i class="ph ph-facebook-logo"></i></span>
+                <span class="contact-social__name">Facebook</span>
+                <span class="contact-social__handle">Alify Studio</span>
+                <span class="contact-social__note">Announcements and client launches.</span>
+                <span class="contact-social__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <a class="contact-social__card" href="https://www.behance.net/" target="_blank" rel="noopener">
+                <span class="contact-social__icon" aria-hidden="true"><i class="ph ph-behance-logo"></i></span>
+                <span class="contact-social__name">Behance</span>
+                <span class="contact-social__handle">Alify</span>
+                <span class="contact-social__note">Full visual archive, unsorted but complete.</span>
+                <span class="contact-social__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span>
+              </a>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-links" aria-labelledby="contactLinksTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Quick links</p>
+            <h2 id="contactLinksTitle">Looking for <span>something else?</span></h2>
+          </div>
+          <p class="blog-archive__lead">The pages people usually want next, without digging through the menu.</p>
+        </div>
+        <div class="row g-3 contact-links__grid">
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="services.html">
+                <span class="contact-links__name">Services</span>
+                <span class="contact-links__note">Design, build and growth, explained.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="pricing.html">
+                <span class="contact-links__name">Pricing</span>
+                <span class="contact-links__note">Three tiers, fixed quotes.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="process.html">
+                <span class="contact-links__name">Our process</span>
+                <span class="contact-links__note">Six phases, no guesswork.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="case-studies.html">
+                <span class="contact-links__name">Case studies</span>
+                <span class="contact-links__note">What the work achieved.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="portfolio.html">
+                <span class="contact-links__name">Portfolio</span>
+                <span class="contact-links__note">The visual archive.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="blog.html">
+                <span class="contact-links__name">Journal</span>
+                <span class="contact-links__note">Notes, guides and opinions.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="faq.html">
+                <span class="contact-links__name">FAQ</span>
+                <span class="contact-links__note">The questions clients ask first.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <a class="contact-links__item" href="about-us.html">
+                <span class="contact-links__name">About us</span>
+                <span class="contact-links__note">Who you would be working with.</span>
+                <span class="contact-links__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+              </a>
+            </div>
+        </div>
+      </div>
     </section>
   </main>
 
