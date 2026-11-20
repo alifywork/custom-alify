@@ -42,6 +42,8 @@
     initReadingProgress();
     initArticleToc();
     initShareButtons();
+    initReviewFilters();
+    initVideoModal();
     initServiceSlider();
     initFeaturedProjectEffects();
     initCaseHighlightSlider();
@@ -667,6 +669,133 @@
           window.open(targets[kind], '_blank', 'noopener,noreferrer,width=640,height=560');
         }
       });
+    });
+  }
+
+  /* ---------- Testimonials: topic filters (URL-persisted) ---------- */
+  function initReviewFilters() {
+    var root = document.querySelector('[data-review-archive]');
+    if (!root) return;
+
+    var items = Array.prototype.slice.call(root.querySelectorAll('[data-review-item]'));
+    var chips = Array.prototype.slice.call(root.querySelectorAll('[data-review-filter]'));
+    if (!items.length || !chips.length) return;
+
+    var countEl = root.querySelector('[data-review-count]');
+    var emptyEl = root.querySelector('[data-review-empty]');
+    var resetBtn = root.querySelector('[data-review-reset]');
+    var values = chips.map(function (chip) { return chip.getAttribute('data-review-filter'); });
+    var params = new URLSearchParams(window.location.search);
+    var requested = params.get('topic') || 'all';
+    var state = { filter: values.indexOf(requested) > -1 ? requested : 'all' };
+
+    // Topic counts on the chips, measured from the cards themselves.
+    chips.forEach(function (chip) {
+      var value = chip.getAttribute('data-review-filter');
+      var total = value === 'all' ? items.length : items.filter(function (item) {
+        return item.getAttribute('data-review-category') === value;
+      }).length;
+      if (!total) return;
+      var badge = document.createElement('span');
+      badge.className = 'blog-filters__chip-count';
+      badge.textContent = String(total);
+      chip.appendChild(badge);
+    });
+
+    function syncUrl() {
+      if (!window.history.replaceState) return;
+      var qs = state.filter === 'all' ? '' : '?topic=' + encodeURIComponent(state.filter);
+      window.history.replaceState(null, '', window.location.pathname + qs + window.location.hash);
+    }
+
+    function render() {
+      var shown = items.filter(function (item) {
+        return state.filter === 'all' || item.getAttribute('data-review-category') === state.filter;
+      });
+
+      items.forEach(function (item) { item.hidden = shown.indexOf(item) === -1; });
+
+      chips.forEach(function (chip) {
+        var active = chip.getAttribute('data-review-filter') === state.filter;
+        chip.classList.toggle('is-active', active);
+        chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      if (countEl) {
+        if (shown.length === items.length) countEl.textContent = items.length + ' reviews';
+        else if (!shown.length) countEl.textContent = 'No reviews in this topic';
+        else countEl.textContent = 'Showing ' + shown.length + ' of ' + items.length + ' reviews';
+      }
+
+      if (emptyEl) emptyEl.hidden = shown.length > 0;
+      syncUrl();
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        state.filter = chip.getAttribute('data-review-filter');
+        render();
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        state.filter = 'all';
+        render();
+      });
+    }
+
+    window.addEventListener('popstate', function () {
+      var next = (new URLSearchParams(window.location.search).get('topic')) || 'all';
+      state.filter = values.indexOf(next) > -1 ? next : 'all';
+      render();
+    });
+
+    render();
+  }
+
+  /* ---------- Video testimonial lightbox ---------- */
+  function initVideoModal() {
+    var modal = document.querySelector('[data-video-modal]');
+    var player = modal ? modal.querySelector('[data-video-player]') : null;
+    var caption = modal ? modal.querySelector('[data-video-caption]') : null;
+    var openers = document.querySelectorAll('[data-video-open]');
+    if (!modal || !player || !openers.length) return;
+
+    var lastTrigger = null;
+
+    function open(button) {
+      lastTrigger = button;
+      var src = button.getAttribute('data-video-src');
+      if (src) player.src = src;
+      if (caption) caption.textContent = button.getAttribute('data-video-title') || '';
+      modal.hidden = false;
+      document.body.classList.add('has-open-modal');
+      var closeBtn = modal.querySelector('.video-modal__close');
+      if (closeBtn) closeBtn.focus();
+      var playing = player.play();
+      if (playing && playing.catch) playing.catch(function () {});
+    }
+
+    function close() {
+      player.pause();
+      player.removeAttribute('src');
+      player.load();
+      modal.hidden = true;
+      document.body.classList.remove('has-open-modal');
+      if (lastTrigger) lastTrigger.focus();
+    }
+
+    openers.forEach(function (button) {
+      button.addEventListener('click', function () { open(button); });
+    });
+
+    modal.querySelectorAll('[data-video-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && !modal.hidden) close();
     });
   }
 
