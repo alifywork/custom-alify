@@ -1522,3 +1522,12 @@
 
 /* Hero meta follows the centred hero column (was hugging the left edge). */
 .article-hero__meta { justify-content: center; text-align: center; }
+
+/* Tighter hand-off from the article to "Related notes" (was ~96px of dead space). */
+.article-section { padding-block: clamp(56px,7vw,92px) clamp(44px,5vw,64px); }
+.blog-related { padding-block: 0 clamp(78px,10vw,138px); }
+.blog-related .blog-archive__head { margin-bottom: clamp(26px,3.2vw,44px); }
+
+@media (max-width: 767.98px) {
+  .article-section { padding-block: clamp(44px,6vw,56px) clamp(36px,5vw,44px); }
+}
