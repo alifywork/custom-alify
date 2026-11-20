@@ -707,15 +707,23 @@
     var btn = document.getElementById('backToTop');
     if (!btn) return;
 
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 400) {
-        btn.classList.remove('d-none');
-        btn.classList.add('d-flex');
-      } else {
-        btn.classList.add('d-none');
-        btn.classList.remove('d-flex');
-      }
-    }, { passive: true });
+    var shown = false;
+
+    function toggle() {
+      var shouldShow = window.scrollY > 400;
+      if (shouldShow === shown) return;
+      shown = shouldShow;
+      btn.classList.toggle('is-visible', shouldShow);
+      btn.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      // Keep the control out of the tab order while it is hidden.
+      btn.tabIndex = shouldShow ? 0 : -1;
+    }
+
+    btn.setAttribute('aria-hidden', 'true');
+    btn.tabIndex = -1;
+    toggle();
+    window.addEventListener('scroll', toggle, { passive: true });
+    window.addEventListener('resize', toggle);
 
     btn.addEventListener('click', function () {
       if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
