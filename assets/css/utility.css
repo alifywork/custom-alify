@@ -307,3 +307,27 @@
 @media (min-width: 768px) {
   .d-none-desktop { display: none !important; }
 }
+
+/* GSAP takes over scrolling (modules/smooth-scroll.js), so the CSS easing is off. */
+html.gsap-scroll { scroll-behavior: auto; }
+
+/* ---------- Word-by-word heading reveal ----------
+   main.js wraps every word of a heading in these two spans when motion is
+   allowed. Without JS the heading is untouched plain text, so nothing is
+   hidden if the scripts fail. The padding/margin pair keeps descenders
+   from being clipped by the mask. */
+.word-reveal {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: .16em;
+  margin-bottom: -.16em;
+  vertical-align: bottom;
+}
+.word-reveal__i {
+  display: inline-block;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal { overflow: visible; padding-bottom: 0; margin-bottom: 0; }
+  .word-reveal__i { transform: none !important; }
+}

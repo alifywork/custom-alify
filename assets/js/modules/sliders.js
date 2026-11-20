@@ -28,6 +28,9 @@
     var next = slider.querySelector('[data-service-next]');
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });
+    if (window.AlifyAutoAdvance) {
+      window.AlifyAutoAdvance(slider, function () { move(1); });
+    }
   }
 
   /* ---------- Featured projects: sticky stack and GSAP image-scroll hover ---------- */
@@ -168,6 +171,9 @@
     var next = root.querySelector('[data-case-next]');
     if (prev) prev.addEventListener('click', function () { render(current - 1); });
     if (next) next.addEventListener('click', function () { render(current + 1); });
+    if (window.AlifyAutoAdvance) {
+      window.AlifyAutoAdvance(root, function () { render(current + 1); });
+    }
   }
 
   /* ---------- Homepage testimonials: centre-active Google review slider ---------- */
@@ -230,6 +236,9 @@
       if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(nearestIndex() - 1); }
     });
     sync();
+    if (window.AlifyAutoAdvance) {
+      window.AlifyAutoAdvance(track, function () { goTo((nearestIndex() + 1) % cards.length); });
+    }
     // Start on the first review even if the browser restores a scroll position.
     requestAnimationFrame(function () {
       if (track.scrollLeft > 0) track.scrollLeft = centreFor(cards[0]);

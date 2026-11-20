@@ -63,6 +63,7 @@ Page-specific behaviour lives in `assets/js/modules/` and is only loaded where i
 | `editorial.js` | blog, single-blog-post, faq, testimonials | `data-blog-archive`, `data-faq-directory`, `data-review-archive`, article TOC/share |
 | `work-grid.js` | portfolio, case-studies, single-project, single-case-study, testimonials | `data-portfolio-grid`, `data-case-filters`, `data-gallery`, `data-video-modal` |
 | `sliders.js` | home, about, services | `data-service-slider`, `data-case-highlight`, `data-testimonial-track`, `data-featured-project` |
+| `smooth-scroll.js` | every page | GSAP eased wheel scrolling + `ScrollToPlugin` anchor links (`offsetY: 80`). Touch, reduced motion and inner scroll areas keep native behaviour |
 | `service-detail.js` | `templates/single-service.html` | `?service=` personalisation |
 
 ## Motion
@@ -71,6 +72,22 @@ Page-specific behaviour lives in `assets/js/modules/` and is only loaded where i
 into view: the section's blocks fade up 26px with a 0.07s stagger, card grids animate card by card,
 and the hero (`.home-hero` / `.inner-hero`) runs an entrance timeline on load. Each section uses one
 GSAP timeline with a ScrollTrigger that fires `once`.
+
+`initHeadingReveals()` (main.js) runs first and wraps **every word** of `main h1`, `main h2` and the
+footer CTA heading in a masked `.word-reveal` span, then lifts each word into place (0.055s stagger,
+`power3.out`); hero headings play on load, the rest ride their own `once` ScrollTrigger. The wrapping
+only happens in JS — with scripts disabled, or inside a hidden panel (`offsetParent === null`), the
+heading stays plain text. `data-no-word` opts a heading out.
+
+Headings with word markup are skipped by the section timeline (and by the hero timeline), so the two
+effects never fight. `.word-reveal` uses a `padding-bottom` / negative `margin-bottom` pair so the mask
+does not clip descenders.
+
+Every slider auto-advances **one step every 2 seconds** through the shared
+`window.AlifyAutoAdvance(root, advance)` helper: the home services track, the home case-study
+highlight, the home/about Google review track and the `[data-quote-slider]` reviews on service and
+industry pages. It pauses on hover, on focus (keyboard), on touch and while the tab is hidden, and does
+not run at all under `prefers-reduced-motion`.
 
 Guards worth knowing before editing markup:
 

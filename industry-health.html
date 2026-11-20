@@ -594,25 +594,10 @@
           <p class="blog-archive__lead">Most Health &amp; Medical projects continue after the first release.</p>
         </div>
 
-        <div class="services-catalog__grid svc-related__grid">
-          <a class="services-card" href="web-development">
-            <span class="services-card__icon" aria-hidden="true"><i class="ph ph-ph-code"></i></span>
-            <span class="services-card__title">Web development</span>
-            <span class="services-card__text">Sites that load fast on a hospital wifi.</span>
-            <span class="services-card__foot"><span>Explore service</span><span class="services-card__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span></span>
-          </a>
-          <a class="services-card" href="service-content-writing">
-            <span class="services-card__icon" aria-hidden="true"><i class="ph ph-ph-pencil-simple-line"></i></span>
-            <span class="services-card__title">Content writing</span>
-            <span class="services-card__text">Plain language, reviewed by clinicians.</span>
-            <span class="services-card__foot"><span>Explore service</span><span class="services-card__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span></span>
-          </a>
-          <a class="services-card" href="service-ui-ux">
-            <span class="services-card__icon" aria-hidden="true"><i class="ph ph-ph-device-mobile"></i></span>
-            <span class="services-card__title">UI / UX</span>
-            <span class="services-card__text">Flows tested with real patients.</span>
-            <span class="services-card__foot"><span>Explore service</span><span class="services-card__arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></span></span>
-          </a>
+        <div class="service-catalog-grid svc-related__grid">
+          <article class="service-slide" style="--service-image:url('assets/images/services/web-development.svg')"><img src="assets/images/services/web-development.svg" alt="Abstract web development interface" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Web Development</h3><p class="service-slide__excerpt">Fast, accessible websites designed to turn your goals into intuitive online experiences.</p></div><a class="service-slide__arrow" href="web-development.html" aria-label="Explore Web Development"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+          <article class="service-slide" style="--service-image:url('assets/images/services/content-writing.svg')"><img src="assets/images/services/content-writing.svg" alt="Abstract editorial writing layout" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">Content Writing</h3><p class="service-slide__excerpt">Clear, useful content shaped around your voice, audience and business objectives.</p></div><a class="service-slide__arrow" href="service-content-writing.html" aria-label="Explore Content Writing"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
+          <article class="service-slide" style="--service-image:url('assets/images/services/ui-ux.svg')"><img src="assets/images/services/ui-ux.svg" alt="Abstract digital product design interface" loading="lazy"><div class="service-slide__shade"></div><div class="service-slide__content"><h3 class="service-slide__name">UI / UX</h3><p class="service-slide__excerpt">Research-led user journeys and interfaces that help people get where they need to go.</p></div><a class="service-slide__arrow" href="service-ui-ux.html" aria-label="Explore UI / UX"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></a></article>
         </div>
       </div>
     </section>
@@ -697,6 +682,7 @@
     <i class="ph ph-arrow-down" aria-hidden="true"></i>
   </button>
 
+  <script defer src="assets/js/modules/smooth-scroll.js"></script>
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>

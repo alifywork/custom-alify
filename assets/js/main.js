@@ -38,11 +38,11 @@
     initNotFoundSearch();
     initIndustrySwitcher();
     initFilterSelects();
-    initSmoothScroll();
     initBackToTop();
     initScrollToBottom();
     initActiveNav();
     initRevealAnimations();
+    initHeadingReveals();
     initSectionReveals();
     initQuoteSliders();
     initCounters();
@@ -668,37 +668,6 @@
   }
 
   /* ---------- Smooth Scroll (GSAP ScrollTo or native) ---------- */
-  function initSmoothScroll() {
-    var anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var targetId = link.getAttribute('href');
-        if (targetId === '#') return;
-        var target = document.querySelector(targetId);
-        if (!target) return;
-
-        e.preventDefault();
-
-        if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
-          gsap.to(window, {
-            duration: 0.8,
-            scrollTo: { y: target, offsetY: 80 },
-            ease: 'power3.out'
-          });
-        } else {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // Close mobile navbar if open
-        var navbarCollapse = document.querySelector('.navbar-collapse.show');
-        if (navbarCollapse && typeof bootstrap !== 'undefined') {
-          var bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-          if (bsCollapse) bsCollapse.hide();
-        }
-      });
-    });
-  }
-
   /* ---------- Back to Top Button ---------- */
   function initBackToTop() {
     var btn = document.getElementById('backToTop');
@@ -878,6 +847,118 @@
     }
   }
 
+  /* ---------- Heading word reveal ----------
+     Each word of a heading is wrapped in a masked span and rises into place.
+     Wrapping only happens in JS, so a heading is plain text without scripts;
+     headings that are not rendered (closed tabs, hidden panels) are skipped
+     and reduced motion leaves them alone. */
+
+  function wrapHeadingWords(heading) {
+    var walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue && node.nodeValue.trim()) nodes.push(node);
+    }
+
+    var inners = [];
+    nodes.forEach(function (textNode) {
+      var parts = textNode.nodeValue.split(/(\s+)/);
+      var fragment = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (!part) return;
+        if (!part.trim()) {
+          fragment.appendChild(document.createTextNode(part));
+          return;
+        }
+        var outer = document.createElement('span');
+        outer.className = 'word-reveal';
+        var inner = document.createElement('span');
+        inner.className = 'word-reveal__i';
+        inner.textContent = part;
+        outer.appendChild(inner);
+        fragment.appendChild(outer);
+        inners.push(inner);
+      });
+      textNode.parentNode.replaceChild(fragment, textNode);
+    });
+    return inners;
+  }
+
+  function initHeadingReveals() {
+    if (typeof gsap === 'undefined') return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (document.documentElement.hasAttribute('data-no-section-anim')) return;
+
+    var headings = document.querySelectorAll('main h1, main h2, .footer-cta h2');
+    Array.prototype.forEach.call(headings, function (heading) {
+      if (heading.hasAttribute('data-no-word')) return;
+      if (heading.closest('.site-drawer, [data-no-anim], .modal')) return;
+      if (!heading.offsetParent) return;                       // hidden panel: leave as text
+
+      var words = wrapHeadingWords(heading);
+      if (!words.length) return;
+      heading.setAttribute('data-word-reveal', '');
+
+      var inHero = !!heading.closest('.home-hero, .inner-hero');
+      var options = {
+        yPercent: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+        stagger: 0.055,
+        clearProps: 'transform'
+      };
+
+      gsap.set(words, { yPercent: 118 });
+
+      if (inHero || typeof ScrollTrigger === 'undefined') {
+        if (inHero) options.delay = 0.1;
+        gsap.to(words, options);
+        return;
+      }
+
+      options.scrollTrigger = { trigger: heading, start: 'top 88%', once: true };
+      gsap.to(words, options);
+    });
+  }
+
+  /* ---------- Auto-advance for every slider ----------
+     Shared by the module files: 2s per slide, paused on hover, focus and when
+     the tab is hidden, and disabled for reduced motion. */
+  window.AlifyAutoAdvance = function (root, advance, options) {
+    if (!root || typeof advance !== 'function') return null;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
+    var delay = (options && options.delay) || 2000;
+    var timer = null;
+    var paused = false;
+
+    function stop() {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    }
+    function start() {
+      stop();
+      if (paused) return;
+      timer = window.setInterval(advance, delay);
+    }
+    function pause() { paused = true; stop(); }
+    function resume() { paused = false; start(); }
+
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', resume);
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', resume);
+    root.addEventListener('click', function () { if (!paused) start(); });
+    root.addEventListener('touchstart', pause, { passive: true });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else start();
+    });
+
+    start();
+    return { pause: pause, resume: resume, stop: stop, start: start };
+  };
+
   /* ---------- Section reveals ----------
      Every top-level <section> fades its blocks in once, as it enters the
      viewport. Nothing is hidden in CSS, so if GSAP fails to load the page
@@ -897,6 +978,7 @@
       var cs = window.getComputedStyle(el);
       if (cs.display === 'none' || cs.position === 'fixed' || cs.position === 'sticky') return false;
       if (el.hasAttribute('data-no-anim')) return false;
+      if (el.hasAttribute('data-word-reveal')) return false;
       if (el.matches(SELF_MANAGED)) return false;
       if (el.querySelector(STICKY_INSIDE)) return false;
       return true;
@@ -928,7 +1010,7 @@
 
     function animateHero(section) {
       var items = section.querySelectorAll(
-        '.hero-eyebrow, h1, .home-hero__description, .inner-hero__description, .home-hero__actions, .inner-hero__actions'
+        '.hero-eyebrow, h1:not([data-word-reveal]), .home-hero__description, .inner-hero__description, .home-hero__actions, .inner-hero__actions'
       );
       if (!items.length) return;
       gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.85 }, delay: 0.12 })
@@ -1023,6 +1105,10 @@
       });
 
       update();
+
+      if (window.AlifyAutoAdvance) {
+        window.AlifyAutoAdvance(root, function () { goTo((current() + 1) % total); });
+      }
     });
   }
 
