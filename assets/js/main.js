@@ -29,12 +29,12 @@
   /* ---------- DOM Ready ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     initBackgroundVideos();
+    initLazyVideos();
     initHeader();
     initCurrentPage();
     initDrawers();
+    initNavMenus();
     initPricingTabs();
-    initFaqFilters();
-    initReviewFilters();
     initQuoteWizard();
     initNotFoundSearch();
     initPortfolioFilters();
@@ -60,7 +60,7 @@
     initRevealAnimations();
     initCounters();
     initForms();
-    initContactForm();
+    initAjaxForms();
     initCallCalendar();
     initTooltips();
     initYear();
@@ -84,7 +84,7 @@
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
-        video.preload = 'metadata';
+        video.preload = 'none';
         video.setAttribute('aria-hidden', 'true');
         video.setAttribute('tabindex', '-1');
         video.setAttribute('disablepictureinpicture', '');
@@ -98,6 +98,49 @@
     });
   }
 
+  /* ---------- Lazy background videos (45 MB of MP4s, never fetched up front) ---------- */
+  function initLazyVideos() {
+    var videos = Array.prototype.slice.call(document.querySelectorAll('video.background-video'));
+    if (!videos.length) return;
+
+    function start(video) {
+      var pending = video.querySelectorAll('source[data-src]');
+      if (!pending.length) return;
+      Array.prototype.forEach.call(pending, function (source) {
+        source.setAttribute('src', source.getAttribute('data-src'));
+        source.removeAttribute('data-src');
+      });
+      video.load();
+      var playing = video.play();
+      if (playing && playing.catch) playing.catch(function () { /* autoplay blocked: poster frame stays */ });
+    }
+
+    videos.forEach(function (video) {
+      video.removeAttribute('autoplay');
+      video.setAttribute('preload', 'none');
+      video.muted = true;
+      Array.prototype.forEach.call(video.querySelectorAll('source[src]'), function (source) {
+        source.setAttribute('data-src', source.getAttribute('src'));
+        source.removeAttribute('src');
+      });
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach(start);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        start(entry.target);
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: '250px 0px' });
+
+    videos.forEach(function (video) { observer.observe(video); });
+  }
+
   /* ---------- Compact Sticky Header ---------- */
   function initHeader() {
     var header = document.querySelector('.site-header');
@@ -108,6 +151,71 @@
     }
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
+  }
+
+  /* ---------- Header dropdown menus + mobile accordion ---------- */
+  function initNavMenus() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-nav-item]'));
+
+    function close(item) {
+      item.classList.remove('is-open');
+      var btn = item.querySelector('[data-nav-toggle]');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function closeAll(except) {
+      items.forEach(function (item) { if (item !== except) close(item); });
+    }
+
+    var desktop = window.matchMedia('(min-width: 992px)');
+
+    items.forEach(function (item) {
+      var btn = item.querySelector('[data-nav-toggle]');
+      if (!btn) return;
+
+      btn.addEventListener('click', function (event) {
+        event.preventDefault();
+        var willOpen = !item.classList.contains('is-open');
+        closeAll(item);
+        item.classList.toggle('is-open', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      });
+
+      item.addEventListener('mouseenter', function () {
+        if (!desktop.matches) return;
+        closeAll(item);
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      });
+
+      item.addEventListener('mouseleave', function () {
+        if (!desktop.matches) return;
+        close(item);
+      });
+
+      item.addEventListener('focusout', function (event) {
+        if (!item.contains(event.relatedTarget)) close(item);
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('[data-nav-item]')) closeAll(null);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeAll(null);
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-nav-group-toggle]')).forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        var group = toggle.closest('[data-nav-group]');
+        var sub = document.getElementById(toggle.getAttribute('aria-controls'));
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        if (group) group.classList.toggle('is-open', !isOpen);
+        if (sub) sub.hidden = isOpen;
+      });
+    });
   }
 
   /* ---------- Highlight the current page in both navigation menus ---------- */
@@ -124,109 +232,132 @@
     });
   }
 
-  /* ---------- Contact form: inline validation + AJAX submit ---------- */
-  function initContactForm() {
-    var form = document.querySelector('[data-ajax-form]');
-    if (!form) return;
-
-    var submit = form.querySelector('[type="submit"]');
-    var submitLabel = submit ? submit.querySelector('.arrow__btn-text') : null;
-    var idleLabel = submitLabel ? submitLabel.textContent : 'Send';
-    var errorBox = document.querySelector('[data-form-error]');
-    var successBox = document.querySelector('[data-form-success]');
-    var successTitle = document.querySelector('[data-form-success-title]');
-    var successText = document.querySelector('[data-form-success-text]');
-    var again = document.querySelector('[data-form-again]');
-    var demoTitles = form.getAttribute('data-form-title-demo') || 'Message ready — not sent yet.';
-    var sentTitles = form.getAttribute('data-form-title-sent') || 'Message sent.';
-    var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
-
-    function clearInvalid() {
-      fields.forEach(function (field) { field.classList.remove('is-invalid'); });
+  /* ---------- AJAX forms: validation, submit state, success panel ---------- */
+  function storeSubmission(payload) {
+    try {
+      var key = 'alify:submissions';
+      var list = JSON.parse(window.localStorage.getItem(key) || '[]');
+      list.push(payload);
+      window.localStorage.setItem(key, JSON.stringify(list.slice(-25)));
+    } catch (error) {
+      /* storage blocked (private mode) — the flow still works, nothing is kept */
     }
+  }
 
-    function setSending(sending) {
-      if (submit) submit.disabled = sending;
-      form.setAttribute('aria-busy', sending ? 'true' : 'false');
-      if (submitLabel) submitLabel.textContent = sending ? 'Sending…' : idleLabel;
-    }
+  function initAjaxForms() {
+    var forms = Array.prototype.slice.call(document.querySelectorAll('[data-ajax-form]'));
+    if (!forms.length) return;
 
-    function showError(show) {
-      if (errorBox) errorBox.hidden = !show;
-    }
+    forms.forEach(function (form) {
+      var section = form.closest('section') || document;
+      var submit = form.querySelector('[type="submit"]');
+      var submitLabel = submit ? submit.querySelector('.arrow__btn-text') : null;
+      var idleLabel = submitLabel ? submitLabel.textContent : 'Send';
+      var errorBox = section.querySelector('[data-form-error]');
+      var successBox = section.querySelector('[data-form-success]');
+      var successTitle = section.querySelector('[data-form-success-title]');
+      var successText = section.querySelector('[data-form-success-text]');
+      var again = section.querySelector('[data-form-again]');
+      var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+      var demoTitles = form.getAttribute('data-form-title-demo') || 'Saved — not sent yet.';
+      var sentTitles = form.getAttribute('data-form-title-sent') || 'Sent.';
+      var demoText = form.getAttribute('data-form-text-demo') ||
+        'This preview build has no mail server connected, so your details are saved on this device only. Email hello@alify.studio and we will pick it up from there.';
+      var sentText = form.getAttribute('data-form-text-sent') ||
+        'Thanks — your message is with us. Expect a reply within one working day.';
 
-    function sendRequest() {
-      var action = (form.getAttribute('action') || '').trim();
-      var hasEndpoint = action && action !== '#' && !/^(javascript:|mailto:|tel:)/i.test(action);
-
-      if (!hasEndpoint) {
-        // No backend wired up yet: keep the AJAX flow but never claim a delivery.
-        return new Promise(function (resolve) {
-          window.setTimeout(function () { resolve({ demo: true }); }, 850);
-        });
+      function clearInvalid() {
+        fields.forEach(function (field) { field.classList.remove('is-invalid'); });
       }
 
-      return window.fetch(action, {
-        method: (form.getAttribute('method') || 'post').toUpperCase(),
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      }).then(function (response) {
-        if (!response.ok) throw new Error('Request failed: ' + response.status);
-        return { demo: false };
-      });
-    }
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      showError(false);
-      clearInvalid();
-
-      if (!form.checkValidity()) {
-        fields.forEach(function (field) {
-          if (field.willValidate && !field.checkValidity()) field.classList.add('is-invalid');
-        });
-        var firstInvalid = form.querySelector('.is-invalid');
-        if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
-        form.classList.add('was-validated');
-        return;
+      function setSending(sending) {
+        if (submit) submit.disabled = sending;
+        form.setAttribute('aria-busy', sending ? 'true' : 'false');
+        if (submitLabel) submitLabel.textContent = sending ? 'Sending…' : idleLabel;
       }
 
-      setSending(true);
-      sendRequest().then(function (result) {
-        setSending(false);
-        form.reset();
-        form.classList.remove('was-validated');
-        form.hidden = true;
-        if (successBox) {
-          successBox.hidden = false;
-          if (successTitle) successTitle.textContent = result.demo ? demoTitles : sentTitles;
-          if (successText) {
-            successText.textContent = result.demo
-              ? 'This preview has no mail server connected, so nothing was delivered. Email hello@alify.studio directly and we will pick it up from there.'
-              : 'Thanks — your message is with us. Expect a reply within one working day.';
-          }
-          if (successTitle && successTitle.focus) successTitle.focus();
+      function showError(show) {
+        if (errorBox) errorBox.hidden = !show;
+      }
+
+      function endpoint() {
+        var action = (form.getAttribute('action') || '').trim();
+        if (form.getAttribute('data-endpoint')) return form.getAttribute('data-endpoint').trim();
+        return action && action !== '#' && !/^(javascript:|mailto:|tel:)/i.test(action) ? action : '';
+      }
+
+      function sendRequest(data) {
+        var url = endpoint();
+        if (!url) {
+          storeSubmission(data);
+          return new Promise(function (resolve) {
+            window.setTimeout(function () { resolve({ demo: true }); }, 700);
+          });
         }
-      }).catch(function () {
-        setSending(false);
-        showError(true);
-      });
-    });
+        return window.fetch(url, {
+          method: (form.getAttribute('method') || 'post').toUpperCase(),
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        }).then(function (response) {
+          if (!response.ok) throw new Error('Request failed: ' + response.status);
+          storeSubmission(data);
+          return { demo: false };
+        });
+      }
 
-    fields.forEach(function (field) {
-      field.addEventListener('input', function () { field.classList.remove('is-invalid'); });
-      field.addEventListener('change', function () { field.classList.remove('is-invalid'); });
-    });
-
-    if (again) {
-      again.addEventListener('click', function () {
-        if (successBox) successBox.hidden = true;
-        form.hidden = false;
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        showError(false);
         clearInvalid();
-        var firstField = fields[0];
-        if (firstField && firstField.focus) firstField.focus();
+
+        if (!form.checkValidity()) {
+          fields.forEach(function (field) {
+            if (field.willValidate && !field.checkValidity()) field.classList.add('is-invalid');
+          });
+          var firstInvalid = form.querySelector('.is-invalid');
+          if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
+          form.classList.add('was-validated');
+          return;
+        }
+
+        var data = {};
+        new FormData(form).forEach(function (value, key) { data[key] = value; });
+        data._page = window.location.pathname.split('/').pop() || 'index.html';
+        data._submittedAt = new Date().toISOString();
+
+        setSending(true);
+        sendRequest(data).then(function (result) {
+          setSending(false);
+          form.reset();
+          form.classList.remove('was-validated');
+          form.hidden = true;
+          if (successBox) {
+            successBox.hidden = false;
+            if (successTitle) successTitle.textContent = result.demo ? demoTitles : sentTitles;
+            if (successText) successText.textContent = result.demo ? demoText : sentText;
+            if (successTitle && successTitle.focus) successTitle.focus();
+          }
+        }).catch(function () {
+          setSending(false);
+          showError(true);
+        });
       });
-    }
+
+      fields.forEach(function (field) {
+        field.addEventListener('input', function () { field.classList.remove('is-invalid'); });
+        field.addEventListener('change', function () { field.classList.remove('is-invalid'); });
+      });
+
+      if (again) {
+        again.addEventListener('click', function () {
+          if (successBox) successBox.hidden = true;
+          form.hidden = false;
+          clearInvalid();
+          var firstField = fields[0];
+          if (firstField && firstField.focus) firstField.focus();
+        });
+      }
+    });
   }
 
   /* ---------- Book a call: week/slot picker that feeds the request form ---------- */
@@ -430,55 +561,6 @@
 
     activate(requested || values[0], false);
   }
-  /* ---------- Searchable/category-filtered FAQ ---------- */
-  function initFaqFilters() {
-    var faqRoot = document.querySelector('[data-faq-root]');
-    if (!faqRoot) return;
-    var activeCategory = 'all';
-    var search = faqRoot.querySelector('[data-faq-search]');
-    var items = faqRoot.querySelectorAll('[data-faq-item]');
-    var tabs = faqRoot.querySelectorAll('[data-faq-filter]');
-    var empty = faqRoot.querySelector('[data-faq-empty]');
-
-    function update() {
-      var query = search ? search.value.trim().toLowerCase() : '';
-      var visibleCount = 0;
-      items.forEach(function (item) {
-        var matchesCategory = activeCategory === 'all' || item.getAttribute('data-category') === activeCategory;
-        var matchesText = !query || item.textContent.toLowerCase().indexOf(query) !== -1;
-        item.hidden = !(matchesCategory && matchesText);
-        if (!item.hidden) visibleCount += 1;
-      });
-      if (empty) empty.hidden = visibleCount !== 0;
-    }
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        activeCategory = tab.getAttribute('data-faq-filter');
-        tabs.forEach(function (item) { item.setAttribute('aria-pressed', item === tab ? 'true' : 'false'); });
-        update();
-      });
-    });
-    if (search) search.addEventListener('input', update);
-    update();
-  }
-
-  /* ---------- Testimonial service filters ---------- */
-  function initReviewFilters() {
-    var root = document.querySelector('[data-reviews-root]');
-    if (!root) return;
-    var filters = root.querySelectorAll('[data-review-filter]');
-    var cards = root.querySelectorAll('[data-review-card]');
-    filters.forEach(function (filter) {
-      filter.addEventListener('click', function () {
-        var category = filter.getAttribute('data-review-filter');
-        filters.forEach(function (item) { item.setAttribute('aria-pressed', item === filter ? 'true' : 'false'); });
-        cards.forEach(function (card) {
-          card.hidden = category !== 'all' && card.getAttribute('data-service') !== category;
-        });
-      });
-    });
-  }
-
   /* ---------- Seven-step project quote wizard ---------- */
   function initQuoteWizard() {
     var form = document.querySelector('[data-quote-wizard]');
@@ -2209,23 +2291,49 @@
 
   /* ---------- Form Validation (Bootstrap) ---------- */
   function initForms() {
-    var forms = document.querySelectorAll('.needs-validation');
+    var forms = Array.prototype.slice.call(
+      document.querySelectorAll('form.needs-validation:not([data-ajax-form])')
+    );
     if (!forms.length) return;
 
     forms.forEach(function (form) {
+      var submit = form.querySelector('[type="submit"]');
+      var status = form.querySelector('[data-form-status]');
+      var defaultStatus = status ? status.textContent : '';
+
       form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
         if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else if (form.hasAttribute('data-demo-form')) {
-          event.preventDefault();
-          var status = form.querySelector('[data-form-status]');
-          if (status) {
-            status.textContent = 'This form is ready for the site’s email or CRM connection; no message is sent yet.';
-            status.classList.add('is-visible');
-          }
+          form.classList.add('was-validated');
+          var invalid = form.querySelector(':invalid');
+          if (invalid && invalid.focus) invalid.focus();
+          return;
         }
+
+        var data = {};
+        new FormData(form).forEach(function (value, key) { data[key] = value; });
+        data._page = window.location.pathname.split('/').pop() || 'index.html';
+        data._submittedAt = new Date().toISOString();
+        storeSubmission(data);
+
         form.classList.add('was-validated');
+        if (submit) {
+          submit.disabled = true;
+          window.setTimeout(function () { submit.disabled = false; }, 2400);
+        }
+        if (status) {
+          status.textContent = 'You are on the list. This preview build keeps your address on this device only — email hello@alify.studio if you would rather not wait.';
+          status.classList.add('is-visible');
+        }
+        form.reset();
+        form.classList.remove('was-validated');
+        window.setTimeout(function () {
+          if (status) {
+            status.classList.remove('is-visible');
+            status.textContent = defaultStatus;
+          }
+        }, 9000);
       }, false);
     });
   }

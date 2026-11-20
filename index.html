@@ -4,8 +4,83 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F6F4F1">
-  <meta name="description" content="Alify — digital solutions for your business.">
-  <title>Alify</title>
+  <meta name="description" content="Alify is a digital studio building brands, websites and products for ambitious teams.">
+  <title>Alify — Digital solutions for ambitious teams</title>
+  <link rel="canonical" href="https://alify.studio/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alify">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Alify — Digital solutions for ambitious teams">
+  <meta property="og:description" content="Alify is a digital studio building brands, websites and products for ambitious teams.">
+  <meta property="og:url" content="https://alify.studio/">
+  <meta property="og:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alify — ideas that move you forward">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alify — Digital solutions for ambitious teams">
+  <meta name="twitter:description" content="Alify is a digital studio building brands, websites and products for ambitious teams.">
+  <meta name="twitter:image" content="https://alify.studio/assets/images/social/og-default.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://alify.studio/#organization",
+      "name": "Alify",
+      "url": "https://alify.studio/",
+      "logo": "https://alify.studio/assets/images/logo/sticky-logo.png",
+      "email": "hello@alify.studio",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Karachi",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        "https://www.instagram.com/alify.studio/",
+        "https://www.linkedin.com/company/alify-studio/",
+        "https://www.facebook.com/alify.studio/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://alify.studio/#website",
+      "url": "https://alify.studio/",
+      "name": "Alify",
+      "publisher": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://alify.studio/#webpage",
+      "url": "https://alify.studio/",
+      "name": "Alify — Digital solutions for ambitious teams",
+      "description": "Alify is a digital studio building brands, websites and products for ambitious teams.",
+      "isPartOf": {
+        "@id": "https://alify.studio/#website"
+      },
+      "about": {
+        "@id": "https://alify.studio/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://alify.studio/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 
   <!-- Local styles: Bootstrap layout, design tokens, typography, components. -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -15,9 +90,13 @@
   <link rel="stylesheet" href="assets/css/buttons.css">
   <link rel="stylesheet" href="assets/css/arrow-buttons.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/nav-menus.css">
   <link rel="stylesheet" href="assets/css/hero.css">
   <link rel="stylesheet" href="assets/css/inner-pages.css">
   <link rel="stylesheet" href="assets/css/advanced-pages.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-editorial.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-work.css">
+  <link rel="stylesheet" href="assets/css/advanced-pages-services.css">
   <link rel="stylesheet" href="assets/css/footer.css">
   <link rel="stylesheet" href="assets/css/video-backgrounds.css">
   <link rel="stylesheet" href="assets/icons/phosphor.css">
@@ -30,12 +109,62 @@
         <img class="site-header__logo-sticky" src="assets/images/logo/sticky-logo.png" alt="" aria-hidden="true">
       </a>
 
-      <nav class="site-nav" aria-label="Main navigation">
+            <nav class="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="index.html">Home</a>
-        <a class="site-nav__link" href="about-us.html">About Us</a>
-        <a class="site-nav__link" href="services.html">Services</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navAboutMenu" data-nav-toggle>
+            <span>About Us</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu site-nav__menu--narrow" id="navAboutMenu" data-nav-menu>
+            <p class="site-nav__menu-label">The studio</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="about-us.html"><span class="site-nav__menu-name">About Alify</span><span class="site-nav__menu-desc">The studio and how we work</span></a>
+              <a class="site-nav__menu-link" href="process.html"><span class="site-nav__menu-name">Our process</span><span class="site-nav__menu-desc">Six phases, no surprises</span></a>
+              <a class="site-nav__menu-link" href="pricing.html"><span class="site-nav__menu-name">Pricing</span><span class="site-nav__menu-desc">Three ways to work together</span></a>
+              <a class="site-nav__menu-link" href="testimonials.html"><span class="site-nav__menu-name">Testimonials</span><span class="site-nav__menu-desc">What clients say</span></a>
+              <a class="site-nav__menu-link" href="faq.html"><span class="site-nav__menu-name">FAQ</span><span class="site-nav__menu-desc">Answers before you ask</span></a>
+              <a class="site-nav__menu-link" href="contact-us.html"><span class="site-nav__menu-name">Contact</span><span class="site-nav__menu-desc">Start a conversation</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navServicesMenu" data-nav-toggle>
+            <span>Services</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navServicesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Nine connected services</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="single-service.html?service=web-development"><span class="site-nav__menu-name">Web Development</span><span class="site-nav__menu-desc">Fast, accessible websites</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=wordpress"><span class="site-nav__menu-name">WordPress Development</span><span class="site-nav__menu-desc">Sites your team can run</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=shopify"><span class="site-nav__menu-name">Shopify Development</span><span class="site-nav__menu-desc">Stores built to convert</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=ui-ux"><span class="site-nav__menu-name">UI / UX Design</span><span class="site-nav__menu-desc">Journeys people finish</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=seo"><span class="site-nav__menu-name">SEO</span><span class="site-nav__menu-desc">Technical and on-page search</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=digital-marketing"><span class="site-nav__menu-name">Digital Marketing</span><span class="site-nav__menu-desc">Campaigns that compound</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=content-writing"><span class="site-nav__menu-name">Content Writing</span><span class="site-nav__menu-desc">Clear, useful copy</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=logo-designing"><span class="site-nav__menu-name">Logo Designing</span><span class="site-nav__menu-desc">Identities that stick</span></a>
+              <a class="site-nav__menu-link" href="single-service.html?service=ai-automation"><span class="site-nav__menu-name">AI Automation</span><span class="site-nav__menu-desc">Workflows that save hours</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="services.html">All services <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="portfolio.html">Portfolio</a>
-        <a class="site-nav__link" href="industries.html">Industries</a>
+        <div class="site-nav__item" data-nav-item>
+          <button class="site-nav__link site-nav__toggle" type="button" aria-expanded="false" aria-controls="navIndustriesMenu" data-nav-toggle>
+            <span>Industries</span><i class="ph ph-caret-down site-nav__caret" aria-hidden="true"></i>
+          </button>
+          <div class="site-nav__menu" id="navIndustriesMenu" data-nav-menu>
+            <p class="site-nav__menu-label">Where we work</p>
+            <div class="site-nav__menu-grid">
+              <a class="site-nav__menu-link" href="industries.html?industry=technology"><span class="site-nav__menu-name">Technology & Apps</span><span class="site-nav__menu-desc">SaaS, platforms, product teams</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=ecommerce"><span class="site-nav__menu-name">E-commerce & Retail</span><span class="site-nav__menu-desc">Stores, catalogues, checkout</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=health"><span class="site-nav__menu-name">Health & Wellbeing</span><span class="site-nav__menu-desc">Clinics, care, wellness brands</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=finance"><span class="site-nav__menu-name">Finance & Professional</span><span class="site-nav__menu-desc">Fintech, advisory, services</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=education"><span class="site-nav__menu-name">Education</span><span class="site-nav__menu-desc">Schools, courses, learning tools</span></a>
+              <a class="site-nav__menu-link" href="industries.html?industry=travel"><span class="site-nav__menu-name">Travel & Hospitality</span><span class="site-nav__menu-desc">Hotels, tours, booking flows</span></a>
+            </div>
+            <a class="site-nav__menu-all" href="industries.html">All industries <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
         <a class="site-nav__link" href="case-studies.html">Case Studies</a>
         <a class="site-nav__link" href="blog.html">Blog</a>
       </nav>
@@ -71,9 +200,9 @@
     <div class="site-drawer__bottom">
       <span class="site-drawer__social-label">Follow along</span>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -83,21 +212,62 @@
       <a href="index.html" class="site-drawer__logo" aria-label="Alify home"><img src="assets/images/logo/light-logo.png" alt="Alify"></a>
       <button class="btn-icon site-drawer__close" type="button" aria-label="Close navigation menu"><i class="ph ph-x" aria-hidden="true"></i></button>
     </div>
-    <nav class="site-drawer__nav" aria-label="Mobile navigation">
+        <nav class="site-drawer__nav" aria-label="Mobile navigation">
       <a href="index.html"><span>01</span> Home <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="about-us.html"><span>02</span> About Us <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="services.html"><span>03</span> Services <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerAboutSub" data-nav-group-toggle>
+          <span><span>02</span> About Us</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerAboutSub" hidden>
+            <a href="about-us.html">About Alify</a>
+            <a href="process.html">Our process</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact-us.html">Contact</a>
+        </div>
+      </div>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerServicesSub" data-nav-group-toggle>
+          <span><span>03</span> Services</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerServicesSub" hidden>
+            <a href="single-service.html?service=web-development">Web Development</a>
+            <a href="single-service.html?service=wordpress">WordPress Development</a>
+            <a href="single-service.html?service=shopify">Shopify Development</a>
+            <a href="single-service.html?service=ui-ux">UI / UX Design</a>
+            <a href="single-service.html?service=seo">SEO</a>
+            <a href="single-service.html?service=digital-marketing">Digital Marketing</a>
+            <a href="single-service.html?service=content-writing">Content Writing</a>
+            <a href="single-service.html?service=logo-designing">Logo Designing</a>
+            <a href="single-service.html?service=ai-automation">AI Automation</a>
+          <a href="services.html">All services</a>
+        </div>
+      </div>
       <a href="portfolio.html"><span>04</span> Portfolio <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <a href="industries.html"><span>05</span> Industries <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+      <div class="site-drawer__group" data-nav-group>
+        <button class="site-drawer__group-toggle" type="button" aria-expanded="false" aria-controls="drawerIndustriesSub" data-nav-group-toggle>
+          <span><span>05</span> Industries</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="site-drawer__sub" id="drawerIndustriesSub" hidden>
+            <a href="industries.html?industry=technology">Technology & Apps</a>
+            <a href="industries.html?industry=ecommerce">E-commerce & Retail</a>
+            <a href="industries.html?industry=health">Health & Wellbeing</a>
+            <a href="industries.html?industry=finance">Finance & Professional</a>
+            <a href="industries.html?industry=education">Education</a>
+            <a href="industries.html?industry=travel">Travel & Hospitality</a>
+          <a href="industries.html">All industries</a>
+        </div>
+      </div>
       <a href="case-studies.html"><span>06</span> Case Studies <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
       <a href="blog.html"><span>07</span> Blog <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
     </nav>
     <div class="site-drawer__bottom site-drawer__bottom--menu">
       <a class="arrow__btn-link btn-amber-light" href="lets-get-started.html"><span class="arrow__btn-text">Let’s get started</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
       <div class="site-drawer__socials" aria-label="Social media">
-        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-        <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
       </div>
     </div>
   </aside>
@@ -319,7 +489,7 @@
         <div class="home-testimonials__intro">
           <p class="home-testimonials__badge"><span class="home-testimonials__google"><svg class="testimonial-card__mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google Reviews</span><span class="home-testimonials__stars" aria-hidden="true"><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i><i class="ph-fill ph-star" aria-hidden="true"></i></span><span class="home-testimonials__score">4.9 <span>average rating</span></span></p>
           <h2 id="homeTestimonialsTitle">Kind words from <span>good company.</span></h2>
-          <p class="home-testimonials__lead">Notes from the teams we build with. Reviews below are illustrative samples — connect your Google Business Profile to show live feedback.</p>
+          <p class="home-testimonials__lead">Notes from the teams we build with — and the outcomes that followed.</p>
         </div>
 
         <div class="home-testimonials__viewport">
@@ -594,9 +764,9 @@
           </a>
           <p class="site-footer__tagline">Independent thinking.<br>Ideas that move you forward.</p>
           <div class="site-footer__socials" aria-label="Social media">
-            <a href="https://www.instagram.com/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/alify.studio/" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/company/alify-studio/" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/alify.studio/" aria-label="Facebook"><i class="ph ph-facebook-logo" aria-hidden="true"></i></a>
           </div>
         </div>
         <div class="col-6 col-lg-2 col-md-3">
@@ -647,6 +817,10 @@
   <script defer src="assets/gsap/ScrollTrigger.min.js"></script>
   <script defer src="assets/gsap/ScrollToPlugin.min.js"></script>
   <script defer src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <button class="back-to-top d-none" id="backToTop" type="button" aria-label="Scroll back to top">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>
