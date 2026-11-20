@@ -889,12 +889,7 @@
 .about-story__img--sm { position: absolute; left: -14px; bottom: 0; width: 34%; height: clamp(120px,15vw,180px); object-fit: cover; border: 6px solid #fff; border-radius: 20px; }
 .about-story__badge { right: 22px; left: auto; bottom: 34px; }
 
-/* Vision orbit decoration */
 .about-pillar--vision { overflow: hidden; }
-.about-pillar__orbit { position: absolute; top: -120px; right: -90px; width: 380px; height: 380px; border: 1px solid rgba(244,199,120,.22); border-radius: 50%; pointer-events: none; }
-.about-pillar__orbit::before,.about-pillar__orbit::after { position: absolute; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; content: ""; }
-.about-pillar__orbit::before { inset: 54px; }
-.about-pillar__orbit::after { inset: 108px; border-color: rgba(244,199,120,.18); }
 
 /* Team meta */
 .about-team__meta { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 0; color: var(--color-muted); font: 600 .6rem var(--font-accent); letter-spacing: .1em; text-transform: uppercase; }
@@ -935,7 +930,6 @@
 @media (max-width: 575.98px) {
   .about-work__panel--dark .about-work__list { grid-template-columns: minmax(0,1fr); }
   .about-work__panel--dark .about-work__list li { padding-top: 14px; }
-  .about-pillar__orbit { width: 260px; height: 260px; top: -80px; right: -70px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .about-clients__track { animation: none; }
@@ -1001,7 +995,6 @@
 /* Vision card: balance the empty right side with a softer index numeral. */
 .about-pillar--vision { min-height: 300px; padding-right: clamp(34px,4vw,56px); }
 .about-pillar--vision .about-pillar__index { top: auto; right: 20px; bottom: 6px; color: rgba(255,255,255,.06); font-size: clamp(4.4rem,7vw,6.6rem); }
-.about-pillar__orbit { top: -150px; right: -70px; width: 420px; height: 420px; opacity: .8; }
 
 /* Stats: even gutters, aligned superscripts, calmer dividers. */
 .about-stats__grid { align-items: start; }
@@ -1039,7 +1032,6 @@
 
 /* Vision card: size to its content so the right side is never an empty void. */
 .about-pillar--vision { min-height: 0; justify-content: flex-end; }
-.about-pillar--vision .about-pillar__orbit { top: -140px; right: -80px; }
 
 /* ============================================================
    Tools & client countries — refined components
@@ -1531,3 +1523,20 @@
 @media (max-width: 767.98px) {
   .article-section { padding-block: clamp(44px,6vw,56px) clamp(36px,5vw,44px); }
 }
+
+/* Working style: icon and step number share one baseline row. */
+.about-work__panel--dark .about-work__list li {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  grid-template-areas: "icon . step" "text text text";
+  align-items: center;
+  gap: 12px 12px;
+  padding-top: 20px;
+}
+.about-work__panel--dark .about-work__list li > .about-work__icon { grid-area: icon; align-self: center; margin: 0; }
+.about-work__panel--dark .about-work__list li > .about-work__step { position: static; grid-area: step; align-self: center; margin: 0; }
+.about-work__panel--dark .about-work__list li > div { grid-area: text; }
+
+/* The heading rule double-lined with the stepper rules — drop it. */
+.about-work__panel h3 { padding-bottom: 0; margin-bottom: clamp(20px,2.2vw,26px); border-bottom: 0; }
+.about-work__panel--dark h3 { border-bottom: 0; }
