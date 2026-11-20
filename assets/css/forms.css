@@ -130,6 +130,9 @@
 .contact-form__next-link { display: inline-flex; align-items: center; gap: 8px; margin: 14px 0 0 12px; padding: 10px 16px; border-radius: 99px; background: transparent; color: var(--color-primary); font: 600 .74rem var(--font-accent); text-decoration: none; transition: color .22s ease, background-color .22s ease; }
 .contact-form__next-link:hover { background: rgba(15,52,115,.07); color: var(--color-primary); text-decoration: none; }
 .contact-form__next-link i { font-size: .95rem; transition: transform .22s ease; }
+.contact-form__noscript { margin: 0 0 18px; padding: 12px 14px; border: 1px solid rgba(18,21,28,.14); border-radius: 12px; background: #FBFAF7; color: var(--color-body-text, #4A5160); font-size: .82rem; line-height: 1.55; }
+.contact-form__noscript a { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+.contact-form__noscript a:hover { text-decoration: none; color: var(--color-primary); }
 .contact-form__next-link:hover i { transform: translateX(3px); }
 @media (max-width: 479.98px) { .contact-form__next-link { margin-left: 0; } }
 
