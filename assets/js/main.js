@@ -39,6 +39,7 @@
     initNotFoundSearch();
     initPortfolioFilters();
     initIndustrySwitcher();
+    initCaseStudyFilters();
     initBlogArchive();
     initReadingProgress();
     initArticleToc();
@@ -714,6 +715,119 @@
     }
 
     apply();
+  }
+
+  /* ---------- Case studies: industry + service filters (URL-persisted) ---------- */
+  function initCaseStudyFilters() {
+    var root = document.querySelector('[data-case-filters]');
+    var grid = document.querySelector('[data-case-grid]');
+    if (!root || !grid) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-case-card]'));
+    var industryChips = Array.prototype.slice.call(root.querySelectorAll('[data-case-industry-filter]'));
+    var serviceChips = Array.prototype.slice.call(root.querySelectorAll('[data-case-service-filter]'));
+    if (!cards.length || !industryChips.length || !serviceChips.length) return;
+
+    var statusEl = document.querySelector('[data-case-status]');
+    var emptyEl = document.querySelector('[data-case-empty]');
+    var resetBtn = root.querySelector('[data-case-reset]');
+
+    function values(chips, attribute) {
+      return chips.map(function (chip) { return chip.getAttribute(attribute); });
+    }
+    var industries = values(industryChips, 'data-case-industry-filter');
+    var services = values(serviceChips, 'data-case-service-filter');
+
+    var params = new URLSearchParams(window.location.search);
+    var state = {
+      industry: industries.indexOf(params.get('industry')) > -1 ? params.get('industry') : 'all',
+      service: services.indexOf(params.get('service')) > -1 ? params.get('service') : 'all'
+    };
+
+    function count(attribute, value) {
+      return cards.filter(function (card) { return card.getAttribute(attribute) === value; }).length;
+    }
+
+    function addCounts(chips, attribute) {
+      chips.forEach(function (chip) {
+        if (chip.querySelector('.blog-filters__chip-count')) return;
+        var key = chip.getAttribute(attribute);
+        if (key === 'all') return;
+        var total = count(attribute.replace('-filter', ''), key);
+        if (!total) return;
+        var badge = document.createElement('span');
+        badge.className = 'blog-filters__chip-count';
+        badge.textContent = String(total);
+        chip.appendChild(badge);
+      });
+    }
+    addCounts(industryChips, 'data-case-industry-filter');
+    addCounts(serviceChips, 'data-case-service-filter');
+
+    function syncChips(chips, attribute, active) {
+      chips.forEach(function (chip) {
+        var on = chip.getAttribute(attribute) === active;
+        chip.classList.toggle('is-active', on);
+        chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+
+    function persist() {
+      if (!window.history || !window.history.replaceState) return;
+      var url = new URL(window.location.href);
+      if (state.industry === 'all') url.searchParams.delete('industry');
+      else url.searchParams.set('industry', state.industry);
+      if (state.service === 'all') url.searchParams.delete('service');
+      else url.searchParams.set('service', state.service);
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+
+    function apply(updateUrl) {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var okIndustry = state.industry === 'all' || card.getAttribute('data-case-industry') === state.industry;
+        var okService = state.service === 'all' || card.getAttribute('data-case-service') === state.service;
+        var show = okIndustry && okService;
+        card.hidden = !show;
+        if (show) shown += 1;
+      });
+
+      syncChips(industryChips, 'data-case-industry-filter', state.industry);
+      syncChips(serviceChips, 'data-case-service-filter', state.service);
+
+      if (statusEl) {
+        statusEl.textContent = shown
+          ? 'Showing ' + shown + ' of ' + cards.length + ' case studies'
+          : 'No case studies match those filters';
+      }
+      if (emptyEl) emptyEl.hidden = shown > 0;
+      if (resetBtn) resetBtn.disabled = state.industry === 'all' && state.service === 'all';
+      if (updateUrl) persist();
+    }
+
+    industryChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        state.industry = chip.getAttribute('data-case-industry-filter');
+        apply(true);
+      });
+    });
+
+    serviceChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        state.service = chip.getAttribute('data-case-service-filter');
+        apply(true);
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        state.industry = 'all';
+        state.service = 'all';
+        apply(true);
+      });
+    }
+
+    apply(false);
   }
 
   /* ---------- Industries: challenge switcher (URL-persisted) ---------- */
