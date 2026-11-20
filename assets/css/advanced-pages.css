@@ -1519,3 +1519,6 @@
   .article-author__link i { transition: none; }
   .article-share__btn:hover { transform: none; }
 }
+
+/* Hero meta follows the centred hero column (was hugging the left edge). */
+.article-hero__meta { justify-content: center; text-align: center; }
