@@ -132,6 +132,8 @@
     var successTitle = document.querySelector('[data-form-success-title]');
     var successText = document.querySelector('[data-form-success-text]');
     var again = document.querySelector('[data-form-again]');
+    var demoTitles = form.getAttribute('data-form-title-demo') || 'Message ready — not sent yet.';
+    var sentTitles = form.getAttribute('data-form-title-sent') || 'Message sent.';
     var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
 
     function clearInvalid() {
@@ -192,7 +194,7 @@
         form.hidden = true;
         if (successBox) {
           successBox.hidden = false;
-          if (successTitle) successTitle.textContent = result.demo ? 'Message ready — not sent yet.' : 'Message sent.';
+          if (successTitle) successTitle.textContent = result.demo ? demoTitles : sentTitles;
           if (successText) {
             successText.textContent = result.demo
               ? 'This preview has no mail server connected, so nothing was delivered. Email hello@alify.studio directly and we will pick it up from there.'
