@@ -119,6 +119,413 @@
         </div>
       </div>
     </section>
+
+    <section class="ind-grid" aria-labelledby="indGridTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Industries</p>
+            <h2 id="indGridTitle">Six sectors,<br><span>one working method.</span></h2>
+          </div>
+          <p class="blog-archive__lead">The context changes what we build. The way we work — brief, structure, design, build, handover — does not.</p>
+        </div>
+
+        <div class="industry-bento ind-grid__bento">
+          <a class="industry-bento__card industry-bento__card--technology" href="#industry-challenges" data-industry-jump="technology">
+            <img class="industry-bento__image" src="assets/images/industries/technology.jpg" alt="" aria-hidden="true" loading="lazy">
+            <span class="industry-bento__meta">01 <span>SaaS, platforms, product teams</span></span>
+            <span class="industry-bento__body"><span class="industry-bento__title">Technology &amp; Apps</span><span class="industry-bento__copy">SaaS, platforms, product teams</span></span>
+            <span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="industry-bento__card industry-bento__card--commerce" href="#industry-challenges" data-industry-jump="ecommerce">
+            <img class="industry-bento__image" src="assets/images/industries/commerce.jpg" alt="" aria-hidden="true" loading="lazy">
+            <span class="industry-bento__meta">02 <span>Retail, DTC brands, marketplaces</span></span>
+            <span class="industry-bento__body"><span class="industry-bento__title">Shopping &amp; eCommerce</span><span class="industry-bento__copy">Retail, DTC brands, marketplaces</span></span>
+            <span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="industry-bento__card industry-bento__card--health" href="#industry-challenges" data-industry-jump="health">
+            <img class="industry-bento__image" src="assets/images/industries/health.jpg" alt="" aria-hidden="true" loading="lazy">
+            <span class="industry-bento__meta">03 <span>Clinics, care providers, health products</span></span>
+            <span class="industry-bento__body"><span class="industry-bento__title">Health &amp; Medical</span><span class="industry-bento__copy">Clinics, care providers, health products</span></span>
+            <span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="industry-bento__card industry-bento__card--finance" href="#industry-challenges" data-industry-jump="finance">
+            <img class="industry-bento__image" src="assets/images/industries/finance.jpg" alt="" aria-hidden="true" loading="lazy">
+            <span class="industry-bento__meta">04 <span>Fintech, advisory, professional services</span></span>
+            <span class="industry-bento__body"><span class="industry-bento__title">Finance &amp; Legal</span><span class="industry-bento__copy">Fintech, advisory, professional services</span></span>
+            <span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="industry-bento__card industry-bento__card--education" href="#industry-challenges" data-industry-jump="education">
+            <img class="industry-bento__image" src="assets/images/industries/education.jpg" alt="" aria-hidden="true" loading="lazy">
+            <span class="industry-bento__meta">05 <span>Courses, schools, learning platforms</span></span>
+            <span class="industry-bento__body"><span class="industry-bento__title">Education</span><span class="industry-bento__copy">Courses, schools, learning platforms</span></span>
+            <span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="industry-bento__card industry-bento__card--travel" href="#industry-challenges" data-industry-jump="travel">
+            <img class="industry-bento__image" src="assets/images/industries/travel.jpg" alt="" aria-hidden="true" loading="lazy">
+            <span class="industry-bento__meta">06 <span>Hotels, operators, booking platforms</span></span>
+            <span class="industry-bento__body"><span class="industry-bento__title">Travel &amp; Hospitality</span><span class="industry-bento__copy">Hotels, operators, booking platforms</span></span>
+            <span class="industry-bento__arrow"><i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ind-switcher" id="industry-challenges" aria-labelledby="indSwitcherTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Challenges &amp; solutions</p>
+            <h2 id="indSwitcherTitle">Every sector has<br><span>its own version of hard.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Pick an industry to see the problem we hear most often, and what we actually do about it.</p>
+        </div>
+
+        <div class="ind-switcher__layout" data-industry-switcher>
+          <div class="ind-switcher__tabs" role="tablist" aria-label="Choose an industry" aria-orientation="vertical">
+          <button class="ind-switcher__tab is-active" type="button" role="tab"
+                  id="ind-tab-technology" aria-selected="true"
+                  aria-controls="ind-panel-technology" tabindex="0"
+                  data-industry-tab="technology">
+            <span class="ind-switcher__tab-icon" aria-hidden="true"><i class="ph ph-cpu"></i></span>
+            <span class="ind-switcher__tab-text">
+              <span class="ind-switcher__tab-label">Technology &amp; Apps</span>
+              <span class="ind-switcher__tab-meta">SaaS, platforms, product teams</span>
+            </span>
+            <i class="ph ph-arrow-right ind-switcher__tab-arrow" aria-hidden="true"></i>
+          </button>
+          <button class="ind-switcher__tab" type="button" role="tab"
+                  id="ind-tab-ecommerce" aria-selected="false"
+                  aria-controls="ind-panel-ecommerce" tabindex="-1"
+                  data-industry-tab="ecommerce">
+            <span class="ind-switcher__tab-icon" aria-hidden="true"><i class="ph ph-shopping-cart"></i></span>
+            <span class="ind-switcher__tab-text">
+              <span class="ind-switcher__tab-label">Shopping &amp; eCommerce</span>
+              <span class="ind-switcher__tab-meta">Retail, DTC brands, marketplaces</span>
+            </span>
+            <i class="ph ph-arrow-right ind-switcher__tab-arrow" aria-hidden="true"></i>
+          </button>
+          <button class="ind-switcher__tab" type="button" role="tab"
+                  id="ind-tab-health" aria-selected="false"
+                  aria-controls="ind-panel-health" tabindex="-1"
+                  data-industry-tab="health">
+            <span class="ind-switcher__tab-icon" aria-hidden="true"><i class="ph ph-heartbeat"></i></span>
+            <span class="ind-switcher__tab-text">
+              <span class="ind-switcher__tab-label">Health &amp; Medical</span>
+              <span class="ind-switcher__tab-meta">Clinics, care providers, health products</span>
+            </span>
+            <i class="ph ph-arrow-right ind-switcher__tab-arrow" aria-hidden="true"></i>
+          </button>
+          <button class="ind-switcher__tab" type="button" role="tab"
+                  id="ind-tab-finance" aria-selected="false"
+                  aria-controls="ind-panel-finance" tabindex="-1"
+                  data-industry-tab="finance">
+            <span class="ind-switcher__tab-icon" aria-hidden="true"><i class="ph ph-bank"></i></span>
+            <span class="ind-switcher__tab-text">
+              <span class="ind-switcher__tab-label">Finance &amp; Legal</span>
+              <span class="ind-switcher__tab-meta">Fintech, advisory, professional services</span>
+            </span>
+            <i class="ph ph-arrow-right ind-switcher__tab-arrow" aria-hidden="true"></i>
+          </button>
+          <button class="ind-switcher__tab" type="button" role="tab"
+                  id="ind-tab-education" aria-selected="false"
+                  aria-controls="ind-panel-education" tabindex="-1"
+                  data-industry-tab="education">
+            <span class="ind-switcher__tab-icon" aria-hidden="true"><i class="ph ph-graduation-cap"></i></span>
+            <span class="ind-switcher__tab-text">
+              <span class="ind-switcher__tab-label">Education</span>
+              <span class="ind-switcher__tab-meta">Courses, schools, learning platforms</span>
+            </span>
+            <i class="ph ph-arrow-right ind-switcher__tab-arrow" aria-hidden="true"></i>
+          </button>
+          <button class="ind-switcher__tab" type="button" role="tab"
+                  id="ind-tab-travel" aria-selected="false"
+                  aria-controls="ind-panel-travel" tabindex="-1"
+                  data-industry-tab="travel">
+            <span class="ind-switcher__tab-icon" aria-hidden="true"><i class="ph ph-airplane-tilt"></i></span>
+            <span class="ind-switcher__tab-text">
+              <span class="ind-switcher__tab-label">Travel &amp; Hospitality</span>
+              <span class="ind-switcher__tab-meta">Hotels, operators, booking platforms</span>
+            </span>
+            <i class="ph ph-arrow-right ind-switcher__tab-arrow" aria-hidden="true"></i>
+          </button>
+          </div>
+          <div class="ind-switcher__panels">
+          <div class="ind-switcher__panel is-active" role="tabpanel"
+               id="ind-panel-technology" aria-labelledby="ind-tab-technology"
+               data-industry-panel="technology" tabindex="0">
+            <div class="ind-switcher__panel-head">
+              <span class="ind-switcher__badge"><i class="ph ph-cpu" aria-hidden="true"></i> Technology &amp; Apps</span>
+              <h3>The challenge</h3>
+              <p>Product teams ship faster than the website can explain. By the time marketing catches up, the product has moved again — and the site is three releases behind on the one page buyers actually read.</p>
+            </div>
+            <div class="ind-switcher__panel-body">
+              <h4>What we do about it</h4>
+              <ul class="ind-switcher__solutions">
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Web design &amp; development</strong><span>A site that can be updated by the product team, not just by an agency, with components mapped to real release cycles.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Product design &amp; UX</strong><span>Flows and interface work inside the product itself, tested with real users rather than internal opinion.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Brand identity</strong><span>A narrative that survives the next three releases, so positioning does not need rewriting every quarter.</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="ind-switcher__panel-foot">
+              <p class="ind-switcher__note"><i class="ph ph-clock" aria-hidden="true"></i> Typical engagement: 6–10 weeks</p>
+              <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            </div>
+          </div>
+          <div class="ind-switcher__panel" role="tabpanel"
+               id="ind-panel-ecommerce" aria-labelledby="ind-tab-ecommerce"
+               data-industry-panel="ecommerce" tabindex="0" hidden>
+            <div class="ind-switcher__panel-head">
+              <span class="ind-switcher__badge"><i class="ph ph-shopping-cart" aria-hidden="true"></i> Shopping &amp; eCommerce</span>
+              <h3>The challenge</h3>
+              <p>Traffic is not the problem; the checkout is. Stores accumulate apps, images and upsells until the buying path takes eleven taps on a phone that is running three other things.</p>
+            </div>
+            <div class="ind-switcher__panel-body">
+              <h4>What we do about it</h4>
+              <ul class="ind-switcher__solutions">
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>E-commerce storefronts</strong><span>Shopify builds and migrations with fewer apps, faster product pages and a checkout tested end to end.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Conversion optimisation</strong><span>Speed, product page and checkout work measured against real order data before a redesign is proposed.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Growth &amp; retention</strong><span>Paid media and lifecycle email pointed at the products that actually sell, with one measurement plan.</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="ind-switcher__panel-foot">
+              <p class="ind-switcher__note"><i class="ph ph-clock" aria-hidden="true"></i> Typical engagement: 6–12 weeks</p>
+              <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            </div>
+          </div>
+          <div class="ind-switcher__panel" role="tabpanel"
+               id="ind-panel-health" aria-labelledby="ind-tab-health"
+               data-industry-panel="health" tabindex="0" hidden>
+            <div class="ind-switcher__panel-head">
+              <span class="ind-switcher__badge"><i class="ph ph-heartbeat" aria-hidden="true"></i> Health &amp; Medical</span>
+              <h3>The challenge</h3>
+              <p>People arrive anxious, on a phone, often at night. The information they need is behind three clicks, written in clinical language, and the booking form asks for ten fields before it says whether an appointment exists.</p>
+            </div>
+            <div class="ind-switcher__panel-body">
+              <h4>What we do about it</h4>
+              <ul class="ind-switcher__solutions">
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Accessible content structure</strong><span>Guidance organised around the question being asked, with contrast, focus states and plain language checked against WCAG AA.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Booking &amp; enquiry flows</strong><span>Shorter forms, clear next steps and a confirmation that says what happens next — not just “thank you”.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Trust-first design</strong><span>Credentials, pricing and expectations surfaced early, because uncertainty is what makes people leave.</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="ind-switcher__panel-foot">
+              <p class="ind-switcher__note"><i class="ph ph-clock" aria-hidden="true"></i> Typical engagement: 5–9 weeks</p>
+              <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            </div>
+          </div>
+          <div class="ind-switcher__panel" role="tabpanel"
+               id="ind-panel-finance" aria-labelledby="ind-tab-finance"
+               data-industry-panel="finance" tabindex="0" hidden>
+            <div class="ind-switcher__panel-head">
+              <span class="ind-switcher__badge"><i class="ph ph-bank" aria-hidden="true"></i> Finance &amp; Legal</span>
+              <h3>The challenge</h3>
+              <p>Trust is the product. The site has to be precise enough for compliance, human enough for a first-time buyer, and clear enough that nobody needs a call to understand what is being sold.</p>
+            </div>
+            <div class="ind-switcher__panel-body">
+              <h4>What we do about it</h4>
+              <ul class="ind-switcher__solutions">
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Clear language, careful claims</strong><span>Copy reviewed line by line, with compliance-friendly wording that still reads like a person wrote it.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Secure, fast front-ends</strong><span>Performance and accessibility budgets agreed up front; no third-party scripts added without an audit.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Dashboards &amp; tools</strong><span>Interactive calculators and product dashboards designed for people who do not read charts for a living.</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="ind-switcher__panel-foot">
+              <p class="ind-switcher__note"><i class="ph ph-clock" aria-hidden="true"></i> Typical engagement: 8–14 weeks</p>
+              <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            </div>
+          </div>
+          <div class="ind-switcher__panel" role="tabpanel"
+               id="ind-panel-education" aria-labelledby="ind-tab-education"
+               data-industry-panel="education" tabindex="0" hidden>
+            <div class="ind-switcher__panel-head">
+              <span class="ind-switcher__badge"><i class="ph ph-graduation-cap" aria-hidden="true"></i> Education</span>
+              <h3>The challenge</h3>
+              <p>Course pages describe the curriculum but not the outcome. Enquiries arrive without the information needed to qualify them, and the admissions team answers the same six questions every week.</p>
+            </div>
+            <div class="ind-switcher__panel-body">
+              <h4>What we do about it</h4>
+              <ul class="ind-switcher__solutions">
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Course architecture</strong><span>Pages built around outcomes, time commitment and cost — the three things prospective students actually compare.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Enquiry &amp; enrolment flows</strong><span>Forms that qualify without interrogating, with the answers routed to the right person internally.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Content systems</strong><span>Templates for new courses so a small marketing team can publish a term’s worth of pages in a day.</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="ind-switcher__panel-foot">
+              <p class="ind-switcher__note"><i class="ph ph-clock" aria-hidden="true"></i> Typical engagement: 5–8 weeks</p>
+              <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            </div>
+          </div>
+          <div class="ind-switcher__panel" role="tabpanel"
+               id="ind-panel-travel" aria-labelledby="ind-tab-travel"
+               data-industry-panel="travel" tabindex="0" hidden>
+            <div class="ind-switcher__panel-head">
+              <span class="ind-switcher__badge"><i class="ph ph-airplane-tilt" aria-hidden="true"></i> Travel &amp; Hospitality</span>
+              <h3>The challenge</h3>
+              <p>Bookings happen on a phone, abroad, on a connection that drops. Heavy galleries and third-party booking widgets make the one page that matters load last.</p>
+            </div>
+            <div class="ind-switcher__panel-body">
+              <h4>What we do about it</h4>
+              <ul class="ind-switcher__solutions">
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Fast, mobile-first pages</strong><span>Image budgets, lazy loading and booking embeds arranged so the first screen is usable in under two seconds.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Bookable journeys</strong><span>Search, availability and pricing designed around the decision, on the device it happens on.</span></span>
+                </li>
+                <li>
+                  <span class="ind-switcher__solutions-icon" aria-hidden="true"><i class="ph ph-check"></i></span>
+                  <span class="ind-switcher__solutions-copy"><strong>Localisation</strong><span>Multi-currency and multi-language structures planned into the build rather than bolted on later.</span></span>
+                </li>
+              </ul>
+            </div>
+            <div class="ind-switcher__panel-foot">
+              <p class="ind-switcher__note"><i class="ph ph-clock" aria-hidden="true"></i> Typical engagement: 6–10 weeks</p>
+              <a class="arrow__btn-link btn-primary" href="get-a-quote.html"><span class="arrow__btn-text">Start a project</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ind-projects" aria-labelledby="indProjectsTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Relevant projects</p>
+            <h2 id="indProjectsTitle">Work from<br><span>these industries.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Three projects where the sector shaped the answer. Every one is documented, not just screenshotted.</p>
+        </div>
+
+        <div class="work-grid__inner ind-projects__grid">
+          <article class="work-card">
+            <a class="work-card__link" href="single-project.html">
+              <span class="work-card__media">
+                <img src="assets/images/projects/Technology &amp; Apps/featured-northstar.svg" alt="Illustrative Northstar website preview" loading="lazy" width="1200" height="1900">
+              </span>
+              <span class="work-card__body">
+                <span class="work-card__meta"><span class="work-card__cat">Websites</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+                <span class="work-card__title">Northstar</span>
+                <span class="work-card__text">A digital platform for teams building what is next.</span>
+                <span class="work-card__foot"><span class="work-card__tag">Technology &amp; Apps</span><span class="work-card__year">2026</span></span>
+              </span>
+            </a>
+          </article>
+          <article class="work-card">
+            <a class="work-card__link" href="single-project.html">
+              <span class="work-card__media">
+                <img src="assets/images/projects/Shopping &amp; eCommerce/featured-fieldnotes.svg" alt="Illustrative Fieldnotes website preview" loading="lazy" width="1200" height="1900">
+              </span>
+              <span class="work-card__body">
+                <span class="work-card__meta"><span class="work-card__cat">E-commerce</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+                <span class="work-card__title">Fieldnotes</span>
+                <span class="work-card__text">A simpler storefront for a growing catalogue.</span>
+                <span class="work-card__foot"><span class="work-card__tag">Shopping &amp; eCommerce</span><span class="work-card__year">2026</span></span>
+              </span>
+            </a>
+          </article>
+          <article class="work-card">
+            <a class="work-card__link" href="single-project.html">
+              <span class="work-card__media">
+                <img src="assets/images/projects/Health &amp; Medical/featured-wellspace.svg" alt="Illustrative Wellspace website preview" loading="lazy" width="1200" height="1900">
+              </span>
+              <span class="work-card__body">
+                <span class="work-card__meta"><span class="work-card__cat">Product design</span><span class="work-card__arrow" aria-hidden="true"><i class="ph ph-arrow-up-right"></i></span></span>
+                <span class="work-card__title">Wellspace</span>
+                <span class="work-card__text">Guidance and next steps that are easy to find.</span>
+                <span class="work-card__foot"><span class="work-card__tag">Health &amp; Medical</span><span class="work-card__year">2025</span></span>
+              </span>
+            </a>
+          </article>
+        </div>
+
+        <div class="ind-projects__foot">
+          <a class="arrow__btn-link btn-outline" href="portfolio.html"><span class="arrow__btn-text">See all projects</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-outline" href="case-studies.html"><span class="arrow__btn-text">Read the case studies</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-stats ind-stats" aria-labelledby="indStatsTitle">
+      <div class="container">
+        <div class="about-stats__head">
+          <p class="eyebrow about-stats__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> By the numbers</p>
+          <h2 id="indStatsTitle">Ten years,<br><span>counted honestly.</span></h2>
+          <p class="about-stats__note">Illustrative figures — replace with your own verified numbers.</p>
+        </div>
+        <div class="about-stats__grid">
+          <div class="about-stat">
+            <p class="about-stat__value"><span data-counter="120" data-duration="1600">0</span><sup>+</sup></p>
+            <p class="about-stat__label">Projects delivered</p>
+            <p class="about-stat__note">Across brand, product and growth work.</p>
+          </div>
+          <div class="about-stat">
+            <p class="about-stat__value"><span data-counter="38" data-duration="1600">0</span><sup></sup></p>
+            <p class="about-stat__label">Commerce builds</p>
+            <p class="about-stat__note">Shopify, WooCommerce and custom storefronts.</p>
+          </div>
+          <div class="about-stat">
+            <p class="about-stat__value"><span data-counter="24" data-duration="1600">0</span><sup></sup></p>
+            <p class="about-stat__label">Health &amp; education sites</p>
+            <p class="about-stat__note">Sectors where clarity matters most.</p>
+          </div>
+          <div class="about-stat">
+            <p class="about-stat__value"><span data-counter="14" data-duration="1600">0</span><sup></sup></p>
+            <p class="about-stat__label">Countries served</p>
+            <p class="about-stat__note">Long-term clients on five continents.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="siteFooter">

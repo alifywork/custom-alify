@@ -38,6 +38,7 @@
     initQuoteWizard();
     initNotFoundSearch();
     initPortfolioFilters();
+    initIndustrySwitcher();
     initBlogArchive();
     initReadingProgress();
     initArticleToc();
@@ -713,6 +714,70 @@
     }
 
     apply();
+  }
+
+  /* ---------- Industries: challenge switcher (URL-persisted) ---------- */
+  function initIndustrySwitcher() {
+    var root = document.querySelector('[data-industry-switcher]');
+    if (!root) return;
+
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-industry-tab]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-industry-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    var values = tabs.map(function (tab) { return tab.getAttribute('data-industry-tab'); });
+    var params = new URLSearchParams(window.location.search);
+    var requested = params.get('industry');
+
+    function activate(value, updateUrl) {
+      if (values.indexOf(value) === -1) value = values[0];
+
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute('data-industry-tab') === value;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+      });
+
+      panels.forEach(function (panel) {
+        var active = panel.getAttribute('data-industry-panel') === value;
+        panel.classList.toggle('is-active', active);
+        panel.hidden = !active;
+      });
+
+      if (!updateUrl || !window.history || !window.history.replaceState) return;
+      var url = new URL(window.location.href);
+      url.searchParams.set('industry', value);
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        activate(tab.getAttribute('data-industry-tab'), true);
+      });
+
+      tab.addEventListener('keydown', function (event) {
+        var next = null;
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = index + 1;
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = index - 1;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === null) return;
+        event.preventDefault();
+        var target = tabs[(next + tabs.length) % tabs.length];
+        activate(target.getAttribute('data-industry-tab'), true);
+        target.focus();
+      });
+    });
+
+    // Cards in the industries grid jump to this block and select their industry.
+    document.querySelectorAll('[data-industry-jump]').forEach(function (card) {
+      card.addEventListener('click', function () {
+        activate(card.getAttribute('data-industry-jump'), true);
+      });
+    });
+
+    activate(requested || values[0], false);
   }
 
   /* ---------- Blog archive: category filter, search, pagination, shareable URL ---------- */
