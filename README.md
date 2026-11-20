@@ -121,8 +121,18 @@ ffmpeg -ss 1 -i OUT.mp4 -frames:v 1 -q:v 4 -y OUT-poster.jpg
 
 ## Icons
 
-`assets/images/favicon.svg` (scalable, used by every page), `favicon-32x32.png`, `apple-touch-icon.png`
-(180×180) and `icon-192.png` — navy tile, cream “A”, amber dot.
+All icons come from the supplied brand mark (navy circle `#0F3473`, white triangle):
+
+| File | Use |
+| --- | --- |
+| `favicon.ico` | 16/32/48 multi-size fallback for `/favicon.ico` |
+| `favicon-32x32.png` | browser tabs |
+| `favicon-192x192.png` | Android home screen / PWA |
+| `apple-touch-icon.png` | 180×180, circle flattened onto a navy square (iOS masks transparency to black) |
+| `favicon-512x512.png` | store listings, docs |
+
+Re-generate from the source `favicon.png` (625×625) with PIL — downscale with LANCZOS and keep the
+180px touch icon composited on navy.
 
 ## Placeholders to replace before launch
 
