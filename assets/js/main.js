@@ -1528,11 +1528,52 @@
   function initNotFoundSearch() {
     var search = document.querySelector('[data-404-search]');
     if (!search) return;
+
     var links = document.querySelectorAll('[data-404-link]');
-    search.addEventListener('input', function () {
-      var term = search.value.trim().toLowerCase();
-      links.forEach(function (link) { link.hidden = !!term && link.textContent.toLowerCase().indexOf(term) === -1; });
+    var status = document.querySelector('[data-404-status]');
+    var empty = document.querySelector('[data-404-empty]');
+    var clear = document.querySelector('[data-404-clear]');
+    var chips = document.querySelectorAll('[data-404-suggest]');
+
+    function apply() {
+      var term = search.value.trim();
+      var lower = term.toLowerCase();
+      var shown = 0;
+
+      links.forEach(function (link) {
+        var match = !lower || link.textContent.toLowerCase().indexOf(lower) !== -1;
+        link.hidden = !match;
+        if (match) shown += 1;
+      });
+
+      if (clear) clear.hidden = !term;
+      if (status) {
+        if (!term) status.textContent = '';
+        else if (shown) status.textContent = shown + ' of ' + links.length + ' pages match “' + term + '”';
+        else status.textContent = 'No pages match “' + term + '”';
+      }
+      if (empty) empty.hidden = !term || shown > 0;
+    }
+
+    search.addEventListener('input', apply);
+
+    if (clear) {
+      clear.addEventListener('click', function () {
+        search.value = '';
+        apply();
+        search.focus();
+      });
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        search.value = chip.getAttribute('data-404-suggest') || '';
+        apply();
+        search.focus();
+      });
     });
+
+    apply();
   }
 
   /* ---------- Right-side About and Navigation Drawers ---------- */

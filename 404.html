@@ -105,7 +105,132 @@
 
 
   <main id="mainContent">
-    <section class="inner-hero has-video-background" id="pageHero" aria-labelledby="pageHeroTitle"><video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video><div class="container"><div class="inner-hero__content"><p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Looks like a wrong turn</p><h1 id="pageHeroTitle">We can’t find that page.</h1><p class="inner-hero__description">The page may have moved or the link may be outdated. Let’s help you find your way.</p><div class="inner-hero__actions"><a class="arrow__btn-link btn-amber-light" href="index.html"><span class="arrow__btn-text">Back to Home</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a></div></div></div></section>
+    <section class="inner-hero has-video-background error-hero" id="pageHero" aria-labelledby="pageHeroTitle">
+      <video class="background-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="assets/images/background-videos/inner-hero.mp4" type="video/mp4"></video>
+      <div class="container"><div class="inner-hero__content">
+        <span class="error-hero__code" aria-hidden="true">404</span>
+        <p class="eyebrow hero-eyebrow"><i class="ph ph-triangle hero-eyebrow__icon" aria-hidden="true"></i> Page not found</p>
+        <h1 id="pageHeroTitle">This page took<br><span>a wrong turn.</span></h1>
+        <p class="inner-hero__description">The link is broken, the page moved, or it never existed. Nothing is lost — the search below will find it in a second.</p>
+        <div class="inner-hero__actions">
+          <a class="arrow__btn-link btn-amber-light" href="#error-search"><span class="arrow__btn-text">Find the page</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          <a class="arrow__btn-link btn-outline-light" href="index.html"><span class="arrow__btn-text">Back to home</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="error-search" id="error-search" aria-labelledby="errorSearchTitle">
+      <div class="container">
+        <div class="error-search__inner">
+          <p class="eyebrow error-search__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Search the site</p>
+          <h2 id="errorSearchTitle">Type what you were <span>looking for.</span></h2>
+          <div class="error-search__box" role="search" aria-label="Search the site">
+            <label class="error-search__field" for="errorSearchInput">
+              <i class="ph ph-magnifying-glass error-search__icon" aria-hidden="true"></i>
+              <span class="visually-hidden">Search pages</span>
+              <input id="errorSearchInput" type="search" placeholder="Search pages — try “pricing”" autocomplete="off" data-404-search>
+              <button class="error-search__clear" type="button" aria-label="Clear search" data-404-clear hidden><i class="ph ph-x" aria-hidden="true"></i></button>
+            </label>
+          </div>
+          <div class="error-search__chips" aria-label="Popular searches">
+          <button class="error-search__chip" type="button" data-404-suggest="pricing">Pricing</button>
+          <button class="error-search__chip" type="button" data-404-suggest="process">Process</button>
+          <button class="error-search__chip" type="button" data-404-suggest="blog">Blog</button>
+          <button class="error-search__chip" type="button" data-404-suggest="contact">Contact</button>
+          </div>
+          <p class="error-search__status" role="status" aria-live="polite" data-404-status></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="error-links" aria-labelledby="errorLinksTitle">
+      <div class="container">
+        <div class="blog-archive__head">
+          <div class="blog-archive__head-copy">
+            <p class="eyebrow blog-archive__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Quick links</p>
+            <h2 id="errorLinksTitle">The pages people <span>usually want.</span></h2>
+          </div>
+          <p class="blog-archive__lead">Filtered by whatever you type in the search above.</p>
+        </div>
+
+        <div class="row g-3 error-links__grid">
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="index.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-house"></i></span>
+              <span class="error-link__label">Home</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="services.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-squares-four"></i></span>
+              <span class="error-link__label">Services</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="pricing.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-receipt"></i></span>
+              <span class="error-link__label">Pricing</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="process.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-path"></i></span>
+              <span class="error-link__label">Our process</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="portfolio.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-images"></i></span>
+              <span class="error-link__label">Portfolio</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="case-studies.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-folder-open"></i></span>
+              <span class="error-link__label">Case studies</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="blog.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-notebook"></i></span>
+              <span class="error-link__label">Journal</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          <div class="col-6 col-md-4 col-xl-3" data-404-link>
+            <a class="error-link" href="contact-us.html">
+              <span class="error-link__icon" aria-hidden="true"><i class="ph ph-envelope-simple"></i></span>
+              <span class="error-link__label">Contact</span>
+              <span class="error-link__go" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+        </div>
+
+        <p class="error-links__empty" data-404-empty hidden>Nothing matches that search. Try <strong>pricing</strong>, <strong>blog</strong> or <strong>process</strong> — or use the buttons below.</p>
+      </div>
+    </section>
+
+    <section class="error-cta" aria-labelledby="errorCtaTitle">
+      <div class="container">
+        <div class="error-cta__panel">
+          <div>
+            <p class="eyebrow error-cta__eyebrow"><i class="ph ph-triangle" aria-hidden="true"></i> Still stuck?</p>
+            <h2 id="errorCtaTitle">Start again, <span>or just ask us.</span></h2>
+            <p>One of these two will get you somewhere useful — and if a link on our site is broken, tell us and we will fix it.</p>
+          </div>
+          <div class="error-cta__actions">
+            <a class="arrow__btn-link btn-primary" href="index.html"><span class="arrow__btn-text">Go to homepage</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+            <a class="arrow__btn-link btn-outline" href="contact-us.html"><span class="arrow__btn-text">Contact us</span><span class="arrow__btn-icon" aria-hidden="true"><span class="arrow__icon-wrap"><i class="ph ph-arrow-right arrow__icon arrow__icon--first"></i><i class="ph ph-arrow-right arrow__icon arrow__icon--second"></i></span></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <footer class="site-footer" id="siteFooter">
     <section class="footer-cta has-video-background" aria-labelledby="footerCtaTitle">
