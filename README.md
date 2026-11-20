@@ -12,7 +12,8 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 | `about-us.html` | Story, pillars, stats, team, working style, reach, tools, testimonials |
 | `services.html` | 9-service catalogue (homepage cards), journey, industries, pricing, FAQ |
 | `web-development.html`, `brand-design.html`, `digital-growth.html`, `ecommerce.html` | Service detail template |
-| `single-service.html` | Generic service detail driven by `?service=web-development\|wordpress\|shopify\|ui-ux\|seo\|digital-marketing\|content-writing\|logo-designing\|ai-automation` |
+| `service-wordpress.html`, `service-shopify.html`, `service-ui-ux.html`, `service-seo.html`, `service-digital-marketing.html`, `service-content-writing.html`, `service-logo-designing.html`, `service-ai-automation.html` | Static service detail pages (one per catalogue service) |
+| `single-service.html` | Generic service template; still personalises through `?service=…` for backwards-compatible links |
 | `portfolio.html`, `single-project.html` | Work index (filter sidebar) + project template |
 | `industries.html` | Six sectors, `?industry=technology\|ecommerce\|health\|finance\|education\|travel` deep-links a panel |
 | `case-studies.html`, `single-case-study.html` | Case index (two dropdown filters) + case template |
@@ -34,6 +35,21 @@ Everything is local (no build step). Open `index.html` or run `python3 -m http.s
 * `forms.css` (only on pages with forms or form components) and `legal.css` (legal page only).
 
 The three `advanced-pages-*` files are split by selector ownership; a page loads only the groups whose class prefixes it uses, so adding a page means adding the matching `<link>`s.
+
+## JavaScript modules
+
+`assets/js/main.js` (≈35 KB) holds the shared shell: hero videos, lazy loading, header, nav dropdowns, drawers,
+active nav, reveal animations, counters, forms, back-to-top, filters shared by several pages.
+
+Page-specific behaviour lives in `assets/js/modules/` and is only loaded where its hooks exist:
+
+| Module | Loaded on | Hooks |
+| --- | --- | --- |
+| `forms-flow.js` | get-a-quote, book-a-call | `data-quote-wizard`, `data-call-calendar` |
+| `editorial.js` | blog, single-blog-post, faq, testimonials | `data-blog-archive`, `data-faq-directory`, `data-review-archive`, article TOC/share |
+| `work-grid.js` | portfolio, case-studies, single-project, single-case-study, testimonials | `data-portfolio-grid`, `data-case-filters`, `data-gallery`, `data-video-modal` |
+| `sliders.js` | home, about, services | `data-service-slider`, `data-case-highlight`, `data-testimonial-track`, `data-featured-project` |
+| `service-detail.js` | single-service | `?service=` personalisation |
 
 ## Forms
 

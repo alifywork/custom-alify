@@ -1334,3 +1334,27 @@ h1,h2,h3,h4,h5,h6,
 @media (max-width: 767.98px) {
 .footer-cta__action .btn-pill {width: 100%;}
 }
+
+/* Static review grid: cards are fully readable (no dimmed resting state),
+   the first card carries the "active" treatment and hover follows it. */
+.reviews__grid .testimonial-card { opacity: 1; transform: none; background: #fff; }
+.reviews__grid .testimonial-card:hover,
+.reviews__grid .testimonial-card:focus-within {
+  border-color: rgba(18, 21, 28, .16);
+  background: linear-gradient(168deg, #fff 0%, #FFFDF8 58%, #FBF5EC 100%);
+  transform: translateY(-3px);
+}
+.reviews__grid .testimonial-card:hover::after,
+.reviews__grid .testimonial-card:focus-within::after {
+  background: linear-gradient(90deg, var(--color-amber-light), rgba(244, 199, 120, .15) 55%, transparent);
+}
+.reviews__grid .testimonial-card:hover::before { color: rgba(244, 199, 120, .42); }
+
+/* Featured concept label in the homepage case highlight */
+.case-highlight__label {
+  margin-left: 6px;
+  color: var(--color-muted);
+  font: 600 .6rem var(--font-accent);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
