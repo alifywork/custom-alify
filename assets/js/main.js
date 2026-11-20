@@ -634,22 +634,84 @@
   }
 
   /* ---------- Portfolio category filters ---------- */
+  /* ---------- Portfolio: discipline filters, chip counts, load more ---------- */
   function initPortfolioFilters() {
     var grid = document.querySelector('[data-portfolio-grid]');
     if (!grid) return;
-    var filters = document.querySelectorAll('[data-portfolio-filter]');
-    var cards = grid.querySelectorAll('[data-portfolio-item]');
-    filters.forEach(function (filter) {
-      filter.addEventListener('click', function () {
-        var category = filter.getAttribute('data-portfolio-filter');
-        filters.forEach(function (item) {
-          item.setAttribute('aria-pressed', item === filter ? 'true' : 'false');
-        });
-        cards.forEach(function (card) {
-          card.hidden = category !== 'all' && card.getAttribute('data-portfolio-item') !== category;
-        });
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-portfolio-item]'));
+    if (!cards.length) return;
+
+    var filters = Array.prototype.slice.call(document.querySelectorAll('[data-portfolio-filter]'));
+    var moreBtn = document.querySelector('[data-portfolio-more]');
+    var statusEl = document.querySelector('[data-portfolio-status]');
+    var progressEl = document.querySelector('[data-portfolio-progress]');
+    var emptyEl = document.querySelector('[data-portfolio-empty]');
+    var perBatch = parseInt(grid.getAttribute('data-per-batch'), 10) || 6;
+    var state = { filter: 'all', shown: perBatch };
+
+    function has(card, key) {
+      return (' ' + card.getAttribute('data-portfolio-item') + ' ').indexOf(' ' + key + ' ') > -1;
+    }
+
+    // Counts on the filter chips, derived from the cards themselves (once only).
+    filters.forEach(function (chip) {
+      if (chip.querySelector('.blog-filters__chip-count')) return;
+      var key = chip.getAttribute('data-portfolio-filter');
+      var total = key === 'all' ? cards.length : cards.filter(function (card) { return has(card, key); }).length;
+      var badge = document.createElement('span');
+      badge.className = 'blog-filters__chip-count';
+      badge.textContent = String(total);
+      chip.appendChild(badge);
+    });
+
+    function matches(card) {
+      return state.filter === 'all' || has(card, state.filter);
+    }
+
+    function apply() {
+      var matching = cards.filter(matches);
+      var visible = 0;
+      cards.forEach(function (card) {
+        var index = matching.indexOf(card);
+        var show = index > -1 && index < state.shown;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      filters.forEach(function (chip) {
+        var active = chip.getAttribute('data-portfolio-filter') === state.filter;
+        chip.classList.toggle('is-active', active);
+        chip.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      var label = visible + ' of ' + matching.length + ' project' + (matching.length === 1 ? '' : 's');
+      if (statusEl) statusEl.textContent = matching.length ? 'Showing ' + label : 'No projects in this category';
+      if (progressEl) progressEl.textContent = matching.length ? 'Showing ' + label : 'No projects in this category';
+      if (emptyEl) emptyEl.hidden = matching.length > 0;
+      if (moreBtn) {
+        var remaining = matching.length - state.shown;
+        moreBtn.hidden = remaining <= 0;
+        var textEl = moreBtn.querySelector('.arrow__btn-text');
+        if (textEl && remaining > 0) textEl.textContent = 'Load ' + remaining + ' more project' + (remaining === 1 ? '' : 's');
+      }
+    }
+
+    filters.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        state.filter = chip.getAttribute('data-portfolio-filter');
+        state.shown = perBatch;
+        apply();
       });
     });
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        state.shown += perBatch;
+        apply();
+      });
+    }
+
+    apply();
   }
 
   /* ---------- Blog archive: category filter, search, pagination, shareable URL ---------- */
