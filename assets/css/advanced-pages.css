@@ -1633,3 +1633,12 @@
 
 /* Keep the page still while the video lightbox is open. */
 body.has-open-modal { overflow: hidden; }
+
+/* Reviews grid shows every card at full strength (the slider dim is not needed here). */
+.reviews__grid .testimonial-card { opacity: 1; transform: none; background: #fff; border-color: rgba(18,21,28,.09); }
+.reviews__grid .testimonial-card:hover,
+.reviews__grid .testimonial-card:focus-within { opacity: 1; transform: translateY(-4px); border-color: rgba(18,21,28,.16); background: linear-gradient(168deg,#fff 0%,#FFFDF8 58%,#FBF5EC 100%); }
+.reviews__grid .testimonial-card__quote,
+.reviews__grid .testimonial-card__quote p { opacity: 1; color: var(--color-charcoal); }
+.reviews__grid .testimonial-card__name { color: var(--color-charcoal); }
+.reviews__grid .testimonial-card__role { color: var(--color-muted); }

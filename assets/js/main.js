@@ -42,7 +42,7 @@
     initReadingProgress();
     initArticleToc();
     initShareButtons();
-    initReviewFilters();
+    initTestimonialFilters();
     initVideoModal();
     initServiceSlider();
     initFeaturedProjectEffects();
@@ -673,7 +673,7 @@
   }
 
   /* ---------- Testimonials: topic filters (URL-persisted) ---------- */
-  function initReviewFilters() {
+  function initTestimonialFilters() {
     var root = document.querySelector('[data-review-archive]');
     if (!root) return;
 
