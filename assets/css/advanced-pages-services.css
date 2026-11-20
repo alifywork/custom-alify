@@ -617,6 +617,14 @@
 .svc-project__result {font-size: 1.9rem;}
 }
 
+/* Testimonials on service pages: the homepage card and controls, showing
+   one review at a time (no peek, no fade mask). */
+.svc-quote__track {--card-width: 100%; gap: 0; scroll-snap-type: x mandatory;}
+.svc-quote__track .testimonial-card {scroll-snap-align: start;}
+@media (max-width: 575.98px) {
+  .svc-quote__track {padding-bottom: 16px;}
+}
+
 /* ============================================================
    Service catalogue grid — reuses the homepage .service-slide cards
    ============================================================ */

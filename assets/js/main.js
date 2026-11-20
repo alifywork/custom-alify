@@ -978,7 +978,7 @@
       var track = root.querySelector('[data-quote-track]');
       if (!track) return;
 
-      var slides = track.querySelectorAll('.svc-quote__slide');
+      var slides = track.children;
       var prev = root.querySelector('[data-quote-prev]');
       var next = root.querySelector('[data-quote-next]');
       var status = root.querySelector('[data-quote-status]');
@@ -1000,7 +1000,9 @@
         if (prev) prev.disabled = i === 0;
         if (next) next.disabled = i === total - 1;
         Array.prototype.forEach.call(slides, function (slide, index) {
-          slide.setAttribute('aria-hidden', index === i ? 'false' : 'true');
+          slide.classList.toggle('is-active', index === i);
+          if (index === i) slide.setAttribute('aria-current', 'true');
+          else slide.removeAttribute('aria-current');
         });
       }
 
