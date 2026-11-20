@@ -43,6 +43,7 @@
     initScrollToBottom();
     initActiveNav();
     initRevealAnimations();
+    initSectionReveals();
     initCounters();
     initForms();
     initAjaxForms();
@@ -881,6 +882,90 @@
         delay: 0.4
       });
     }
+  }
+
+  /* ---------- Section reveals ----------
+     Every top-level <section> fades its blocks in once, as it enters the
+     viewport. Nothing is hidden in CSS, so if GSAP fails to load the page
+     stays fully visible; transforms are cleared afterwards so sticky
+     cards keep working. */
+  function initSectionReveals() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (document.documentElement.hasAttribute('data-no-section-anim')) return;
+
+    var STICKY_INSIDE = '.featured-project-card, .filter-shell__side, [data-sticky]';
+    // Modules that already drive their own GSAP tweens — never animate these.
+    var SELF_MANAGED = '[data-case-highlight], [data-testimonial-track], [data-service-slider], [data-gallery], [data-video-modal]';
+
+    function animatable(el) {
+      if (!el || el.hidden) return false;
+      var cs = window.getComputedStyle(el);
+      if (cs.display === 'none' || cs.position === 'fixed' || cs.position === 'sticky') return false;
+      if (el.hasAttribute('data-no-anim')) return false;
+      if (el.matches(SELF_MANAGED)) return false;
+      if (el.querySelector(STICKY_INSIDE)) return false;
+      return true;
+    }
+
+    // Card grids animate card by card; everything else moves as one block.
+    function expand(el) {
+      var display = window.getComputedStyle(el).display;
+      if (display !== 'grid' && display.indexOf('flex') !== 0) return [el];
+      var kids = Array.prototype.filter.call(el.children, animatable);
+      return kids.length >= 3 && kids.length <= 9 ? kids : [el];
+    }
+
+    function targetsFor(section) {
+      var root = section.querySelector(':scope > .container, :scope > .container-fluid') || section;
+      var kids = Array.prototype.filter.call(root.children, animatable);
+
+      // A single wrapper (row / grid / stack) is unwrapped so its columns
+      // animate one by one instead of the whole block moving together.
+      if (kids.length === 1 && kids[0].children.length > 1) {
+        var inner = Array.prototype.filter.call(kids[0].children, animatable);
+        if (inner.length > 1) kids = inner;
+      }
+
+      var out = [];
+      kids.forEach(function (kid) { out = out.concat(expand(kid)); });
+      return out.slice(0, 10);
+    }
+
+    function animateHero(section) {
+      var items = section.querySelectorAll(
+        '.hero-eyebrow, h1, .home-hero__description, .inner-hero__description, .home-hero__actions, .inner-hero__actions'
+      );
+      if (!items.length) return;
+      gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.85 }, delay: 0.12 })
+        .from(items, { y: 24, opacity: 0, stagger: 0.1, clearProps: 'transform,opacity' });
+    }
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll('main section, .site-footer section'),
+      function (section) {
+        if (section.closest('.site-drawer') || section.closest('[data-no-anim]')) return;
+        if (section.parentElement && section.parentElement.closest('section')) return;   // nested sections: the outer one covers them
+        if (section.matches('.home-hero, .inner-hero')) { animateHero(section); return; }
+
+        var targets = targetsFor(section);
+        if (!targets.length) return;
+
+        try {
+          gsap.timeline({
+            scrollTrigger: { trigger: section, start: 'top 82%', once: true },
+            defaults: { duration: 0.65, ease: 'power2.out' },
+            onComplete: function () { gsap.set(targets, { clearProps: 'transform,opacity' }); }
+          }).from(targets, { y: 26, opacity: 0, stagger: 0.07 });
+        } catch (err) {
+          gsap.set(targets, { clearProps: 'transform,opacity' });
+        }
+      }
+    );
+
+    // Lazy images and posters change the page height, so re-measure once
+    // everything has settled.
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
   }
 
   /* ---------- Animated Counters ---------- */

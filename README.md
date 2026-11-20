@@ -48,7 +48,7 @@ The three `advanced-pages-*` files are split by selector ownership; a page loads
 ## JavaScript modules
 
 `assets/js/main.js` (≈35 KB) holds the shared shell: hero videos, lazy loading, header, nav dropdowns, drawers,
-active nav, reveal animations, counters, forms, the floating scroll-to-top (`#backToTop`) and
+active nav, scroll reveals, counters, forms, the floating scroll-to-top (`#backToTop`) and
 scroll-to-bottom (`#scrollToBottom`) controls, filters shared by several pages.
 Both floating controls share the `.back-to-top` skin; the down variant adds `.back-to-top--down`
 (down arrow shows in the first 200px of scroll, up arrow after 400px, never both at once).
@@ -62,6 +62,23 @@ Page-specific behaviour lives in `assets/js/modules/` and is only loaded where i
 | `work-grid.js` | portfolio, case-studies, single-project, single-case-study, testimonials | `data-portfolio-grid`, `data-case-filters`, `data-gallery`, `data-video-modal` |
 | `sliders.js` | home, about, services | `data-service-slider`, `data-case-highlight`, `data-testimonial-track`, `data-featured-project` |
 | `service-detail.js` | `templates/single-service.html` | `?service=` personalisation |
+
+## Motion
+
+`initSectionReveals()` (main.js) animates **every top-level `<section>` on every page** as it scrolls
+into view: the section's blocks fade up 26px with a 0.07s stagger, card grids animate card by card,
+and the hero (`.home-hero` / `.inner-hero`) runs an entrance timeline on load. Each section uses one
+GSAP timeline with a ScrollTrigger that fires `once`.
+
+Guards worth knowing before editing markup:
+
+* Nothing is hidden in CSS — if GSAP fails to load, every section is simply visible. Transforms are
+  cleared after each timeline so `position: sticky` cards keep working.
+* Targets containing sticky elements (`.featured-project-card`, `.filter-shell__side`) and
+  module-managed nodes (`[data-case-highlight]`, `[data-testimonial-track]`, `[data-service-slider]`,
+  `[data-gallery]`, `[data-video-modal]`) are skipped.
+* `prefers-reduced-motion: reduce` disables the whole routine; add `data-no-anim` to a section (or
+  `data-no-section-anim` to `<html>`) to opt out locally or page-wide.
 
 ## Forms
 
