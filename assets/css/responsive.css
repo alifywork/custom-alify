@@ -10,7 +10,7 @@
    ============================================================ */
 
 /* ---------- 1. Global guards ---------- */
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 78px; }
 body { overflow-x: clip; }
 img, svg, video, canvas, iframe { max-width: 100%; }
 img, video { height: auto; }
@@ -153,6 +153,10 @@ img, video { height: auto; }
 @media (max-width: 575.98px) {
   h1, .h1 { letter-spacing: -.035em; }
   h2, .h2 { letter-spacing: -.02em; }
+  /* Long labels may wrap instead of pushing the button past the screen edge. */
+  .btn-pill, .arrow__btn-link { max-width: 100%; }
+  .btn-pill { white-space: normal; text-align: center; }
+  .client-wordmark { min-height: 40px; }
 }
 
 /* ---------- 8. Tables stay readable: scroll, never squeeze ---------- */
@@ -160,6 +164,9 @@ img, video { height: auto; }
   .pricing-compare__scroll, .pricing-compare__wrap, .comparison-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .pricing-compare__scroll::after { content: ""; }
 }
+
+/* ---------- 8b. Anchor targets clear the sticky header on every page ---------- */
+section[id], [id]:target, .legal-doc__block { scroll-margin-top: 78px; }
 
 /* ---------- 9. Forms ---------- */
 @media (max-width: 767.98px) {
@@ -172,6 +179,10 @@ img, video { height: auto; }
     width: 100%; justify-content: center;
   }
   .contact-form__next-link { display: flex; justify-content: center; margin-inline: 0; }
+}
+
+@media (max-width: 399.98px) {
+  .arrow__btn-text { white-space: normal; }
 }
 
 /* ---------- 10. Floating controls respect the home bar ---------- */
