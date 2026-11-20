@@ -44,6 +44,7 @@
     initActiveNav();
     initRevealAnimations();
     initSectionReveals();
+    initQuoteSliders();
     initCounters();
     initForms();
     initAjaxForms();
@@ -966,6 +967,68 @@
     // Lazy images and posters change the page height, so re-measure once
     // everything has settled.
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+  }
+
+  /* ---------- Service quote slider (one review per view) ---------- */
+  function initQuoteSliders() {
+    var sliders = document.querySelectorAll('[data-quote-slider]');
+    if (!sliders.length) return;
+
+    Array.prototype.forEach.call(sliders, function (root) {
+      var track = root.querySelector('[data-quote-track]');
+      if (!track) return;
+
+      var slides = track.querySelectorAll('.svc-quote__slide');
+      var prev = root.querySelector('[data-quote-prev]');
+      var next = root.querySelector('[data-quote-next]');
+      var status = root.querySelector('[data-quote-status]');
+      var total = slides.length;
+      if (total < 2) {
+        if (prev) prev.disabled = true;
+        if (next) next.disabled = true;
+        return;
+      }
+
+      function step() { return track.clientWidth || 1; }
+      function current() {
+        return Math.max(0, Math.min(total - 1, Math.round(track.scrollLeft / step())));
+      }
+
+      function update() {
+        var i = current();
+        if (status) status.textContent = 'Review ' + (i + 1) + ' of ' + total;
+        if (prev) prev.disabled = i === 0;
+        if (next) next.disabled = i === total - 1;
+        Array.prototype.forEach.call(slides, function (slide, index) {
+          slide.setAttribute('aria-hidden', index === i ? 'false' : 'true');
+        });
+      }
+
+      function goTo(index) {
+        var left = Math.max(0, Math.min(total - 1, index)) * step();
+        if (typeof track.scrollTo === 'function') {
+          track.scrollTo({ left: left, behavior: 'smooth' });
+        } else {
+          track.scrollLeft = left;
+        }
+        update();
+      }
+
+      if (prev) prev.addEventListener('click', function () { goTo(current() - 1); });
+      if (next) next.addEventListener('click', function () { goTo(current() + 1); });
+
+      track.addEventListener('scroll', function () {
+        window.clearTimeout(track._quoteTimer);
+        track._quoteTimer = window.setTimeout(update, 90);
+      }, { passive: true });
+
+      track.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowRight') { event.preventDefault(); goTo(current() + 1); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(current() - 1); }
+      });
+
+      update();
+    });
   }
 
   /* ---------- Animated Counters ---------- */

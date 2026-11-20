@@ -48,7 +48,8 @@ The three `advanced-pages-*` files are split by selector ownership; a page loads
 ## JavaScript modules
 
 `assets/js/main.js` (≈35 KB) holds the shared shell: hero videos, lazy loading, header, nav dropdowns, drawers,
-active nav, scroll reveals, counters, forms, the floating scroll-to-top (`#backToTop`) and
+active nav, scroll reveals, counters, forms, the service quote slider (`[data-quote-slider]`,
+one review per view with arrow keys and a live counter), the floating scroll-to-top (`#backToTop`) and
 scroll-to-bottom (`#scrollToBottom`) controls, filters shared by several pages.
 Both floating controls share the `.back-to-top` skin; the down variant adds `.back-to-top--down`
 (down arrow shows in the first 200px of scroll, up arrow after 400px, never both at once).

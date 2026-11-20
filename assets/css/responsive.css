@@ -114,7 +114,16 @@ img, video { height: auto; }
 @media (max-width: 767.98px) {
   .home-hero { min-height: 0; padding-block: 108px 84px; }
   .inner-hero { min-height: 0; padding-block: 96px 72px; }
-  .home-hero__description, .inner-hero__description { max-width: 46ch; }
+  /* Hero and footer CTA copy runs the full width of the container on phones. */
+  .home-hero__content, .inner-hero__content,
+  .footer-cta__container, .footer-cta__container .row, .footer-cta__container .col-12 {
+    width: 100%; max-width: none; margin-inline: 0;
+  }
+  .home-hero h1, .inner-hero h1,
+  .home-hero__description, .inner-hero__description,
+  .footer-cta h2, .footer-cta__eyebrow {
+    width: 100%; max-width: none; margin-inline: 0;
+  }
   .home-hero__actions, .inner-hero__actions { gap: 12px; }
 }
 @media (max-width: 575.98px) {
@@ -123,6 +132,24 @@ img, video { height: auto; }
   .home-hero h1, .inner-hero h1 { letter-spacing: -.04em; line-height: 1.04; }
   .home-hero__description, .inner-hero__description { margin-top: 18px; }
   .home-hero__scroll { display: none; }
+
+  /* One button per row, full width, same height, icon pinned to the end. */
+  .home-hero__actions, .inner-hero__actions, .footer-cta__action {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+  .home-hero__actions > *, .inner-hero__actions > *, .footer-cta__action > * { width: 100%; }
+  .home-hero__actions .arrow__btn-link,
+  .inner-hero__actions .arrow__btn-link,
+  .footer-cta__action .arrow__btn-link { justify-content: space-between; }
+  .home-hero__actions .arrow__btn-text,
+  .inner-hero__actions .arrow__btn-text,
+  .footer-cta__action .arrow__btn-text { flex: 1; justify-content: center; }
+  .home-hero__actions .btn-pill,
+  .inner-hero__actions .btn-pill,
+  .footer-cta__action .btn-pill { justify-content: center; text-align: center; height: 40px; }
 }
 
 /* ---------- 5. Section heads stack instead of squeezing ---------- */
