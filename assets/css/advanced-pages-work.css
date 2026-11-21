@@ -71,6 +71,15 @@
 .work-filters__bar {position: static; margin-top: clamp(24px,3vw,34px);}
 .work-grid {padding-block: clamp(26px,3vw,36px) clamp(44px,5.4vw,68px); background: #F6F4F1;}
 .work-grid__inner {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(14px,1.6vw,20px);}
+
+/* Project cards outside the homepage stack: one full-width card per row
+   (homepage card design, no sticky stacking). */
+.work-grid__inner.project-cards,
+.filter-shell__main .work-grid__inner.project-cards {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(18px, 2.4vw, 30px);
+  align-content: start;
+}
 .work-card {display: flex; min-width: 0;}
 .work-card[hidden] {display: none;}
 .work-card__link {display: flex; width: 100%; flex-direction: column; overflow: hidden; border: 1px solid rgba(18,21,28,.09); border-radius: 18px; background: #fff; text-decoration: none; transition: transform .25s ease, border-color .25s ease;}

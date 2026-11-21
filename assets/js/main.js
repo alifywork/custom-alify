@@ -969,7 +969,7 @@
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (document.documentElement.hasAttribute('data-no-section-anim')) return;
 
-    var STICKY_INSIDE = '.featured-project-card, .filter-shell__side, [data-sticky]';
+    var STICKY_INSIDE = '.featured-projects__stack .featured-project-card, .filter-shell__side, [data-sticky]';
     // Modules that already drive their own GSAP tweens — never animate these.
     var SELF_MANAGED = '[data-case-highlight], [data-testimonial-track], [data-service-slider], [data-gallery], [data-video-modal]';
 

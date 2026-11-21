@@ -62,7 +62,7 @@ Page-specific behaviour lives in `assets/js/modules/` and is only loaded where i
 | `forms-flow.js` | get-a-quote, book-a-call | `data-quote-wizard`, `data-call-calendar` |
 | `editorial.js` | blog, single-blog-post, faq, testimonials | `data-blog-archive`, `data-faq-directory`, `data-review-archive`, article TOC/share |
 | `work-grid.js` | portfolio, case-studies, single-project, single-case-study, testimonials | `data-portfolio-grid`, `data-case-filters`, `data-gallery`, `data-video-modal` |
-| `sliders.js` | home, about, services | `data-service-slider`, `data-case-highlight`, `data-testimonial-track`, `data-featured-project` |
+| `sliders.js` | home, about, services, portfolio, project, industries | `data-service-slider`, `data-case-highlight`, `data-testimonial-track`, `data-featured-project` (hover image pan) |
 | `smooth-scroll.js` | every page | GSAP eased wheel scrolling + `ScrollToPlugin` anchor links (`offsetY: 80`). Touch, reduced motion and inner scroll areas keep native behaviour |
 | `service-detail.js` | `templates/single-service.html` | `?service=` personalisation |
 
@@ -93,11 +93,21 @@ Guards worth knowing before editing markup:
 
 * Nothing is hidden in CSS — if GSAP fails to load, every section is simply visible. Transforms are
   cleared after each timeline so `position: sticky` cards keep working.
-* Targets containing sticky elements (`.featured-project-card`, `.filter-shell__side`) and
+* Targets containing sticky elements (`.featured-projects__stack .featured-project-card`, `.filter-shell__side`) and
   module-managed nodes (`[data-case-highlight]`, `[data-testimonial-track]`, `[data-service-slider]`,
   `[data-gallery]`, `[data-video-modal]`) are skipped.
 * `prefers-reduced-motion: reduce` disables the whole routine; add `data-no-anim` to a section (or
   `data-no-section-anim` to `<html>`) to opt out locally or page-wide.
+
+### Project cards
+
+One component — `.featured-project-card` (copy left, image right, index watermark) — is used for
+projects everywhere: the homepage stack, the `portfolio.html` grid, the related projects on
+`single-project.html`, and the project block on `industries.html`. Only the homepage wrapper
+`.featured-projects__stack` pins its cards (`position: sticky`); every other placement is static and
+lays out one card per row via `.work-grid__inner.project-cards`. Portfolio filtering keeps working
+because the card element still carries `data-portfolio-item`, and `[data-featured-project]` brings the
+same hover image pan as the homepage.
 
 ## Forms
 
